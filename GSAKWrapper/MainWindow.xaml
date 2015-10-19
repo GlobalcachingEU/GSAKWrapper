@@ -1,0 +1,23 @@
+﻿<Window x:Class="GSAKWrapper.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:GSAKWrapper.Localization"
+        xmlns:p="clr-namespace:GSAKWrapper"
+        xmlns:ui="clr-namespace:GSAKWrapper.UIControls.ActionBuilder"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        IsEnabled="{Binding UIIsIdle, Source={x:Static p:ApplicationData.Instance}}"
+        Title="{l:Translate MainWindowTitle}" 
+        Height="{Binding MainWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding MainWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding MainWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding MainWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ui:Control Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+    </Grid>
+</Window>
