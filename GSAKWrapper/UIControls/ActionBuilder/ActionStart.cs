@@ -29,9 +29,16 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             get { return Operator.Equal; }
         }
-        public override Operator Process()
+        public override void Process(Operator op, string inputTableName, string targetTableName)
         {
-            return Operator.Equal;
+            DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select distinct Code as gccode from Caches", targetTableName));
+        }
+        public override bool PrepareRun(Database.DBCon db, string tableName)
+        {
+            base.PrepareRun(db, tableName);
+            CreateTableInDatabase(TempTableName);
+            CreateTableInDatabase(TempTableName2);
+            return true;
         }
     }
 

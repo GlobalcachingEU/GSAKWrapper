@@ -28,47 +28,154 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             public int PassCounter { get; set; }
         }
 
+        protected const string TempTableName = "gskwrp_tmp";
+        protected const string TempTableName2 = "gskwrp_tmp2";
+
         public string Name { get; private set; }
         public string ID { get; set; }
         public Point Location { get; set; }
         private ActionControl _assignedActionControl = null;
         public List<string> Values { get; private set; }
+        public long TotalGeocachesAtInput { get; private set; }
+        public System.Diagnostics.Stopwatch TotalProcessTime { get; private set; }
 
         //connections
         private List<OutputConnectionInfo> _outputConnectionInfo = null;
 
-        //execution
-        private Hashtable _geocachesAtInpuntConnector = null;
-        public Hashtable GeocachesAtInputConnector { get { return _geocachesAtInpuntConnector; } }
+        protected Database.DBCon DatabaseConnection { get; private set; }
+        protected string AssignedTableName { get; private set; }
+        private List<string> _createdTables;
 
         public ActionImplementation(string name)
         {
             Name = name;
             _outputConnectionInfo = new List<OutputConnectionInfo>();
             Values = new List<string>();
-            _geocachesAtInpuntConnector = new Hashtable();
+            _createdTables = new List<string>();
+            TotalProcessTime = new System.Diagnostics.Stopwatch();
         }
 
-        public virtual bool PrepareRun()
+        protected void CreateTableInDatabase(string tableName, bool dropIfExists = false, bool emptyIfExists = true)
         {
-            _geocachesAtInpuntConnector.Clear();
+            if (!_createdTables.Contains(tableName))
+            {
+                _createdTables.Add(tableName);
+            }
+            if (DatabaseConnection.TableExists(tableName))
+            {
+                if (dropIfExists)
+                {
+                    DatabaseConnection.ExecuteNonQuery(string.Format("drop table {0}", tableName));
+                }
+                else
+                {
+                    if (emptyIfExists)
+                    {
+                        DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", tableName));
+                    }
+                    return;
+                }
+            }
+            DatabaseConnection.ExecuteNonQuery(string.Format("create table '{0}' (gccode text)", tableName));
+        }
+
+        public virtual bool PrepareRun(Database.DBCon db, string tableName)
+        {
+            DatabaseConnection = db;
+            AssignedTableName = tableName;
+            CreateTableInDatabase(ActionInputTableName);
             foreach (OutputConnectionInfo oci in _outputConnectionInfo)
             {
                 oci.PassCounter = 0;
             }
+            TotalProcessTime.Reset();
             return true;
         }
         public virtual void FinalizeRun()
         {
+            foreach (var t in _createdTables)
+            {
+                DatabaseConnection.ExecuteNonQuery(string.Format("drop table {0}", t));
+            }
+            _createdTables.Clear();
         }
 
-        public void Run()
+        public string ActionInputTableName
         {
+            get
+            {
+                return string.Format("{0}_inp", AssignedTableName);
+            }
         }
 
-        public virtual Operator Process()
+        public string ConnectorOutputTableName(Operator op)
         {
-            return 0;
+            return string.Format("{0}_{1}", AssignedTableName, op.ToString());
+        }
+
+        public void Run(string inputTableName)
+        {
+            //get input list
+            CreateTableInDatabase(ActionInputTableName, emptyIfExists: false);
+            if (string.IsNullOrEmpty(inputTableName))
+            {
+                DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select distinct Code as gccode from Caches", ActionInputTableName));
+            }
+            else
+            {
+                if ((long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", ActionInputTableName)) == 0)
+                {
+                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", ActionInputTableName, inputTableName));
+                }
+                else
+                {
+                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, ActionInputTableName)); //todo: in one sql statement
+                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, inputTableName));
+                    DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", ActionInputTableName));
+                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select distinct * from {1}", ActionInputTableName, TempTableName2));
+                }
+            }
+            TotalGeocachesAtInput = (long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", ActionInputTableName));
+
+            List<string> processedOps = new List<string>();
+            foreach (var c in _outputConnectionInfo)
+            {
+                if (c.ConnectedAction != null)
+                {
+                    string connectorTable = ConnectorOutputTableName(c.OutputOperator);
+                    if (!processedOps.Contains(connectorTable))
+                    {
+                        TotalProcessTime.Start();
+                        CreateTableInDatabase(connectorTable);
+                        if ((long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", connectorTable)) == 0)
+                        {
+                            DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", connectorTable));
+                            Process(c.OutputOperator, inputTableName, connectorTable);
+                        }
+                        else
+                        {
+                            DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", TempTableName));
+                            DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", TempTableName2));
+                            Process(c.OutputOperator, inputTableName, TempTableName);
+                            DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, TempTableName)); //todo: in one sql statement
+                            DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, connectorTable));
+                            DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select distinct * from {1}", connectorTable, TempTableName2));
+                        }
+                        TotalProcessTime.Stop();
+                        processedOps.Add(connectorTable);
+                        c.PassCounter = (int)(long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", connectorTable));
+                    }
+                    else
+                    {
+                    }
+                    c.ConnectedAction.Run(connectorTable);
+                }
+            }
+        }
+
+        public virtual void Process(Operator op, string inputTableName, string targetTableName)
+        {
+            //e.g. insert into targetTableName select Code as gccode from Caches inner join inputTableName on gccode.Code = inputTableName.gccode where Name like '%w%'
         }
 
         public bool ConnectToOutput(ActionImplementation impl, Operator op)

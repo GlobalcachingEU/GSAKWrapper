@@ -49,7 +49,6 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             }
         }
 
-
         private AsyncDelegateCommand _executeFlowCommand;
         public AsyncDelegateCommand ExecuteFlowCommand
         {
@@ -67,24 +66,45 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             await Task.Run(() =>
                 {
-                    runFlow(af);
+                    try
+                    {
+                        var fn = System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, Settings.Settings.Default.SelectedDatabase, "sqlite.db3");
+                        if (System.IO.File.Exists(fn))
+                        {
+                            using (var db = new Database.DBConSqlite(fn))
+                            {
+                                runFlow(af, db);
+                            }
+                        }
+                    }
+                    catch
+                    {
+                    }
                 });
         }
 
-        private void runFlow(ActionFlow flow)
+        private void runFlow(ActionFlow flow, Database.DBCon db)
         {
             try
             {
+                int id = 0;
                 foreach (ActionImplementation ai in flow.Actions)
                 {
-                    ai.PrepareRun();
+                    id++;
+                    ai.PrepareRun(db, string.Format("gskwrp{0}", id));
                 }
+
                 //find start and run
                 ActionStart startAction = (from a in flow.Actions where a is ActionStart select a).FirstOrDefault() as ActionStart;
 
-                //todo
+                startAction.Run(null);
+
+                foreach (ActionImplementation ai in flow.Actions)
+                {
+                    ai.FinalizeRun();
+                }
             }
-            catch
+            catch(Exception e)
             {
             }
         }

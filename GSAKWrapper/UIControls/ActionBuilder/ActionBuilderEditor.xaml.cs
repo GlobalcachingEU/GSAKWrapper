@@ -141,7 +141,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                 {
                     if (actImpl.UIActionControl.ActionContent!=null)
                     {
-                        actImpl.UIActionControl.InputCounter.Content = actImpl.GeocachesAtInputConnector.Count.ToString();
+                        actImpl.UIActionControl.InputCounter.Content = actImpl.TotalGeocachesAtInput.ToString();
+                        actImpl.UIActionControl.ProcessTime.Content = string.Format("{0} s",actImpl.TotalProcessTime.Elapsed.TotalSeconds.ToString("0.0"));
                     }
                 }
             }

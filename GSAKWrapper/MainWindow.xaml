@@ -18,6 +18,14 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button Click="Button_Click">
+                <Image Height="16" Width="16" Source="/Resources/General/database.png" />
+            </Button>
+            <TextBlock Text="{l:Translate Database}" />
+            <TextBlock Text=": " />
+            <ComboBox ItemsSource="{Binding AvailableDatabases}" SelectedItem="{Binding SelectedDatabase, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+        </StackPanel>
         <ui:Control Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
     </Grid>
 </Window>
