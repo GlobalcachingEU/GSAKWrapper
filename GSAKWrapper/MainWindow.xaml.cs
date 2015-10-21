@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -47,6 +48,65 @@ namespace GSAKWrapper
 
                 }
             };
+
+            if (Settings.Settings.ApplicationRunning)
+            {
+                string p = System.IO.Path.Combine(new string[] { System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper" });
+                if (!Directory.Exists(p))
+                {
+                    Directory.CreateDirectory(p);
+                }
+                string fn = System.IO.Path.Combine(p, "settings.db3");
+
+                //create backup first
+                List<string> availableBackups = new List<string>();
+                if (File.Exists(fn))
+                {
+                    File.Copy(fn, string.Format("{0}.{1}.bak", fn, DateTime.Now.ToString("yyyyMMddHHmmss")));
+
+                    //keep maximum of X backups
+                    availableBackups = Directory.GetFiles(p, "settings.db3.*.bak").OrderBy(x => x).ToList();
+                    while (availableBackups.Count > 20)
+                    {
+                        File.Delete(availableBackups[0]);
+                        availableBackups.RemoveAt(0);
+                    }
+                }
+
+                bool dbOK;
+                bool backupUsed = false;
+                do
+                {
+                    try
+                    {
+                        dbOK = Settings.Settings.Default.IsStorageOK;
+                        //if (availableBackups.Count > 2) dbOK = false; //test
+                    }
+                    catch
+                    {
+                        dbOK = false;
+                    }
+                    if (!dbOK)
+                    {
+                        backupUsed = true;
+                        Settings.Settings.Default.PrepareReloadSettings();
+                        //delete settings and move to latest
+                        File.Delete(fn);
+                        if (availableBackups.Count > 0)
+                        {
+                            File.Move(availableBackups[availableBackups.Count - 1], fn);
+                            availableBackups.RemoveAt(availableBackups.Count - 1);
+                        }
+                        Settings.Settings.Default.ReloadSettings();
+                    }
+
+                } while (!dbOK);
+
+                if (backupUsed)
+                {
+                    System.Windows.MessageBox.Show("The settings file was corrupt and a backup file is restored.", "Settings");
+                }
+            }
 
             AvailableDatabases = new ObservableCollection<string>();
 

@@ -53,11 +53,11 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (op == Operator.Equal)
             {
-                DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode where Code like '%{2}%'", targetTableName, inputTableName, _value.Replace("'","''")));
+                SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("Code like '%{0}%'", _value.Replace("'", "''")));
             }
             else if (op == Operator.NotEqual)
             {
-                DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode where Code not like '%{2}%'", targetTableName, inputTableName, _value.Replace("'", "''")));
+                SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("Code not like '%{0}%'", _value.Replace("'", "''")));
             }
         }
     }

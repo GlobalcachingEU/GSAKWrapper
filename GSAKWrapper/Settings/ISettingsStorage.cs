@@ -14,9 +14,5 @@ namespace GSAKWrapper.Settings
 
         //integrity of settings
         bool IsStorageOK { get; }
-        bool CreateBackup();
-        List<string> AvailableBackups { get; }
-        bool RemoveBackup(string id);
-        bool PrepareRestoreBackup(string id);
     }
 }

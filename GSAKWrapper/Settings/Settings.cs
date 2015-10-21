@@ -82,21 +82,25 @@ namespace GSAKWrapper.Settings
             }
         }
 
-        public bool CreateBackup()
+        public void PrepareReloadSettings()
         {
-            return _settingsStorage.CreateBackup();
+            if (_settingsStorage != null)
+            {
+                _settingsStorage.Dispose();
+                _settingsStorage = null;
+            }
         }
 
-        public List<string> AvailableBackups { get { return _settingsStorage.AvailableBackups; } }
-        public bool RemoveBackup(string id)
+        public void ReloadSettings()
         {
-            return _settingsStorage.RemoveBackup(id);
+            if (_settingsStorage != null)
+            {
+                _settingsStorage.Dispose();
+                _settingsStorage = null;
+            }
+            _settingsStorage = new SqliteSettingsStorage();
+            _settings = _settingsStorage.LoadSettings();
         }
-        public bool PrepareRestoreBackup(string id)
-        {
-            return _settingsStorage.PrepareRestoreBackup(id);
-        }
-
 
         private string getPropertyValue(string name)
         {
@@ -123,35 +127,6 @@ namespace GSAKWrapper.Settings
                 }
             }
             return result;
-        }
-
-
-        async public Task BackupAsync()
-        {
-            await Task.Run(() => { Backup(); });
-        }
-
-        public void Backup()
-        {
-            try
-            {
-                List<string> bcks = AvailableBackups;
-                while (bcks.Count>0 && bcks.Count>=SettingsBackupMaxBackups-1)
-                {
-                    if (RemoveBackup(bcks[0]))
-                    {
-                        bcks.RemoveAt(0);
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-                CreateBackup();
-            }
-            catch
-            {
-            }
         }
 
     }

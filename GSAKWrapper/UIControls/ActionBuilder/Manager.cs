@@ -77,7 +77,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                             }
                         }
                     }
-                    catch
+                    catch (Exception e)
                     {
                     }
                 });
@@ -99,13 +99,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
                 startAction.Run(null);
 
+            }
+            finally
+            {
                 foreach (ActionImplementation ai in flow.Actions)
                 {
                     ai.FinalizeRun();
                 }
-            }
-            catch(Exception e)
-            {
             }
         }
 

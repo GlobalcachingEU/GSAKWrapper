@@ -36,8 +36,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         public override bool PrepareRun(Database.DBCon db, string tableName)
         {
             base.PrepareRun(db, tableName);
-            CreateTableInDatabase(TempTableName);
-            CreateTableInDatabase(TempTableName2);
+            //init flow
             return true;
         }
     }

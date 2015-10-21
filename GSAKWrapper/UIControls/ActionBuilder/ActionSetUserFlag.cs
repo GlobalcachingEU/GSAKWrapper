@@ -11,6 +11,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
     public class ActionSetUserFlag : ActionImplementationAction
     {
         public const string STR_NAME = "SetUserFlag";
+        private string _value = "";
         public ActionSetUserFlag()
             : base(STR_NAME)
         {
@@ -31,14 +32,23 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             Values[0] = cb.Text;
         }
 
+        public override bool PrepareRun(Database.DBCon db, string tableName)
+        {
+            _value = true.ToString();
+            if (Values.Count > 0)
+            {
+                bool flag;
+                if (bool.TryParse(Values[0], out flag))
+                {
+                    _value = flag ? "1" : "0";
+                }
+            }
+            return base.PrepareRun(db, tableName);
+        }
+
         public override void FinalizeRun()
         {
-            TotalProcessTime.Start();
-            if ((long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", ActionInputTableName)) > 0)
-            {
-                DatabaseConnection.ExecuteNonQuery(string.Format("update Caches set UserFlag=1 where exists (select 1 from {0} where Caches.Code={0}.gccode)", ActionInputTableName));
-            }
-            TotalProcessTime.Stop();
+            UpdateCachesFromInputTable(string.Format("UserFlag={0}", _value));
             base.FinalizeRun();
         }
     }

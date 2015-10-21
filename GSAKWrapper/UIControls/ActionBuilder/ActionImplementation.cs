@@ -28,9 +28,6 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             public int PassCounter { get; set; }
         }
 
-        protected const string TempTableName = "gskwrp_tmp";
-        protected const string TempTableName2 = "gskwrp_tmp2";
-
         public string Name { get; private set; }
         public string ID { get; set; }
         public Point Location { get; set; }
@@ -77,6 +74,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                 }
             }
             DatabaseConnection.ExecuteNonQuery(string.Format("create table '{0}' (gccode text)", tableName));
+            DatabaseConnection.ExecuteNonQuery(string.Format("create UNIQUE index '{0}_idx' on {0} (gccode)", tableName));
         }
 
         public virtual bool PrepareRun(Database.DBCon db, string tableName)
@@ -116,6 +114,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         public void Run(string inputTableName)
         {
             //get input list
+            TotalProcessTime.Start();
             CreateTableInDatabase(ActionInputTableName, emptyIfExists: false);
             if (string.IsNullOrEmpty(inputTableName))
             {
@@ -123,19 +122,10 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             }
             else
             {
-                if ((long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", ActionInputTableName)) == 0)
-                {
-                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", ActionInputTableName, inputTableName));
-                }
-                else
-                {
-                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, ActionInputTableName)); //todo: in one sql statement
-                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, inputTableName));
-                    DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", ActionInputTableName));
-                    DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select distinct * from {1}", ActionInputTableName, TempTableName2));
-                }
+                DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select * from {1}", ActionInputTableName, inputTableName));                    
             }
             TotalGeocachesAtInput = (long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", ActionInputTableName));
+            TotalProcessTime.Stop();
 
             List<string> processedOps = new List<string>();
             foreach (var c in _outputConnectionInfo)
@@ -146,21 +136,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     if (!processedOps.Contains(connectorTable))
                     {
                         TotalProcessTime.Start();
-                        CreateTableInDatabase(connectorTable);
-                        if ((long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", connectorTable)) == 0)
-                        {
-                            DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", connectorTable));
-                            Process(c.OutputOperator, inputTableName, connectorTable);
-                        }
-                        else
-                        {
-                            DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", TempTableName));
-                            DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", TempTableName2));
-                            Process(c.OutputOperator, inputTableName, TempTableName);
-                            DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, TempTableName)); //todo: in one sql statement
-                            DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select * from {1}", TempTableName2, connectorTable));
-                            DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select distinct * from {1}", connectorTable, TempTableName2));
-                        }
+                        CreateTableInDatabase(connectorTable, emptyIfExists: false);
+                        Process(c.OutputOperator, inputTableName, connectorTable);
                         TotalProcessTime.Stop();
                         processedOps.Add(connectorTable);
                         c.PassCounter = (int)(long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", connectorTable));
@@ -175,7 +152,33 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         public virtual void Process(Operator op, string inputTableName, string targetTableName)
         {
-            //e.g. insert into targetTableName select Code as gccode from Caches inner join inputTableName on gccode.Code = inputTableName.gccode where Name like '%w%'
+            //e.g. insert or raplace into targetTableName select Code as gccode from Caches inner join inputTableName on gccode.Code = inputTableName.gccode where Name like '%w%'
+        }
+
+        public void SelectGeocachesOnWhereClause(string inputTableName, string targetTableName, string whereClause)
+        {
+            var cnt = DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode where {2}", targetTableName, inputTableName, whereClause));
+        }
+
+        public void UpdateCachesFromInputTable(string setters)
+        {
+            TotalProcessTime.Start();
+            var cnt = (long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", ActionInputTableName));
+            if (cnt > 0)
+            {
+                DatabaseConnection.ExecuteNonQuery(string.Format("update Caches set {1} where exists (select 1 from {0} where {0}.gccode=Caches.Code)", ActionInputTableName, setters));
+            }
+            TotalProcessTime.Stop();
+        }
+
+        public void InsertGeocacheCodes(string targetTableName, List<string> codes)
+        {
+            while (codes.Count > 0)
+            {
+                var batch = codes.Take(500).ToArray();
+                codes.RemoveRange(0, batch.Length);
+                DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} (gccode) values ('{1}')", targetTableName, string.Join("'), ('", batch)));
+            }
         }
 
         public bool ConnectToOutput(ActionImplementation impl, Operator op)
