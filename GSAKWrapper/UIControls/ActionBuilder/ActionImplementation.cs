@@ -118,7 +118,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             CreateTableInDatabase(ActionInputTableName, emptyIfExists: false);
             if (string.IsNullOrEmpty(inputTableName))
             {
-                DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select distinct Code as gccode from Caches", ActionInputTableName));
+                DatabaseConnection.ExecuteNonQuery(string.Format("insert into {0} select Code as gccode from Caches", ActionInputTableName));
             }
             else
             {

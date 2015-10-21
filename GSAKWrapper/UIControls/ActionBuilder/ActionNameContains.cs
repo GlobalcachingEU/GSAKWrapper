@@ -53,11 +53,11 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (op == Operator.Equal)
             {
-                SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("Code like '%{0}%'", _value.Replace("'", "''")));
+                SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("Name like '%{0}%'", _value.Replace("'", "''")));
             }
             else if (op == Operator.NotEqual)
             {
-                SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("Code not like '%{0}%'", _value.Replace("'", "''")));
+                SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("Name not like '%{0}%'", _value.Replace("'", "''")));
             }
         }
     }
