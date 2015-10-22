@@ -113,6 +113,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         public void Run(string inputTableName)
         {
+            ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("RunningAction"), Localization.TranslationManager.Instance.Translate(this.Name));
+
             //get input list
             TotalProcessTime.Start();
             CreateTableInDatabase(ActionInputTableName, emptyIfExists: false);
@@ -155,9 +157,9 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             //e.g. insert or raplace into targetTableName select Code as gccode from Caches inner join inputTableName on gccode.Code = inputTableName.gccode where Name like '%w%'
         }
 
-        public void SelectGeocachesOnWhereClause(string inputTableName, string targetTableName, string whereClause)
+        public void SelectGeocachesOnWhereClause(string inputTableName, string targetTableName, string whereClause, string innerJoins = "")
         {
-            var cnt = DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode where {2}", targetTableName, inputTableName, whereClause));
+            DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode {2} where {3}", targetTableName, inputTableName, innerJoins ?? "", whereClause));
         }
 
         public void UpdateCachesFromInputTable(string setters)

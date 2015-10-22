@@ -18,14 +18,35 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Click="Button_Click">
-                <Image Height="16" Width="16" Source="/Resources/General/database.png" />
-            </Button>
-            <TextBlock Text="{l:Translate Database}" />
-            <TextBlock Text=": " />
-            <ComboBox ItemsSource="{Binding AvailableDatabases}" SelectedItem="{Binding SelectedDatabase, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+        <StackPanel Grid.Row="0">
+            <Menu>
+                <MenuItem Header="{l:Translate Language}">
+                    <MenuItem x:Name="menu14" Header="{l:Translate OriginalText}" Click="MenuItem_Click_2"  />
+                    <MenuItem x:Name="menu15" Header="{l:Translate English}" Click="MenuItem_Click_3">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/General/en.gif" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="menu18" Header="{l:Translate Dutch}" Click="MenuItem_Click_6">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/General/nl.gif" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+
+            </Menu>
+            <StackPanel Orientation="Horizontal" Background="#FFFFF29D">
+                <Button Click="Button_Click">
+                    <Image Height="16" Width="16" Source="/Resources/General/database.png" />
+                </Button>
+                <TextBlock Text="{l:Translate Database}" />
+                <TextBlock Text=": " />
+                <ComboBox ItemsSource="{Binding AvailableDatabases}" SelectedItem="{Binding SelectedDatabase, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+            </StackPanel>
         </StackPanel>
         <ui:Control Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Grid Grid.Row="2" Background="Blue" Height="25">
+            <TextBlock Foreground="White" FontWeight="Bold" Text="{Binding StatusText, Source={x:Static p:ApplicationData.Instance}}" />
+        </Grid>
     </Grid>
 </Window>

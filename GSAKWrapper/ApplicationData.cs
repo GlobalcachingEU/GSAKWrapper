@@ -50,6 +50,19 @@ namespace GSAKWrapper
             }
         }
 
+        private string _statusText = "Ready";
+        public string StatusText
+        {
+            get { return _statusText; }
+            set
+            {
+                if (_statusText != value)
+                {
+                    SetProperty(ref _statusText, value);
+                }
+            }
+        }
+
         public ApplicationData()
         {
 #if DEBUG

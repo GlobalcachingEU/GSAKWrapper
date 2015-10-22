@@ -66,6 +66,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             await Task.Run(() =>
                 {
+                    var sw = new System.Diagnostics.Stopwatch();
+                    sw.Start();
                     try
                     {
                         var fn = System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, Settings.Settings.Default.SelectedDatabase, "sqlite.db3");
@@ -76,9 +78,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                                 runFlow(af, db);
                             }
                         }
+                        sw.Stop();
+                        ApplicationData.Instance.StatusText = string.Format("{0} {1} {2} {3}", Localization.TranslationManager.Instance.Translate("FlowFinishedIn"), af.Name, sw.Elapsed.TotalSeconds.ToString("0.0") ,Localization.TranslationManager.Instance.Translate("seconds"));
                     }
                     catch (Exception e)
                     {
+                        sw.Stop();
+                        ApplicationData.Instance.StatusText = string.Format("{0}: {1}", Localization.TranslationManager.Instance.Translate("Error"), e.Message);
                     }
                 });
         }
@@ -87,10 +93,12 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             try
             {
+                ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("StartingFlow"), flow.Name);
                 int id = 0;
                 foreach (ActionImplementation ai in flow.Actions)
                 {
                     id++;
+                    ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("PreparingAction"), Localization.TranslationManager.Instance.Translate(ai.Name));
                     ai.PrepareRun(db, string.Format("gskwrp{0}", id));
                 }
 
@@ -99,14 +107,17 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
                 startAction.Run(null);
 
+                ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("Finishish"), flow.Name);
             }
             finally
             {
                 foreach (ActionImplementation ai in flow.Actions)
                 {
+                    ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("FinishingAction"), Localization.TranslationManager.Instance.Translate(ai.Name));
                     ai.FinalizeRun();
                 }
             }
+            ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("FinishedFlow"), flow.Name);
         }
 
 

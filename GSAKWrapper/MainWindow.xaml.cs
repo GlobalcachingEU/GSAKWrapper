@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -236,6 +237,21 @@ namespace GSAKWrapper
                 AvailableDatabases.Clear();
                 Settings.Settings.Default.SelectedDatabase = null;
             }
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Localization.TranslationManager.Instance.CurrentLanguage = CultureInfo.InvariantCulture;
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("en-US");
+        }
+
+        private void MenuItem_Click_6(object sender, RoutedEventArgs e)
+        {
+            Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("nl-NL");
         }
 
     }
