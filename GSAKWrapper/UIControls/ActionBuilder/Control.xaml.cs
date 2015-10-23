@@ -43,7 +43,18 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                 Type[] types = asm.GetTypes();
                 foreach (Type t in types)
                 {
-                    if (t.IsClass && (t.BaseType == typeof(ActionImplementationCondition)))
+                    if (t.IsClass
+                        && t != typeof(ActionImplementationText)
+                        && t != typeof(ActionImplementationYesNo)
+                        && t != typeof(ActionImplementationNumericValue)
+                        && t != typeof(ActionImplementationDate)
+                        && (t.BaseType == typeof(ActionImplementationCondition) 
+                            || t.BaseType == typeof(ActionImplementationText)
+                            || t.BaseType == typeof(ActionImplementationYesNo)
+                            || t.BaseType == typeof(ActionImplementationNumericValue)
+                            || t.BaseType == typeof(ActionImplementationDate)
+                            )
+                        )
                     {
                         ConstructorInfo constructor = t.GetConstructor(Type.EmptyTypes);
                         ActionImplementationCondition obj = (ActionImplementationCondition)constructor.Invoke(null);

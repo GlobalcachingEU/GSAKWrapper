@@ -45,8 +45,8 @@
             </StackPanel>
         </StackPanel>
         <ui:Control Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-        <Grid Grid.Row="2" Background="Blue" Height="25">
-            <TextBlock Foreground="White" FontWeight="Bold" Text="{Binding StatusText, Source={x:Static p:ApplicationData.Instance}}" />
+        <Grid Grid.Row="2" Background="Blue">
+            <TextBlock Margin="5" Foreground="White" FontWeight="Bold" Text="{Binding StatusText, Source={x:Static p:ApplicationData.Instance}}" />
         </Grid>
     </Grid>
 </Window>

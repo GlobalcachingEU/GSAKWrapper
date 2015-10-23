@@ -10,7 +10,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 {
     public class ActionDistanceFromCenter : ActionImplementationCondition
     {
-        public const string STR_NAME = "ActionDistanceFromCenterKm";
+        public const string STR_NAME = "DistanceFromCenterKm";
         private double _value = 0.0;
         public ActionDistanceFromCenter()
             : base(STR_NAME)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,21 +10,19 @@ using System.Windows.Controls;
 
 namespace GSAKWrapper.UIControls.ActionBuilder
 {
-    public class ActionImplementationText : ActionImplementationCondition
+    public class ActionImplementationNumericValue : ActionImplementationCondition
     {
         public enum Option
         {
-            Contains,
-            EqualsTo,
-            RegEx,
+            Value,
             IsEmpty
         }
 
-        private string _value = "";
-        private Option _option = Option.Contains;
+        private double _value = 1.0;
+        private Option _option = Option.Value;
         private string fieldName = "";
         private string joins = "";
-        public ActionImplementationText(string name, string fieldCompare, string joinStatement = "")
+        public ActionImplementationNumericValue(string name, string fieldCompare, string joinStatement = "")
             : base(name)
         {
             fieldName = fieldCompare;
@@ -34,11 +33,11 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (Values.Count == 0)
             {
-                Values.Add("-");
+                Values.Add("1.0");
             }
             if (Values.Count < 2)
             {
-                Values.Add(Option.Contains.ToString());
+                Values.Add(Option.Value.ToString());
             }
             StackPanel sp = new StackPanel();
             var opts = Enum.GetNames(typeof(Option));
@@ -47,20 +46,9 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             sp.Children.Add(cb);
             TextBox tb = new TextBox();
             tb.HorizontalAlignment = HorizontalAlignment.Center;
-            if (Values.Count == 0)
-            {
-                Values.Add("-");
-            }
             tb.Text = Values[0];
             sp.Children.Add(tb);
             return sp;
-        }
-        public override ActionImplementation.Operator AllowOperators
-        {
-            get
-            {
-                return ActionImplementation.Operator.Equal | ActionImplementation.Operator.NotEqual;
-            }
         }
         public override void CommitUIData(UIElement uiElement)
         {
@@ -72,11 +60,11 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         }
         public override bool PrepareRun(Database.DBCon db, string tableName)
         {
-            _value = "";
-            _option = Option.Contains;
+            _value = 0.0;
+            _option = Option.Value;
             if (Values.Count > 0)
             {
-                _value = Values[0];
+                _value = Utils.Conversion.StringToDouble(Values[0]);
             }
             if (Values.Count > 1)
             {
@@ -89,34 +77,30 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             switch (_option)
             {
-                case Option.Contains:
+                case Option.Value:
                     if (op == Operator.Equal)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} like '%{1}%'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} = {1}", fieldName, _value.ToString(CultureInfo.InvariantCulture)), innerJoins: joins);
                     }
                     else if (op == Operator.NotEqual)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} not like '%{1}%'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} <> {1}", fieldName, _value.ToString(CultureInfo.InvariantCulture)), innerJoins: joins);
                     }
-                    break;
-                case Option.EqualsTo:
-                    if (op == Operator.Equal)
+                    else if (op == Operator.Larger)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} like '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} > {1}", fieldName, _value.ToString(CultureInfo.InvariantCulture)), innerJoins: joins);
                     }
-                    else if (op == Operator.NotEqual)
+                    else if (op == Operator.LargerOrEqual)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} not like '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} >= {1}", fieldName, _value.ToString(CultureInfo.InvariantCulture)), innerJoins: joins);
                     }
-                    break;
-                case Option.RegEx:
-                    if (op == Operator.Equal)
+                    else if (op == Operator.Less)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} REGEXP '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} < {1}", fieldName, _value.ToString(CultureInfo.InvariantCulture)), innerJoins: joins);
                     }
-                    else if (op == Operator.NotEqual)
+                    else if (op == Operator.LessOrEqual)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} not REGEXP '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} <= {1}", fieldName, _value.ToString(CultureInfo.InvariantCulture)), innerJoins: joins);
                     }
                     break;
                 case Option.IsEmpty:

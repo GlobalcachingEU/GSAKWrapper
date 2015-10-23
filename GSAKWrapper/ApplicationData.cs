@@ -17,6 +17,8 @@ namespace GSAKWrapper
 
         public MainWindow MainWindow { get; set; }
         public List<DataTypes.GeocacheAttribute> GeocacheAttributes;
+        public List<DataTypes.GeocacheType> GeocacheTypes;
+        public List<DataTypes.GeocacheContainer> GeocacheContainers;
 
         private int _activityCounter = 0;
         public void BeginActiviy()
@@ -77,6 +79,39 @@ namespace GSAKWrapper
             }
 #endif
             GeocacheAttributes = new List<DataTypes.GeocacheAttribute>();
+            GeocacheTypes = new List<DataTypes.GeocacheType>();
+            GeocacheContainers = new List<DataTypes.GeocacheContainer>();
+
+            //addCacheType(0, "Not present");
+            addCacheType(2, "Traditional Cache", 'T');
+            addCacheType(3, "Multi-cache", 'M');
+            addCacheType(4, "Virtual Cache", 'V');
+            addCacheType(5, "Letterbox Hybrid", 'B');
+            addCacheType(6, "Event Cache", 'E');
+            addCacheType(8, "Unknown (Mystery) Cache", 'U', "Unknown Cache");
+            addCacheType(9, "Project APE Cache", 'A');
+            addCacheType(11, "Webcam Cache", 'W');
+            addCacheType(12, "Locationless (Reverse) Cache", 'L');
+            addCacheType(13, "Cache In Trash Out Event", 'C');
+            addCacheType(137, "Earthcache", 'R');
+            addCacheType(453, "Mega-Event Cache", 'Z');
+            //addCacheType(605, "Geocache Course", ' ');
+            addCacheType(1304, "GPS Adventures Exhibit", 'X');
+            addCacheType(1858, "Wherigo Cache", 'I');
+            addCacheType(3653, "Lost and Found Event Cache", 'F');
+            addCacheType(3773, "Groundspeak HQ", 'H');
+            addCacheType(3774, "Groundspeak Lost and Found Celebration", 'D');
+            //addCacheType(4738, "Groundspeak Block Party", ' ');
+            addCacheType(7005, "Giga-Event Cache", 'G');
+
+            //addCacheContainer(0, "Unknown");
+            addCacheContainer(1, "Not chosen");
+            addCacheContainer(2, "Micro");
+            addCacheContainer(3, "Regular");
+            addCacheContainer(4, "Large");
+            addCacheContainer(5, "Virtual");
+            addCacheContainer(6, "Other");
+            addCacheContainer(8, "Small");
 
             //addCacheAttribute(0, "Unknown");
             addCacheAttribute(1, "Dogs");
@@ -188,5 +223,31 @@ namespace GSAKWrapper
             attr.Name = name;
             GeocacheAttributes.Add(attr);
         }
+
+        private void addCacheType(int id, string name, char gsakId)
+        {
+            var ct = new DataTypes.GeocacheType();
+            ct.ID = id;
+            ct.Name = name;
+            ct.GSAK = gsakId.ToString();
+            GeocacheTypes.Add(ct);
+        }
+        private void addCacheType(int id, string name, char gsakId, string gpxTag)
+        {
+            var ct = new DataTypes.GeocacheType(gpxTag);
+            ct.ID = id;
+            ct.Name = name;
+            ct.GSAK = gsakId.ToString();
+            GeocacheTypes.Add(ct);
+        }
+
+        private void addCacheContainer(int id, string name)
+        {
+            var attr = new DataTypes.GeocacheContainer();
+            attr.ID = id;
+            attr.Name = name;
+            GeocacheContainers.Add(attr);
+        }
+
     }
 }

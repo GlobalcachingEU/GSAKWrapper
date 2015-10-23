@@ -11,7 +11,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 {
     public class ActionDistanceFromLocation : ActionImplementationCondition
     {
-        public const string STR_NAME = "ActionDistanceFromLocationKm";
+        public const string STR_NAME = "DistanceFromLocationKm";
         private double _value = 0.0;
         private Utils.Location _loc = null;
         public ActionDistanceFromLocation()
@@ -92,41 +92,14 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (_loc != null)
             {
-                double minLat, minLon, maxLat, maxLon;
-                Utils.Calculus.GetEnvelope(_loc.Lat, _loc.Lon, _value, out minLat, out minLon, out maxLat, out maxLon);
-                if (op == Operator.Larger)
+                if (op == Operator.LessOrEqual)
                 {
-                    SelectGeocachesOnWhereClause(inputTableName, targetTableName
-                        , string.Format("Latitude>{0} or Latitude<{1} or Longitude>{2} or Longitude<{3}"
-                        , maxLat.ToString(CultureInfo.InvariantCulture)
-                        , minLat.ToString(CultureInfo.InvariantCulture)
-                        , maxLon.ToString(CultureInfo.InvariantCulture)
-                        , minLon.ToString(CultureInfo.InvariantCulture)
-                    ));
+                    SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("DIST(Latitude, Longitude, {0}, {1}) <= {2}", _loc.Lat.ToString(CultureInfo.InvariantCulture), _loc.Lon.ToString(CultureInfo.InvariantCulture), _value.ToString(CultureInfo.InvariantCulture)));
                 }
-
-                var dr = DatabaseConnection.ExecuteReader(string.Format("select Code, Latitude, Longitude from Caches inner join {0} on Caches.Code = {0}.gccode where Latitude<={1} and Latitude>={2} and Longitude<={3} and Longitude>={4}"
-                        , inputTableName
-                        , maxLat.ToString(CultureInfo.InvariantCulture)
-                        , minLat.ToString(CultureInfo.InvariantCulture)
-                        , maxLon.ToString(CultureInfo.InvariantCulture)
-                        , minLon.ToString(CultureInfo.InvariantCulture)
-                    ));
-                List<string> codes = new List<string>();
-                while (dr.Read())
+                else if (op == Operator.Larger)
                 {
-                    var slat = dr.GetString(1);
-                    var slon = dr.GetString(2);
-                    if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
-                    {
-                        double dist = Utils.Calculus.CalculateDistance(Utils.Conversion.StringToDouble(slat), Utils.Conversion.StringToDouble(slon), _loc.Lat, _loc.Lon).EllipsoidalDistance / 1000.0;
-                        if ((op == Operator.Larger && dist > _value) || (op == Operator.LessOrEqual && dist <= _value))
-                        {
-                            codes.Add(dr.GetString(0));
-                        }
-                    }
+                    SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("DIST(Latitude, Longitude, {0}, {1}) > {2}", _loc.Lat.ToString(CultureInfo.InvariantCulture), _loc.Lon.ToString(CultureInfo.InvariantCulture), _value.ToString(CultureInfo.InvariantCulture)));
                 }
-                InsertGeocacheCodes(targetTableName, codes);
             }
         }
 

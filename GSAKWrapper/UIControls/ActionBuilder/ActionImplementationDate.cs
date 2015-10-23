@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,21 +10,19 @@ using System.Windows.Controls;
 
 namespace GSAKWrapper.UIControls.ActionBuilder
 {
-    public class ActionImplementationText : ActionImplementationCondition
+    public class ActionImplementationDate : ActionImplementationCondition
     {
         public enum Option
         {
-            Contains,
-            EqualsTo,
-            RegEx,
+            Value,
             IsEmpty
         }
 
-        private string _value = "";
-        private Option _option = Option.Contains;
+        private DateTime _value = DateTime.Now.Date;
+        private Option _option = Option.Value;
         private string fieldName = "";
         private string joins = "";
-        public ActionImplementationText(string name, string fieldCompare, string joinStatement = "")
+        public ActionImplementationDate(string name, string fieldCompare, string joinStatement = "")
             : base(name)
         {
             fieldName = fieldCompare;
@@ -34,49 +33,38 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (Values.Count == 0)
             {
-                Values.Add("-");
+                Values.Add(DateTime.Now.Date.ToString("yyyy-MM-dd"));
             }
             if (Values.Count < 2)
             {
-                Values.Add(Option.Contains.ToString());
+                Values.Add(Option.Value.ToString());
             }
             StackPanel sp = new StackPanel();
             var opts = Enum.GetNames(typeof(Option));
             ComboBox cb = CreateComboBox(opts, Values[1]);
             cb.IsEditable = false;
             sp.Children.Add(cb);
-            TextBox tb = new TextBox();
-            tb.HorizontalAlignment = HorizontalAlignment.Center;
-            if (Values.Count == 0)
-            {
-                Values.Add("-");
-            }
-            tb.Text = Values[0];
-            sp.Children.Add(tb);
+            DatePicker dp = new DatePicker();
+            dp.HorizontalAlignment = HorizontalAlignment.Center;
+            dp.SelectedDate = DateTime.ParseExact(Values[0], "yyyy-MM-dd", CultureInfo.InvariantCulture).Date;
+            sp.Children.Add(dp);
             return sp;
-        }
-        public override ActionImplementation.Operator AllowOperators
-        {
-            get
-            {
-                return ActionImplementation.Operator.Equal | ActionImplementation.Operator.NotEqual;
-            }
         }
         public override void CommitUIData(UIElement uiElement)
         {
             StackPanel sp = uiElement as StackPanel;
             ComboBox cb = sp.Children[0] as ComboBox;
             Values[1] = cb.Text;
-            TextBox tb = sp.Children[1] as TextBox;
-            Values[0] = tb.Text;
+            DatePicker dp = sp.Children[1] as DatePicker;
+            Values[0] = (dp.SelectedDate != null ? ((DateTime)dp.SelectedDate).Date : DateTime.Now.Date).ToString("yyyy-MM-dd");
         }
         public override bool PrepareRun(Database.DBCon db, string tableName)
         {
-            _value = "";
-            _option = Option.Contains;
+            _value = DateTime.Now.Date;
+            _option = Option.Value;
             if (Values.Count > 0)
             {
-                _value = Values[0];
+                _value = DateTime.ParseExact(Values[0], "yyyy-MM-dd", CultureInfo.InvariantCulture).Date;
             }
             if (Values.Count > 1)
             {
@@ -89,34 +77,30 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             switch (_option)
             {
-                case Option.Contains:
+                case Option.Value:
                     if (op == Operator.Equal)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} like '%{1}%'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} = '{1}'", fieldName, _value.ToString("yyyy-MM-dd")), innerJoins: joins);
                     }
                     else if (op == Operator.NotEqual)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} not like '%{1}%'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} <> '{1}'", fieldName, _value.ToString("yyyy-MM-dd")), innerJoins: joins);
                     }
-                    break;
-                case Option.EqualsTo:
-                    if (op == Operator.Equal)
+                    else if (op == Operator.Larger)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} like '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} > '{1}'", fieldName, _value.ToString("yyyy-MM-dd")), innerJoins: joins);
                     }
-                    else if (op == Operator.NotEqual)
+                    else if (op == Operator.LargerOrEqual)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} not like '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} >= '{1}'", fieldName, _value.ToString("yyyy-MM-dd")), innerJoins: joins);
                     }
-                    break;
-                case Option.RegEx:
-                    if (op == Operator.Equal)
+                    else if (op == Operator.Less)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} REGEXP '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} < '{1}'", fieldName, _value.ToString("yyyy-MM-dd")), innerJoins: joins);
                     }
-                    else if (op == Operator.NotEqual)
+                    else if (op == Operator.LessOrEqual)
                     {
-                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} not REGEXP '{1}'", fieldName, _value.Replace("'", "''")), innerJoins: joins);
+                        SelectGeocachesOnWhereClause(inputTableName, targetTableName, string.Format("{0} <= '{1}'", fieldName, _value.ToString("yyyy-MM-dd")), innerJoins: joins);
                     }
                     break;
                 case Option.IsEmpty:

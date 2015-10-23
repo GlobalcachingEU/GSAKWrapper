@@ -15,7 +15,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         }
         protected override bool Execute()
         {
-            DatabaseConnection.ExecuteNonQuery("update Caches set UserFlag=0");
+            DatabaseConnection.ExecuteNonQuery("update Caches set UserFlag=0 where UserFlag=1");
             return true;
         }
     }
