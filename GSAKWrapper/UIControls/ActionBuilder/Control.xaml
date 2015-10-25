@@ -26,6 +26,9 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock Margin="4" Grid.Column="0" Text="{l:Translate Name}" />
             <ComboBox Margin="4" Grid.Column="1" 
@@ -34,7 +37,7 @@
                       DisplayMemberPath="Name"
                       SelectionChanged="ComboBox_SelectionChanged"
                       MinWidth="150" />
-            <Button Grid.Column="4" Height="20" Width="20" ToolTip="{l:Translate New}" Click="Button_Click">
+            <Button Grid.Column="3" Height="20" Width="20" ToolTip="{l:Translate New}" Click="Button_Click">
                 <Image Width="16" Height="16" Source="/Resources/General/new.png" />
             </Button>
             <Button Margin="4" Grid.Column="5" Height="20" Width="20" ToolTip="{l:Translate Delete}" Click="Button_Click_1" IsEnabled="{Binding IsFlowActive}">
@@ -43,8 +46,17 @@
             <Button Margin="4" Grid.Column="2" Height="20" Width="20" ToolTip="{l:Translate Execute}" Command="{Binding ExecuteCommand}">
                 <Image Width="16" Height="16" Source="/Resources/General/execute.gif" />
             </Button>
-            <Button Margin="4" Grid.Column="3" Height="20" Width="20" ToolTip="{l:Translate Rename}" IsEnabled="{Binding IsFlowActive}" Click="Button_Click_2">
+            <Button Margin="4" Grid.Column="4" Height="20" Width="20" ToolTip="{l:Translate Rename}" IsEnabled="{Binding IsFlowActive}" Click="Button_Click_2">
                 <Image Width="16" Height="16" Source="/Resources/General/edit.png" />
+            </Button>
+            <Button Margin="14,4,4,4" Grid.Column="6" Height="20" Width="20" ToolTip="{l:Translate ImportFlows}"  Click="Button_Click_3">
+                <Image Width="16" Height="16" Source="/Resources/General/import.gif" />
+            </Button>
+            <Button Margin="4" Grid.Column="7" Height="20" Width="20" ToolTip="{l:Translate ExportActiveFlow}" IsEnabled="{Binding IsFlowActive}" Click="Button_Click_4">
+                <Image Width="16" Height="16" Source="/Resources/General/exportsingle.png" />
+            </Button>
+            <Button Margin="4" Grid.Column="8" Height="20" Width="20" ToolTip="{l:Translate ExportAllFlows}" IsEnabled="{Binding IsFlowActive}" Click="Button_Click_5">
+                <Image Width="16" Height="16" Source="/Resources/General/exportall.png" />
             </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0" Panel.ZIndex="100"  Background="#FFF0F0F0">

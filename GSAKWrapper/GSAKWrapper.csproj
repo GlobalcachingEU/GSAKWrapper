@@ -55,6 +55,9 @@
     <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\GSAKWrapper.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -423,6 +426,14 @@
     <Resource Include="Resources\Attributes\_7.gif" />
     <Resource Include="Resources\Attributes\_8.gif" />
     <Resource Include="Resources\Attributes\_9.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\General\exportall.png" />
+    <Resource Include="Resources\General\exportsingle.png" />
+    <Resource Include="Resources\General\import.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GSAKWrapper.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets')" />

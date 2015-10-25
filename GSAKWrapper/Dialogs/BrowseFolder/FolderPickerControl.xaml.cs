@@ -448,11 +448,18 @@ namespace GSAKWrapper.Dialogs
 
         private BitmapImage CreateImage(string uri)
         {
-            BitmapImage img = new BitmapImage();
-            img.BeginInit();
-            img.UriSource = new Uri(uri);
-            img.EndInit();
-            return img;
+            try
+            {
+                BitmapImage img = new BitmapImage();
+                img.BeginInit();
+                img.UriSource = new Uri(uri);
+                img.EndInit();
+                return img;
+            }
+            catch
+            {
+            }
+            return null;
         }
 
         #region IValueConverter Members

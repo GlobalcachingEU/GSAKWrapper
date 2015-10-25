@@ -1,4 +1,80 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="GSAK Wrapper" value="GSAK Wrapper - nl" />
+  <string name="archived" value="Gearchiveerd" />
+  <string name="attributes" value="Attributen" />
+  <string name="cancel" value="Annuleren" />
+  <string name="changed date" value="Datum aangepast" />
+  <string name="childload" value="ChildLoad" />
+  <string name="clear user flag" value="Wis gebruikers vlag" />
+  <string name="conditions" value="Voorwaarden" />
+  <string name="country" value="Land" />
+  <string name="county" value="Regio" />
+  <string name="created date" value="Aanmaakdatum" />
+  <string name="database" value="Database" />
+  <string name="delete" value="Verwijderen" />
+  <string name="delete flow {0}?" value="Verwijder schema {0}?" />
+  <string name="difficulty" value="Moeilijkheid" />
+  <string name="distance from center (km)" value="Afstand tot middelpunt (km)" />
+  <string name="distance from location (km)" value="Afstand tot locatie (km)" />
+  <string name="dnf (did not find)" value="DNF (Niet gevonden log)" />
+  <string name="dnf date" value="DNF datum" />
+  <string name="elevation" value="Hoogte" />
+  <string name="english" value="" />
+  <string name="execute" value="Uitvoeren" />
+  <string name="export active flow" value="Exporteer actieve schema" />
+  <string name="export all flows" value="Exporteer alle schema's" />
+  <string name="favorite points" value="Aantal Favorite punten" />
+  <string name="found" value="Gevonden" />
+  <string name="found by me date" value="Gevonden door mij datum" />
+  <string name="found count" value="Aantal keer gevonden" />
+  <string name="ftf (first to find)" value="FTF (First To Find)" />
+  <string name="gc note" value="GC notitie" />
+  <string name="geocache container" value="Geocache container" />
+  <string name="geocache name" value="Geocache naam" />
+  <string name="geocache type" value="Geocache type" />
+  <string name="gsak wrapper" value="GSAK Wrapper" />
+  <string name="has corrected" value="Bevat corrected coordinaten" />
+  <string name="has travel bug (tb/coin)" value="Bevat travel bug (TB/Coin)" />
+  <string name="has user note" value="Bevat gebruikersnotitie" />
+  <string name="import flows" value="Importeer schema's" />
+  <string name="is owner" value="Is eigenaar" />
+  <string name="ispremium (pmo)" value="is Premium (PMO)" />
+  <string name="language" value="Taal" />
+  <string name="last found date" value="Meest recente gevonden datum" />
+  <string name="last gpx date" value="Meest recente GPX datum" />
+  <string name="last log date" value="Meest recente logdatum" />
+  <string name="last user date" value="Messt recente gebruikersdatum" />
+  <string name="latitude" value="Breedtegraad" />
+  <string name="locked" value="Vastgezet" />
+  <string name="long htm" value="Lang Htm" />
+  <string name="longitude" value="Lengtegraad" />
+  <string name="macroflag" value="Macro vlag" />
+  <string name="name" value="Naam" />
+  <string name="nederlands" value="" />
+  <string name="new" value="Nieuw" />
+  <string name="new folder" value="Nieuwe folder" />
+  <string name="number of logs" value="Aantal logs" />
+  <string name="ok" value="OK" />
+  <string name="original text" value="Onvertaald" />
+  <string name="overwrite flow {0}?" value="Schema {0} overschrijven?" />
+  <string name="owner name" value="Naam eigenaar" />
+  <string name="placed by" value="Geplaatst door" />
+  <string name="placed date" value="Geplaatst op datum" />
+  <string name="refresh" value="Ververs" />
+  <string name="rename" value="Hernoem" />
+  <string name="select folder" value="Selecteer folder" />
+  <string name="select root data folder" value="Selecteer GSAK database folder" />
+  <string name="set user flag" value="Zet gebruikersvlag" />
+  <string name="short htm" value="Kort Htm" />
+  <string name="smart name" value="Slimme naam" />
+  <string name="smart override" value="Slimme naam overschrijven" />
+  <string name="source" value="Bron" />
+  <string name="start" value="Start" />
+  <string name="state" value="Provincie/Staat" />
+  <string name="symbol" value="Symbool" />
+  <string name="temporarily disabled" value="Tijdelijk uitgeschakeld" />
+  <string name="terrain" value="Terrein" />
+  <string name="user flag" value="Gebruikersvlag" />
+  <string name="user note date" value="Gebruikers notitiedatum" />
+  <string name="watch" value="Volgt" />
 </resources>

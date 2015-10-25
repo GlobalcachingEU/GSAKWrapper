@@ -139,24 +139,56 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             }
         }
 
-        private void loadFlows()
+        public string GetFlowXml(ActionFlow flow)
         {
+            string result = null;
             try
             {
-                if (!string.IsNullOrEmpty(Settings.Settings.Default.ActionBuilderFlowsXml))
+                XmlDocument doc = createFlowXml(new List<ActionFlow>() { flow });
+                StringBuilder sb = new StringBuilder();
+                System.IO.TextWriter tr = new System.IO.StringWriter(sb);
+                XmlTextWriter wr = new XmlTextWriter(tr);
+                wr.Formatting = Formatting.None;
+                doc.Save(wr);
+                wr.Close();
+                result = sb.ToString();
+            }
+            catch
+            {
+            }
+            return result;
+        }
+
+        private void loadFlows()
+        {
+            var afls = GetActionFlows(Settings.Settings.Default.ActionBuilderFlowsXml);
+            foreach (var af in afls)
+            {
+                ActionFlows.Add(af);
+            }
+        }
+
+        public List<ActionFlow> GetActionFlows(string xml)
+        {
+            var result = new List<ActionFlow>();
+            try
+            {
+                if (!string.IsNullOrEmpty(xml))
                 {
                     XmlDocument doc = new XmlDocument();
-                    doc.LoadXml(Settings.Settings.Default.ActionBuilderFlowsXml);
-                    getActionFlowsFromXml(doc);
+                    doc.LoadXml(xml);
+                    result = GetActionFlows(doc);
                 }
             }
             catch
             {
             }
+            return result;
         }
 
-        private void getActionFlowsFromXml(XmlDocument doc)
+        public List<ActionFlow> GetActionFlows(XmlDocument doc)
         {
+            var result = new List<ActionFlow>();
             List<ActionImplementation> allActionImpl = new List<ActionImplementation>();
 
             XmlNodeList nl = doc.SelectNodes("/flows/flow");
@@ -186,7 +218,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     }
                 }
 
-                ActionFlows.Add(af);
+                result.Add(af);
             }
 
             //all actions are created, now we can match the ID's for the connections.
@@ -245,8 +277,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     }
                 }
             }
+            return result;
         }
-
 
         private XmlDocument createFlowXml(List<ActionFlow> flows)
         {

@@ -61,11 +61,164 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Archived.
+        /// </summary>
+        internal static string Archived {
+            get {
+                return ResourceManager.GetString("Archived", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attributes.
+        /// </summary>
+        internal static string Attributes {
+            get {
+                return ResourceManager.GetString("Attributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed date.
+        /// </summary>
+        internal static string ChangedDate {
+            get {
+                return ResourceManager.GetString("ChangedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ChildLoad.
+        /// </summary>
+        internal static string ChildLoad {
+            get {
+                return ResourceManager.GetString("ChildLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear user flag.
+        /// </summary>
+        internal static string ClearUserFlag {
+            get {
+                return ResourceManager.GetString("ClearUserFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Conditions.
         /// </summary>
         internal static string Conditions {
             get {
                 return ResourceManager.GetString("Conditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to County.
+        /// </summary>
+        internal static string County {
+            get {
+                return ResourceManager.GetString("County", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created date.
+        /// </summary>
+        internal static string CreatedDate {
+            get {
+                return ResourceManager.GetString("CreatedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Database.
+        /// </summary>
+        internal static string Database {
+            get {
+                return ResourceManager.GetString("Database", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete flow {0}?.
+        /// </summary>
+        internal static string Delete_flow_ {
+            get {
+                return ResourceManager.GetString("Delete_flow_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DNF (Did Not Find).
+        /// </summary>
+        internal static string DidNotFind {
+            get {
+                return ResourceManager.GetString("DidNotFind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DNF Date.
+        /// </summary>
+        internal static string DidNotFindDate {
+            get {
+                return ResourceManager.GetString("DidNotFindDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Difficulty.
+        /// </summary>
+        internal static string Difficulty {
+            get {
+                return ResourceManager.GetString("Difficulty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance from center (km).
+        /// </summary>
+        internal static string DistanceFromCenterKm {
+            get {
+                return ResourceManager.GetString("DistanceFromCenterKm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance from location (km).
+        /// </summary>
+        internal static string DistanceFromLocationKm {
+            get {
+                return ResourceManager.GetString("DistanceFromLocationKm", resourceCulture);
             }
         }
         
@@ -79,6 +232,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Elevation.
+        /// </summary>
+        internal static string Elevation {
+            get {
+                return ResourceManager.GetString("Elevation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         internal static string English {
@@ -88,11 +250,245 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execute.
+        /// </summary>
+        internal static string Execute {
+            get {
+                return ResourceManager.GetString("Execute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export active flow.
+        /// </summary>
+        internal static string ExportActiveFlow {
+            get {
+                return ResourceManager.GetString("ExportActiveFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export all flows.
+        /// </summary>
+        internal static string ExportAllFlows {
+            get {
+                return ResourceManager.GetString("ExportAllFlows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Favorite points.
+        /// </summary>
+        internal static string FavPoints {
+            get {
+                return ResourceManager.GetString("FavPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found.
+        /// </summary>
+        internal static string Found {
+            get {
+                return ResourceManager.GetString("Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found by me date.
+        /// </summary>
+        internal static string FoundByMeDate {
+            get {
+                return ResourceManager.GetString("FoundByMeDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Found count.
+        /// </summary>
+        internal static string FoundCount {
+            get {
+                return ResourceManager.GetString("FoundCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FTF (First To Find).
+        /// </summary>
+        internal static string FTF {
+            get {
+                return ResourceManager.GetString("FTF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GC note.
+        /// </summary>
+        internal static string GCNote {
+            get {
+                return ResourceManager.GetString("GCNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geocache container.
+        /// </summary>
+        internal static string GeocacheContainer {
+            get {
+                return ResourceManager.GetString("GeocacheContainer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geocache type.
+        /// </summary>
+        internal static string GeocacheType {
+            get {
+                return ResourceManager.GetString("GeocacheType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Has corrected.
+        /// </summary>
+        internal static string HasCorrected {
+            get {
+                return ResourceManager.GetString("HasCorrected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Has travel bug (TB/Coin).
+        /// </summary>
+        internal static string HasTravelBug {
+            get {
+                return ResourceManager.GetString("HasTravelBug", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Has user note.
+        /// </summary>
+        internal static string HasUserNote {
+            get {
+                return ResourceManager.GetString("HasUserNote", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import flows.
+        /// </summary>
+        internal static string ImportFlows {
+            get {
+                return ResourceManager.GetString("ImportFlows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is owner.
+        /// </summary>
+        internal static string IsOwner {
+            get {
+                return ResourceManager.GetString("IsOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IsPremium (PMO).
+        /// </summary>
+        internal static string IsPremium {
+            get {
+                return ResourceManager.GetString("IsPremium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Language.
         /// </summary>
         internal static string Language {
             get {
                 return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last found date.
+        /// </summary>
+        internal static string LastFoundDate {
+            get {
+                return ResourceManager.GetString("LastFoundDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last GPX date.
+        /// </summary>
+        internal static string LastGPXDate {
+            get {
+                return ResourceManager.GetString("LastGPXDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last log date.
+        /// </summary>
+        internal static string LastLogDate {
+            get {
+                return ResourceManager.GetString("LastLogDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last user date.
+        /// </summary>
+        internal static string LastUserDate {
+            get {
+                return ResourceManager.GetString("LastUserDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Latitude.
+        /// </summary>
+        internal static string Latitude {
+            get {
+                return ResourceManager.GetString("Latitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Locked.
+        /// </summary>
+        internal static string Locked {
+            get {
+                return ResourceManager.GetString("Locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Long Htm.
+        /// </summary>
+        internal static string LongHtm {
+            get {
+                return ResourceManager.GetString("LongHtm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Longitude.
+        /// </summary>
+        internal static string Longitude {
+            get {
+                return ResourceManager.GetString("Longitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MacroFlag.
+        /// </summary>
+        internal static string MacroFlag {
+            get {
+                return ResourceManager.GetString("MacroFlag", resourceCulture);
             }
         }
         
@@ -115,11 +511,245 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geocache name.
+        /// </summary>
+        internal static string NameContains {
+            get {
+                return ResourceManager.GetString("NameContains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        internal static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New folder.
+        /// </summary>
+        internal static string NewFolder {
+            get {
+                return ResourceManager.GetString("NewFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of logs.
+        /// </summary>
+        internal static string NumberOfLogs {
+            get {
+                return ResourceManager.GetString("NumberOfLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Original text.
         /// </summary>
         internal static string OriginalText {
             get {
                 return ResourceManager.GetString("OriginalText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite flow {0}?.
+        /// </summary>
+        internal static string Overwrite_flow_ {
+            get {
+                return ResourceManager.GetString("Overwrite_flow_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Owner name.
+        /// </summary>
+        internal static string OwnerName {
+            get {
+                return ResourceManager.GetString("OwnerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Placed by.
+        /// </summary>
+        internal static string PlacedBy {
+            get {
+                return ResourceManager.GetString("PlacedBy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Placed date.
+        /// </summary>
+        internal static string PlacedDate {
+            get {
+                return ResourceManager.GetString("PlacedDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh.
+        /// </summary>
+        internal static string Refresh {
+            get {
+                return ResourceManager.GetString("Refresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rename.
+        /// </summary>
+        internal static string Rename {
+            get {
+                return ResourceManager.GetString("Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select folder.
+        /// </summary>
+        internal static string SelectFolder {
+            get {
+                return ResourceManager.GetString("SelectFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select root data folder.
+        /// </summary>
+        internal static string SelectRootDataFolder {
+            get {
+                return ResourceManager.GetString("SelectRootDataFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set user flag.
+        /// </summary>
+        internal static string SetUserFlag {
+            get {
+                return ResourceManager.GetString("SetUserFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Short Htm.
+        /// </summary>
+        internal static string ShortHtm {
+            get {
+                return ResourceManager.GetString("ShortHtm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smart name.
+        /// </summary>
+        internal static string SmartNameContains {
+            get {
+                return ResourceManager.GetString("SmartNameContains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Smart override.
+        /// </summary>
+        internal static string SmartOverride {
+            get {
+                return ResourceManager.GetString("SmartOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source.
+        /// </summary>
+        internal static string Source {
+            get {
+                return ResourceManager.GetString("Source", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        internal static string State {
+            get {
+                return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Symbol.
+        /// </summary>
+        internal static string Symbol {
+            get {
+                return ResourceManager.GetString("Symbol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temporarily disabled.
+        /// </summary>
+        internal static string TempDisabled {
+            get {
+                return ResourceManager.GetString("TempDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Terrain.
+        /// </summary>
+        internal static string Terrain {
+            get {
+                return ResourceManager.GetString("Terrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User flag.
+        /// </summary>
+        internal static string UserFlag {
+            get {
+                return ResourceManager.GetString("UserFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User note date.
+        /// </summary>
+        internal static string UserNoteDate {
+            get {
+                return ResourceManager.GetString("UserNoteDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Watch.
+        /// </summary>
+        internal static string Watch {
+            get {
+                return ResourceManager.GetString("Watch", resourceCulture);
             }
         }
     }

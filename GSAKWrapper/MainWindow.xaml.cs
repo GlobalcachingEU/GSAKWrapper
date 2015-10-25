@@ -107,6 +107,10 @@ namespace GSAKWrapper
                 {
                     System.Windows.MessageBox.Show("The settings file was corrupt and a backup file is restored.", "Settings");
                 }
+
+#if DEBUG
+                Localization.TranslationManager.Instance.CreateOrUpdateXmlFiles();
+#endif
             }
 
             AvailableDatabases = new ObservableCollection<string>();

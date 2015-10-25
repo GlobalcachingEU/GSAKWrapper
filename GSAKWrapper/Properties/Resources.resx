@@ -117,17 +117,149 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Archived" xml:space="preserve">
+    <value>Archived</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attributes</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangedDate" xml:space="preserve">
+    <value>Changed date</value>
+  </data>
+  <data name="ChildLoad" xml:space="preserve">
+    <value>ChildLoad</value>
+  </data>
+  <data name="ClearUserFlag" xml:space="preserve">
+    <value>Clear user flag</value>
+  </data>
   <data name="Conditions" xml:space="preserve">
     <value>Conditions</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="County" xml:space="preserve">
+    <value>County</value>
+  </data>
+  <data name="CreatedDate" xml:space="preserve">
+    <value>Created date</value>
+  </data>
+  <data name="Database" xml:space="preserve">
+    <value>Database</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Delete_flow_" xml:space="preserve">
+    <value>Delete flow {0}?</value>
+  </data>
+  <data name="DidNotFind" xml:space="preserve">
+    <value>DNF (Did Not Find)</value>
+  </data>
+  <data name="DidNotFindDate" xml:space="preserve">
+    <value>DNF Date</value>
+  </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Difficulty</value>
+  </data>
+  <data name="DistanceFromCenterKm" xml:space="preserve">
+    <value>Distance from center (km)</value>
+  </data>
+  <data name="DistanceFromLocationKm" xml:space="preserve">
+    <value>Distance from location (km)</value>
   </data>
   <data name="Dutch" xml:space="preserve">
     <value>Nederlands</value>
   </data>
+  <data name="Elevation" xml:space="preserve">
+    <value>Elevation</value>
+  </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="Execute" xml:space="preserve">
+    <value>Execute</value>
+  </data>
+  <data name="ExportActiveFlow" xml:space="preserve">
+    <value>Export active flow</value>
+  </data>
+  <data name="ExportAllFlows" xml:space="preserve">
+    <value>Export all flows</value>
+  </data>
+  <data name="FavPoints" xml:space="preserve">
+    <value>Favorite points</value>
+  </data>
+  <data name="Found" xml:space="preserve">
+    <value>Found</value>
+  </data>
+  <data name="FoundByMeDate" xml:space="preserve">
+    <value>Found by me date</value>
+  </data>
+  <data name="FoundCount" xml:space="preserve">
+    <value>Found count</value>
+  </data>
+  <data name="FTF" xml:space="preserve">
+    <value>FTF (First To Find)</value>
+  </data>
+  <data name="GCNote" xml:space="preserve">
+    <value>GC note</value>
+  </data>
+  <data name="GeocacheContainer" xml:space="preserve">
+    <value>Geocache container</value>
+  </data>
+  <data name="GeocacheType" xml:space="preserve">
+    <value>Geocache type</value>
+  </data>
+  <data name="HasCorrected" xml:space="preserve">
+    <value>Has corrected</value>
+  </data>
+  <data name="HasTravelBug" xml:space="preserve">
+    <value>Has travel bug (TB/Coin)</value>
+  </data>
+  <data name="HasUserNote" xml:space="preserve">
+    <value>Has user note</value>
+  </data>
+  <data name="ImportFlows" xml:space="preserve">
+    <value>Import flows</value>
+  </data>
+  <data name="IsOwner" xml:space="preserve">
+    <value>Is owner</value>
+  </data>
+  <data name="IsPremium" xml:space="preserve">
+    <value>IsPremium (PMO)</value>
+  </data>
   <data name="Language" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="LastLogDate" xml:space="preserve">
+    <value>Last log date</value>
+  </data>
+  <data name="LastFoundDate" xml:space="preserve">
+    <value>Last found date</value>
+  </data>
+  <data name="LastGPXDate" xml:space="preserve">
+    <value>Last GPX date</value>
+  </data>
+  <data name="LastUserDate" xml:space="preserve">
+    <value>Last user date</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="Locked" xml:space="preserve">
+    <value>Locked</value>
+  </data>
+  <data name="LongHtm" xml:space="preserve">
+    <value>Long Htm</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="MacroFlag" xml:space="preserve">
+    <value>MacroFlag</value>
   </data>
   <data name="MainWindowTitle" xml:space="preserve">
     <value>GSAK Wrapper</value>
@@ -135,7 +267,85 @@
   <data name="Name" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="NameContains" xml:space="preserve">
+    <value>Geocache name</value>
+  </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="NumberOfLogs" xml:space="preserve">
+    <value>Number of logs</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
   <data name="OriginalText" xml:space="preserve">
     <value>Original text</value>
+  </data>
+  <data name="Overwrite_flow_" xml:space="preserve">
+    <value>Overwrite flow {0}?</value>
+  </data>
+  <data name="OwnerName" xml:space="preserve">
+    <value>Owner name</value>
+  </data>
+  <data name="PlacedBy" xml:space="preserve">
+    <value>Placed by</value>
+  </data>
+  <data name="PlacedDate" xml:space="preserve">
+    <value>Placed date</value>
+  </data>
+  <data name="Rename" xml:space="preserve">
+    <value>Rename</value>
+  </data>
+  <data name="SetUserFlag" xml:space="preserve">
+    <value>Set user flag</value>
+  </data>
+  <data name="ShortHtm" xml:space="preserve">
+    <value>Short Htm</value>
+  </data>
+  <data name="SmartNameContains" xml:space="preserve">
+    <value>Smart name</value>
+  </data>
+  <data name="SmartOverride" xml:space="preserve">
+    <value>Smart override</value>
+  </data>
+  <data name="Source" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Symbol" xml:space="preserve">
+    <value>Symbol</value>
+  </data>
+  <data name="TempDisabled" xml:space="preserve">
+    <value>Temporarily disabled</value>
+  </data>
+  <data name="Terrain" xml:space="preserve">
+    <value>Terrain</value>
+  </data>
+  <data name="UserFlag" xml:space="preserve">
+    <value>User flag</value>
+  </data>
+  <data name="UserNoteDate" xml:space="preserve">
+    <value>User note date</value>
+  </data>
+  <data name="Watch" xml:space="preserve">
+    <value>Watch</value>
+  </data>
+  <data name="NewFolder" xml:space="preserve">
+    <value>New folder</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="SelectFolder" xml:space="preserve">
+    <value>Select folder</value>
+  </data>
+  <data name="SelectRootDataFolder" xml:space="preserve">
+    <value>Select root data folder</value>
   </data>
 </root>

@@ -11,7 +11,7 @@
         <Grid Background="Black" Opacity="0.5"/>
         <Border
             MinWidth="250"
-            Background="Orange" 
+            Background="FloralWhite" 
             BorderBrush="Black" 
             BorderThickness="1" 
             CornerRadius="0,10,0,10" 

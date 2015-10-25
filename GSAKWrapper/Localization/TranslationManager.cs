@@ -17,9 +17,20 @@ namespace GSAKWrapper.Localization
     {
         private static TranslationManager _translationManager;
         private Hashtable _overrideTranslation;
-        private Hashtable _userTranslation;
 
         public event EventHandler LanguageChanged;
+
+        private class LanguageItem
+        {
+            public string Original { get; set; }
+            public string Translation { get; set; }
+
+            public LanguageItem(string org, string trans)
+            {
+                Original = org;
+                Translation = trans;
+            }
+        }
 
         private void loadOverrides()
         {
@@ -64,48 +75,11 @@ namespace GSAKWrapper.Localization
                 }
             }
 
-            //user translations
-            _userTranslation.Clear();
-            xmlFileContents = null;
-            //try
-            //{
-            //    if (CurrentLanguage.TwoLetterISOLanguageName.ToLower().Length == 2 &&
-            //        CurrentLanguage.TwoLetterISOLanguageName.ToLower() != "iv")
-            //    {
-            //        string fn = Path.Combine(Core.Settings.Default.SettingsFolder, string.Format("Language.{0}.xml", CurrentLanguage.TwoLetterISOLanguageName.ToLower()));
-            //        if (File.Exists(fn))
-            //        {
-            //            xmlFileContents = File.ReadAllText(fn);
-            //        }
-            //    }
-            //}
-            //catch
-            //{
-            //    //not available
-            //}
-            if (xmlFileContents != null)
-            {
-                XmlDocument doc = new XmlDocument();
-                doc.LoadXml(xmlFileContents);
-                XmlElement root = doc.DocumentElement;
-                XmlNodeList strngs = root.SelectNodes("string");
-                if (strngs != null)
-                {
-                    foreach (XmlNode sn in strngs)
-                    {
-                        if (!string.IsNullOrEmpty(sn.Attributes["value"].InnerText))
-                        {
-                            _userTranslation[sn.Attributes["name"].InnerText.ToLower()] = sn.Attributes["value"].InnerText;
-                        }
-                    }
-                }
-            }
         }
 
         private TranslationManager() 
         {
             _overrideTranslation = new Hashtable();
-            _userTranslation = new Hashtable();
             loadOverrides();
         }
 
@@ -172,18 +146,10 @@ namespace GSAKWrapper.Localization
                     //see if there is an override in XML file
                     if (translatedValue is string)
                     {
-                        string patchedValue = _userTranslation[(translatedValue as string).ToLower()] as string;
+                        var patchedValue = _overrideTranslation[(translatedValue as string).ToLower()] as string;
                         if (!string.IsNullOrEmpty(patchedValue))
                         {
                             return patchedValue;
-                        }
-                        else
-                        {
-                            patchedValue = _overrideTranslation[(translatedValue as string).ToLower()] as string;
-                            if (!string.IsNullOrEmpty(patchedValue))
-                            {
-                                return patchedValue;
-                            }
                         }
                     }
                     return translatedValue;
@@ -203,5 +169,79 @@ namespace GSAKWrapper.Localization
             return string.Format(key);
 #endif
         }
+
+#if DEBUG
+        public void CreateOrUpdateXmlFiles()
+        {
+            var resourceList = new List<LanguageItem>();
+            var sc = Localization.TranslationManager.Instance.TranslationProvider.ResourceManager.GetString("Cancel", CultureInfo.InvariantCulture);
+            System.Resources.ResourceSet rset = Localization.TranslationManager.Instance.TranslationProvider.ResourceManager.GetResourceSet(CultureInfo.InvariantCulture, false, true);
+            if (rset != null)
+            {
+                foreach (DictionaryEntry entry in rset)
+                {
+                    string s = entry.Value as string;
+                    if (s != null)
+                    {
+                        s = s.ToLower();
+                        resourceList.Add(new LanguageItem(s,""));
+                    }
+                }
+            }
+            //for each possible language, read file patch and save
+            foreach (var l in TranslationProvider.Languages)
+            {
+                var emptyList = resourceList.OrderBy(x => x.Original).ToList();
+                if (l.TwoLetterISOLanguageName.ToLower().Length == 2 &&
+                    l.TwoLetterISOLanguageName.ToLower() != "iv")
+                {
+                    XmlDocument doc;
+                    XmlElement root;
+                    StreamResourceInfo sri = Application.GetResourceStream(new Uri(string.Format("pack://application:,,,/Resources/Language.{0}.xml", l.TwoLetterISOLanguageName.ToLower())));
+                    if (sri != null)
+                    {
+                        using (StreamReader textStreamReader = new StreamReader(sri.Stream))
+                        {
+                            var xmlFileContents = textStreamReader.ReadToEnd();
+                            doc = new XmlDocument();
+                            doc.LoadXml(xmlFileContents);
+                            root = doc.DocumentElement;
+                            XmlNodeList strngs = root.SelectNodes("string");
+                            if (strngs != null)
+                            {
+                                foreach (XmlNode sn in strngs)
+                                {
+                                    if (!string.IsNullOrEmpty(sn.Attributes["value"].InnerText))
+                                    {
+                                        var k = emptyList.FirstOrDefault(x => x.Original == sn.Attributes["name"].InnerText.ToLower());
+                                        if (k != null)
+                                        {
+                                            k.Translation = sn.Attributes["value"].InnerText;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    //write xml file
+                    string fn = Path.Combine(Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper"), string.Format("Language.{0}.xml", l.TwoLetterISOLanguageName.ToLower()));
+                    doc = new XmlDocument();
+                    root = doc.CreateElement("resources");
+                    foreach (LanguageItem di in emptyList)
+                    {
+                        XmlElement lngElement = doc.CreateElement("string");
+                        lngElement.SetAttribute("name", di.Original);
+                        lngElement.SetAttribute("value", di.Translation);
+                        root.AppendChild(lngElement);
+                    }
+                    doc.AppendChild(root);
+                    using (System.IO.TextWriter sw = new System.IO.StreamWriter(fn, false, Encoding.UTF8)) //Set encoding
+                    {
+                        doc.Save(sw);
+                    }
+                }
+            }
+        }
+#endif
     }
 }

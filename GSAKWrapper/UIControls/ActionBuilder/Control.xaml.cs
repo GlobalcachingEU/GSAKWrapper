@@ -370,10 +370,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (ActiveActionFlow != null)
             {
-                ActionFlow af = ActiveActionFlow;
-                ActiveActionFlow = null;
-                Manager.Instance.ActionFlows.Remove(af);
-                SaveData();
+                if (System.Windows.MessageBox.Show(string.Format(Localization.TranslationManager.Instance.Translate("Delete_flow_") as string, ActiveActionFlow.Name), "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    ActionFlow af = ActiveActionFlow;
+                    ActiveActionFlow = null;
+                    Manager.Instance.ActionFlows.Remove(af);
+                    SaveData();
+                }
             }
         }
 
@@ -414,6 +417,131 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         private void Grid_MouseLeave(object sender, MouseEventArgs e)
         {
             SaveData();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = ""; // Default file name
+            dlg.DefaultExt = ".gwf"; // Default file extension
+            dlg.Filter = "GSAKWrapper Flows (.gwf)|*.gwf"; // Filter files by extension 
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results 
+            if (result == true)
+            {
+                try
+                {
+                    var aflws = Manager.Instance.GetActionFlows(System.IO.File.ReadAllText(dlg.FileName));
+                    foreach (var naf in aflws)
+                    {
+                        //check if ID is already in list
+                        //check for ID and name
+                        ActionImplementation startAction = (from sa in naf.Actions where sa is ActionStart select sa).FirstOrDefault();
+                        if (startAction != null)
+                        {
+                            ActionFlow found = null;
+                            bool doAdd = false;
+                            foreach (var af in Manager.Instance.ActionFlows)
+                            {
+                                ActionImplementation startAct = (from sa in af.Actions where sa is ActionStart select sa).FirstOrDefault();
+                                if (startAct != null)
+                                {
+                                    if (startAct.ID == startAction.ID)
+                                    {
+                                        found = af;
+                                        break;
+                                    }
+                                }
+                            }
+                            if (found != null)
+                            {
+                                if (System.Windows.MessageBox.Show(string.Format(Localization.TranslationManager.Instance.Translate("Overwrite_flow_") as string, found.Name), "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                                {
+                                    if (ActiveActionFlow == found)
+                                    {
+                                        ActiveActionFlow = null;
+                                    }
+                                    Manager.Instance.ActionFlows.Remove(found);
+                                    doAdd = true;
+                                }
+                            }
+                            else
+                            {
+                                doAdd = true;
+                            }
+                            if (doAdd)
+                            {
+                                //insert new
+                                //but first check name
+                                int index = 0;
+                                while ((from a in Manager.Instance.ActionFlows where a.Name.ToLower() == naf.Name.ToLower() select a).Count() > 0)
+                                {
+                                    index++;
+                                    naf.Name = string.Format("{0}{1}", naf.Name, index);
+                                }
+
+                                Manager.Instance.ActionFlows.Add(naf);
+                            }
+                        }
+                    }
+                    SaveData();
+                }
+                catch
+                {
+                    System.Windows.MessageBox.Show("Unable to load the file.", "Error");
+                }
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = ""; // Default file name
+            dlg.DefaultExt = ".gwf"; // Default file extension
+            dlg.Filter = "GSAKWrapper Flows (.gwf)|*.gwf"; // Filter files by extension 
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results 
+            if (result == true)
+            {
+                try
+                {
+                    System.IO.File.WriteAllText(dlg.FileName, Manager.Instance.GetFlowXml(ActiveActionFlow) ?? "");
+                }
+                catch
+                {
+                    System.Windows.MessageBox.Show("Unable to save the file.", "Error");
+                }
+            }
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = ""; // Default file name
+            dlg.DefaultExt = ".gwf"; // Default file extension
+            dlg.Filter = "GSAKWrapper Flows (.gwf)|*.gwf"; // Filter files by extension 
+
+            // Show open file dialog box
+            Nullable<bool> result = dlg.ShowDialog();
+
+            // Process open file dialog box results 
+            if (result == true)
+            {
+                try
+                {
+                    System.IO.File.WriteAllText(dlg.FileName, Settings.Settings.Default.ActionBuilderFlowsXml ?? "");
+                }
+                catch
+                {
+                    System.Windows.MessageBox.Show("Unable to save the file.", "Error");
+                }
+            }
         }
 
 
