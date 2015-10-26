@@ -15,5 +15,6 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             : base(STR_NAME, "County")
         {
         }
+        public override SearchType SearchTypeTarget { get { return SearchType.Other; } }
     }
 }

@@ -13,6 +13,9 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
         }
 
+        public override SearchType SearchTypeTarget { get { return SearchType.Action; } }
+
+
         public override Operator AllowOperators
         {
             get { return 0; }

@@ -15,6 +15,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
         }
 
+        public override SearchType SearchTypeTarget { get { return SearchType.ExecuteOnce; } }
+
         public override bool PrepareRun(Database.DBCon db, string tableName)
         {
             _hasBeenExecuted = false;

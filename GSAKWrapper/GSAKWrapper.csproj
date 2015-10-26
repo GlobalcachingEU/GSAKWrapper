@@ -184,6 +184,7 @@
     <Compile Include="UIControls\ActionBuilder\Manager.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionSetUserFlag.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionImplementationGeocacheContainer.cs" />
+    <Compile Include="UIControls\ActionBuilder\SearchType.cs" />
     <Compile Include="UIControls\DragCanvas.cs" />
     <Compile Include="UIControls\InputDialog.xaml.cs" />
     <Compile Include="Utils\Calculus.cs" />

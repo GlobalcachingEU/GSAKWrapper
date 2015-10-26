@@ -17,6 +17,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             : base(STR_NAME)
         {
         }
+        public override SearchType SearchTypeTarget { get { return SearchType.Other; } }
 
         public override UIElement GetUIElement()
         {
@@ -26,7 +27,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             }
             StackPanel sp = new StackPanel();
             var opts = (from a in ApplicationData.Instance.GeocacheContainers select a.Name).ToArray();
-            ComboBox cb = CreateComboBox(opts, (from a in ApplicationData.Instance.GeocacheTypes where a.Name == Values[0] select a.Name).FirstOrDefault() ?? "Regular");
+            ComboBox cb = CreateComboBox(opts, (from a in ApplicationData.Instance.GeocacheContainers where a.Name == Values[0] select a.Name).FirstOrDefault() ?? "Regular");
             cb.IsEditable = false;
             sp.Children.Add(cb);
             return sp;

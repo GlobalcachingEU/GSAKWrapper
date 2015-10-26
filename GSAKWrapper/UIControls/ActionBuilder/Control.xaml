@@ -6,6 +6,7 @@
              xmlns:l="clr-namespace:GSAKWrapper.Localization"
              xmlns:ui="clr-namespace:GSAKWrapper.UIControls"
              xmlns:b="clr-namespace:GSAKWrapper.UIControls.ActionBuilder"
+             xmlns:s="clr-namespace:GSAKWrapper.Settings"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="600">
     <Grid ClipToBounds="True" MouseLeave="Grid_MouseLeave">
@@ -14,11 +15,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="{Binding MainWindowLeftPanelWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+            <ColumnDefinition Width="5"/>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Panel.ZIndex="100" Background="#FFF0F0F0" >
+        <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Panel.ZIndex="100" Background="#FFF0F0F0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -64,14 +66,60 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{l:Translate Conditions}" HorizontalAlignment="Center" />
-            <ScrollViewer Grid.Row="1">
-                <StackPanel x:Name="conditionPanel" IsEnabled="{Binding IsFlowActive}">
-                </StackPanel>
-            </ScrollViewer>
+            <TabControl Grid.Row="1">
+                <TabItem Header="{l:Translate General}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Dates}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionDatesPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Other}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionOtherPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Logs}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionLogsPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Children}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionChildrenPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Attributes}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionAttributesPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Where}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionWherePanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Custom}">
+                    <ScrollViewer Grid.Row="1">
+                        <StackPanel x:Name="conditionCustomPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
         </Grid>
-        <b:ActionBuilderEditor Grid.Row="1" Grid.Column="1"  x:Name="actionBuilderEditor1" />
-        <Grid Grid.Row="1" Grid.Column="2" Panel.ZIndex="100"  Background="#FFF0F0F0">
+        <GridSplitter Background="#FF293955" Panel.ZIndex="100" Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Right" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"/>
+        <b:ActionBuilderEditor Grid.Row="1" Grid.Column="2"  x:Name="actionBuilderEditor1" />
+        <Grid Grid.Row="1" Grid.Column="3" Panel.ZIndex="100"  Background="#FFF0F0F0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />

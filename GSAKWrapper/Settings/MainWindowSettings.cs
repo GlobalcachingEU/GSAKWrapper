@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace GSAKWrapper.Settings
 {
@@ -30,6 +32,12 @@ namespace GSAKWrapper.Settings
         {
             get { return int.Parse(GetProperty("10")); }
             set { SetProperty(value.ToString()); }
+        }
+
+        public GridLength MainWindowLeftPanelWidth
+        {
+            get { return new GridLength(double.Parse(GetProperty("170"), CultureInfo.InvariantCulture)); }
+            set { SetProperty(value.Value.ToString(CultureInfo.InvariantCulture)); }
         }
     }
 }

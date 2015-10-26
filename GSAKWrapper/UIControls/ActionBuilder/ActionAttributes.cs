@@ -21,6 +21,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             : base(STR_NAME)
         {
         }
+        public override SearchType SearchTypeTarget { get { return SearchType.Attributes; } }
+
         public override ActionImplementation.Operator AllowOperators
         {
             get

@@ -53,11 +53,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                             || t.BaseType == typeof(ActionImplementationYesNo)
                             || t.BaseType == typeof(ActionImplementationNumericValue)
                             || t.BaseType == typeof(ActionImplementationDate)
+                            || t.BaseType == typeof(ActionImplementationExecuteOnce)
+                            || t.BaseType == typeof(ActionImplementationAction)
                             )
                         )
                     {
                         ConstructorInfo constructor = t.GetConstructor(Type.EmptyTypes);
-                        ActionImplementationCondition obj = (ActionImplementationCondition)constructor.Invoke(null);
+                        ActionImplementation obj = (ActionImplementation)constructor.Invoke(null);
 
                         //exception for the start
                         if (obj is ActionStart)
@@ -72,41 +74,41 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                             b.PreviewMouseLeftButtonDown += b_PreviewMouseLeftButtonDown;
                             b.PreviewMouseMove += b_PreviewMouseMove;
                             b.PreviewMouseLeftButtonUp += b_PreviewMouseLeftButtonUp;
-                            conditionPanel.Children.Add(b);
+                            switch (obj.SearchTypeTarget)
+                            {
+                                case SearchType.Action:
+                                    actionPanel.Children.Add(b);
+                                    break;
+                                case SearchType.ExecuteOnce:
+                                    oncePanel.Children.Add(b);
+                                    break;
+                                case SearchType.Attributes:
+                                    conditionAttributesPanel.Children.Add(b);
+                                    break;
+                                case SearchType.Children:
+                                    conditionChildrenPanel.Children.Add(b);
+                                    break;
+                                case SearchType.Custom:
+                                    conditionCustomPanel.Children.Add(b);
+                                    break;
+                                case SearchType.Dates:
+                                    conditionDatesPanel.Children.Add(b);
+                                    break;
+                                case SearchType.Logs:
+                                    conditionLogsPanel.Children.Add(b);
+                                    break;
+                                case SearchType.Other:
+                                    conditionOtherPanel.Children.Add(b);
+                                    break;
+                                case SearchType.Where:
+                                    conditionWherePanel.Children.Add(b);
+                                    break;
+                                case SearchType.General:
+                                default:
+                                    conditionPanel.Children.Add(b);
+                                    break;
+                            }
                         }
-                    }
-                }
-                foreach (Type t in types)
-                {
-                    if (t.IsClass && (t.BaseType == typeof(ActionImplementationExecuteOnce)))
-                    {
-                        ConstructorInfo constructor = t.GetConstructor(Type.EmptyTypes);
-                        ActionImplementationExecuteOnce obj = (ActionImplementationExecuteOnce)constructor.Invoke(null);
-
-                        Button b = new Button();
-                        b.Tag = obj;
-                        b.Height = 25;
-                        b.PreviewMouseLeftButtonUp += b_PreviewMouseLeftButtonUp;
-                        b.PreviewMouseLeftButtonDown += b_PreviewMouseLeftButtonDown;
-                        b.PreviewMouseMove += b_PreviewMouseMove;
-                        oncePanel.Children.Add(b);
-                    }
-                }
-                foreach (Type t in types)
-                {
-                    if (t.IsClass && (t.BaseType == typeof(ActionImplementationAction)))
-                    {
-                        ConstructorInfo constructor = t.GetConstructor(Type.EmptyTypes);
-                        ActionImplementationAction obj = (ActionImplementationAction)constructor.Invoke(null);
-
-                        //exception for the start
-                        Button b = new Button();
-                        b.Tag = obj;
-                        b.Height = 25;
-                        b.PreviewMouseLeftButtonUp += b_PreviewMouseLeftButtonUp;
-                        b.PreviewMouseLeftButtonDown += b_PreviewMouseLeftButtonDown;
-                        b.PreviewMouseMove += b_PreviewMouseMove;
-                        actionPanel.Children.Add(b);
                     }
                 }
             }
@@ -195,67 +197,29 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         void Instance_LanguageChanged(object sender, EventArgs e)
         {
-            List<Button> pnlButtons = new List<Button>();
-            foreach (UIElement cnt in conditionPanel.Children)
+            var containerPanels = new List<Panel>() { conditionPanel, actionPanel, oncePanel, conditionDatesPanel, conditionOtherPanel, conditionLogsPanel, conditionChildrenPanel, conditionAttributesPanel, conditionWherePanel, conditionCustomPanel };
+            foreach (var p in containerPanels)
             {
-                if (cnt is Button)
+                var pnlButtons = new List<Button>();
+                foreach (UIElement cnt in p.Children)
                 {
-                    Button b = cnt as Button;
-                    if (b.Tag is ActionImplementation)
+                    if (cnt is Button)
                     {
-                        b.Content = Localization.TranslationManager.Instance.Translate((b.Tag as ActionImplementation).Name);
-                        pnlButtons.Add(b);
+                        Button b = cnt as Button;
+                        if (b.Tag is ActionImplementation)
+                        {
+                            b.Content = Localization.TranslationManager.Instance.Translate((b.Tag as ActionImplementation).Name);
+                            pnlButtons.Add(b);
+                        }
                     }
                 }
-            }
-            conditionPanel.Children.Clear();
-            var lst = pnlButtons.OrderBy(x => x.Content);
-            foreach (var a in lst)
-            {
-                conditionPanel.Children.Add(a);
-            }
-
-            pnlButtons.Clear();
-            foreach (UIElement cnt in actionPanel.Children)
-            {
-                if (cnt is Button)
+                p.Children.Clear();
+                var lst = pnlButtons.OrderBy(x => x.Content);
+                foreach (var a in lst)
                 {
-                    Button b = cnt as Button;
-                    if (b.Tag is ActionImplementation)
-                    {
-                        b.Content = Localization.TranslationManager.Instance.Translate((b.Tag as ActionImplementation).Name);
-                        pnlButtons.Add(b);
-                    }
+                    p.Children.Add(a);
                 }
             }
-            actionPanel.Children.Clear();
-            lst = pnlButtons.OrderBy(x => x.Content);
-            foreach (var a in lst)
-            {
-                actionPanel.Children.Add(a);
-            }
-
-            pnlButtons.Clear();
-            foreach (UIElement cnt in oncePanel.Children)
-            {
-                if (cnt is Button)
-                {
-                    Button b = cnt as Button;
-                    if (b.Tag is ActionImplementation)
-                    {
-                        b.Content = Localization.TranslationManager.Instance.Translate((b.Tag as ActionImplementation).Name);
-                        pnlButtons.Add(b);
-                    }
-                }
-            }
-            oncePanel.Children.Clear();
-            lst = pnlButtons.OrderBy(x => x.Content);
-            foreach (var a in lst)
-            {
-                oncePanel.Children.Add(a);
-            }
-
-
         }
 
         public void Dispose()

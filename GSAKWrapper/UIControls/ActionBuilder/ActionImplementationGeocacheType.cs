@@ -18,6 +18,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
         }
 
+        public override SearchType SearchTypeTarget { get { return SearchType.Other; } }
+
         public override UIElement GetUIElement()
         {
             if (Values.Count == 0)

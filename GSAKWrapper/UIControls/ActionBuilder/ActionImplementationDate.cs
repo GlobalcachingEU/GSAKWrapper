@@ -29,6 +29,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             joins = joinStatement;
         }
 
+        public override SearchType SearchTypeTarget { get { return SearchType.Dates; } }
+
         public override UIElement GetUIElement()
         {
             if (Values.Count == 0)

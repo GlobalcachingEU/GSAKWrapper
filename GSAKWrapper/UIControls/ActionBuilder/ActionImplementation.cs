@@ -36,6 +36,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         public long TotalGeocachesAtInput { get; private set; }
         public System.Diagnostics.Stopwatch TotalProcessTime { get; private set; }
 
+        public virtual SearchType SearchTypeTarget { get { return SearchType.General; } }
+
         //connections
         private List<OutputConnectionInfo> _outputConnectionInfo = null;
 
