@@ -57,6 +57,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         public override void FinalizeRun()
         {
+            TotalProcessTime.Start();
             string target = "target";
             var s = Settings.Settings.Default.SelectedDatabase;
             if (string.IsNullOrEmpty(_value) || string.Compare(_value, s, true) == 0)
@@ -74,6 +75,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             {
                 DatabaseConnection.ExecuteNonQuery(string.Format("DETACH DATABASE {0}", target));
             }
+            TotalProcessTime.Stop();
             base.FinalizeRun();
         }
     }

@@ -79,7 +79,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                             }
                         }
                         sw.Stop();
-                        ApplicationData.Instance.StatusText = string.Format("{0} {1} {2} {3}", Localization.TranslationManager.Instance.Translate("FlowFinishedIn"), af.Name, sw.Elapsed.TotalSeconds.ToString("0.0") ,Localization.TranslationManager.Instance.Translate("seconds"));
+                        ApplicationData.Instance.StatusText = string.Format(Localization.TranslationManager.Instance.Translate("FlowFinishedIn") as string, af.Name, sw.Elapsed.TotalSeconds.ToString("0.0"));
                     }
                     catch (Exception e)
                     {
@@ -108,8 +108,6 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                 ActionStart startAction = (from a in flow.Actions where a is ActionStart select a).FirstOrDefault() as ActionStart;
 
                 startAction.Run(null);
-
-                ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("Finishish"), flow.Name);
             }
             finally
             {

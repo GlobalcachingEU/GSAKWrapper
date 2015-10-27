@@ -348,4 +348,79 @@
   <data name="SelectRootDataFolder" xml:space="preserve">
     <value>Select root data folder</value>
   </data>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Wiki" xml:space="preserve">
+    <value>Wiki</value>
+  </data>
+  <data name="Children" xml:space="preserve">
+    <value>Children</value>
+  </data>
+  <data name="CopyToDatabase" xml:space="preserve">
+    <value>Copy to database</value>
+  </data>
+  <data name="Custom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="Dates" xml:space="preserve">
+    <value>Dates</value>
+  </data>
+  <data name="DeleteFromDatabase" xml:space="preserve">
+    <value>Delete from database</value>
+  </data>
+  <data name="EmptyDatabase" xml:space="preserve">
+    <value>Delete all geocaches</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="FinishedFlow" xml:space="preserve">
+    <value>Finished flow</value>
+  </data>
+  <data name="FinishingAction" xml:space="preserve">
+    <value>Finishing action</value>
+  </data>
+  <data name="FlowFinishedIn" xml:space="preserve">
+    <value>Flow {0} finished in {1} seconds</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="In" xml:space="preserve">
+    <value>in</value>
+  </data>
+  <data name="Logs" xml:space="preserve">
+    <value>Logs</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="PreparingAction" xml:space="preserve">
+    <value>Preparing action</value>
+  </data>
+  <data name="StartingFlow" xml:space="preserve">
+    <value>Starting flow</value>
+  </data>
+  <data name="Where" xml:space="preserve">
+    <value>Where</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Actions</value>
+  </data>
+  <data name="Check" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="ExecuteOnce" xml:space="preserve">
+    <value>Execute once</value>
+  </data>
+  <data name="OverwriteExistingData" xml:space="preserve">
+    <value>Overwrite existing data</value>
+  </data>
+  <data name="RunningAction" xml:space="preserve">
+    <value>Running action</value>
+  </data>
 </root>

@@ -16,6 +16,10 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             : base(STR_NAME)
         {
         }
+
+        //call this first before other actions!
+        public override int Priority { get { return 100; } }
+
         public override UIElement GetUIElement()
         {
             if (Values.Count == 0)

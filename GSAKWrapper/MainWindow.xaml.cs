@@ -231,5 +231,22 @@ namespace GSAKWrapper
             Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("nl-NL");
         }
 
+        private void menux27_Click(object sender, RoutedEventArgs e)
+        {
+            Dialogs.AboutWindow dlg = new Dialogs.AboutWindow(this);
+            dlg.ShowDialog();
+        }
+
+        private void menua37_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("https://github.com/GlobalcachingEU/GSAKWrapper/wiki");
+            }
+            catch
+            {
+            }
+        }
+
     }
 }

@@ -1,18 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="about" value="" />
+  <string name="actions" value="" />
   <string name="archived" value="Gearchiveerd" />
   <string name="attributes" value="Attributen" />
   <string name="cancel" value="Annuleren" />
   <string name="changed date" value="Datum aangepast" />
+  <string name="check" value="" />
   <string name="childload" value="ChildLoad" />
+  <string name="children" value="" />
   <string name="clear user flag" value="Wis gebruikers vlag" />
   <string name="conditions" value="Voorwaarden" />
+  <string name="copy to database" value="" />
   <string name="country" value="Land" />
   <string name="county" value="Regio" />
   <string name="created date" value="Aanmaakdatum" />
+  <string name="custom" value="" />
   <string name="database" value="Database" />
+  <string name="dates" value="" />
   <string name="delete" value="Verwijderen" />
+  <string name="delete all geocaches" value="" />
   <string name="delete flow {0}?" value="Verwijder schema {0}?" />
+  <string name="delete from database" value="" />
   <string name="difficulty" value="Moeilijkheid" />
   <string name="distance from center (km)" value="Afstand tot middelpunt (km)" />
   <string name="distance from location (km)" value="Afstand tot locatie (km)" />
@@ -20,15 +29,21 @@
   <string name="dnf date" value="DNF datum" />
   <string name="elevation" value="Hoogte" />
   <string name="english" value="" />
+  <string name="error" value="" />
   <string name="execute" value="Uitvoeren" />
+  <string name="execute once" value="" />
   <string name="export active flow" value="Exporteer actieve schema" />
   <string name="export all flows" value="Exporteer alle schema's" />
   <string name="favorite points" value="Aantal Favorite punten" />
+  <string name="finished flow" value="" />
+  <string name="finishing action" value="" />
+  <string name="flow {0} finished in {1} seconds" value="" />
   <string name="found" value="Gevonden" />
   <string name="found by me date" value="Gevonden door mij datum" />
   <string name="found count" value="Aantal keer gevonden" />
   <string name="ftf (first to find)" value="FTF (First To Find)" />
   <string name="gc note" value="GC notitie" />
+  <string name="general" value="" />
   <string name="geocache container" value="Geocache container" />
   <string name="geocache name" value="Geocache naam" />
   <string name="geocache type" value="Geocache type" />
@@ -36,7 +51,9 @@
   <string name="has corrected" value="Bevat corrected coordinaten" />
   <string name="has travel bug (tb/coin)" value="Bevat travel bug (TB/Coin)" />
   <string name="has user note" value="Bevat gebruikersnotitie" />
+  <string name="help" value="" />
   <string name="import flows" value="Importeer schema's" />
+  <string name="in" value="" />
   <string name="is owner" value="Is eigenaar" />
   <string name="ispremium (pmo)" value="is Premium (PMO)" />
   <string name="language" value="Taal" />
@@ -46,6 +63,7 @@
   <string name="last user date" value="Messt recente gebruikersdatum" />
   <string name="latitude" value="Breedtegraad" />
   <string name="locked" value="Vastgezet" />
+  <string name="logs" value="" />
   <string name="long htm" value="Lang Htm" />
   <string name="longitude" value="Lengtegraad" />
   <string name="macroflag" value="Macro vlag" />
@@ -56,12 +74,16 @@
   <string name="number of logs" value="Aantal logs" />
   <string name="ok" value="OK" />
   <string name="original text" value="Onvertaald" />
+  <string name="other" value="" />
+  <string name="overwrite existing data" value="" />
   <string name="overwrite flow {0}?" value="Schema {0} overschrijven?" />
   <string name="owner name" value="Naam eigenaar" />
   <string name="placed by" value="Geplaatst door" />
   <string name="placed date" value="Geplaatst op datum" />
+  <string name="preparing action" value="" />
   <string name="refresh" value="Ververs" />
   <string name="rename" value="Hernoem" />
+  <string name="running action" value="" />
   <string name="select folder" value="Selecteer folder" />
   <string name="select root data folder" value="Selecteer GSAK database folder" />
   <string name="set user flag" value="Zet gebruikersvlag" />
@@ -70,6 +92,7 @@
   <string name="smart override" value="Slimme naam overschrijven" />
   <string name="source" value="Bron" />
   <string name="start" value="Start" />
+  <string name="starting flow" value="" />
   <string name="state" value="Provincie/Staat" />
   <string name="symbol" value="Symbool" />
   <string name="temporarily disabled" value="Tijdelijk uitgeschakeld" />
@@ -77,4 +100,6 @@
   <string name="user flag" value="Gebruikersvlag" />
   <string name="user note date" value="Gebruikers notitiedatum" />
   <string name="watch" value="Volgt" />
+  <string name="where" value="" />
+  <string name="wiki" value="" />
 </resources>

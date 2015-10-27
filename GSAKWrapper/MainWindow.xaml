@@ -34,7 +34,10 @@
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
-
+                <MenuItem Header="{l:Translate Help}">
+                    <MenuItem x:Name="menua37" Header="{l:Translate Wiki}" Click="menua37_Click" />
+                    <MenuItem x:Name="menux27" Header="{l:Translate About}" Click="menux27_Click" />
+                </MenuItem>
             </Menu>
             <StackPanel Orientation="Horizontal" Background="#FFFFF29D">
                 <Button Margin="5" Click="Button_Click">

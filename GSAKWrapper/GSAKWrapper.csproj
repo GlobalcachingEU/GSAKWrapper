@@ -92,6 +92,9 @@
     <Compile Include="DataTypes\GeocacheAttribute.cs" />
     <Compile Include="DataTypes\GeocacheContainer.cs" />
     <Compile Include="DataTypes\GeocacheType.cs" />
+    <Compile Include="Dialogs\About\AboutAssemblyDataProvider.cs" />
+    <Compile Include="Dialogs\About\AboutWindow.xaml.cs" />
+    <Compile Include="Dialogs\About\IAboutDataProvider.cs" />
     <Compile Include="Dialogs\BrowseFolder\FolderPickerControl.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\FolderPickerDialog.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\InputDialog.xaml.cs" />
@@ -199,6 +202,10 @@
     <Compile Include="Utils\Polygon.cs" />
     <Compile Include="Utils\ResourceHelper.cs" />
     <Compile Include="WpfSingleInstance.cs" />
+    <Page Include="Dialogs\About\AboutWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dialogs\BrowseFolder\FolderPickerControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

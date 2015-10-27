@@ -1,18 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="about" value="" />
+  <string name="actions" value="" />
   <string name="archived" value="" />
   <string name="attributes" value="" />
   <string name="cancel" value="" />
   <string name="changed date" value="" />
+  <string name="check" value="" />
   <string name="childload" value="" />
+  <string name="children" value="" />
   <string name="clear user flag" value="" />
   <string name="conditions" value="" />
+  <string name="copy to database" value="" />
   <string name="country" value="" />
   <string name="county" value="" />
   <string name="created date" value="" />
+  <string name="custom" value="" />
   <string name="database" value="" />
+  <string name="dates" value="" />
   <string name="delete" value="" />
+  <string name="delete all geocaches" value="" />
   <string name="delete flow {0}?" value="" />
+  <string name="delete from database" value="" />
   <string name="difficulty" value="" />
   <string name="distance from center (km)" value="" />
   <string name="distance from location (km)" value="" />
@@ -20,15 +29,21 @@
   <string name="dnf date" value="" />
   <string name="elevation" value="" />
   <string name="english" value="" />
+  <string name="error" value="" />
   <string name="execute" value="" />
+  <string name="execute once" value="" />
   <string name="export active flow" value="" />
   <string name="export all flows" value="" />
   <string name="favorite points" value="" />
+  <string name="finished flow" value="" />
+  <string name="finishing action" value="" />
+  <string name="flow {0} finished in {1} seconds" value="" />
   <string name="found" value="" />
   <string name="found by me date" value="" />
   <string name="found count" value="" />
   <string name="ftf (first to find)" value="" />
   <string name="gc note" value="" />
+  <string name="general" value="" />
   <string name="geocache container" value="" />
   <string name="geocache name" value="" />
   <string name="geocache type" value="" />
@@ -36,7 +51,9 @@
   <string name="has corrected" value="" />
   <string name="has travel bug (tb/coin)" value="" />
   <string name="has user note" value="" />
+  <string name="help" value="" />
   <string name="import flows" value="" />
+  <string name="in" value="" />
   <string name="is owner" value="" />
   <string name="ispremium (pmo)" value="" />
   <string name="language" value="" />
@@ -46,6 +63,7 @@
   <string name="last user date" value="" />
   <string name="latitude" value="" />
   <string name="locked" value="" />
+  <string name="logs" value="" />
   <string name="long htm" value="" />
   <string name="longitude" value="" />
   <string name="macroflag" value="" />
@@ -56,12 +74,16 @@
   <string name="number of logs" value="" />
   <string name="ok" value="" />
   <string name="original text" value="" />
+  <string name="other" value="" />
+  <string name="overwrite existing data" value="" />
   <string name="overwrite flow {0}?" value="" />
   <string name="owner name" value="" />
   <string name="placed by" value="" />
   <string name="placed date" value="" />
+  <string name="preparing action" value="" />
   <string name="refresh" value="" />
   <string name="rename" value="" />
+  <string name="running action" value="" />
   <string name="select folder" value="" />
   <string name="select root data folder" value="" />
   <string name="set user flag" value="" />
@@ -70,6 +92,7 @@
   <string name="smart override" value="" />
   <string name="source" value="" />
   <string name="start" value="" />
+  <string name="starting flow" value="" />
   <string name="state" value="" />
   <string name="symbol" value="" />
   <string name="temporarily disabled" value="" />
@@ -77,4 +100,6 @@
   <string name="user flag" value="" />
   <string name="user note date" value="" />
   <string name="watch" value="" />
+  <string name="where" value="" />
+  <string name="wiki" value="" />
 </resources>

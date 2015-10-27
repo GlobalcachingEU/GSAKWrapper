@@ -96,11 +96,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         }
         public virtual void FinalizeRun()
         {
+            TotalProcessTime.Start();
             foreach (var t in _createdTables)
             {
                 DatabaseConnection.ExecuteNonQuery(string.Format("drop table {0}", t));
             }
             _createdTables.Clear();
+            TotalProcessTime.Stop();
         }
 
         public string ActionInputTableName
@@ -134,6 +136,14 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             TotalGeocachesAtInput = (long)DatabaseConnection.ExecuteScalar(string.Format("select count(1) from {0}", ActionInputTableName));
             TotalProcessTime.Stop();
 
+            if (_outputConnectionInfo.Count == 0 && this is ActionImplementationExecuteOnce)
+            {
+                string connectorTable = ConnectorOutputTableName(Operator.Equal);
+                TotalProcessTime.Start();
+                CreateTableInDatabase(connectorTable, emptyIfExists: false);
+                Process(Operator.Equal, inputTableName, connectorTable);
+                TotalProcessTime.Stop();
+            }
             List<string> processedOps = new List<string>();
             foreach (var c in _outputConnectionInfo)
             {

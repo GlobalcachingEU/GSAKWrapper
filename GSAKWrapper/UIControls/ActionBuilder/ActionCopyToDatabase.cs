@@ -72,6 +72,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (!string.IsNullOrEmpty(_value))
             {
+                TotalProcessTime.Start();
                 string target = "target";
                 var s = Settings.Settings.Default.SelectedDatabase;
                 if (string.Compare(_value, s, true) != 0)
@@ -88,6 +89,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     CopyTable(target, "WayMemo", "cParent", _overwrite);
                     DatabaseConnection.ExecuteNonQuery(string.Format("DETACH DATABASE {0}", target));
                 }
+                TotalProcessTime.Stop();
             }
             base.FinalizeRun();
         }

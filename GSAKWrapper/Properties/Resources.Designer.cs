@@ -61,6 +61,24 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string Actions {
+            get {
+                return ResourceManager.GetString("Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Archived.
         /// </summary>
         internal static string Archived {
@@ -97,11 +115,29 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check.
+        /// </summary>
+        internal static string Check {
+            get {
+                return ResourceManager.GetString("Check", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ChildLoad.
         /// </summary>
         internal static string ChildLoad {
             get {
                 return ResourceManager.GetString("ChildLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Children.
+        /// </summary>
+        internal static string Children {
+            get {
+                return ResourceManager.GetString("Children", resourceCulture);
             }
         }
         
@@ -120,6 +156,15 @@ namespace GSAKWrapper.Properties {
         internal static string Conditions {
             get {
                 return ResourceManager.GetString("Conditions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy to database.
+        /// </summary>
+        internal static string CopyToDatabase {
+            get {
+                return ResourceManager.GetString("CopyToDatabase", resourceCulture);
             }
         }
         
@@ -151,11 +196,29 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom.
+        /// </summary>
+        internal static string Custom {
+            get {
+                return ResourceManager.GetString("Custom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Database.
         /// </summary>
         internal static string Database {
             get {
                 return ResourceManager.GetString("Database", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dates.
+        /// </summary>
+        internal static string Dates {
+            get {
+                return ResourceManager.GetString("Dates", resourceCulture);
             }
         }
         
@@ -174,6 +237,15 @@ namespace GSAKWrapper.Properties {
         internal static string Delete_flow_ {
             get {
                 return ResourceManager.GetString("Delete_flow_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete from database.
+        /// </summary>
+        internal static string DeleteFromDatabase {
+            get {
+                return ResourceManager.GetString("DeleteFromDatabase", resourceCulture);
             }
         }
         
@@ -241,6 +313,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete all geocaches.
+        /// </summary>
+        internal static string EmptyDatabase {
+            get {
+                return ResourceManager.GetString("EmptyDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         internal static string English {
@@ -250,11 +331,29 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Execute.
         /// </summary>
         internal static string Execute {
             get {
                 return ResourceManager.GetString("Execute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execute once.
+        /// </summary>
+        internal static string ExecuteOnce {
+            get {
+                return ResourceManager.GetString("ExecuteOnce", resourceCulture);
             }
         }
         
@@ -282,6 +381,33 @@ namespace GSAKWrapper.Properties {
         internal static string FavPoints {
             get {
                 return ResourceManager.GetString("FavPoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finished flow.
+        /// </summary>
+        internal static string FinishedFlow {
+            get {
+                return ResourceManager.GetString("FinishedFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finishing action.
+        /// </summary>
+        internal static string FinishingAction {
+            get {
+                return ResourceManager.GetString("FinishingAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flow {0} finished in {1} seconds.
+        /// </summary>
+        internal static string FlowFinishedIn {
+            get {
+                return ResourceManager.GetString("FlowFinishedIn", resourceCulture);
             }
         }
         
@@ -331,6 +457,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string General {
+            get {
+                return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geocache container.
         /// </summary>
         internal static string GeocacheContainer {
@@ -376,11 +511,29 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Import flows.
         /// </summary>
         internal static string ImportFlows {
             get {
                 return ResourceManager.GetString("ImportFlows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to in.
+        /// </summary>
+        internal static string In {
+            get {
+                return ResourceManager.GetString("In", resourceCulture);
             }
         }
         
@@ -462,6 +615,15 @@ namespace GSAKWrapper.Properties {
         internal static string Locked {
             get {
                 return ResourceManager.GetString("Locked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logs.
+        /// </summary>
+        internal static string Logs {
+            get {
+                return ResourceManager.GetString("Logs", resourceCulture);
             }
         }
         
@@ -565,11 +727,29 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other.
+        /// </summary>
+        internal static string Other {
+            get {
+                return ResourceManager.GetString("Other", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwrite flow {0}?.
         /// </summary>
         internal static string Overwrite_flow_ {
             get {
                 return ResourceManager.GetString("Overwrite_flow_", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Overwrite existing data.
+        /// </summary>
+        internal static string OverwriteExistingData {
+            get {
+                return ResourceManager.GetString("OverwriteExistingData", resourceCulture);
             }
         }
         
@@ -601,6 +781,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preparing action.
+        /// </summary>
+        internal static string PreparingAction {
+            get {
+                return ResourceManager.GetString("PreparingAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Refresh.
         /// </summary>
         internal static string Refresh {
@@ -615,6 +804,15 @@ namespace GSAKWrapper.Properties {
         internal static string Rename {
             get {
                 return ResourceManager.GetString("Rename", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Running action.
+        /// </summary>
+        internal static string RunningAction {
+            get {
+                return ResourceManager.GetString("RunningAction", resourceCulture);
             }
         }
         
@@ -691,6 +889,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Starting flow.
+        /// </summary>
+        internal static string StartingFlow {
+            get {
+                return ResourceManager.GetString("StartingFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to State.
         /// </summary>
         internal static string State {
@@ -750,6 +957,24 @@ namespace GSAKWrapper.Properties {
         internal static string Watch {
             get {
                 return ResourceManager.GetString("Watch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where.
+        /// </summary>
+        internal static string Where {
+            get {
+                return ResourceManager.GetString("Where", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wiki.
+        /// </summary>
+        internal static string Wiki {
+            get {
+                return ResourceManager.GetString("Wiki", resourceCulture);
             }
         }
     }

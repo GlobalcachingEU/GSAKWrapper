@@ -12,6 +12,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
     public class ActionDistanceFromLocation : ActionImplementationCondition
     {
         public const string STR_NAME = "DistanceFromLocationKm";
+        public const string STR_CHECK = "Check";
         private double _value = 0.0;
         private Utils.Location _loc = null;
         public ActionDistanceFromLocation()
@@ -40,7 +41,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             g.Children.Add(tb);
 
             Button b = new Button();
-            b.Content = "check";
+            b.Content = Localization.TranslationManager.Instance.Translate(STR_CHECK);
             b.HorizontalAlignment = HorizontalAlignment.Right;
             b.Click += new RoutedEventHandler(bActionDistanceToLocation_Click);
             g.Children.Add(b);
