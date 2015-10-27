@@ -117,6 +117,8 @@
     <Compile Include="Settings\MainWindowSettings.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionDeleteFromDatabase.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionEmptyDatabase.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionElevation.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionGCNote.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionFavPoints.cs" />
@@ -124,6 +126,7 @@
     <Compile Include="UIControls\ActionBuilder\ActionChildLoad.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionIsOwner.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCreatedDate.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionCopyToDatabase.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionWatch.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserNoteDate.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionTempDisabled.cs" />
@@ -190,6 +193,7 @@
     <Compile Include="Utils\Calculus.cs" />
     <Compile Include="Utils\Conversion.cs" />
     <Compile Include="Utils\Geocoder.cs" />
+    <Compile Include="Utils\GSAK.cs" />
     <Compile Include="Utils\ImageUtilities.cs" />
     <Compile Include="Utils\Location.cs" />
     <Compile Include="Utils\Polygon.cs" />

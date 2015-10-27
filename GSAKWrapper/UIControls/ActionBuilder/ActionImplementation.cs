@@ -38,6 +38,9 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         public virtual SearchType SearchTypeTarget { get { return SearchType.General; } }
 
+        //higher means it is calles before the other
+        public virtual int Priority { get { return 50; } }
+
         //connections
         private List<OutputConnectionInfo> _outputConnectionInfo = null;
 

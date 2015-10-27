@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SQLite;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace GSAKWrapper.Database
             Connection.Open();
             BindFunction(Connection as SQLiteConnection, new RegExSQLiteFunction());
             BindFunction(Connection as SQLiteConnection, new DistSQLiteFunction());
+            BindFunction(Connection as SQLiteConnection, new GSAKNoCaseCollation());
         }
 
         public override bool ColumnExists(string tableName, string columnName)
@@ -84,6 +86,15 @@ namespace GSAKWrapper.Database
                     return Utils.Calculus.CalculateDistance(Utils.Conversion.StringToDouble(slat), Utils.Conversion.StringToDouble(slon), Convert.ToDouble(args[2]), Convert.ToDouble(args[3])).EllipsoidalDistance / 1000.0; ;
                 }
                 return false;
+            }
+        }
+
+        [SQLiteFunction(Name = "gsaknocase", Arguments = 4, FuncType = FunctionType.Collation)]
+        public class GSAKNoCaseCollation : SQLiteFunction
+        {
+            public override int Compare(string x, string y)
+            {
+                return string.Compare(x, y, CultureInfo.InvariantCulture, CompareOptions.IgnoreCase);
             }
         }
 

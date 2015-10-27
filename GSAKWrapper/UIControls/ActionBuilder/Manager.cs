@@ -91,11 +91,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         private void runFlow(ActionFlow flow, Database.DBCon db)
         {
+            List<ActionImplementation> orderedActions = null;
             try
             {
                 ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("StartingFlow"), flow.Name);
+                orderedActions = flow.Actions.OrderByDescending(x => x.Priority).ToList();
                 int id = 0;
-                foreach (ActionImplementation ai in flow.Actions)
+                foreach (ActionImplementation ai in orderedActions)
                 {
                     id++;
                     ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("PreparingAction"), Localization.TranslationManager.Instance.Translate(ai.Name));
@@ -111,7 +113,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             }
             finally
             {
-                foreach (ActionImplementation ai in flow.Actions)
+                foreach (ActionImplementation ai in orderedActions)
                 {
                     ApplicationData.Instance.StatusText = string.Format("{0} {1}", Localization.TranslationManager.Instance.Translate("FinishingAction"), Localization.TranslationManager.Instance.Translate(ai.Name));
                     ai.FinalizeRun();

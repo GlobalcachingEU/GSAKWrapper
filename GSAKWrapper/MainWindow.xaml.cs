@@ -117,28 +117,7 @@ namespace GSAKWrapper
 
             if (string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
             {
-                try
-                {
-                    var gsak = Registry.CurrentUser.OpenSubKey(@"Software\GSAK");
-                    if (gsak != null)
-                    {
-                        var exePath = gsak.GetValue("ExePath") as string;
-                        if (exePath != null)
-                        {
-                            var fexePath = System.IO.Path.GetFullPath(exePath);
-                            var dbPath = gsak.GetValue(fexePath) as string;
-                            if (!string.IsNullOrEmpty(dbPath) && System.IO.Directory.Exists(System.IO.Path.Combine(dbPath, "data")))
-                            {
-                                Settings.Settings.Default.DatabaseFolderPath = System.IO.Path.Combine(dbPath, "data");
-                            }
-                        }
-                        gsak.Dispose();
-                    }
-
-                }
-                catch
-                {
-                }
+                Settings.Settings.Default.DatabaseFolderPath = Utils.GSAK.DatabaseFolderPath;
             }
 
             try
@@ -193,20 +172,16 @@ namespace GSAKWrapper
                 if (!string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath) && System.IO.Directory.Exists(Settings.Settings.Default.DatabaseFolderPath))
                 {
                     var curList = AvailableDatabases.ToList();
-                    string[] dirs = System.IO.Directory.GetDirectories(Settings.Settings.Default.DatabaseFolderPath);
-                    foreach (var d in dirs)
+                    var newList = Utils.GSAK.AvailableDatabases;
+                    foreach (var sp in newList)
                     {
-                        if (System.IO.File.Exists(System.IO.Path.Combine(d, "sqlite.db3")))
+                        if (!AvailableDatabases.Contains(sp))
                         {
-                            var sp = d.Substring(Settings.Settings.Default.DatabaseFolderPath.Length+1);
-                            if (!AvailableDatabases.Contains(sp))
-                            {
-                                AvailableDatabases.Add(sp);
-                            }
-                            else
-                            {
-                                curList.Remove(sp);
-                            }
+                            AvailableDatabases.Add(sp);
+                        }
+                        else
+                        {
+                            curList.Remove(sp);
                         }
                     }
                     foreach (var s in curList)
@@ -215,9 +190,7 @@ namespace GSAKWrapper
                     }
                     if (!string.IsNullOrEmpty(Settings.Settings.Default.SelectedDatabase))
                     {
-                        if (!System.IO.Directory.Exists(System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, Settings.Settings.Default.SelectedDatabase))
-                            || !System.IO.File.Exists(System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, Settings.Settings.Default.SelectedDatabase, "sqlite.db3"))
-                            )
+                        if (!AvailableDatabases.Contains(Settings.Settings.Default.SelectedDatabase))
                         {
                             Settings.Settings.Default.SelectedDatabase = null;
                         }
