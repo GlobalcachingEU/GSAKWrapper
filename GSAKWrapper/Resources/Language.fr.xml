@@ -5,45 +5,45 @@
   <string name="archived" value="Archiver" />
   <string name="attributes" value="Attibuts" />
   <string name="cancel" value="Annuler" />
-  <string name="changed date" value="" />
-  <string name="check" value="" />
+  <string name="changed date" value="date change" />
+  <string name="check" value="check" />
   <string name="childload" value="" />
   <string name="children" value="" />
   <string name="clear user flag" value="" />
-  <string name="conditions" value="" />
-  <string name="copy to database" value="Copier versla Base" />
+  <string name="conditions" value="conditions" />
+  <string name="copy to database" value="Copier vers la Base" />
   <string name="country" value="pays" />
   <string name="county" value="region" />
   <string name="created date" value="" />
   <string name="custom" value="" />
   <string name="database" value="" />
   <string name="dates" value="dates" />
-  <string name="delete" value="" />
-  <string name="delete all geocaches" value="" />
+  <string name="delete" value="effacer" />
+  <string name="delete all geocaches" value="effacer toutes les caches" />
   <string name="delete flow {0}?" value="" />
   <string name="delete from database" value="" />
-  <string name="difficulty" value="" />
+  <string name="difficulty" value="difficulte" />
   <string name="distance from center (km)" value="" />
   <string name="distance from location (km)" value="" />
   <string name="dnf (did not find)" value="" />
   <string name="dnf date" value="" />
-  <string name="elevation" value="" />
-  <string name="english" value="" />
-  <string name="error" value="" />
+  <string name="elevation" value="eevation" />
+  <string name="english" value="anglais" />
+  <string name="error" value="erreur" />
   <string name="execute" value="" />
   <string name="execute once" value="" />
   <string name="export active flow" value="" />
   <string name="export all flows" value="" />
-  <string name="favorite points" value="" />
+  <string name="favorite points" value="points favorits" />
   <string name="finished flow" value="" />
   <string name="finishing action" value="" />
   <string name="flow {0} finished in {1} seconds" value="" />
-  <string name="found" value="" />
+  <string name="found" value="trouve" />
   <string name="found by me date" value="" />
   <string name="found count" value="" />
-  <string name="ftf (first to find)" value="" />
+  <string name="ftf (first to find)" value="PAT (premier a trouver)" />
   <string name="gc note" value="" />
-  <string name="general" value="" />
+  <string name="general" value="general" />
   <string name="geocache container" value="" />
   <string name="geocache name" value="" />
   <string name="geocache type" value="" />
@@ -51,7 +51,7 @@
   <string name="has corrected" value="" />
   <string name="has travel bug (tb/coin)" value="" />
   <string name="has user note" value="" />
-  <string name="help" value="" />
+  <string name="help" value="aide" />
   <string name="import flows" value="" />
   <string name="in" value="" />
   <string name="is owner" value="" />
@@ -63,16 +63,16 @@
   <string name="last user date" value="" />
   <string name="latitude" value="" />
   <string name="locked" value="" />
-  <string name="logs" value="" />
+  <string name="logs" value="logs" />
   <string name="long htm" value="" />
   <string name="longitude" value="" />
   <string name="macroflag" value="" />
   <string name="name" value="" />
   <string name="nederlands" value="" />
-  <string name="new" value="" />
-  <string name="new folder" value="" />
+  <string name="new" value="nouveau" />
+  <string name="new folder" value="nouveau repertoire" />
   <string name="number of logs" value="" />
-  <string name="ok" value="" />
+  <string name="ok" value="ok" />
   <string name="original text" value="" />
   <string name="other" value="" />
   <string name="overwrite existing data" value="" />
@@ -82,7 +82,7 @@
   <string name="placed date" value="" />
   <string name="preparing action" value="" />
   <string name="refresh" value="" />
-  <string name="rename" value="" />
+  <string name="rename" value="renonmer" />
   <string name="running action" value="" />
   <string name="select folder" value="" />
   <string name="select root data folder" value="" />
@@ -90,16 +90,16 @@
   <string name="short htm" value="" />
   <string name="smart name" value="" />
   <string name="smart override" value="" />
-  <string name="source" value="" />
-  <string name="start" value="" />
+  <string name="source" value="source" />
+  <string name="start" value="lancer" />
   <string name="starting flow" value="" />
-  <string name="state" value="" />
+  <string name="state" value="etat" />
   <string name="symbol" value="" />
   <string name="temporarily disabled" value="" />
-  <string name="terrain" value="" />
+  <string name="terrain" value="terrain" />
   <string name="user flag" value="" />
   <string name="user note date" value="" />
   <string name="watch" value="" />
-  <string name="where" value="" />
-  <string name="wiki" value="" />
+  <string name="where" value="ou" />
+  <string name="wiki" value="wiki" />
 </resources>
