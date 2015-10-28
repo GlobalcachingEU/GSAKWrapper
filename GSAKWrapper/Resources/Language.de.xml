@@ -15,14 +15,14 @@
   <string name="country" value="Land" />
   <string name="county" value="Landkreis" />
   <string name="created date" value="Erstellungsdatum" />
-  <string name="custom" value="" />
+  <string name="custom" value="Benutzerdefiniert" />
   <string name="database" value="Datenbank" />
   <string name="dates" value="Daten" />
   <string name="delete" value="löschen" />
   <string name="delete all geocaches" value="alle Geocaches löschen" />
-  <string name="delete flow {0}?" value="" />
+  <string name="delete flow {0}?" value="Ablauf {0} löschen" />
   <string name="delete from database" value="aus Datenbank löschen" />
-  <string name="deutsch" value="" />
+  <string name="deutsch" value="Deutsch" />
   <string name="difficulty" value="Schwierigkeit" />
   <string name="distance from center (km)" value="Entfernung vom Zentrum" />
   <string name="distance from location (km)" value="Entfernung von Ort" />
@@ -37,15 +37,15 @@
   <string name="export all flows" value="alle Abläufe exportieren" />
   <string name="favorite points" value="Favoritenpunkte" />
   <string name="finished flow" value="Ablauf beendet" />
-  <string name="finishing action" value="" />
+  <string name="finishing action" value="Aktion wird abgeschlossen" />
   <string name="flow {0} finished in {1} seconds" value="Ablauf {0} beendet nach {1} Sekunden" />
   <string name="found" value="gefunden" />
   <string name="found by me date" value="mein Funddatum" />
   <string name="found count" value="Fundzähler" />
-  <string name="français" value="" />
+  <string name="français" value="Französisch" />
   <string name="ftf (first to find)" value="FTF" />
   <string name="gc note" value="GC-Notiz" />
-  <string name="general" value="" />
+  <string name="general" value="Allgemein" />
   <string name="geocache container" value="Cachebehälter" />
   <string name="geocache name" value="Geocache Name" />
   <string name="geocache type" value="Geocache Typ" />
@@ -56,7 +56,7 @@
   <string name="help" value="Hilfe" />
   <string name="import flows" value="Abläufe importieren" />
   <string name="in" value="in" />
-  <string name="is owner" value="" />
+  <string name="is owner" value="ist Owner" />
   <string name="ispremium (pmo)" value="Premium Member Cache" />
   <string name="language" value="Sprache" />
   <string name="last found date" value="letztes Fund-Datum" />
@@ -68,9 +68,9 @@
   <string name="logs" value="Logs" />
   <string name="long htm" value="ausführliches HTM" />
   <string name="longitude" value="Längengrad" />
-  <string name="macroflag" value="" />
+  <string name="macroflag" value="Macro-Flag" />
   <string name="name" value="Name" />
-  <string name="nederlands" value="Niederlands" />
+  <string name="nederlands" value="Niederländisch" />
   <string name="new" value="Neu" />
   <string name="new folder" value="neuer Ordner" />
   <string name="number of logs" value="Anzahl der Logs" />
@@ -78,20 +78,20 @@
   <string name="original text" value="Originaltext" />
   <string name="other" value="Andere" />
   <string name="overwrite existing data" value="bestehende Daten überschreiben" />
-  <string name="overwrite flow {0}?" value="" />
+  <string name="overwrite flow {0}?" value="Ablauf überschreiben" />
   <string name="owner name" value="Owner-Name" />
   <string name="placed by" value="versteckt von" />
   <string name="placed date" value="Versteckdatum" />
-  <string name="preparing action" value="" />
+  <string name="preparing action" value="Aktion wird vorbereitet" />
   <string name="refresh" value="aktualisieren" />
   <string name="rename" value="umbenennen" />
-  <string name="running action" value="" />
+  <string name="running action" value="Aktion läuft" />
   <string name="select folder" value="Ordner wählen" />
   <string name="select root data folder" value="Stammdaten-Ordner wählen" />
   <string name="set user flag" value="UserFlag setzen" />
   <string name="short htm" value="kurz HTM" />
   <string name="smart name" value="Smart-Name" />
-  <string name="smart override" value="" />
+  <string name="smart override" value="Smart-Überschreiben" />
   <string name="source" value="Quelle" />
   <string name="start" value="Start" />
   <string name="starting flow" value="Ablauf starten" />
