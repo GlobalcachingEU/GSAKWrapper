@@ -17,6 +17,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         private static object _lockObject = new object();
 
         public ObservableCollection<ActionFlow> ActionFlows { get; set; }
+        public string SqlStatementsOfLastExecutedFlow { get; set; }
 
         public Manager()
         {
@@ -64,6 +65,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         public async Task RunActionFow(ActionFlow af)
         {
+            SqlStatementsOfLastExecutedFlow = "";
             await Task.Run(() =>
                 {
                     var sw = new System.Diagnostics.Stopwatch();
@@ -76,6 +78,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                             using (var db = new Database.DBConSqlite(fn))
                             {
                                 runFlow(af, db);
+                                SqlStatementsOfLastExecutedFlow = string.Join("\r\n", db.ExecutedSqlQueries);
                             }
                         }
                         sw.Stop();

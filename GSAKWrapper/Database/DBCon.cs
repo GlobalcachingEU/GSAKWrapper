@@ -14,8 +14,11 @@ namespace GSAKWrapper.Database
         private DbDataReader _rdr = null;
         private DbTransaction _tran = null;
 
+        public List<string> ExecutedSqlQueries { get; private set; }
+
         public DBCon()
         {
+            ExecutedSqlQueries = new List<string>();
         }
 
 
@@ -60,6 +63,7 @@ namespace GSAKWrapper.Database
                 _rdr.Close();
             }
             Command.CommandText = command;
+            ExecutedSqlQueries.Add(command);
             _rdr = _cmd.ExecuteReader();
             return _rdr;
         }
@@ -71,6 +75,7 @@ namespace GSAKWrapper.Database
                 _rdr.Close();
             }
             Command.CommandText = command;
+            ExecutedSqlQueries.Add(command);
             return _cmd.ExecuteScalar();
         }
 
@@ -81,6 +86,7 @@ namespace GSAKWrapper.Database
                 _rdr.Close();
             }
             Command.CommandText = command;
+            ExecutedSqlQueries.Add(command);
             return _cmd.ExecuteNonQuery();
         }
 
