@@ -22,6 +22,7 @@
   <string name="delete all geocaches" value="" />
   <string name="delete flow {0}?" value="" />
   <string name="delete from database" value="" />
+  <string name="deutsch" value="" />
   <string name="difficulty" value="" />
   <string name="distance from center (km)" value="" />
   <string name="distance from location (km)" value="" />
@@ -41,6 +42,7 @@
   <string name="found" value="" />
   <string name="found by me date" value="" />
   <string name="found count" value="" />
+  <string name="français" value="" />
   <string name="ftf (first to find)" value="" />
   <string name="gc note" value="" />
   <string name="general" value="" />

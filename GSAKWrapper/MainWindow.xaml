@@ -33,6 +33,16 @@
                             <Image Source="/Resources/General/nl.gif" />
                         </MenuItem.Icon>
                     </MenuItem>
+                    <MenuItem x:Name="menu19" Header="{l:Translate German}" Click="MenuItem_Click_13">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/General/de.gif" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem x:Name="menu20" Header="{l:Translate French}" Click="MenuItem_Click_16">
+                        <MenuItem.Icon>
+                            <Image Source="/Resources/General/fr.gif" />
+                        </MenuItem.Icon>
+                    </MenuItem>
                 </MenuItem>
                 <MenuItem Header="{l:Translate Help}">
                     <MenuItem x:Name="menua37" Header="{l:Translate Wiki}" Click="menua37_Click" />

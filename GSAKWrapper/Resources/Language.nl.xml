@@ -22,6 +22,7 @@
   <string name="delete all geocaches" value="" />
   <string name="delete flow {0}?" value="Verwijder schema {0}?" />
   <string name="delete from database" value="" />
+  <string name="deutsch" value="" />
   <string name="difficulty" value="Moeilijkheid" />
   <string name="distance from center (km)" value="Afstand tot middelpunt (km)" />
   <string name="distance from location (km)" value="Afstand tot locatie (km)" />
@@ -41,6 +42,7 @@
   <string name="found" value="Gevonden" />
   <string name="found by me date" value="Gevonden door mij datum" />
   <string name="found count" value="Aantal keer gevonden" />
+  <string name="français" value="" />
   <string name="ftf (first to find)" value="FTF (First To Find)" />
   <string name="gc note" value="GC notitie" />
   <string name="general" value="" />

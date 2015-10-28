@@ -248,5 +248,15 @@ namespace GSAKWrapper
             }
         }
 
+        private void MenuItem_Click_13(object sender, RoutedEventArgs e)
+        {
+            Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("de-DE");
+        }
+
+        private void MenuItem_Click_16(object sender, RoutedEventArgs e)
+        {
+            Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("fr-FR");
+        }
+
     }
 }

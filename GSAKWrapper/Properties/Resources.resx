@@ -423,4 +423,10 @@
   <data name="RunningAction" xml:space="preserve">
     <value>Running action</value>
   </data>
+  <data name="French" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
 </root>
