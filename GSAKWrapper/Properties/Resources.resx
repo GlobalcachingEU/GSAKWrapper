@@ -429,4 +429,25 @@
   <data name="German" xml:space="preserve">
     <value>Deutsch</value>
   </data>
+  <data name="CompareTo" xml:space="preserve">
+    <value>Compare to</value>
+  </data>
+  <data name="CompareTwoDates" xml:space="preserve">
+    <value>Compare two dates</value>
+  </data>
+  <data name="GeocacheCode" xml:space="preserve">
+    <value>Geocache code</value>
+  </data>
+  <data name="ChildWaypoints" xml:space="preserve">
+    <value>Child Waypoints</value>
+  </data>
+  <data name="ChildWaypointCode" xml:space="preserve">
+    <value>Child Waypoint code</value>
+  </data>
+  <data name="ChildWaypointPrefix" xml:space="preserve">
+    <value>Child Waypoint prefix</value>
+  </data>
+  <data name="ChildWaypointType" xml:space="preserve">
+    <value>Child Waypoint type</value>
+  </data>
 </root>

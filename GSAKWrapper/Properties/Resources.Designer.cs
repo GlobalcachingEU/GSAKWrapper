@@ -142,11 +142,65 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint code.
+        /// </summary>
+        internal static string ChildWaypointCode {
+            get {
+                return ResourceManager.GetString("ChildWaypointCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint prefix.
+        /// </summary>
+        internal static string ChildWaypointPrefix {
+            get {
+                return ResourceManager.GetString("ChildWaypointPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoints.
+        /// </summary>
+        internal static string ChildWaypoints {
+            get {
+                return ResourceManager.GetString("ChildWaypoints", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint type.
+        /// </summary>
+        internal static string ChildWaypointType {
+            get {
+                return ResourceManager.GetString("ChildWaypointType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear user flag.
         /// </summary>
         internal static string ClearUserFlag {
             get {
                 return ResourceManager.GetString("ClearUserFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compare to.
+        /// </summary>
+        internal static string CompareTo {
+            get {
+                return ResourceManager.GetString("CompareTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compare two dates.
+        /// </summary>
+        internal static string CompareTwoDates {
+            get {
+                return ResourceManager.GetString("CompareTwoDates", resourceCulture);
             }
         }
         
@@ -471,6 +525,15 @@ namespace GSAKWrapper.Properties {
         internal static string General {
             get {
                 return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geocache code.
+        /// </summary>
+        internal static string GeocacheCode {
+            get {
+                return ResourceManager.GetString("GeocacheCode", resourceCulture);
             }
         }
         

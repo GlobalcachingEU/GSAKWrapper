@@ -7,9 +7,15 @@
   <string name="cancel" value="" />
   <string name="changed date" value="" />
   <string name="check" value="" />
+  <string name="child waypoint code" value="" />
+  <string name="child waypoint prefix" value="" />
+  <string name="child waypoint type" value="" />
+  <string name="child waypoints" value="" />
   <string name="childload" value="" />
   <string name="children" value="" />
   <string name="clear user flag" value="" />
+  <string name="compare to" value="" />
+  <string name="compare two dates" value="" />
   <string name="conditions" value="" />
   <string name="copy to database" value="" />
   <string name="country" value="" />
@@ -46,6 +52,7 @@
   <string name="ftf (first to find)" value="" />
   <string name="gc note" value="" />
   <string name="general" value="" />
+  <string name="geocache code" value="" />
   <string name="geocache container" value="" />
   <string name="geocache name" value="" />
   <string name="geocache type" value="" />

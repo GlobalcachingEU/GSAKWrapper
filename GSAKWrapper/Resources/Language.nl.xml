@@ -7,9 +7,15 @@
   <string name="cancel" value="Annuleren" />
   <string name="changed date" value="Datum aangepast" />
   <string name="check" value="" />
+  <string name="child waypoint code" value="" />
+  <string name="child waypoint prefix" value="" />
+  <string name="child waypoint type" value="" />
+  <string name="child waypoints" value="" />
   <string name="childload" value="ChildLoad" />
   <string name="children" value="" />
   <string name="clear user flag" value="Wis gebruikers vlag" />
+  <string name="compare to" value="" />
+  <string name="compare two dates" value="" />
   <string name="conditions" value="Voorwaarden" />
   <string name="copy to database" value="" />
   <string name="country" value="Land" />
@@ -46,6 +52,7 @@
   <string name="ftf (first to find)" value="FTF (First To Find)" />
   <string name="gc note" value="GC notitie" />
   <string name="general" value="" />
+  <string name="geocache code" value="" />
   <string name="geocache container" value="Geocache container" />
   <string name="geocache name" value="Geocache naam" />
   <string name="geocache type" value="Geocache type" />

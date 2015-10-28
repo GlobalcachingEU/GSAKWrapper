@@ -19,6 +19,7 @@ namespace GSAKWrapper
         public List<DataTypes.GeocacheAttribute> GeocacheAttributes;
         public List<DataTypes.GeocacheType> GeocacheTypes;
         public List<DataTypes.GeocacheContainer> GeocacheContainers;
+        public List<DataTypes.WaypointType> WaypointTypes;
 
         private int _activityCounter = 0;
         public void BeginActiviy()
@@ -81,6 +82,7 @@ namespace GSAKWrapper
             GeocacheAttributes = new List<DataTypes.GeocacheAttribute>();
             GeocacheTypes = new List<DataTypes.GeocacheType>();
             GeocacheContainers = new List<DataTypes.GeocacheContainer>();
+            WaypointTypes = new List<DataTypes.WaypointType>();
 
             //addCacheType(0, "Not present");
             addCacheType(2, "Traditional Cache", 'T');
@@ -112,6 +114,16 @@ namespace GSAKWrapper
             addCacheContainer(5, "Virtual");
             addCacheContainer(6, "Other");
             addCacheContainer(8, "Small");
+
+            //addWaypointType(0, "Unknown");
+            addWaypointType(217, "Parking Area");
+            addWaypointType(220, "Final Location");
+            //addWaypointType(218, "Question to Answer");
+            addWaypointType(218, "Virtual Stage");
+            addWaypointType(452, "Reference Point");
+            //addWaypointType(219, "Stages of a Multicache");
+            addWaypointType(219, "Physical Stage");
+            addWaypointType(221, "Trailhead");
 
             //addCacheAttribute(0, "Unknown");
             addCacheAttribute(1, "Dogs");
@@ -249,5 +261,12 @@ namespace GSAKWrapper
             GeocacheContainers.Add(attr);
         }
 
+        protected void addWaypointType(int id, string name)
+        {
+            var attr = new DataTypes.WaypointType();
+            attr.ID = id;
+            attr.Name = name;
+            WaypointTypes.Add(attr);
+        }
     }
 }
