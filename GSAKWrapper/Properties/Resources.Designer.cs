@@ -142,11 +142,83 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint by user.
+        /// </summary>
+        internal static string ChildWaypointByUser {
+            get {
+                return ResourceManager.GetString("ChildWaypointByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Child Waypoint code.
         /// </summary>
         internal static string ChildWaypointCode {
             get {
                 return ResourceManager.GetString("ChildWaypointCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint comment.
+        /// </summary>
+        internal static string ChildWaypointComment {
+            get {
+                return ResourceManager.GetString("ChildWaypointComment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint date.
+        /// </summary>
+        internal static string ChildWaypointDate {
+            get {
+                return ResourceManager.GetString("ChildWaypointDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child distance from location (km).
+        /// </summary>
+        internal static string ChildWaypointDistanceFromLocationKm {
+            get {
+                return ResourceManager.GetString("ChildWaypointDistanceFromLocationKm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint flag.
+        /// </summary>
+        internal static string ChildWaypointFlag {
+            get {
+                return ResourceManager.GetString("ChildWaypointFlag", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint latitude.
+        /// </summary>
+        internal static string ChildWaypointLatitude {
+            get {
+                return ResourceManager.GetString("ChildWaypointLatitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint longitude.
+        /// </summary>
+        internal static string ChildWaypointLongitude {
+            get {
+                return ResourceManager.GetString("ChildWaypointLongitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Child Waypoint name.
+        /// </summary>
+        internal static string ChildWaypointName {
+            get {
+                return ResourceManager.GetString("ChildWaypointName", resourceCulture);
             }
         }
         
@@ -700,11 +772,56 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Logged by user.
+        /// </summary>
+        internal static string LogByUser {
+            get {
+                return ResourceManager.GetString("LogByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log date.
+        /// </summary>
+        internal static string LogDate {
+            get {
+                return ResourceManager.GetString("LogDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log date by user.
+        /// </summary>
+        internal static string LogDateByUser {
+            get {
+                return ResourceManager.GetString("LogDateByUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logs.
         /// </summary>
         internal static string Logs {
             get {
                 return ResourceManager.GetString("Logs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log type.
+        /// </summary>
+        internal static string LogType {
+            get {
+                return ResourceManager.GetString("LogType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Log type by user.
+        /// </summary>
+        internal static string LogTypeByUser {
+            get {
+                return ResourceManager.GetString("LogTypeByUser", resourceCulture);
             }
         }
         

@@ -77,8 +77,14 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         {
                             using (var db = new Database.DBConSqlite(fn))
                             {
-                                runFlow(af, db);
-                                SqlStatementsOfLastExecutedFlow = string.Join("\r\n", db.ExecutedSqlQueries);
+                                try
+                                {
+                                    runFlow(af, db);
+                                }
+                                finally
+                                {
+                                    SqlStatementsOfLastExecutedFlow = string.Join("\r\n", db.ExecutedSqlQueries);
+                                }
                             }
                         }
                         sw.Stop();
@@ -90,6 +96,9 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         ApplicationData.Instance.StatusText = string.Format("{0}: {1}", Localization.TranslationManager.Instance.Translate("Error"), e.Message);
                     }
                 });
+#if DEBUG
+            System.IO.File.WriteAllText(System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper", "sqlstatements.log"), SqlStatementsOfLastExecutedFlow);
+#endif
         }
 
         private void runFlow(ActionFlow flow, Database.DBCon db)

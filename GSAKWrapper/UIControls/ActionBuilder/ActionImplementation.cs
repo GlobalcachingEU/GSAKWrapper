@@ -63,23 +63,16 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             {
                 _createdTables.Add(tableName);
             }
-            if (DatabaseConnection.TableExists(tableName))
+            if (dropIfExists)
             {
-                if (dropIfExists)
-                {
-                    DatabaseConnection.ExecuteNonQuery(string.Format("drop table {0}", tableName));
-                }
-                else
-                {
-                    if (emptyIfExists)
-                    {
-                        DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", tableName));
-                    }
-                    return;
-                }
+                DatabaseConnection.ExecuteNonQuery(string.Format("drop table if exists {0}", tableName));
             }
-            DatabaseConnection.ExecuteNonQuery(string.Format("create table '{0}' (gccode text)", tableName));
-            DatabaseConnection.ExecuteNonQuery(string.Format("create UNIQUE index '{0}_idx' on {0} (gccode)", tableName));
+            DatabaseConnection.ExecuteNonQuery(string.Format("create temp table if not exists '{0}' (gccode text)", tableName));
+            DatabaseConnection.ExecuteNonQuery(string.Format("create UNIQUE index if not exists '{0}_idx' on {0} (gccode)", tableName));
+            if (emptyIfExists)
+            {
+                DatabaseConnection.ExecuteNonQuery(string.Format("delete from {0}", tableName));
+            }
         }
 
         public virtual bool PrepareRun(Database.DBCon db, string tableName)

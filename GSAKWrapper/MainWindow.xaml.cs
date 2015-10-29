@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -111,6 +112,8 @@ namespace GSAKWrapper
 #if DEBUG
                 Localization.TranslationManager.Instance.CreateOrUpdateXmlFiles();
 #endif
+                Settings.Settings.Default.ApplicationVersion = Assembly.GetExecutingAssembly().GetName().Version;
+                Settings.Settings.Default.ApplicationPath = Assembly.GetExecutingAssembly().Location;
             }
 
             AvailableDatabases = new ObservableCollection<string>();

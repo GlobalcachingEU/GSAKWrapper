@@ -450,4 +450,43 @@
   <data name="ChildWaypointType" xml:space="preserve">
     <value>Child Waypoint type</value>
   </data>
+  <data name="ChildWaypointLatitude" xml:space="preserve">
+    <value>Child Waypoint latitude</value>
+  </data>
+  <data name="ChildWaypointLongitude" xml:space="preserve">
+    <value>Child Waypoint longitude</value>
+  </data>
+  <data name="ChildWaypointDistanceFromLocationKm" xml:space="preserve">
+    <value>Child distance from location (km)</value>
+  </data>
+  <data name="ChildWaypointByUser" xml:space="preserve">
+    <value>Child Waypoint by user</value>
+  </data>
+  <data name="ChildWaypointDate" xml:space="preserve">
+    <value>Child Waypoint date</value>
+  </data>
+  <data name="ChildWaypointFlag" xml:space="preserve">
+    <value>Child Waypoint flag</value>
+  </data>
+  <data name="ChildWaypointComment" xml:space="preserve">
+    <value>Child Waypoint comment</value>
+  </data>
+  <data name="LogType" xml:space="preserve">
+    <value>Log type</value>
+  </data>
+  <data name="LogByUser" xml:space="preserve">
+    <value>Logged by user</value>
+  </data>
+  <data name="ChildWaypointName" xml:space="preserve">
+    <value>Child Waypoint name</value>
+  </data>
+  <data name="LogTypeByUser" xml:space="preserve">
+    <value>Log type by user</value>
+  </data>
+  <data name="LogDate" xml:space="preserve">
+    <value>Log date</value>
+  </data>
+  <data name="LogDateByUser" xml:space="preserve">
+    <value>Log date by user</value>
+  </data>
 </root>

@@ -92,6 +92,7 @@
     <Compile Include="DataTypes\GeocacheAttribute.cs" />
     <Compile Include="DataTypes\GeocacheContainer.cs" />
     <Compile Include="DataTypes\GeocacheType.cs" />
+    <Compile Include="DataTypes\LogType.cs" />
     <Compile Include="DataTypes\WaypointType.cs" />
     <Compile Include="Dialogs\About\AboutAssemblyDataProvider.cs" />
     <Compile Include="Dialogs\About\AboutWindow.xaml.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Localization\TranslationData.cs" />
     <Compile Include="Localization\TranslationManager.cs" />
     <Compile Include="Settings\ActionBuilderSettings.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\GSAKSettings.cs" />
     <Compile Include="Settings\LocalizationSettings.cs" />
     <Compile Include="Settings\BackupSettings.cs" />
@@ -121,10 +123,21 @@
     <Compile Include="Settings\MainWindowSettings.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLogDate.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLogByUser.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionChildWaypointFlag.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionChildWaypointDate.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionChildWaypointLongitude.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionChildWaypointByUser.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionChildWaypointComment.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionChildWaypointName.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionChildWaypointPrefix.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionChildWaypoints.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionChildWaypointCode.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionChildWaypointDistanceFromLocation.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLogDateByUser.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLogTypeByUser.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLogType.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionGeocacheCode.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionDeleteFromDatabase.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCompareTwoDates.cs" />
@@ -138,6 +151,7 @@
     <Compile Include="UIControls\ActionBuilder\ActionIsOwner.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCreatedDate.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCopyToDatabase.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionChildWaypointLatitude.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionWatch.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserNoteDate.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionTempDisabled.cs" />
