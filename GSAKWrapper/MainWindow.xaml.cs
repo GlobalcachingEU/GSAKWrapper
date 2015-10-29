@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -146,11 +147,20 @@ namespace GSAKWrapper
                 InitializeComponent();
                 DataContext = this;
 
+                Settings.Settings.Default.NewVersionChecked = false;
                 Settings.Settings.Default.PropertyChanged += Default_PropertyChanged;
 
-                var thrd = new Thread(new ThreadStart(this.CheckForNewVersionThreadMethod));
-                thrd.IsBackground = true;
-                thrd.Start();
+                if (Settings.Settings.Default.ReleaseVersion > Settings.Settings.Default.ApplicationVersion)
+                {
+                    newVersionUrl.Visibility = System.Windows.Visibility.Visible;
+                }
+
+                if (Settings.Settings.Default.VersionCheckedAtDay != DateTime.Now.Day)
+                {
+                    var thrd = new Thread(new ThreadStart(this.CheckForNewVersionThreadMethod));
+                    thrd.IsBackground = true;
+                    thrd.Start();
+                }
             }
         }
 
@@ -188,6 +198,8 @@ namespace GSAKWrapper
                             }
                         }
                     }
+                    Settings.Settings.Default.VersionCheckedAtDay = DateTime.Now.Day;
+                    Settings.Settings.Default.NewVersionChecked = true;
                 }
             }
             catch
@@ -204,6 +216,16 @@ namespace GSAKWrapper
                     {
                         checkSelectedDatabaseExists();
                     }));
+                    break;
+                case "NewVersionChecked":
+
+                    if (Settings.Settings.Default.ReleaseVersion > Settings.Settings.Default.ApplicationVersion)
+                    {
+                        Dispatcher.Invoke(new Action(() =>
+                        {
+                            newVersionUrl.Visibility = System.Windows.Visibility.Visible;
+                        }));
+                    }
                     break;
             }
         }
@@ -308,6 +330,12 @@ namespace GSAKWrapper
         private void MenuItem_Click_16(object sender, RoutedEventArgs e)
         {
             Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("fr-FR");
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
         }
 
     }

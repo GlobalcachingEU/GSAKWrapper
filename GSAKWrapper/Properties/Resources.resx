@@ -489,4 +489,7 @@
   <data name="LogDateByUser" xml:space="preserve">
     <value>Log date by user</value>
   </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>New version available</value>
+  </data>
 </root>

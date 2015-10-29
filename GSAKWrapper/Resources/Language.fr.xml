@@ -7,7 +7,15 @@
   <string name="cancel" value="Annuler" />
   <string name="changed date" value="date change" />
   <string name="check" value="check" />
+  <string name="child distance from location (km)" value="" />
+  <string name="child waypoint by user" value="" />
   <string name="child waypoint code" value="" />
+  <string name="child waypoint comment" value="" />
+  <string name="child waypoint date" value="" />
+  <string name="child waypoint flag" value="" />
+  <string name="child waypoint latitude" value="" />
+  <string name="child waypoint longitude" value="" />
+  <string name="child waypoint name" value="" />
   <string name="child waypoint prefix" value="" />
   <string name="child waypoint type" value="" />
   <string name="child waypoints" value="" />
@@ -72,6 +80,11 @@
   <string name="last user date" value="" />
   <string name="latitude" value="" />
   <string name="locked" value="" />
+  <string name="log date" value="" />
+  <string name="log date by user" value="" />
+  <string name="log type" value="" />
+  <string name="log type by user" value="" />
+  <string name="logged by user" value="" />
   <string name="logs" value="logs" />
   <string name="long htm" value="" />
   <string name="longitude" value="" />
@@ -80,6 +93,7 @@
   <string name="nederlands" value="" />
   <string name="new" value="nouveau" />
   <string name="new folder" value="nouveau repertoire" />
+  <string name="new version available" value="" />
   <string name="number of logs" value="" />
   <string name="ok" value="ok" />
   <string name="original text" value="" />

@@ -31,5 +31,18 @@ namespace GSAKWrapper.Settings
             get { return GetProperty(""); }
             set { SetProperty(value); }
         }
+
+        public bool NewVersionChecked
+        {
+            get { return bool.Parse(GetProperty(false.ToString())); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int VersionCheckedAtDay
+        {
+            get { return int.Parse(GetProperty("-1")); }
+            set { SetProperty(value.ToString()); }
+        }
+
     }
 }
