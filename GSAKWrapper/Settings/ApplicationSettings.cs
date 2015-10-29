@@ -14,7 +14,19 @@ namespace GSAKWrapper.Settings
             set { SetProperty(value.ToString()); }
         }
 
+        public Version ReleaseVersion
+        {
+            get { return Version.Parse(GetProperty("0.0.0.0")); }
+            set { SetProperty(value.ToString()); }
+        }
+
         public string ApplicationPath
+        {
+            get { return GetProperty(""); }
+            set { SetProperty(value); }
+        }
+
+        public string ReleaseUrl
         {
             get { return GetProperty(""); }
             set { SetProperty(value); }

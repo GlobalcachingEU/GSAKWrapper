@@ -5,8 +5,11 @@ using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,6 +20,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace GSAKWrapper
 {
@@ -114,36 +118,81 @@ namespace GSAKWrapper
 #endif
                 Settings.Settings.Default.ApplicationVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 Settings.Settings.Default.ApplicationPath = Assembly.GetExecutingAssembly().Location;
+
+                AvailableDatabases = new ObservableCollection<string>();
+
+                if (string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
+                {
+                    Settings.Settings.Default.DatabaseFolderPath = Utils.GSAK.DatabaseFolderPath;
+                }
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
+                    {
+                        if (!System.IO.Directory.Exists(Settings.Settings.Default.DatabaseFolderPath))
+                        {
+                            Settings.Settings.Default.DatabaseFolderPath = null;
+                        }
+                    }
+                }
+                catch
+                {
+                    Settings.Settings.Default.DatabaseFolderPath = null;
+                }
+
+                checkSelectedDatabaseExists();
+
+                InitializeComponent();
+                DataContext = this;
+
+                Settings.Settings.Default.PropertyChanged += Default_PropertyChanged;
+
+                var thrd = new Thread(new ThreadStart(this.CheckForNewVersionThreadMethod));
+                thrd.IsBackground = true;
+                thrd.Start();
             }
+        }
 
-            AvailableDatabases = new ObservableCollection<string>();
-
-            if (string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
-            {
-                Settings.Settings.Default.DatabaseFolderPath = Utils.GSAK.DatabaseFolderPath;
-            }
-
+        public void CheckForNewVersionThreadMethod()
+        {
+            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(
+                       delegate
+                       {
+                           return true;
+                       });
             try
             {
-                if (!string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
+                using (WebClient webClient = new WebClient())
                 {
-                    if (!System.IO.Directory.Exists(Settings.Settings.Default.DatabaseFolderPath))
+                    webClient.Headers["User-Agent"] = "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.2.6) Gecko/20100625 Firefox/3.6.6 (.NET CLR 3.5.30729)";
+                    var s = webClient.DownloadString("https://raw.githubusercontent.com/GlobalcachingEU/GSAKWrapper/master/Release");
+
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(s);
+                    XmlElement root = doc.DocumentElement;
+                    XmlNodeList strngs = root.SelectNodes("item");
+                    if (strngs != null)
                     {
-                        Settings.Settings.Default.DatabaseFolderPath = null;
+                        foreach (XmlNode sn in strngs)
+                        {
+                            var n = sn.Attributes["name"].InnerText;
+                            var v = sn.Attributes["value"].InnerText;
+                            if (n == "version")
+                            {
+                                Settings.Settings.Default.ReleaseVersion = Version.Parse(v);
+                            }
+                            else if (n == "url")
+                            {
+                                Settings.Settings.Default.ReleaseUrl = v;
+                            }
+                        }
                     }
                 }
             }
             catch
             {
-                Settings.Settings.Default.DatabaseFolderPath = null;
             }
-
-            checkSelectedDatabaseExists();
-
-            InitializeComponent();
-            DataContext = this;
-
-            Settings.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
 
         void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
