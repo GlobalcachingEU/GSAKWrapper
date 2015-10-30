@@ -3,27 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:l="clr-namespace:GSAKWrapper.Localization"
         xmlns:fs="clr-namespace:GSAKWrapper.FlowSequences"
-        Title="WindowFlowSequenceEditor" Height="500" Width="500">
+        xmlns:ui="clr-namespace:GSAKWrapper.UIControls"
+        xmlns:ab="clr-namespace:GSAKWrapper.UIControls.ActionBuilder"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        Title="{l:Translate EditFlowSequences}"
+        Height="{Binding FlowSequenceEditorHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding FlowSequenceEditorWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding FlowSequenceEditorLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding FlowSequenceEditorTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Icon="/Resources/GSAKWrapper.ico"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" />
+            <ColumnDefinition Width="{Binding FlowSequenceEditorLeftPanelWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
             <ColumnDefinition Width="5" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <Button Grid.Column="3" Height="20" Width="20" ToolTip="{l:Translate New}" Click="Button_Click">
+                    <Button Margin="4" Grid.Column="3" Height="20" Width="20" ToolTip="{l:Translate NewFlowSequence}" Click="Button_Click">
                         <Image Width="16" Height="16" Source="/Resources/General/new.png" />
                     </Button>
                     <Button Margin="4" Grid.Column="5" Height="20" Width="20" ToolTip="{l:Translate Delete}" Click="Button_Click_1" IsEnabled="{Binding IsSequenceFlowActive}">
                         <Image Width="16" Height="16" Source="/Resources/General/delete.png" />
                     </Button>
                 </StackPanel>
-                <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding FlowSequences, Source={x:Static fs:Manager.Instance}}" SelectedItem="{Binding SelectedFlowSequence, Mode=TwoWay}">
+                <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding FlowSequences, Source={x:Static fs:Manager.Instance}}" SelectedItem="{Binding SelectedFlowSequence, Mode=TwoWay}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="*" />
-                        <DataGridTemplateColumn Header="Database" Width="50">
+                        <DataGridTextColumn Binding="{Binding Name}" Header="{l:Translate Name}" Width="*" />
+                        <DataGridTemplateColumn Header="{l:Translate Database}" Width="100">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Database}" />
@@ -41,7 +50,45 @@
         </Grid>
         <GridSplitter Background="#FF293955" Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Right" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"/>
         <Grid Grid.Column="2">
-
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Margin="4" Grid.Column="3" Height="20" Width="20" ToolTip="{l:Translate AddFlow}" Click="Button_Click_10">
+                        <Image Width="16" Height="16" Source="/Resources/General/add.png" />
+                    </Button>
+                    <Button Margin="4" Grid.Column="5" Height="20" Width="20" ToolTip="{l:Translate Delete}" Click="Button_Click_11" IsEnabled="{Binding IsSequenceFlowItemActive}">
+                        <Image Width="16" Height="16" Source="/Resources/General/delete.png" />
+                    </Button>
+                </StackPanel>
+                <DataGrid  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=SelectedFlowSequence.FlowSequenceItems, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding SelectedFlowSequenceItem, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="{l:Translate FlowName}" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding FlowName}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableActionFlows, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding FlowName, Mode=TwoWay}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="{l:Translate Database}" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Database}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellEditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableDatabases, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding Database, Mode=TwoWay}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellEditingTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
         </Grid>
+        <ui:InputDialog Grid.Column="0" Grid.ColumnSpan="3" x:Name="inputDialog" Panel.ZIndex="200" />
     </Grid>
 </Window>

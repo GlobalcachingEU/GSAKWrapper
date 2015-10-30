@@ -79,7 +79,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                             {
                                 try
                                 {
-                                    runFlow(af, db);
+                                    RunFlow(af, db);
                                 }
                                 finally
                                 {
@@ -101,7 +101,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 #endif
         }
 
-        private void runFlow(ActionFlow flow, Database.DBCon db)
+        public void RunFlow(ActionFlow flow, Database.DBCon db)
         {
             List<ActionImplementation> orderedActions = null;
             try

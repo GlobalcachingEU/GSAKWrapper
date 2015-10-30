@@ -522,4 +522,16 @@
   <data name="FlowSequences" xml:space="preserve">
     <value>Flow sequences</value>
   </data>
+  <data name="AddFlow" xml:space="preserve">
+    <value>Add flow</value>
+  </data>
+  <data name="EditFlowSequences" xml:space="preserve">
+    <value>Edit flow sequences</value>
+  </data>
+  <data name="FlowName" xml:space="preserve">
+    <value>Flow name</value>
+  </data>
+  <data name="NewFlowSequence" xml:space="preserve">
+    <value>New flow sequence</value>
+  </data>
 </root>

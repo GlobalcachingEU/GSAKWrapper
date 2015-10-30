@@ -368,6 +368,7 @@ namespace GSAKWrapper
         {
             var dlg = new Dialogs.WindowFlowSequenceEditor();
             dlg.ShowDialog();
+            FlowSequences.Manager.Instance.Save();
         }
 
         private AsyncDelegateCommand _executeSequenceCommand;
