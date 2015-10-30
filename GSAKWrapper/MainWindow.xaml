@@ -4,6 +4,7 @@
         xmlns:l="clr-namespace:GSAKWrapper.Localization"
         xmlns:p="clr-namespace:GSAKWrapper"
         xmlns:ui="clr-namespace:GSAKWrapper.UIControls.ActionBuilder"
+        xmlns:fs="clr-namespace:GSAKWrapper.FlowSequences"
         xmlns:s="clr-namespace:GSAKWrapper.Settings"
         IsEnabled="{Binding UIIsIdle, Source={x:Static p:ApplicationData.Instance}}"
         Title="{l:Translate MainWindowTitle}" 
@@ -57,6 +58,15 @@
                     <TextBlock Margin="0,10,0,0" Text="{l:Translate Database}" />
                     <TextBlock Margin="0,10,0,0" Text=": " />
                     <ComboBox Margin="5" ItemsSource="{Binding AvailableDatabases}" SelectedItem="{Binding SelectedDatabase, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+                    <TextBlock Margin="0,10,0,0" Text="{l:Translate FlowSequences}" />
+                    <TextBlock Margin="0,10,0,0" Text=": " />
+                    <ComboBox Margin="5" ItemsSource="{Binding FlowSequences, Source={x:Static fs:Manager.Instance}}" SelectedItem="{Binding ActiveFlowSequence, Mode=TwoWay}" />
+                    <Button Height="20" Width="20" ToolTip="{l:Translate Execute}" Command="{Binding ExecuteSequenceCommand}">
+                        <Image Width="16" Height="16" Source="/Resources/General/execute.gif" />
+                    </Button>
+                    <Button Margin="4" Height="20" Width="20" ToolTip="{l:Translate Edit}" Click="Button_EditFlowSequences">
+                        <Image Width="16" Height="16" Source="/Resources/General/edit.png" />
+                    </Button>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right">
                     <TextBlock Margin="0,0,10,0" HorizontalAlignment="Right">

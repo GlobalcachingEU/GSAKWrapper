@@ -547,6 +547,24 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Flow sequence {0} finished in {1} seconds.
+        /// </summary>
+        internal static string FlowSequenceFinishedIn {
+            get {
+                return ResourceManager.GetString("FlowSequenceFinishedIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flow sequences.
+        /// </summary>
+        internal static string FlowSequences {
+            get {
+                return ResourceManager.GetString("FlowSequences", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found.
         /// </summary>
         internal static string Found {
@@ -1182,6 +1200,24 @@ namespace GSAKWrapper.Properties {
         internal static string Terrain {
             get {
                 return ResourceManager.GetString("Terrain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User data numeric.
+        /// </summary>
+        internal static string UserDataNumber {
+            get {
+                return ResourceManager.GetString("UserDataNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User data text.
+        /// </summary>
+        internal static string UserDataText {
+            get {
+                return ResourceManager.GetString("UserDataText", resourceCulture);
             }
         }
         

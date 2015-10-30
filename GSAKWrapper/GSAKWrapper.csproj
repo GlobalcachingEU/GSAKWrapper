@@ -101,6 +101,10 @@
     <Compile Include="Dialogs\BrowseFolder\FolderPickerDialog.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\InputDialog.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\TreeModel.cs" />
+    <Compile Include="Dialogs\WindowFlowSequenceEditor.xaml.cs">
+      <DependentUpon>WindowFlowSequenceEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FlowSequences\FlowSequenceItem.cs" />
     <Compile Include="Gavaghan.Geodesy\Angle.cs" />
     <Compile Include="Gavaghan.Geodesy\Ellipsoid.cs" />
     <Compile Include="Gavaghan.Geodesy\GeodeticCalculator.cs" />
@@ -123,6 +127,8 @@
     <Compile Include="Settings\MainWindowSettings.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionUserDataContains.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserFlagInOtherDatabase.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionPresentInOtherDatabase.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionInIgnoreList.cs" />
@@ -219,6 +225,8 @@
     <Compile Include="UIControls\ActionBuilder\ActionImplementationGeocacheContainer.cs" />
     <Compile Include="UIControls\ActionBuilder\SearchType.cs" />
     <Compile Include="UIControls\DragCanvas.cs" />
+    <Compile Include="FlowSequences\FlowSequence.cs" />
+    <Compile Include="FlowSequences\Manager.cs" />
     <Compile Include="UIControls\InputDialog.xaml.cs" />
     <Compile Include="Utils\Calculus.cs" />
     <Compile Include="Utils\Conversion.cs" />
@@ -244,6 +252,10 @@
     <Page Include="Dialogs\BrowseFolder\InputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\WindowFlowSequenceEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

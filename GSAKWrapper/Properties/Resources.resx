@@ -510,4 +510,16 @@
   <data name="UserFlagInOtherDatabase" xml:space="preserve">
     <value>User flag set in other database</value>
   </data>
+  <data name="UserDataText" xml:space="preserve">
+    <value>User data text</value>
+  </data>
+  <data name="UserDataNumber" xml:space="preserve">
+    <value>User data numeric</value>
+  </data>
+  <data name="FlowSequenceFinishedIn" xml:space="preserve">
+    <value>Flow sequence {0} finished in {1} seconds</value>
+  </data>
+  <data name="FlowSequences" xml:space="preserve">
+    <value>Flow sequences</value>
+  </data>
 </root>

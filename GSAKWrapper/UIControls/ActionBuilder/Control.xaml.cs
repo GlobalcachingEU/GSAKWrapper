@@ -370,6 +370,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         {
                             if ((from a in Manager.Instance.ActionFlows where string.Compare(a.Name, s, true) == 0 select a).Count() == 0)
                             {
+                                ActiveActionFlow.Name = s;
                                 SaveData();
                             }
                             else

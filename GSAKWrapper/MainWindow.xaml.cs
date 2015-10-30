@@ -1,7 +1,10 @@
-﻿using Microsoft.Win32;
+﻿using GSAKWrapper.Commands;
+using GSAKWrapper.FlowSequences;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
@@ -9,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Security;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -28,12 +32,21 @@ namespace GSAKWrapper
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         internal delegate void ProcessArgDelegate(String arg);
         internal static ProcessArgDelegate ProcessArg;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ObservableCollection<string> AvailableDatabases { get; set; }
+
+        private FlowSequence _activeFlowSequence = null;
+        public FlowSequence ActiveFlowSequence
+        {
+            get { return _activeFlowSequence; }
+            set { SetProperty(ref _activeFlowSequence, value); }
+        }
         
         public MainWindow()
         {
@@ -351,5 +364,49 @@ namespace GSAKWrapper
             e.Handled = true;
         }
 
+        private void Button_EditFlowSequences(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.WindowFlowSequenceEditor();
+            dlg.ShowDialog();
+        }
+
+        private AsyncDelegateCommand _executeSequenceCommand;
+        public AsyncDelegateCommand ExecuteSequenceCommand
+        {
+            get
+            {
+                if (_executeSequenceCommand == null)
+                {
+                    _executeSequenceCommand = new AsyncDelegateCommand(param => ExecuteActiveFlowAsync(),
+                        param => ActiveFlowSequence!=null);
+                }
+                return _executeSequenceCommand;
+            }
+        }
+        public async Task ExecuteActiveFlowAsync()
+        {
+            if (ActiveFlowSequence != null)
+            {
+                await FlowSequences.Manager.Instance.RunFowSequence(ActiveFlowSequence);
+            }
+        }
+
+        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string name = "")
+        {
+            if (!EqualityComparer<T>.Default.Equals(field, value))
+            {
+                field = value;
+                var handler = PropertyChanged;
+                if (handler != null)
+                {
+                    handler(this, new PropertyChangedEventArgs(name));
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
