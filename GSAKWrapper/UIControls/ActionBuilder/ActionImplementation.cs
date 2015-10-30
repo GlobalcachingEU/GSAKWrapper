@@ -167,7 +167,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         public void SelectGeocachesOnWhereClause(string inputTableName, string targetTableName, string whereClause, string innerJoins = "")
         {
-            DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select distinct Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode {2} where {3}", targetTableName, inputTableName, innerJoins ?? "", whereClause));
+            DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select distinct main.Caches.Code as gccode from main.Caches inner join {1} on main.Caches.Code = {1}.gccode {2} where {3}", targetTableName, inputTableName, innerJoins ?? "", whereClause));
         }
 
         public void UpdateCachesFromInputTable(string setters)

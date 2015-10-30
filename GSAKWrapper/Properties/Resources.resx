@@ -492,4 +492,22 @@
   <data name="NewVersionAvailable" xml:space="preserve">
     <value>New version available</value>
   </data>
+  <data name="LogEncoded" xml:space="preserve">
+    <value>Log encoded</value>
+  </data>
+  <data name="LogText" xml:space="preserve">
+    <value>Log text</value>
+  </data>
+  <data name="InIgnoreListOfDatabase" xml:space="preserve">
+    <value>In ignore list of other database</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="PresentInOtherDatabase" xml:space="preserve">
+    <value>Present in other database</value>
+  </data>
+  <data name="UserFlagInOtherDatabase" xml:space="preserve">
+    <value>User flag set in other database</value>
+  </data>
 </root>

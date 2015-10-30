@@ -155,7 +155,11 @@ namespace GSAKWrapper
                     newVersionUrl.Visibility = System.Windows.Visibility.Visible;
                 }
 
+#if DEBUG
+                //if (Settings.Settings.Default.VersionCheckedAtDay != DateTime.Now.Day)
+#else
                 if (Settings.Settings.Default.VersionCheckedAtDay != DateTime.Now.Day)
+#endif
                 {
                     var thrd = new Thread(new ThreadStart(this.CheckForNewVersionThreadMethod));
                     thrd.IsBackground = true;
@@ -176,8 +180,18 @@ namespace GSAKWrapper
                 using (WebClient webClient = new WebClient())
                 {
                     webClient.Headers["User-Agent"] = "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.2.6) Gecko/20100625 Firefox/3.6.6 (.NET CLR 3.5.30729)";
+#if DEBUG
+                    //var s = webClient.DownloadString("https://raw.githubusercontent.com/GlobalcachingEU/GSAKWrapper/master/Release");
+                    Thread.Sleep(2000);
+                    var s = @"<?xml version=""1.0"" encoding=""utf-8""?>
+<items>
+  <item name=""version"" value=""0.0.3.0"" />
+  <item name=""url"" value=""https://github.com/GlobalcachingEU/GSAKWrapper/releases"" />
+</items>
+";
+#else
                     var s = webClient.DownloadString("https://raw.githubusercontent.com/GlobalcachingEU/GSAKWrapper/master/Release");
-
+#endif
                     XmlDocument doc = new XmlDocument();
                     doc.LoadXml(s);
                     XmlElement root = doc.DocumentElement;
@@ -218,13 +232,12 @@ namespace GSAKWrapper
                     }));
                     break;
                 case "NewVersionChecked":
-
                     if (Settings.Settings.Default.ReleaseVersion > Settings.Settings.Default.ApplicationVersion)
                     {
-                        Dispatcher.Invoke(new Action(() =>
+                        Dispatcher.BeginInvoke(new Action(() =>
                         {
                             newVersionUrl.Visibility = System.Windows.Visibility.Visible;
-                        }));
+                        }), System.Windows.Threading.DispatcherPriority.ContextIdle, null);
                     }
                     break;
             }

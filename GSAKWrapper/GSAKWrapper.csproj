@@ -123,6 +123,11 @@
     <Compile Include="Settings\MainWindowSettings.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionUserFlagInOtherDatabase.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionPresentInOtherDatabase.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionInIgnoreList.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLogText.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLogEncoded.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionLogDate.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionLogByUser.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionChildWaypointFlag.cs" />

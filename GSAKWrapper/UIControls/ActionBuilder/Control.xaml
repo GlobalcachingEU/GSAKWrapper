@@ -68,50 +68,56 @@
             </Grid.RowDefinitions>
             <TabControl Grid.Row="1">
                 <TabItem Header="{l:Translate General}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionPanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="{l:Translate Dates}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionDatesPanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="{l:Translate Other}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionOtherPanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="{l:Translate Logs}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionLogsPanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="{l:Translate Children}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionChildrenPanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="{l:Translate Attributes}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionAttributesPanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="{l:Translate Where}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionWherePanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
                 <TabItem Header="{l:Translate Custom}">
-                    <ScrollViewer Grid.Row="1">
+                    <ScrollViewer>
                         <StackPanel x:Name="conditionCustomPanel" IsEnabled="{Binding IsFlowActive}">
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="{l:Translate Extra}">
+                    <ScrollViewer>
+                        <StackPanel x:Name="conditionExtraPanel" IsEnabled="{Binding IsFlowActive}">
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
