@@ -45,5 +45,30 @@ namespace GSAKWrapper.Settings
             get { return new GridLength(double.Parse(GetProperty("250"), CultureInfo.InvariantCulture)); }
             set { SetProperty(value.Value.ToString(CultureInfo.InvariantCulture)); }
         }
+
+        public System.Windows.Controls.DataGridLength FlowSequenceEditorSequenceDatabaseWidth
+        {
+            get { return new System.Windows.Controls.DataGridLength(double.Parse(GetProperty("100"), CultureInfo.InvariantCulture), System.Windows.Controls.DataGridLengthUnitType.Pixel); }
+            set { SetProperty(value.Value.ToString(CultureInfo.InvariantCulture)); }
+        }
+
+        public System.Windows.Controls.DataGridLength FlowSequenceEditorSequenceNameWidth
+        {
+            get { return new System.Windows.Controls.DataGridLength(double.Parse(GetProperty("100"), CultureInfo.InvariantCulture), System.Windows.Controls.DataGridLengthUnitType.Pixel); }
+            set { SetProperty(value.Value.ToString(CultureInfo.InvariantCulture)); }
+        }
+
+        public System.Windows.Controls.DataGridLength FlowSequenceEditorFlowDatabaseWidth
+        {
+            get { return new System.Windows.Controls.DataGridLength(double.Parse(GetProperty("100"), CultureInfo.InvariantCulture), System.Windows.Controls.DataGridLengthUnitType.Pixel); }
+            set { SetProperty(value.Value.ToString(CultureInfo.InvariantCulture)); }
+        }
+
+        public System.Windows.Controls.DataGridLength FlowSequenceEditorFlowNameWidth
+        {
+            get { return new System.Windows.Controls.DataGridLength(double.Parse(GetProperty("100"), CultureInfo.InvariantCulture), System.Windows.Controls.DataGridLengthUnitType.Pixel); }
+            set { SetProperty(value.Value.ToString(CultureInfo.InvariantCulture)); }
+        }
+
     }
 }

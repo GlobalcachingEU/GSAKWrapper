@@ -128,6 +128,7 @@
     <Compile Include="Settings\MainWindowSettings.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataContains.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserFlagInOtherDatabase.cs" />

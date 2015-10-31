@@ -88,6 +88,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to ignore list.
+        /// </summary>
+        internal static string AddToIgnoreList {
+            get {
+                return ResourceManager.GetString("AddToIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Archived.
         /// </summary>
         internal static string Archived {
@@ -556,6 +565,16 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The database to execute the flow on.
+        ///Leave empty to use the default database of the sequence..
+        /// </summary>
+        internal static string FlowDatabaseWithinSequence {
+            get {
+                return ResourceManager.GetString("FlowDatabaseWithinSequence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Flow {0} finished in {1} seconds.
         /// </summary>
         internal static string FlowFinishedIn {
@@ -570,6 +589,15 @@ namespace GSAKWrapper.Properties {
         internal static string FlowName {
             get {
                 return ResourceManager.GetString("FlowName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Flows.
+        /// </summary>
+        internal static string Flows {
+            get {
+                return ResourceManager.GetString("Flows", resourceCulture);
             }
         }
         
@@ -822,6 +850,16 @@ namespace GSAKWrapper.Properties {
         internal static string Latitude {
             get {
                 return ResourceManager.GetString("Latitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default database to execute flows on.
+        ///Leave empty to use the active database..
+        /// </summary>
+        internal static string LeaveEmptyForActiveDatabase {
+            get {
+                return ResourceManager.GetString("LeaveEmptyForActiveDatabase", resourceCulture);
             }
         }
         

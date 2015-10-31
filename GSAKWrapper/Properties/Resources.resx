@@ -534,4 +534,18 @@
   <data name="NewFlowSequence" xml:space="preserve">
     <value>New flow sequence</value>
   </data>
+  <data name="Flows" xml:space="preserve">
+    <value>Flows</value>
+  </data>
+  <data name="FlowDatabaseWithinSequence" xml:space="preserve">
+    <value>The database to execute the flow on.
+Leave empty to use the default database of the sequence.</value>
+  </data>
+  <data name="LeaveEmptyForActiveDatabase" xml:space="preserve">
+    <value>Default database to execute flows on.
+Leave empty to use the active database.</value>
+  </data>
+  <data name="AddToIgnoreList" xml:space="preserve">
+    <value>Add to ignore list</value>
+  </data>
 </root>

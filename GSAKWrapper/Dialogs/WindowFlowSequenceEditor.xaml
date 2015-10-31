@@ -21,6 +21,7 @@
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
             <StackPanel>
+                <TextBlock Text="{l:Translate FlowSequences}" HorizontalAlignment="Center" FontWeight="Bold" />
                 <StackPanel Orientation="Horizontal">
                     <Button Margin="4" Grid.Column="3" Height="20" Width="20" ToolTip="{l:Translate NewFlowSequence}" Click="Button_Click">
                         <Image Width="16" Height="16" Source="/Resources/General/new.png" />
@@ -31,11 +32,11 @@
                 </StackPanel>
                 <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding FlowSequences, Source={x:Static fs:Manager.Instance}}" SelectedItem="{Binding SelectedFlowSequence, Mode=TwoWay}">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Binding="{Binding Name}" Header="{l:Translate Name}" Width="*" />
-                        <DataGridTemplateColumn Header="{l:Translate Database}" Width="100">
+                        <DataGridTextColumn Binding="{Binding Name}" Header="{l:Translate Name}" Width="{Binding FlowSequenceEditorSequenceNameWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+                        <DataGridTemplateColumn Header="{l:Translate Database}" Width="{Binding FlowSequenceEditorSequenceDatabaseWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Database}" />
+                                    <TextBlock Text="{Binding Database}" ToolTip="{l:Translate LeaveEmptyForActiveDatabase}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
@@ -51,6 +52,7 @@
         <GridSplitter Background="#FF293955" Grid.Row="1" Grid.Column="1" Width="5" HorizontalAlignment="Right" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"/>
         <Grid Grid.Column="2">
             <StackPanel>
+                <TextBlock Text="{l:Translate Flows}" HorizontalAlignment="Center" FontWeight="Bold" />
                 <StackPanel Orientation="Horizontal">
                     <Button Margin="4" Grid.Column="3" Height="20" Width="20" ToolTip="{l:Translate AddFlow}" Click="Button_Click_10">
                         <Image Width="16" Height="16" Source="/Resources/General/add.png" />
@@ -61,7 +63,7 @@
                 </StackPanel>
                 <DataGrid  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=SelectedFlowSequence.FlowSequenceItems, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding SelectedFlowSequenceItem, Mode=TwoWay}">
                     <DataGrid.Columns>
-                        <DataGridTemplateColumn Header="{l:Translate FlowName}" Width="100">
+                        <DataGridTemplateColumn Header="{l:Translate FlowName}" Width="{Binding FlowSequenceEditorFlowNameWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding FlowName}" />
@@ -73,10 +75,10 @@
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="{l:Translate Database}" Width="100">
+                        <DataGridTemplateColumn Header="{l:Translate Database}" Width="{Binding FlowSequenceEditorFlowDatabaseWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Database}" />
+                                    <TextBlock Text="{Binding Database}" ToolTip="{l:Translate FlowDatabaseWithinSequence}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
