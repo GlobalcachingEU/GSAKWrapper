@@ -101,7 +101,7 @@ namespace GSAKWrapper
 
                     IsolatedStorageFileStream isoStream1 = new IsolatedStorageFileStream(isolatedStorageFileName, FileMode.Create, isoStore);
                     StreamWriter sw = new StreamWriter(isoStream1);
-                    string arg = args[1];
+                    string arg = string.Join("*", args);
                     sw.Write(arg);
                     sw.Close();
                 }
@@ -120,7 +120,7 @@ namespace GSAKWrapper
                 string[] args = Environment.GetCommandLineArgs();
                 if (1 < args.Length)
                 {
-                    Application.Current.Resources[WpfSingleInstance.StartArgKey] = args[1];
+                    Application.Current.Resources[WpfSingleInstance.StartArgKey] = string.Join("*", args);
                 }
             }
             catch
@@ -143,12 +143,12 @@ namespace GSAKWrapper
 
                 IsolatedStorageFileStream isoStream1 = new IsolatedStorageFileStream(isolatedStorageFileName, FileMode.OpenOrCreate, isoStore);
                 StreamReader sr = new StreamReader(isoStream1);
-                string arg = sr.ReadToEnd();
+                string[] args = sr.ReadToEnd().Split(new char[]{'*'});
                 sr.Close();
 
                 isoStore.DeleteFile(isolatedStorageFileName);
 
-                MainWindow.ProcessArg(arg);
+                MainWindow.ProcessArg(args);
             }
             catch
             {

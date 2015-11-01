@@ -55,7 +55,7 @@ namespace GSAKWrapper.UIControls
         private string _inputText;
         public string InputText
         {
-            get { return _inputText ?? ""; }
+            get { return (_inputText ?? "").Replace("*",""); }
             set { SetProperty(ref _inputText, value); }
         }
 
@@ -114,6 +114,10 @@ namespace GSAKWrapper.UIControls
             {
                 FocusManager.SetFocusedElement(this, NoButton);
                 NoButton_Click(this, null);
+                e.Handled = true;
+            }
+            else if (e.Key == Key.Multiply)
+            {
                 e.Handled = true;
             }
         }

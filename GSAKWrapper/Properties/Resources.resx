@@ -548,4 +548,16 @@ Leave empty to use the active database.</value>
   <data name="AddToIgnoreList" xml:space="preserve">
     <value>Add to ignore list</value>
   </data>
+  <data name="InstallDefaultGSAKWrapperMacro" xml:space="preserve">
+    <value>Install default GSAK Wrapper macro</value>
+  </data>
+  <data name="InstallMacroForThisFlow" xml:space="preserve">
+    <value>Install GSAK macro for this flow</value>
+  </data>
+  <data name="Macro" xml:space="preserve">
+    <value>Macro</value>
+  </data>
+  <data name="InstallMacroForThisSequence" xml:space="preserve">
+    <value>Install GSAK macro for this sequence</value>
+  </data>
 </root>

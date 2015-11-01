@@ -23,31 +23,36 @@
         <StackPanel Grid.Row="0">
             <Menu>
                 <MenuItem Header="{l:Translate Language}">
-                    <MenuItem x:Name="menu14" Header="{l:Translate OriginalText}" Click="MenuItem_Click_2"  />
-                    <MenuItem x:Name="menu15" Header="{l:Translate English}" Click="MenuItem_Click_3">
+                    <MenuItem Header="{l:Translate OriginalText}" Click="MenuItem_Click_2"  />
+                    <MenuItem Header="{l:Translate English}" Click="MenuItem_Click_3">
                         <MenuItem.Icon>
                             <Image Source="/Resources/General/en.gif" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="menu18" Header="{l:Translate Dutch}" Click="MenuItem_Click_6">
+                    <MenuItem Header="{l:Translate Dutch}" Click="MenuItem_Click_6">
                         <MenuItem.Icon>
                             <Image Source="/Resources/General/nl.gif" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="menu19" Header="{l:Translate German}" Click="MenuItem_Click_13">
+                    <MenuItem Header="{l:Translate German}" Click="MenuItem_Click_13">
                         <MenuItem.Icon>
                             <Image Source="/Resources/General/de.gif" />
                         </MenuItem.Icon>
                     </MenuItem>
-                    <MenuItem x:Name="menu20" Header="{l:Translate French}" Click="MenuItem_Click_16">
+                    <MenuItem Header="{l:Translate French}" Click="MenuItem_Click_16">
                         <MenuItem.Icon>
                             <Image Source="/Resources/General/fr.gif" />
                         </MenuItem.Icon>
                     </MenuItem>
                 </MenuItem>
+                <MenuItem Header="{l:Translate Macro}">
+                    <MenuItem Header="{l:Translate InstallDefaultGSAKWrapperMacro}" Click="menua47_Click" />
+                    <MenuItem Header="{l:Translate InstallMacroForThisFlow}" Click="menux48_Click" IsEnabled="{Binding ElementName=flowBuilder, Path=IsFlowActive}" />
+                    <MenuItem Header="{l:Translate InstallMacroForThisSequence}" Click="menux49_Click" IsEnabled="{Binding IsFlowSequenceActive}" />
+                </MenuItem>
                 <MenuItem Header="{l:Translate Help}">
-                    <MenuItem x:Name="menua37" Header="{l:Translate Wiki}" Click="menua37_Click" />
-                    <MenuItem x:Name="menux27" Header="{l:Translate About}" Click="menux27_Click" />
+                    <MenuItem Header="{l:Translate Wiki}" Click="menua37_Click" />
+                    <MenuItem Header="{l:Translate About}" Click="menux27_Click" />
                 </MenuItem>
             </Menu>
             <Grid>
@@ -81,7 +86,7 @@
                 </StackPanel>
             </Grid>
         </StackPanel>
-        <ui:Control Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <ui:Control x:Name="flowBuilder" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
         <Grid Grid.Row="2" Background="Blue">
             <TextBlock Margin="5" Foreground="White" FontWeight="Bold" Text="{Binding StatusText, Source={x:Static p:ApplicationData.Instance}}" />
         </Grid>

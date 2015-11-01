@@ -782,6 +782,33 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Install default GSAK Wrapper macro.
+        /// </summary>
+        internal static string InstallDefaultGSAKWrapperMacro {
+            get {
+                return ResourceManager.GetString("InstallDefaultGSAKWrapperMacro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install GSAK macro for this flow.
+        /// </summary>
+        internal static string InstallMacroForThisFlow {
+            get {
+                return ResourceManager.GetString("InstallMacroForThisFlow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install GSAK macro for this sequence.
+        /// </summary>
+        internal static string InstallMacroForThisSequence {
+            get {
+                return ResourceManager.GetString("InstallMacroForThisSequence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is owner.
         /// </summary>
         internal static string IsOwner {
@@ -959,6 +986,15 @@ namespace GSAKWrapper.Properties {
         internal static string Longitude {
             get {
                 return ResourceManager.GetString("Longitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Macro.
+        /// </summary>
+        internal static string Macro {
+            get {
+                return ResourceManager.GetString("Macro", resourceCulture);
             }
         }
         

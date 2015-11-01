@@ -34,7 +34,7 @@ namespace GSAKWrapper
     /// </summary>
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        internal delegate void ProcessArgDelegate(String arg);
+        internal delegate void ProcessArgDelegate(string[] args);
         internal static ProcessArgDelegate ProcessArg;
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -45,12 +45,30 @@ namespace GSAKWrapper
         public FlowSequence ActiveFlowSequence
         {
             get { return _activeFlowSequence; }
-            set { SetProperty(ref _activeFlowSequence, value); }
+            set 
+            {
+                if (SetProperty(ref _activeFlowSequence, value))
+                {
+                    IsFlowSequenceActive = ActiveFlowSequence != null;
+                }
+            }
+        }
+
+        public bool IsFlowSequenceActive
+        {
+            get { return ActiveFlowSequence != null; }
+            set
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsFlowSequenceActive"));
+                }
+            }
         }
         
         public MainWindow()
         {
-            ProcessArg = delegate(String arg)
+            ProcessArg = delegate(string[] args)
             {
                 //process arguments
             };
@@ -198,7 +216,7 @@ namespace GSAKWrapper
                     Thread.Sleep(2000);
                     var s = @"<?xml version=""1.0"" encoding=""utf-8""?>
 <items>
-  <item name=""version"" value=""0.0.3.0"" />
+  <item name=""version"" value=""0.1.1.0"" />
   <item name=""url"" value=""https://github.com/GlobalcachingEU/GSAKWrapper/releases"" />
 </items>
 ";
@@ -408,6 +426,73 @@ namespace GSAKWrapper
             {
                 return false;
             }
+        }
+
+        private void menua47_Click(object sender, RoutedEventArgs e)
+        {
+            //default macro
+            System.Diagnostics.Process.Start(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath), "GSAKWrapper.gsk"));
+            e.Handled = true;
+        }
+
+        private void menux48_Click(object sender, RoutedEventArgs e)
+        {
+            if (flowBuilder.ActiveActionFlow != null)
+            {
+                //create a flow specific macro
+                var txt = GetDefaultGSKFile();
+                try
+                {
+                    var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath),"GSAKWrapper - flow.gsk");
+                    if (!string.IsNullOrEmpty(txt))
+                    {
+                        txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", flowBuilder.ActiveActionFlow.Name));
+                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam\"-d=\" + Quote($_CurrentDatabase) + \" -f=\" + Quote(\"{0}\")", flowBuilder.ActiveActionFlow.Name));
+                    }
+                    System.IO.File.WriteAllText(fn, txt);
+                    System.Diagnostics.Process.Start(fn);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private void menux49_Click(object sender, RoutedEventArgs e)
+        {
+            if (ActiveFlowSequence != null)
+            {
+                //create a sequence specific macro
+                var txt = GetDefaultGSKFile();
+                try
+                {
+                    var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath), "GSAKWrapper - sequence.gsk");
+                    if (!string.IsNullOrEmpty(txt))
+                    {
+                        txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", ActiveFlowSequence.Name));
+                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam\"-d=\" + Quote($_CurrentDatabase) + \" -s=\" + Quote(\"{0}\")", ActiveFlowSequence.Name));
+                    }
+                    System.IO.File.WriteAllText(fn, txt);
+                    System.Diagnostics.Process.Start(fn);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private string GetDefaultGSKFile()
+        {
+            string result = null;
+            try
+            {
+                var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath), "GSAKWrapper.gsk");
+                result = System.IO.File.ReadAllText(fn);
+            }
+            catch
+            {
+            }
+            return result;
         }
     }
 }
