@@ -1,0 +1,35 @@
+﻿#*******************************************
+# MacVersion = 0.1
+# MacDescription = executes gsak wrapper
+# MacAuthor = Mars Express
+# MacFileName = GSAKWrapper.gsk
+# MacUrl =
+#*******************************************
+
+ 
+$GSAKWrapperfile = "C:\ProgramData\GSAKWrapper\settings.db3"
+$GSAKwrapperExists = FileExists($GSAKWrapperfile)
+If $GSAKwrapperExists = True
+    Gosub Name=ExecuteGSAKWrapper
+else
+    WEB URL="https://github.com/GlobalcachingEU/GSAKWrapper/releases"
+EndIf
+
+
+
+###################
+BEGINSUB Name=ExecuteGSAKWrapper
+	$execParam="-d=" + Quote($_CurrentDatabase)
+	$settingsdb = "C:\programdata\GSAKWrapper\settings.db3"
+	If FileExists($settingsdb)
+    	$result = Sqlite("open", $settingsdb)
+
+    	# get scopename
+    	$_sql = "select  item_value from Settings where item_name='ApplicationPath'"
+    	$GSAKWrapperPath = Sqlite("sql", $_sql)
+
+   	 RUNPGM PGM=$GSAKWrapperPath  parms=$execParam Wait=Yes Hide=No
+
+  	 
+	EndIf
+ENDSUB

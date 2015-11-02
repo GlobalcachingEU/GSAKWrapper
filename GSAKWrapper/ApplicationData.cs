@@ -19,6 +19,8 @@ namespace GSAKWrapper
         public List<DataTypes.GeocacheAttribute> GeocacheAttributes;
         public List<DataTypes.GeocacheType> GeocacheTypes;
         public List<DataTypes.GeocacheContainer> GeocacheContainers;
+        public List<DataTypes.WaypointType> WaypointTypes;
+        public List<DataTypes.LogType> LogTypes;
 
         private int _activityCounter = 0;
         public void BeginActiviy()
@@ -81,6 +83,8 @@ namespace GSAKWrapper
             GeocacheAttributes = new List<DataTypes.GeocacheAttribute>();
             GeocacheTypes = new List<DataTypes.GeocacheType>();
             GeocacheContainers = new List<DataTypes.GeocacheContainer>();
+            WaypointTypes = new List<DataTypes.WaypointType>();
+            LogTypes = new List<DataTypes.LogType>();
 
             //addCacheType(0, "Not present");
             addCacheType(2, "Traditional Cache", 'T');
@@ -112,6 +116,89 @@ namespace GSAKWrapper
             addCacheContainer(5, "Virtual");
             addCacheContainer(6, "Other");
             addCacheContainer(8, "Small");
+
+            //addWaypointType(0, "Unknown");
+            addWaypointType(217, "Parking Area");
+            addWaypointType(220, "Final Location");
+            //addWaypointType(218, "Question to Answer");
+            addWaypointType(218, "Virtual Stage");
+            addWaypointType(452, "Reference Point");
+            //addWaypointType(219, "Stages of a Multicache");
+            addWaypointType(219, "Physical Stage");
+            addWaypointType(221, "Trailhead");
+
+            //addLogType(0, "Unknown", false);
+            addLogType(1, "Unarchive", false);
+            addLogType(2, "Found it", true);
+            addLogType(3, "Didn't find it", false);
+            addLogType(4, "Write note", false);
+            addLogType(5, "Archive", false);
+            addLogType(6, "Archive", false);
+            addLogType(7, "Needs Archived", false);
+            addLogType(8, "Mark Destroyed", false);
+            addLogType(9, "Will Attend", false);
+            addLogType(10, "Attended", true);
+            addLogType(11, "Webcam Photo Taken", true);
+            addLogType(12, "Unarchive", false);
+            addLogType(13, "Retrieve It from a Cache", false);
+            addLogType(14, "Dropped Off", false);
+            addLogType(15, "Transfer", false);
+            addLogType(16, "Mark Missing", false);
+            addLogType(17, "Recovered", false);
+            addLogType(18, "Post Reviewer Note", false);
+            addLogType(19, "Grab It (Not from a Cache)", false);
+            addLogType(20, "Write Jeep 4x4 Contest Essay", false);
+            addLogType(21, "Upload Jeep 4x4 Contest Photo", false);
+            addLogType(22, "Temporarily Disable Listing", false);
+            addLogType(23, "Enable Listing", false);
+            addLogType(24, "Publish Listing", false);
+            addLogType(25, "Retract Listing", false);
+            addLogType(30, "Uploaded Goal Photo for \"A True Original\"", false);
+            addLogType(31, "Uploaded Goal Photo for \"Yellow Jeep Wrangler\"", false);
+            addLogType(32, "Uploaded Goal Photo for \"Construction Site\"", false);
+            addLogType(33, "Uploaded Goal Photo for \"State Symbol\"", false);
+            addLogType(34, "Uploaded Goal Photo for \"American Flag\"", false);
+            addLogType(35, "Uploaded Goal Photo for \"Landmark/Memorial\"", false);
+            addLogType(36, "Uploaded Goal Photo for \"Camping\"", false);
+            addLogType(37, "Uploaded Goal Photo for \"Peaks and Valleys\"", false);
+            addLogType(38, "Uploaded Goal Photo for \"Hiking\"", false);
+            addLogType(39, "Uploaded Goal Photo for \"Ground Clearance\"", false);
+            addLogType(40, "Uploaded Goal Photo for \"Water Fording\"", false);
+            addLogType(41, "Uploaded Goal Photo for \"Traction\"", false);
+            addLogType(42, "Uploaded Goal Photo for \"Tow Package\"", false);
+            addLogType(43, "Uploaded Goal Photo for \"Ultimate Makeover\"", false);
+            addLogType(44, "Uploaded Goal Photo for \"Paint Job\"", false);
+            addLogType(45, "Needs Maintenance", false);
+            addLogType(46, "Owner Maintenance", false);
+            addLogType(47, "Update Coordinates", false);
+            addLogType(48, "Discovered It", false);
+            addLogType(49, "Uploaded Goal Photo for \"Discovery\"", false);
+            addLogType(50, "Uploaded Goal Photo for \"Freedom\"", false);
+            addLogType(51, "Uploaded Goal Photo for \"Adventure\"", false);
+            addLogType(52, "Uploaded Goal Photo for \"Camaraderie\"", false);
+            addLogType(53, "Uploaded Goal Photo for \"Heritage\"", false);
+            addLogType(54, "Reviewer Note", false);
+            addLogType(55, "Lock User (Ban)", false);
+            addLogType(56, "Unlock User (Unban)", false);
+            addLogType(57, "Groundspeak Note", false);
+            addLogType(58, "Uploaded Goal Photo for \"Fun\"", false);
+            addLogType(59, "Uploaded Goal Photo for \"Fitness\"", false);
+            addLogType(60, "Uploaded Goal Photo for \"Fighting Diabetes\"", false);
+            addLogType(61, "Uploaded Goal Photo for \"American Heritage\"", false);
+            addLogType(62, "Uploaded Goal Photo for \"No Boundaries\"", false);
+            addLogType(63, "Uploaded Goal Photo for \"Only in a Jeep\"", false);
+            addLogType(64, "Uploaded Goal Photo for \"Discover New Places\"", false);
+            addLogType(65, "Uploaded Goal Photo for \"Definition of Freedom\"", false);
+            addLogType(66, "Uploaded Goal Photo for \"Adventure Starts Here\"", false);
+            addLogType(67, "Needs Attention", false);
+            addLogType(68, "Post Reviewer Note", false);
+            addLogType(69, "Move To Collection", false);
+            addLogType(70, "Move To Inventory", false);
+            addLogType(71, "Throttle User", false);
+            addLogType(72, "Enter CAPTCHA", false);
+            addLogType(73, "Change Username", false);
+            addLogType(74, "Announcement", false);
+            addLogType(75, "Visited", false);
 
             //addCacheAttribute(0, "Unknown");
             addCacheAttribute(1, "Dogs");
@@ -249,5 +336,21 @@ namespace GSAKWrapper
             GeocacheContainers.Add(attr);
         }
 
+        protected void addWaypointType(int id, string name)
+        {
+            var attr = new DataTypes.WaypointType();
+            attr.ID = id;
+            attr.Name = name;
+            WaypointTypes.Add(attr);
+        }
+
+        protected void addLogType(int id, string name, bool asFound)
+        {
+            var lt = new DataTypes.LogType();
+            lt.ID = id;
+            lt.Name = name;
+            lt.AsFound = asFound;
+            LogTypes.Add(lt);
+        }
     }
 }

@@ -60,6 +60,8 @@ namespace GSAKWrapper.Localization
                 yield return new CultureInfo("");
                 yield return new CultureInfo("en");
                 yield return new CultureInfo("nl");
+                yield return new CultureInfo("de");
+                yield return new CultureInfo("fr");
             }
         }
 

@@ -2,31 +2,52 @@
 <resources>
   <string name="about" value="" />
   <string name="actions" value="" />
+  <string name="add flow" value="" />
+  <string name="add to ignore list" value="" />
   <string name="archived" value="" />
   <string name="attributes" value="" />
   <string name="cancel" value="" />
   <string name="changed date" value="" />
   <string name="check" value="" />
+  <string name="child distance from location (km)" value="" />
+  <string name="child waypoint by user" value="" />
+  <string name="child waypoint code" value="" />
+  <string name="child waypoint comment" value="" />
+  <string name="child waypoint date" value="" />
+  <string name="child waypoint flag" value="" />
+  <string name="child waypoint latitude" value="" />
+  <string name="child waypoint longitude" value="" />
+  <string name="child waypoint name" value="" />
+  <string name="child waypoint prefix" value="" />
+  <string name="child waypoint type" value="" />
+  <string name="child waypoints" value="" />
   <string name="childload" value="" />
   <string name="children" value="" />
   <string name="clear user flag" value="" />
+  <string name="compare to" value="" />
+  <string name="compare two dates" value="" />
   <string name="conditions" value="" />
   <string name="copy to database" value="" />
   <string name="country" value="" />
   <string name="county" value="" />
   <string name="created date" value="" />
   <string name="custom" value="" />
+  <string name="custom numeric field" value="" />
+  <string name="custom text field" value="" />
   <string name="database" value="" />
   <string name="dates" value="" />
+  <string name="default database to execute flows on.&#xD;&#xA;leave empty to use the active database." value="" />
   <string name="delete" value="" />
   <string name="delete all geocaches" value="" />
   <string name="delete flow {0}?" value="" />
   <string name="delete from database" value="" />
+  <string name="deutsch" value="" />
   <string name="difficulty" value="" />
   <string name="distance from center (km)" value="" />
   <string name="distance from location (km)" value="" />
   <string name="dnf (did not find)" value="" />
   <string name="dnf date" value="" />
+  <string name="edit flow sequences" value="" />
   <string name="elevation" value="" />
   <string name="english" value="" />
   <string name="error" value="" />
@@ -34,16 +55,23 @@
   <string name="execute once" value="" />
   <string name="export active flow" value="" />
   <string name="export all flows" value="" />
+  <string name="extra" value="" />
   <string name="favorite points" value="" />
   <string name="finished flow" value="" />
   <string name="finishing action" value="" />
   <string name="flow {0} finished in {1} seconds" value="" />
+  <string name="flow name" value="" />
+  <string name="flow sequence {0} finished in {1} seconds" value="" />
+  <string name="flow sequences" value="" />
+  <string name="flows" value="" />
   <string name="found" value="" />
   <string name="found by me date" value="" />
   <string name="found count" value="" />
+  <string name="français" value="" />
   <string name="ftf (first to find)" value="" />
   <string name="gc note" value="" />
   <string name="general" value="" />
+  <string name="geocache code" value="" />
   <string name="geocache container" value="" />
   <string name="geocache name" value="" />
   <string name="geocache type" value="" />
@@ -54,6 +82,10 @@
   <string name="help" value="" />
   <string name="import flows" value="" />
   <string name="in" value="" />
+  <string name="in ignore list of other database" value="" />
+  <string name="install default gsak wrapper macro" value="" />
+  <string name="install gsak macro for this flow" value="" />
+  <string name="install gsak macro for this sequence" value="" />
   <string name="is owner" value="" />
   <string name="ispremium (pmo)" value="" />
   <string name="language" value="" />
@@ -63,14 +95,24 @@
   <string name="last user date" value="" />
   <string name="latitude" value="" />
   <string name="locked" value="" />
+  <string name="log date" value="" />
+  <string name="log date by user" value="" />
+  <string name="log encoded" value="" />
+  <string name="log text" value="" />
+  <string name="log type" value="" />
+  <string name="log type by user" value="" />
+  <string name="logged by user" value="" />
   <string name="logs" value="" />
   <string name="long htm" value="" />
   <string name="longitude" value="" />
+  <string name="macro" value="" />
   <string name="macroflag" value="" />
   <string name="name" value="" />
   <string name="nederlands" value="" />
   <string name="new" value="" />
+  <string name="new flow sequence" value="" />
   <string name="new folder" value="" />
+  <string name="new version available" value="" />
   <string name="number of logs" value="" />
   <string name="ok" value="" />
   <string name="original text" value="" />
@@ -81,6 +123,7 @@
   <string name="placed by" value="" />
   <string name="placed date" value="" />
   <string name="preparing action" value="" />
+  <string name="present in other database" value="" />
   <string name="refresh" value="" />
   <string name="rename" value="" />
   <string name="running action" value="" />
@@ -97,7 +140,11 @@
   <string name="symbol" value="" />
   <string name="temporarily disabled" value="" />
   <string name="terrain" value="" />
+  <string name="the database to execute the flow on.&#xD;&#xA;leave empty to use the default database of the sequence." value="" />
+  <string name="user data numeric" value="" />
+  <string name="user data text" value="" />
   <string name="user flag" value="" />
+  <string name="user flag set in other database" value="" />
   <string name="user note date" value="" />
   <string name="watch" value="" />
   <string name="where" value="" />

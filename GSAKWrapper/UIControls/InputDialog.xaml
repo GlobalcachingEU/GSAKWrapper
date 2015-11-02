@@ -19,7 +19,7 @@
             VerticalAlignment="Center">
             <StackPanel>
                 <TextBlock Margin="5" Text="{Binding CaptionText}" HorizontalAlignment="Center" />
-                <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="InputTextBox" Text="{Binding InputText, Mode=TwoWay}" PreviewKeyDown="InputTextBox_PreviewKeyDown" />
+                <TextBox MinWidth="150" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="InputTextBox" Text="{Binding InputText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" PreviewKeyDown="InputTextBox_PreviewKeyDown" />
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button x:Name="YesButton" Margin="5" Content="{l:Translate OK}" Background="{x:Null}" Click="YesButton_Click"/>
                     <Button x:Name="NoButton" Margin="5" Content="{l:Translate Cancel}" Background="{x:Null}" Click="NoButton_Click" />

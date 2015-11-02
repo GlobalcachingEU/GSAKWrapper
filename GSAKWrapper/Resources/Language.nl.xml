@@ -1,49 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="about" value="" />
-  <string name="actions" value="" />
+  <string name="about" value="Over" />
+  <string name="actions" value="Acties" />
+  <string name="add flow" value="Voeg schema toe" />
+  <string name="add to ignore list" value="Toevoegen aan negeerlijst" />
   <string name="archived" value="Gearchiveerd" />
   <string name="attributes" value="Attributen" />
   <string name="cancel" value="Annuleren" />
   <string name="changed date" value="Datum aangepast" />
-  <string name="check" value="" />
+  <string name="check" value="Check" />
+  <string name="child distance from location (km)" value="WP afstand van locatie (km)" />
+  <string name="child waypoint by user" value="WP door gebruiker" />
+  <string name="child waypoint code" value="WP code" />
+  <string name="child waypoint comment" value="WP opmerking" />
+  <string name="child waypoint date" value="WP datum" />
+  <string name="child waypoint flag" value="WP markering" />
+  <string name="child waypoint latitude" value="WP breedtegraad" />
+  <string name="child waypoint longitude" value="WP lengtegraad" />
+  <string name="child waypoint name" value="WP naam" />
+  <string name="child waypoint prefix" value="WP prefix" />
+  <string name="child waypoint type" value="WP type" />
+  <string name="child waypoints" value="Waypoints" />
   <string name="childload" value="ChildLoad" />
-  <string name="children" value="" />
+  <string name="children" value="Waypoints" />
   <string name="clear user flag" value="Wis gebruikers vlag" />
+  <string name="compare to" value="Vergelijken met" />
+  <string name="compare two dates" value="Vergelijk twee data" />
   <string name="conditions" value="Voorwaarden" />
-  <string name="copy to database" value="" />
+  <string name="copy to database" value="Kopieer naar database" />
   <string name="country" value="Land" />
   <string name="county" value="Regio" />
   <string name="created date" value="Aanmaakdatum" />
-  <string name="custom" value="" />
+  <string name="custom" value="Aangepast" />
+  <string name="custom numeric field" value="Aangepast numeriek veld" />
+  <string name="custom text field" value="Aangepast tekst veld" />
   <string name="database" value="Database" />
-  <string name="dates" value="" />
+  <string name="dates" value="Data" />
+  <string name="default database to execute flows on.&#xD;&#xA;leave empty to use the active database." value="" />
   <string name="delete" value="Verwijderen" />
-  <string name="delete all geocaches" value="" />
+  <string name="delete all geocaches" value="Verwijder alle geocaches" />
   <string name="delete flow {0}?" value="Verwijder schema {0}?" />
-  <string name="delete from database" value="" />
+  <string name="delete from database" value="Verwijder van database" />
+  <string name="deutsch" value="" />
   <string name="difficulty" value="Moeilijkheid" />
   <string name="distance from center (km)" value="Afstand tot middelpunt (km)" />
   <string name="distance from location (km)" value="Afstand tot locatie (km)" />
   <string name="dnf (did not find)" value="DNF (Niet gevonden log)" />
   <string name="dnf date" value="DNF datum" />
+  <string name="edit flow sequences" value="Bewerk schema lijsten" />
   <string name="elevation" value="Hoogte" />
   <string name="english" value="" />
-  <string name="error" value="" />
+  <string name="error" value="Fout" />
   <string name="execute" value="Uitvoeren" />
-  <string name="execute once" value="" />
+  <string name="execute once" value="Eenmalig uitvoeren" />
   <string name="export active flow" value="Exporteer actieve schema" />
   <string name="export all flows" value="Exporteer alle schema's" />
+  <string name="extra" value="" />
   <string name="favorite points" value="Aantal Favorite punten" />
-  <string name="finished flow" value="" />
-  <string name="finishing action" value="" />
-  <string name="flow {0} finished in {1} seconds" value="" />
+  <string name="finished flow" value="Schema uitgevoerd" />
+  <string name="finishing action" value="Actie afronden" />
+  <string name="flow {0} finished in {1} seconds" value="Schema {0} uitgevoerd in {1} seconden" />
+  <string name="flow name" value="Naam schema" />
+  <string name="flow sequence {0} finished in {1} seconds" value="Schema lijst {0} uitgevoerd in {1} seconden" />
+  <string name="flow sequences" value="Schema lijsten" />
+  <string name="flows" value="Schema's" />
   <string name="found" value="Gevonden" />
   <string name="found by me date" value="Gevonden door mij datum" />
   <string name="found count" value="Aantal keer gevonden" />
+  <string name="français" value="" />
   <string name="ftf (first to find)" value="FTF (First To Find)" />
   <string name="gc note" value="GC notitie" />
-  <string name="general" value="" />
+  <string name="general" value="Algemeen" />
+  <string name="geocache code" value="Geocache code" />
   <string name="geocache container" value="Geocache container" />
   <string name="geocache name" value="Geocache naam" />
   <string name="geocache type" value="Geocache type" />
@@ -54,6 +82,10 @@
   <string name="help" value="" />
   <string name="import flows" value="Importeer schema's" />
   <string name="in" value="" />
+  <string name="in ignore list of other database" value="In negeerlijst van andere database" />
+  <string name="install default gsak wrapper macro" value="Installeer standaard GSAK Wrapper macro" />
+  <string name="install gsak macro for this flow" value="Installeer GSAK Wrapper macro voor deze schema" />
+  <string name="install gsak macro for this sequence" value="Installeer GSAK Wrapper macro voor deze schema lijst" />
   <string name="is owner" value="Is eigenaar" />
   <string name="ispremium (pmo)" value="is Premium (PMO)" />
   <string name="language" value="Taal" />
@@ -63,27 +95,38 @@
   <string name="last user date" value="Messt recente gebruikersdatum" />
   <string name="latitude" value="Breedtegraad" />
   <string name="locked" value="Vastgezet" />
-  <string name="logs" value="" />
+  <string name="log date" value="Logdatum" />
+  <string name="log date by user" value="Logdatum door gebruiker" />
+  <string name="log encoded" value="Log geencodeerd" />
+  <string name="log text" value="Logtekst" />
+  <string name="log type" value="Logtype" />
+  <string name="log type by user" value="Logtype door gebruiker" />
+  <string name="logged by user" value="Gelogd door gebruiker" />
+  <string name="logs" value="Logs" />
   <string name="long htm" value="Lang Htm" />
   <string name="longitude" value="Lengtegraad" />
+  <string name="macro" value="" />
   <string name="macroflag" value="Macro vlag" />
   <string name="name" value="Naam" />
   <string name="nederlands" value="" />
   <string name="new" value="Nieuw" />
+  <string name="new flow sequence" value="Nieuwe schema lijst" />
   <string name="new folder" value="Nieuwe folder" />
+  <string name="new version available" value="Nieuwe versie beschikbaar" />
   <string name="number of logs" value="Aantal logs" />
   <string name="ok" value="OK" />
   <string name="original text" value="Onvertaald" />
-  <string name="other" value="" />
+  <string name="other" value="Andere" />
   <string name="overwrite existing data" value="" />
   <string name="overwrite flow {0}?" value="Schema {0} overschrijven?" />
   <string name="owner name" value="Naam eigenaar" />
   <string name="placed by" value="Geplaatst door" />
   <string name="placed date" value="Geplaatst op datum" />
-  <string name="preparing action" value="" />
+  <string name="preparing action" value="Actie aan het voorbereiden" />
+  <string name="present in other database" value="Aanwezig in andere database" />
   <string name="refresh" value="Ververs" />
   <string name="rename" value="Hernoem" />
-  <string name="running action" value="" />
+  <string name="running action" value="Bezig met actie uitvoeren" />
   <string name="select folder" value="Selecteer folder" />
   <string name="select root data folder" value="Selecteer GSAK database folder" />
   <string name="set user flag" value="Zet gebruikersvlag" />
@@ -97,9 +140,13 @@
   <string name="symbol" value="Symbool" />
   <string name="temporarily disabled" value="Tijdelijk uitgeschakeld" />
   <string name="terrain" value="Terrein" />
+  <string name="the database to execute the flow on.&#xD;&#xA;leave empty to use the default database of the sequence." value="" />
+  <string name="user data numeric" value="Gebruikers data numeriek" />
+  <string name="user data text" value="Gebruikers data tekst" />
   <string name="user flag" value="Gebruikersvlag" />
+  <string name="user flag set in other database" value="UserFlag gezet in andere database" />
   <string name="user note date" value="Gebruikers notitiedatum" />
   <string name="watch" value="Volgt" />
-  <string name="where" value="" />
+  <string name="where" value="Waar" />
   <string name="wiki" value="" />
 </resources>

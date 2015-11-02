@@ -47,7 +47,7 @@
     <StackPanel x:Uid="clientArea" Style="{StaticResource BackgroundStyle}">
         <StackPanel x:Uid="displayArea" Style="{StaticResource DisplayAreaStyle}">
             <StackPanel Orientation="Horizontal">
-                <Image Source="/Resources/globalcaching.png" Width="48" />
+                <Image Source="/Resources/GSAKWrapper.ico" Width="48" />
                 <Label x:Name="productName" x:Uid="productName" Content="{Binding Mode=OneTime, Path=Product}" />
             </StackPanel>
             <StackPanel x:Uid="versionArea" Orientation="Horizontal">
@@ -65,9 +65,9 @@
                 <Button x:Name="okButton" x:Uid="okButton" Style="{StaticResource OkButtonStyle}"
                         Content="{l:Translate OK}" />
                 <Label x:Name="productLink" x:Uid="productLink" Style="{StaticResource LinkLabelStyle}" >
-                    <Hyperlink x:Name="hyperlink" x:Uid="hyperlink" NavigateUri="{Binding Mode=OneTime, Path=Link/@Uri}"  Style="{StaticResource LinkLabelStyle}"
+                    <Hyperlink x:Name="hyperlink" x:Uid="hyperlink" NavigateUri="{Binding Mode=OneTime, Path=LinkUri}"  Style="{StaticResource LinkLabelStyle}"
                                Hyperlink.RequestNavigate="hyperlink_RequestNavigate">
-                        <TextBlock Text="{Binding Mode=OneTime, Path=Link}" />
+                        <TextBlock Text="{Binding Mode=OneTime, Path=LinkText}" />
                     </Hyperlink>
                 </Label>
             </DockPanel>

@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GSAKWrapper")]
-[assembly: AssemblyDescription("GSAK Wrapper is a GSAK database utility that can perform actions on one or more databases without the use of macro's")]
+[assembly: AssemblyDescription("GSAK Wrapper is a GSAK database utility that can perform actions on one or more databases without the use of macro's. The author of GSAK did and does not take part of the development of this application.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Globalcaching")]
 [assembly: AssemblyProduct("GSAKWrapper")]
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.0.2.0")]
-[assembly: AssemblyFileVersion("0.0.2.0")]
+[assembly: AssemblyVersion("0.1.0.0")]
+[assembly: AssemblyFileVersion("0.1.0.0")]

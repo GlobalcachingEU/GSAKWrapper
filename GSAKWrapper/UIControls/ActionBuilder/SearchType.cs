@@ -17,6 +17,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         Where,
         Custom,
         Action,
-        ExecuteOnce
+        ExecuteOnce,
+        Extra,
     }
 }

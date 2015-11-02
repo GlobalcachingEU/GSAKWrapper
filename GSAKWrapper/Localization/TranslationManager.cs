@@ -191,7 +191,7 @@ namespace GSAKWrapper.Localization
             //for each possible language, read file patch and save
             foreach (var l in TranslationProvider.Languages)
             {
-                var emptyList = resourceList.OrderBy(x => x.Original).Distinct().ToList();
+                var emptyList = (from a in resourceList select new LanguageItem(a.Original, "")).OrderBy(x => x.Original).Distinct().ToList();
                 if (l.TwoLetterISOLanguageName.ToLower().Length == 2 &&
                     l.TwoLetterISOLanguageName.ToLower() != "iv")
                 {

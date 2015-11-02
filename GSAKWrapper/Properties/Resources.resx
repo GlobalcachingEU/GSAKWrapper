@@ -423,4 +423,147 @@
   <data name="RunningAction" xml:space="preserve">
     <value>Running action</value>
   </data>
+  <data name="French" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="German" xml:space="preserve">
+    <value>Deutsch</value>
+  </data>
+  <data name="CompareTo" xml:space="preserve">
+    <value>Compare to</value>
+  </data>
+  <data name="CompareTwoDates" xml:space="preserve">
+    <value>Compare two dates</value>
+  </data>
+  <data name="GeocacheCode" xml:space="preserve">
+    <value>Geocache code</value>
+  </data>
+  <data name="ChildWaypoints" xml:space="preserve">
+    <value>Child Waypoints</value>
+  </data>
+  <data name="ChildWaypointCode" xml:space="preserve">
+    <value>Child Waypoint code</value>
+  </data>
+  <data name="ChildWaypointPrefix" xml:space="preserve">
+    <value>Child Waypoint prefix</value>
+  </data>
+  <data name="ChildWaypointType" xml:space="preserve">
+    <value>Child Waypoint type</value>
+  </data>
+  <data name="ChildWaypointLatitude" xml:space="preserve">
+    <value>Child Waypoint latitude</value>
+  </data>
+  <data name="ChildWaypointLongitude" xml:space="preserve">
+    <value>Child Waypoint longitude</value>
+  </data>
+  <data name="ChildWaypointDistanceFromLocationKm" xml:space="preserve">
+    <value>Child distance from location (km)</value>
+  </data>
+  <data name="ChildWaypointByUser" xml:space="preserve">
+    <value>Child Waypoint by user</value>
+  </data>
+  <data name="ChildWaypointDate" xml:space="preserve">
+    <value>Child Waypoint date</value>
+  </data>
+  <data name="ChildWaypointFlag" xml:space="preserve">
+    <value>Child Waypoint flag</value>
+  </data>
+  <data name="ChildWaypointComment" xml:space="preserve">
+    <value>Child Waypoint comment</value>
+  </data>
+  <data name="LogType" xml:space="preserve">
+    <value>Log type</value>
+  </data>
+  <data name="LogByUser" xml:space="preserve">
+    <value>Logged by user</value>
+  </data>
+  <data name="ChildWaypointName" xml:space="preserve">
+    <value>Child Waypoint name</value>
+  </data>
+  <data name="LogTypeByUser" xml:space="preserve">
+    <value>Log type by user</value>
+  </data>
+  <data name="LogDate" xml:space="preserve">
+    <value>Log date</value>
+  </data>
+  <data name="LogDateByUser" xml:space="preserve">
+    <value>Log date by user</value>
+  </data>
+  <data name="NewVersionAvailable" xml:space="preserve">
+    <value>New version available</value>
+  </data>
+  <data name="LogEncoded" xml:space="preserve">
+    <value>Log encoded</value>
+  </data>
+  <data name="LogText" xml:space="preserve">
+    <value>Log text</value>
+  </data>
+  <data name="InIgnoreListOfDatabase" xml:space="preserve">
+    <value>In ignore list of other database</value>
+  </data>
+  <data name="Extra" xml:space="preserve">
+    <value>Extra</value>
+  </data>
+  <data name="PresentInOtherDatabase" xml:space="preserve">
+    <value>Present in other database</value>
+  </data>
+  <data name="UserFlagInOtherDatabase" xml:space="preserve">
+    <value>User flag set in other database</value>
+  </data>
+  <data name="UserDataText" xml:space="preserve">
+    <value>User data text</value>
+  </data>
+  <data name="UserDataNumber" xml:space="preserve">
+    <value>User data numeric</value>
+  </data>
+  <data name="FlowSequenceFinishedIn" xml:space="preserve">
+    <value>Flow sequence {0} finished in {1} seconds</value>
+  </data>
+  <data name="FlowSequences" xml:space="preserve">
+    <value>Flow sequences</value>
+  </data>
+  <data name="AddFlow" xml:space="preserve">
+    <value>Add flow</value>
+  </data>
+  <data name="EditFlowSequences" xml:space="preserve">
+    <value>Edit flow sequences</value>
+  </data>
+  <data name="FlowName" xml:space="preserve">
+    <value>Flow name</value>
+  </data>
+  <data name="NewFlowSequence" xml:space="preserve">
+    <value>New flow sequence</value>
+  </data>
+  <data name="Flows" xml:space="preserve">
+    <value>Flows</value>
+  </data>
+  <data name="FlowDatabaseWithinSequence" xml:space="preserve">
+    <value>The database to execute the flow on.
+Leave empty to use the default database of the sequence.</value>
+  </data>
+  <data name="LeaveEmptyForActiveDatabase" xml:space="preserve">
+    <value>Default database to execute flows on.
+Leave empty to use the active database.</value>
+  </data>
+  <data name="AddToIgnoreList" xml:space="preserve">
+    <value>Add to ignore list</value>
+  </data>
+  <data name="InstallDefaultGSAKWrapperMacro" xml:space="preserve">
+    <value>Install default GSAK Wrapper macro</value>
+  </data>
+  <data name="InstallMacroForThisFlow" xml:space="preserve">
+    <value>Install GSAK macro for this flow</value>
+  </data>
+  <data name="Macro" xml:space="preserve">
+    <value>Macro</value>
+  </data>
+  <data name="InstallMacroForThisSequence" xml:space="preserve">
+    <value>Install GSAK macro for this sequence</value>
+  </data>
+  <data name="CustomNumber" xml:space="preserve">
+    <value>Custom numeric field</value>
+  </data>
+  <data name="CustomText" xml:space="preserve">
+    <value>Custom text field</value>
+  </data>
 </root>

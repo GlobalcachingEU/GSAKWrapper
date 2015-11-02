@@ -103,6 +103,9 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                                 case SearchType.Where:
                                     conditionWherePanel.Children.Add(b);
                                     break;
+                                case SearchType.Extra:
+                                    conditionExtraPanel.Children.Add(b);
+                                    break;
                                 case SearchType.General:
                                 default:
                                     conditionPanel.Children.Add(b);
@@ -197,7 +200,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         void Instance_LanguageChanged(object sender, EventArgs e)
         {
-            var containerPanels = new List<Panel>() { conditionPanel, actionPanel, oncePanel, conditionDatesPanel, conditionOtherPanel, conditionLogsPanel, conditionChildrenPanel, conditionAttributesPanel, conditionWherePanel, conditionCustomPanel };
+            var containerPanels = new List<Panel>() { conditionPanel, actionPanel, oncePanel, conditionDatesPanel, conditionOtherPanel, conditionLogsPanel, conditionChildrenPanel, conditionAttributesPanel, conditionWherePanel, conditionCustomPanel, conditionExtraPanel };
             foreach (var p in containerPanels)
             {
                 var pnlButtons = new List<Button>();
@@ -218,6 +221,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                 foreach (var a in lst)
                 {
                     p.Children.Add(a);
+                }
+            }
+            if (ActiveActionFlow != null)
+            {
+                foreach (var a in ActiveActionFlow.Actions)
+                {
+                    a.SelectedLanguageChanged();
                 }
             }
         }
@@ -367,6 +377,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         {
                             if ((from a in Manager.Instance.ActionFlows where string.Compare(a.Name, s, true) == 0 select a).Count() == 0)
                             {
+                                ActiveActionFlow.Name = s;
                                 SaveData();
                             }
                             else

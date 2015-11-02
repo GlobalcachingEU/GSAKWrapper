@@ -1,11 +1,20 @@
-﻿using Microsoft.Win32;
+﻿using GSAKWrapper.Commands;
+using GSAKWrapper.FlowSequences;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Security;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,24 +25,60 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Xml;
 
 namespace GSAKWrapper
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
-        internal delegate void ProcessArgDelegate(String arg);
+        internal delegate void ProcessArgDelegate(string[] args);
         internal static ProcessArgDelegate ProcessArg;
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public ObservableCollection<string> AvailableDatabases { get; set; }
+
+        public class ProgramArguments
+        {
+            public string Database { get; set; }
+            public string Flow { get; set; }
+            public string Sequence { get; set; }
+        }
+
+        private FlowSequence _activeFlowSequence = null;
+        public FlowSequence ActiveFlowSequence
+        {
+            get { return _activeFlowSequence; }
+            set 
+            {
+                if (SetProperty(ref _activeFlowSequence, value))
+                {
+                    IsFlowSequenceActive = ActiveFlowSequence != null;
+                }
+            }
+        }
+
+        public bool IsFlowSequenceActive
+        {
+            get { return ActiveFlowSequence != null; }
+            set
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsFlowSequenceActive"));
+                }
+            }
+        }
         
         public MainWindow()
         {
-            ProcessArg = delegate(String arg)
+            ProcessArg = delegate(string[] args)
             {
                 //process arguments
+                System.Windows.MessageBox.Show("Please close GSAKWrapper before using the GSAK macro to execute GSAKWrapper.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
             };
 
             this.Initialized += delegate(object sender, EventArgs e)
@@ -67,7 +112,7 @@ namespace GSAKWrapper
 
                     //keep maximum of X backups
                     availableBackups = Directory.GetFiles(p, "settings.db3.*.bak").OrderBy(x => x).ToList();
-                    while (availableBackups.Count > 20)
+                    while (availableBackups.Count > 10)
                     {
                         File.Delete(availableBackups[0]);
                         availableBackups.RemoveAt(0);
@@ -111,36 +156,184 @@ namespace GSAKWrapper
 #if DEBUG
                 Localization.TranslationManager.Instance.CreateOrUpdateXmlFiles();
 #endif
+                Settings.Settings.Default.ApplicationVersion = Assembly.GetExecutingAssembly().GetName().Version;
+                Settings.Settings.Default.ApplicationPath = Assembly.GetExecutingAssembly().Location;
+
+                AvailableDatabases = new ObservableCollection<string>();
+
+                if (string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
+                {
+                    Settings.Settings.Default.DatabaseFolderPath = Utils.GSAK.DatabaseFolderPath;
+                }
+
+                try
+                {
+                    if (!string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
+                    {
+                        if (!System.IO.Directory.Exists(Settings.Settings.Default.DatabaseFolderPath))
+                        {
+                            Settings.Settings.Default.DatabaseFolderPath = null;
+                        }
+                    }
+                }
+                catch
+                {
+                    Settings.Settings.Default.DatabaseFolderPath = null;
+                }
+
+                checkSelectedDatabaseExists();
+
+                InitializeComponent();
+                DataContext = this;
+
+                Settings.Settings.Default.NewVersionChecked = false;
+                Settings.Settings.Default.PropertyChanged += Default_PropertyChanged;
+
+                if (Settings.Settings.Default.ReleaseVersion > Settings.Settings.Default.ApplicationVersion)
+                {
+                    newVersionUrl.Visibility = System.Windows.Visibility.Visible;
+                }
             }
+        }
 
-            AvailableDatabases = new ObservableCollection<string>();
-
-            if (string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
+        private async void Window_Initialized(object sender, EventArgs e)
+        {
+            var pa = ProgressCommandLineArguments(Environment.GetCommandLineArgs());
+            if (!string.IsNullOrEmpty(pa.Database))
             {
-                Settings.Settings.Default.DatabaseFolderPath = Utils.GSAK.DatabaseFolderPath;
+                var d = (from a in AvailableDatabases where string.Compare(a, pa.Database, true) == 0 select a).FirstOrDefault();
+                if (d != null)
+                {
+                    Settings.Settings.Default.SelectedDatabase = d;
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show(string.Format("Database '{0}' not found", pa.Database), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
 
+            if (!string.IsNullOrEmpty(pa.Flow))
+            {
+                var fl = (from a in UIControls.ActionBuilder.Manager.Instance.ActionFlows where string.Compare(a.Name, pa.Flow, true) == 0 select a).FirstOrDefault();
+                if (fl != null)
+                {
+                    flowBuilder.ActiveActionFlow = fl;
+                    await UIControls.ActionBuilder.Manager.Instance.RunActionFow(fl);
+                    Close();
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show(string.Format("Flow '{0}' not found", pa.Database), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Close();
+                }
+            }
+            else if (!string.IsNullOrEmpty(pa.Sequence))
+            {
+                var sq = (from a in FlowSequences.Manager.Instance.FlowSequences where string.Compare(a.Name, pa.Sequence, true) == 0 select a).FirstOrDefault();
+                if (sq != null)
+                {
+                    ActiveFlowSequence = sq;
+                    await FlowSequences.Manager.Instance.RunFowSequence(sq);
+                    Close();
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show(string.Format("Sequence '{0}' not found", pa.Database), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Close();
+                }
+            }
+            else
+            {
+
+#if DEBUG
+                //if (Settings.Settings.Default.VersionCheckedAtDay != DateTime.Now.Day)
+#else
+                if (Settings.Settings.Default.VersionCheckedAtDay != DateTime.Now.Day)
+#endif
+                {
+                    var thrd = new Thread(new ThreadStart(this.CheckForNewVersionThreadMethod));
+                    thrd.IsBackground = true;
+                    thrd.Start();
+                }
+            }
+        }
+
+        private ProgramArguments ProgressCommandLineArguments(string[] args)
+        {
+            var result = new ProgramArguments();
+            foreach (var p in args)
+            {
+                var parts = p.Split(new char[] { '=' }, 2, StringSplitOptions.RemoveEmptyEntries);
+                if (parts.Length == 2)
+                {
+                    if (parts[0] == "-d")
+                    {
+                        result.Database = parts[1];
+                    }
+                    else if (parts[0] == "-f")
+                    {
+                        result.Flow = parts[1];
+                    }
+                    else if (parts[0] == "-s")
+                    {
+                        result.Sequence = parts[1];
+                    }
+                }
+            }
+            return result;
+        }
+
+        public void CheckForNewVersionThreadMethod()
+        {
+            ServicePointManager.ServerCertificateValidationCallback = new RemoteCertificateValidationCallback(
+                       delegate
+                       {
+                           return true;
+                       });
             try
             {
-                if (!string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
+                using (WebClient webClient = new WebClient())
                 {
-                    if (!System.IO.Directory.Exists(Settings.Settings.Default.DatabaseFolderPath))
+                    webClient.Headers["User-Agent"] = "Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.9.2.6) Gecko/20100625 Firefox/3.6.6 (.NET CLR 3.5.30729)";
+#if DEBUG
+                    //var s = webClient.DownloadString("https://raw.githubusercontent.com/GlobalcachingEU/GSAKWrapper/master/Release");
+                    Thread.Sleep(2000);
+                    var s = @"<?xml version=""1.0"" encoding=""utf-8""?>
+<items>
+  <item name=""version"" value=""0.1.1.0"" />
+  <item name=""url"" value=""https://github.com/GlobalcachingEU/GSAKWrapper/releases"" />
+</items>
+";
+#else
+                    var s = webClient.DownloadString("https://raw.githubusercontent.com/GlobalcachingEU/GSAKWrapper/master/Release");
+#endif
+                    XmlDocument doc = new XmlDocument();
+                    doc.LoadXml(s);
+                    XmlElement root = doc.DocumentElement;
+                    XmlNodeList strngs = root.SelectNodes("item");
+                    if (strngs != null)
                     {
-                        Settings.Settings.Default.DatabaseFolderPath = null;
+                        foreach (XmlNode sn in strngs)
+                        {
+                            var n = sn.Attributes["name"].InnerText;
+                            var v = sn.Attributes["value"].InnerText;
+                            if (n == "version")
+                            {
+                                Settings.Settings.Default.ReleaseVersion = Version.Parse(v);
+                            }
+                            else if (n == "url")
+                            {
+                                Settings.Settings.Default.ReleaseUrl = v;
+                            }
+                        }
                     }
+                    Settings.Settings.Default.VersionCheckedAtDay = DateTime.Now.Day;
+                    Settings.Settings.Default.NewVersionChecked = true;
                 }
             }
             catch
             {
-                Settings.Settings.Default.DatabaseFolderPath = null;
             }
-
-            checkSelectedDatabaseExists();
-
-            InitializeComponent();
-            DataContext = this;
-
-            Settings.Settings.Default.PropertyChanged += Default_PropertyChanged;
         }
 
         void Default_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -152,6 +345,15 @@ namespace GSAKWrapper
                     {
                         checkSelectedDatabaseExists();
                     }));
+                    break;
+                case "NewVersionChecked":
+                    if (Settings.Settings.Default.ReleaseVersion > Settings.Settings.Default.ApplicationVersion)
+                    {
+                        Dispatcher.BeginInvoke(new Action(() =>
+                        {
+                            newVersionUrl.Visibility = System.Windows.Visibility.Visible;
+                        }), System.Windows.Threading.DispatcherPriority.ContextIdle, null);
+                    }
                     break;
             }
         }
@@ -248,5 +450,133 @@ namespace GSAKWrapper
             }
         }
 
+        private void MenuItem_Click_13(object sender, RoutedEventArgs e)
+        {
+            Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("de-DE");
+        }
+
+        private void MenuItem_Click_16(object sender, RoutedEventArgs e)
+        {
+            Localization.TranslationManager.Instance.CurrentLanguage = new CultureInfo("fr-FR");
+        }
+
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
+            e.Handled = true;
+        }
+
+        private void Button_EditFlowSequences(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.WindowFlowSequenceEditor();
+            dlg.ShowDialog();
+            FlowSequences.Manager.Instance.Save();
+        }
+
+        private AsyncDelegateCommand _executeSequenceCommand;
+        public AsyncDelegateCommand ExecuteSequenceCommand
+        {
+            get
+            {
+                if (_executeSequenceCommand == null)
+                {
+                    _executeSequenceCommand = new AsyncDelegateCommand(param => ExecuteActiveFlowAsync(),
+                        param => ActiveFlowSequence!=null);
+                }
+                return _executeSequenceCommand;
+            }
+        }
+        public async Task ExecuteActiveFlowAsync()
+        {
+            if (ActiveFlowSequence != null)
+            {
+                await FlowSequences.Manager.Instance.RunFowSequence(ActiveFlowSequence);
+            }
+        }
+
+        protected bool SetProperty<T>(ref T field, T value, [CallerMemberName] string name = "")
+        {
+            if (!EqualityComparer<T>.Default.Equals(field, value))
+            {
+                field = value;
+                var handler = PropertyChanged;
+                if (handler != null)
+                {
+                    handler(this, new PropertyChangedEventArgs(name));
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void menua47_Click(object sender, RoutedEventArgs e)
+        {
+            //default macro
+            System.Diagnostics.Process.Start(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath), "GSAKWrapper.gsk"));
+            e.Handled = true;
+        }
+
+        private void menux48_Click(object sender, RoutedEventArgs e)
+        {
+            if (flowBuilder.ActiveActionFlow != null)
+            {
+                //create a flow specific macro
+                var txt = GetTemplateGSKFile();
+                try
+                {
+                    var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath),"GSAKWrapper - flow.gsk");
+                    if (!string.IsNullOrEmpty(txt))
+                    {
+                        txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", flowBuilder.ActiveActionFlow.Name));
+                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam\"-d=\" + Quote($_CurrentDatabase) + \" -f=\" + Quote(\"{0}\")", flowBuilder.ActiveActionFlow.Name));
+                    }
+                    System.IO.File.WriteAllText(fn, txt);
+                    System.Diagnostics.Process.Start(fn);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private void menux49_Click(object sender, RoutedEventArgs e)
+        {
+            if (ActiveFlowSequence != null)
+            {
+                //create a sequence specific macro
+                var txt = GetTemplateGSKFile();
+                try
+                {
+                    var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath), "GSAKWrapper - sequence.gsk");
+                    if (!string.IsNullOrEmpty(txt))
+                    {
+                        txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", ActiveFlowSequence.Name));
+                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam\"-d=\" + Quote($_CurrentDatabase) + \" -s=\" + Quote(\"{0}\")", ActiveFlowSequence.Name));
+                    }
+                    System.IO.File.WriteAllText(fn, txt);
+                    System.Diagnostics.Process.Start(fn);
+                }
+                catch
+                {
+                }
+            }
+        }
+
+        private string GetTemplateGSKFile()
+        {
+            string result = null;
+            try
+            {
+                var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath), "GSAKTemplateWrapper.gsk");
+                result = System.IO.File.ReadAllText(fn);
+            }
+            catch
+            {
+            }
+            return result;
+        }
     }
 }

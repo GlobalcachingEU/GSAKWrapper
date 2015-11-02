@@ -17,6 +17,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         private static object _lockObject = new object();
 
         public ObservableCollection<ActionFlow> ActionFlows { get; set; }
+        public string SqlStatementsOfLastExecutedFlow { get; set; }
 
         public Manager()
         {
@@ -64,6 +65,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         public async Task RunActionFow(ActionFlow af)
         {
+            SqlStatementsOfLastExecutedFlow = "";
             await Task.Run(() =>
                 {
                     var sw = new System.Diagnostics.Stopwatch();
@@ -75,7 +77,14 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         {
                             using (var db = new Database.DBConSqlite(fn))
                             {
-                                runFlow(af, db);
+                                try
+                                {
+                                    RunFlow(af, db);
+                                }
+                                finally
+                                {
+                                    SqlStatementsOfLastExecutedFlow = string.Join("\r\n", db.ExecutedSqlQueries);
+                                }
                             }
                         }
                         sw.Stop();
@@ -87,9 +96,12 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         ApplicationData.Instance.StatusText = string.Format("{0}: {1}", Localization.TranslationManager.Instance.Translate("Error"), e.Message);
                     }
                 });
+#if DEBUG
+            System.IO.File.WriteAllText(System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper", "sqlstatements.log"), SqlStatementsOfLastExecutedFlow);
+#endif
         }
 
-        private void runFlow(ActionFlow flow, Database.DBCon db)
+        public void RunFlow(ActionFlow flow, Database.DBCon db)
         {
             List<ActionImplementation> orderedActions = null;
             try
