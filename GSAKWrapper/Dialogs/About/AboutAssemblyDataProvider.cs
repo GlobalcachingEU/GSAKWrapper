@@ -143,7 +143,8 @@ namespace GSAKWrapper.Dialogs
         {
             get
             {
-                return GetLogicalResourceString(xPathLink);
+                return "GSAKWrapper wiki";
+                //return GetLogicalResourceString(xPathLink);
             }
         }
 
@@ -154,7 +155,8 @@ namespace GSAKWrapper.Dialogs
         {
             get
             {
-                return GetLogicalResourceString(xPathLinkUri);
+                return @"https://github.com/GlobalcachingEU/GSAKWrapper/wiki";
+                //return GetLogicalResourceString(xPathLinkUri);
             }
         }
         #endregion

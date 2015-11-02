@@ -223,6 +223,13 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     p.Children.Add(a);
                 }
             }
+            if (ActiveActionFlow != null)
+            {
+                foreach (var a in ActiveActionFlow.Actions)
+                {
+                    a.SelectedLanguageChanged();
+                }
+            }
         }
 
         public void Dispose()

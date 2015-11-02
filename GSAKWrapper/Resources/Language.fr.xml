@@ -2,6 +2,8 @@
 <resources>
   <string name="about" value="Au sujet de" />
   <string name="actions" value="Acions" />
+  <string name="add flow" value="" />
+  <string name="add to ignore list" value="" />
   <string name="archived" value="Archiver" />
   <string name="attributes" value="Attibuts" />
   <string name="cancel" value="Annuler" />
@@ -30,8 +32,11 @@
   <string name="county" value="region" />
   <string name="created date" value="" />
   <string name="custom" value="" />
+  <string name="custom numeric field" value="" />
+  <string name="custom text field" value="" />
   <string name="database" value="" />
   <string name="dates" value="dates" />
+  <string name="default database to execute flows on.&#xD;&#xA;leave empty to use the active database." value="" />
   <string name="delete" value="effacer" />
   <string name="delete all geocaches" value="effacer toutes les caches" />
   <string name="delete flow {0}?" value="" />
@@ -42,6 +47,7 @@
   <string name="distance from location (km)" value="" />
   <string name="dnf (did not find)" value="" />
   <string name="dnf date" value="" />
+  <string name="edit flow sequences" value="" />
   <string name="elevation" value="eevation" />
   <string name="english" value="anglais" />
   <string name="error" value="erreur" />
@@ -49,10 +55,15 @@
   <string name="execute once" value="" />
   <string name="export active flow" value="" />
   <string name="export all flows" value="" />
+  <string name="extra" value="" />
   <string name="favorite points" value="points favorits" />
   <string name="finished flow" value="" />
   <string name="finishing action" value="" />
   <string name="flow {0} finished in {1} seconds" value="" />
+  <string name="flow name" value="" />
+  <string name="flow sequence {0} finished in {1} seconds" value="" />
+  <string name="flow sequences" value="" />
+  <string name="flows" value="" />
   <string name="found" value="trouve" />
   <string name="found by me date" value="" />
   <string name="found count" value="" />
@@ -71,6 +82,10 @@
   <string name="help" value="aide" />
   <string name="import flows" value="" />
   <string name="in" value="" />
+  <string name="in ignore list of other database" value="" />
+  <string name="install default gsak wrapper macro" value="" />
+  <string name="install gsak macro for this flow" value="" />
+  <string name="install gsak macro for this sequence" value="" />
   <string name="is owner" value="" />
   <string name="ispremium (pmo)" value="" />
   <string name="language" value="" />
@@ -82,16 +97,20 @@
   <string name="locked" value="" />
   <string name="log date" value="" />
   <string name="log date by user" value="" />
+  <string name="log encoded" value="" />
+  <string name="log text" value="" />
   <string name="log type" value="" />
   <string name="log type by user" value="" />
   <string name="logged by user" value="" />
   <string name="logs" value="logs" />
   <string name="long htm" value="" />
   <string name="longitude" value="" />
+  <string name="macro" value="" />
   <string name="macroflag" value="" />
   <string name="name" value="" />
   <string name="nederlands" value="" />
   <string name="new" value="nouveau" />
+  <string name="new flow sequence" value="" />
   <string name="new folder" value="nouveau repertoire" />
   <string name="new version available" value="" />
   <string name="number of logs" value="" />
@@ -104,6 +123,7 @@
   <string name="placed by" value="" />
   <string name="placed date" value="" />
   <string name="preparing action" value="" />
+  <string name="present in other database" value="" />
   <string name="refresh" value="" />
   <string name="rename" value="renonmer" />
   <string name="running action" value="" />
@@ -120,7 +140,11 @@
   <string name="symbol" value="" />
   <string name="temporarily disabled" value="" />
   <string name="terrain" value="terrain" />
+  <string name="the database to execute the flow on.&#xD;&#xA;leave empty to use the default database of the sequence." value="" />
+  <string name="user data numeric" value="" />
+  <string name="user data text" value="" />
   <string name="user flag" value="" />
+  <string name="user flag set in other database" value="" />
   <string name="user note date" value="" />
   <string name="watch" value="" />
   <string name="where" value="ou" />

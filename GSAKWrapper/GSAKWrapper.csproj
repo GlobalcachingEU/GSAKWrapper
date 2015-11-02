@@ -129,6 +129,8 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionCustomText.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionCustomNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataContains.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserFlagInOtherDatabase.cs" />
@@ -308,6 +310,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="GSAKTemplateWrapper.gsk">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="GSAKWrapper.gsk">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

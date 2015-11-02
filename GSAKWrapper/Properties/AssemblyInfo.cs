@@ -8,7 +8,7 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GSAKWrapper")]
-[assembly: AssemblyDescription("GSAK Wrapper is a GSAK database utility that can perform actions on one or more databases without the use of macro's")]
+[assembly: AssemblyDescription("GSAK Wrapper is a GSAK database utility that can perform actions on one or more databases without the use of macro's. The author of GSAK did and does not take part of the development of this application.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Globalcaching")]
 [assembly: AssemblyProduct("GSAKWrapper")]

@@ -560,4 +560,10 @@ Leave empty to use the active database.</value>
   <data name="InstallMacroForThisSequence" xml:space="preserve">
     <value>Install GSAK macro for this sequence</value>
   </data>
+  <data name="CustomNumber" xml:space="preserve">
+    <value>Custom numeric field</value>
+  </data>
+  <data name="CustomText" xml:space="preserve">
+    <value>Custom text field</value>
+  </data>
 </root>

@@ -2,6 +2,8 @@
 <resources>
   <string name="about" value="über" />
   <string name="actions" value="Aktionen" />
+  <string name="add flow" value="" />
+  <string name="add to ignore list" value="" />
   <string name="archived" value="archiviert" />
   <string name="attributes" value="Attribute" />
   <string name="cancel" value="abbrechen" />
@@ -30,8 +32,11 @@
   <string name="county" value="Landkreis" />
   <string name="created date" value="Erstellungsdatum" />
   <string name="custom" value="Benutzerdefiniert" />
+  <string name="custom numeric field" value="" />
+  <string name="custom text field" value="" />
   <string name="database" value="Datenbank" />
   <string name="dates" value="Daten" />
+  <string name="default database to execute flows on.&#xD;&#xA;leave empty to use the active database." value="" />
   <string name="delete" value="löschen" />
   <string name="delete all geocaches" value="alle Geocaches löschen" />
   <string name="delete flow {0}?" value="Ablauf {0} löschen" />
@@ -42,6 +47,7 @@
   <string name="distance from location (km)" value="Entfernung von Ort" />
   <string name="dnf (did not find)" value="DNF" />
   <string name="dnf date" value="DNF Datum" />
+  <string name="edit flow sequences" value="" />
   <string name="elevation" value="Höhenlage" />
   <string name="english" value="Englisch" />
   <string name="error" value="Fehler" />
@@ -49,10 +55,15 @@
   <string name="execute once" value="einmalig ausführen" />
   <string name="export active flow" value="aktiven Ablauf exportieren" />
   <string name="export all flows" value="alle Abläufe exportieren" />
+  <string name="extra" value="" />
   <string name="favorite points" value="Favoritenpunkte" />
   <string name="finished flow" value="Ablauf beendet" />
   <string name="finishing action" value="Aktion wird abgeschlossen" />
   <string name="flow {0} finished in {1} seconds" value="Ablauf {0} beendet nach {1} Sekunden" />
+  <string name="flow name" value="" />
+  <string name="flow sequence {0} finished in {1} seconds" value="" />
+  <string name="flow sequences" value="" />
+  <string name="flows" value="" />
   <string name="found" value="gefunden" />
   <string name="found by me date" value="mein Funddatum" />
   <string name="found count" value="Fundzähler" />
@@ -71,6 +82,10 @@
   <string name="help" value="Hilfe" />
   <string name="import flows" value="Abläufe importieren" />
   <string name="in" value="in" />
+  <string name="in ignore list of other database" value="" />
+  <string name="install default gsak wrapper macro" value="" />
+  <string name="install gsak macro for this flow" value="" />
+  <string name="install gsak macro for this sequence" value="" />
   <string name="is owner" value="ist Owner" />
   <string name="ispremium (pmo)" value="Premium Member Cache" />
   <string name="language" value="Sprache" />
@@ -82,16 +97,20 @@
   <string name="locked" value="gesperrt" />
   <string name="log date" value="" />
   <string name="log date by user" value="" />
+  <string name="log encoded" value="" />
+  <string name="log text" value="" />
   <string name="log type" value="" />
   <string name="log type by user" value="" />
   <string name="logged by user" value="" />
   <string name="logs" value="Logs" />
   <string name="long htm" value="ausführliches HTM" />
   <string name="longitude" value="Längengrad" />
+  <string name="macro" value="" />
   <string name="macroflag" value="Macro-Flag" />
   <string name="name" value="Name" />
   <string name="nederlands" value="Niederländisch" />
   <string name="new" value="Neu" />
+  <string name="new flow sequence" value="" />
   <string name="new folder" value="neuer Ordner" />
   <string name="new version available" value="" />
   <string name="number of logs" value="Anzahl der Logs" />
@@ -104,6 +123,7 @@
   <string name="placed by" value="versteckt von" />
   <string name="placed date" value="Versteckdatum" />
   <string name="preparing action" value="Aktion wird vorbereitet" />
+  <string name="present in other database" value="" />
   <string name="refresh" value="aktualisieren" />
   <string name="rename" value="umbenennen" />
   <string name="running action" value="Aktion läuft" />
@@ -120,7 +140,11 @@
   <string name="symbol" value="Symbol" />
   <string name="temporarily disabled" value="vorübergehend deaktiviert" />
   <string name="terrain" value="Gelände" />
+  <string name="the database to execute the flow on.&#xD;&#xA;leave empty to use the default database of the sequence." value="" />
+  <string name="user data numeric" value="" />
+  <string name="user data text" value="" />
   <string name="user flag" value="UserFlag" />
+  <string name="user flag set in other database" value="" />
   <string name="user note date" value="Datum Benutzer-Notiz" />
   <string name="watch" value="beobachten" />
   <string name="where" value="wo" />

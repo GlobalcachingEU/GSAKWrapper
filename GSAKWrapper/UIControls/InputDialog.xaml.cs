@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,7 +56,7 @@ namespace GSAKWrapper.UIControls
         private string _inputText;
         public string InputText
         {
-            get { return (_inputText ?? "").Replace("*",""); }
+            get { return Regex.Replace((_inputText ?? ""), "[^0-9a-zA-Z ]", ""); }
             set { SetProperty(ref _inputText, value); }
         }
 
@@ -114,10 +115,6 @@ namespace GSAKWrapper.UIControls
             {
                 FocusManager.SetFocusedElement(this, NoButton);
                 NoButton_Click(this, null);
-                e.Handled = true;
-            }
-            else if (e.Key == Key.Multiply)
-            {
                 e.Handled = true;
             }
         }
