@@ -531,7 +531,7 @@ namespace GSAKWrapper
                     if (!string.IsNullOrEmpty(txt))
                     {
                         txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", flowBuilder.ActiveActionFlow.Name));
-                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam\"-d=\" + Quote($_CurrentDatabase) + \" -f=\" + Quote(\"{0}\")", flowBuilder.ActiveActionFlow.Name));
+                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam=\"-d=\" + Quote($_CurrentDatabase) + \" -f=\" + Quote(\"{0}\")", flowBuilder.ActiveActionFlow.Name));
                     }
                     System.IO.File.WriteAllText(fn, txt);
                     System.Diagnostics.Process.Start(fn);
@@ -554,7 +554,7 @@ namespace GSAKWrapper
                     if (!string.IsNullOrEmpty(txt))
                     {
                         txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", ActiveFlowSequence.Name));
-                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam\"-d=\" + Quote($_CurrentDatabase) + \" -s=\" + Quote(\"{0}\")", ActiveFlowSequence.Name));
+                        txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam=\"-d=\" + Quote($_CurrentDatabase) + \" -s=\" + Quote(\"{0}\")", ActiveFlowSequence.Name));
                     }
                     System.IO.File.WriteAllText(fn, txt);
                     System.Diagnostics.Process.Start(fn);
