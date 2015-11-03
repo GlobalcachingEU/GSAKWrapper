@@ -533,7 +533,7 @@
     <PostBuildEvent>if $(ConfigurationName) == Release (
 echo "C:\Program Files (x86)\WiX Toolset v3.9\bin\candle.exe" "$(SolutionDir)Setup\Setup.wxs" -out "$(SolutionDir)Setup\Setup.wixobj" -dPlatform=$(PlatformName) -dVersion=@(VersionNumber) -ext WixUIExtension -ext WixUtilExtension  -ext WixNetFxExtension 
 "C:\Program Files (x86)\WiX Toolset v3.9\bin\candle.exe" "$(SolutionDir)Setup\Setup.wxs" -out "$(SolutionDir)Setup\Setup.wixobj" -dPlatform=$(PlatformName) -dVersion=@(VersionNumber) -ext WixUIExtension -ext WixUtilExtension  -ext WixNetFxExtension
-"C:\Program Files (x86)\WiX Toolset v3.9\bin\light.exe" "$(SolutionDir)Setup\Setup.wixobj" -out "$(SolutionDir)Setup\GSAKWrapper$(PlatformName).msi" -b "$(SolutionDir)Setup" -dWixUILicenseRtf=license.rtf -spdb -ext WixUIExtension -ext WixUtilExtension -ext WixNetFxExtension -sw
+"C:\Program Files (x86)\WiX Toolset v3.9\bin\light.exe" "$(SolutionDir)Setup\Setup.wixobj" -out "$(SolutionDir)Setup\GSAKWrapper$(PlatformName)V@(VersionNumber).msi" -b "$(SolutionDir)Setup" -dWixUILicenseRtf=license.rtf -spdb -ext WixUIExtension -ext WixUtilExtension -ext WixNetFxExtension -sw
 )</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
