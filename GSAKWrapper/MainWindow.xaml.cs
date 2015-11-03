@@ -578,5 +578,16 @@ namespace GSAKWrapper
             }
             return result;
         }
+
+        private void Window_Activated(object sender, EventArgs e)
+        {
+            try
+            {
+                checkSelectedDatabaseExists();
+            }
+            catch
+            {
+            }
+        }
     }
 }
