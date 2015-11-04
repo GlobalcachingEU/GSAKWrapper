@@ -59,7 +59,11 @@
     <ApplicationIcon>Resources\GSAKWrapper.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NPoco">
+      <HintPath>..\packages\NPoco.2.10.11\lib\net45\NPoco.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.SQLite, Version=1.0.98.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -89,10 +93,28 @@
     <Compile Include="Commands\CommandReference.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="DataTypes\CustomLocal.cs" />
     <Compile Include="DataTypes\GeocacheAttribute.cs" />
     <Compile Include="DataTypes\GeocacheContainer.cs" />
     <Compile Include="DataTypes\GeocacheType.cs" />
+    <Compile Include="DataTypes\GSAKAttributes.cs" />
+    <Compile Include="DataTypes\GSAKCacheImages.cs" />
+    <Compile Include="DataTypes\GSAKCacheMemo.cs" />
+    <Compile Include="DataTypes\GSAKCaches.cs" />
+    <Compile Include="DataTypes\GSAKCorrected.cs" />
+    <Compile Include="DataTypes\GSAKCustomCheck.cs" />
+    <Compile Include="DataTypes\GSAKCustom.cs" />
+    <Compile Include="DataTypes\GSAKIgnore.cs" />
+    <Compile Include="DataTypes\GSAKFilter.cs" />
+    <Compile Include="DataTypes\GSAKLogImages.cs" />
+    <Compile Include="DataTypes\GSAKLogMemo.cs" />
+    <Compile Include="DataTypes\GSAKLogs.cs" />
+    <Compile Include="DataTypes\GSAKRecalc.cs" />
+    <Compile Include="DataTypes\GSAKUniqueCacheId.cs" />
+    <Compile Include="DataTypes\GSAKWayMemo.cs" />
+    <Compile Include="DataTypes\GSAKWaypoints.cs" />
     <Compile Include="DataTypes\LogType.cs" />
+    <Compile Include="DataTypes\GSAKMatching.cs" />
     <Compile Include="DataTypes\WaypointType.cs" />
     <Compile Include="Dialogs\About\AboutAssemblyDataProvider.cs" />
     <Compile Include="Dialogs\About\AboutWindow.xaml.cs" />

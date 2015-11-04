@@ -64,6 +64,7 @@
                       <File Id="Tmpl" Name="GSAKTemplateWrapper.gsk" Source="../GSAKWrapper/bin/Release/GSAKTemplateWrapper.gsk" />
                       <File Id="sql1" Name="System.Data.SQLite.dll" Source="../GSAKWrapper/bin/Release/System.Data.SQLite.dll" />
                       <File Id="sql2" Name="SQLite.Interop.dll" Source="../GSAKWrapper/bin/Release/$(var.Platform)/SQLite.Interop.dll" />
+                      <File Id="npc" Name="NPoco.dll" Source="../GSAKWrapper/bin/Release/NPoco.dll" />
                     </Component>
                 </Directory>
             </Directory>
