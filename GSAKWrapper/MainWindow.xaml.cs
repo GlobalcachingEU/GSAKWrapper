@@ -529,7 +529,7 @@ namespace GSAKWrapper
                 var txt = GetTemplateGSKFile();
                 try
                 {
-                    var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath),"GSAKWrapper - flow.gsk");
+                    var fn = System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper", "GSAKWrapper - flow.gsk");
                     if (!string.IsNullOrEmpty(txt))
                     {
                         txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", flowBuilder.ActiveActionFlow.Name));
@@ -552,7 +552,7 @@ namespace GSAKWrapper
                 var txt = GetTemplateGSKFile();
                 try
                 {
-                    var fn = System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Settings.Settings.Default.ApplicationPath), "GSAKWrapper - sequence.gsk");
+                    var fn = System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper", "GSAKWrapper - sequence.gsk");
                     if (!string.IsNullOrEmpty(txt))
                     {
                         txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", ActiveFlowSequence.Name));
