@@ -719,6 +719,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geocache counter.
+        /// </summary>
+        internal static string GeocacheCountLimit {
+            get {
+                return ResourceManager.GetString("GeocacheCountLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geocache type.
         /// </summary>
         internal static string GeocacheType {
@@ -1229,6 +1238,15 @@ namespace GSAKWrapper.Properties {
         internal static string SelectRootDataFolder {
             get {
                 return ResourceManager.GetString("SelectRootDataFolder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
             }
         }
         

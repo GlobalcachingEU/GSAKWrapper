@@ -60,11 +60,13 @@
                     <Component Id="Main" Guid="755698D2-2AD9-4CBC-93C4-3ACE456DD634" DiskId="1">
                         <File Id="LicenseFile" Name="license.rtf" Source="license.rtf" />
                         <File Id="Exec" Name="GSAKWrapper.exe" Source="../GSAKWrapper/bin/Release/GSAKWrapper.exe" />
+                      <File Id="cfg" Name="GSAKWrapper.exe.config" Source="../GSAKWrapper/bin/Release/GSAKWrapper.exe.config" />
                       <File Id="Wrp" Name="GSAKWrapper.gsk" Source="../GSAKWrapper/bin/Release/GSAKWrapper.gsk" />
                       <File Id="Tmpl" Name="GSAKTemplateWrapper.gsk" Source="../GSAKWrapper/bin/Release/GSAKTemplateWrapper.gsk" />
                       <File Id="sql1" Name="System.Data.SQLite.dll" Source="../GSAKWrapper/bin/Release/System.Data.SQLite.dll" />
                       <File Id="sql2" Name="SQLite.Interop.dll" Source="../GSAKWrapper/bin/Release/$(var.Platform)/SQLite.Interop.dll" />
                       <File Id="npc" Name="NPoco.dll" Source="../GSAKWrapper/bin/Release/NPoco.dll" />
+                      <File Id="Hist" Name="History.txt" Source="../History.txt" />
                     </Component>
                 </Directory>
             </Directory>

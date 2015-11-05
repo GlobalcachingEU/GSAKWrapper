@@ -1,0 +1,7 @@
+V0.2.0.0
+- macro's saved as ANSI instead of UTF8
+- added geocache counter filter (to limit selected geocaches)
+- added History file (this file)
+
+V0.1.0.0
+- initial release

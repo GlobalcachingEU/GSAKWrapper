@@ -123,6 +123,7 @@
     <Compile Include="Dialogs\BrowseFolder\FolderPickerDialog.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\InputDialog.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\TreeModel.cs" />
+    <Compile Include="Dialogs\ProgessWindow.xaml.cs" />
     <Compile Include="Dialogs\WindowFlowSequenceEditor.xaml.cs">
       <DependentUpon>WindowFlowSequenceEditor.xaml</DependentUpon>
     </Compile>
@@ -151,6 +152,9 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionExportGPX.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionExport.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionGeocacheCountLimit.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomText.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
@@ -257,11 +261,14 @@
     <Compile Include="Utils\Calculus.cs" />
     <Compile Include="Utils\Conversion.cs" />
     <Compile Include="Utils\Geocoder.cs" />
+    <Compile Include="Utils\GPXGenerator.cs" />
     <Compile Include="Utils\GSAK.cs" />
     <Compile Include="Utils\ImageUtilities.cs" />
     <Compile Include="Utils\Location.cs" />
     <Compile Include="Utils\Polygon.cs" />
+    <Compile Include="Utils\ProgressBlock.cs" />
     <Compile Include="Utils\ResourceHelper.cs" />
+    <Compile Include="Utils\TemporaryFile.cs" />
     <Compile Include="WpfSingleInstance.cs" />
     <Page Include="Dialogs\About\AboutWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -276,6 +283,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Dialogs\BrowseFolder\InputDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\ProgessWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

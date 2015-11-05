@@ -15,6 +15,7 @@
         Icon="Resources/GSAKWrapper.ico"
          Initialized="Window_Initialized"
         Activated="Window_Activated"
+        Closing="Window_Closing"
         >
     <Grid>
         <Grid.RowDefinitions>

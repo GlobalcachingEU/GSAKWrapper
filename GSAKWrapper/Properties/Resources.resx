@@ -566,4 +566,10 @@ Leave empty to use the active database.</value>
   <data name="CustomText" xml:space="preserve">
     <value>Custom text field</value>
   </data>
+  <data name="GeocacheCountLimit" xml:space="preserve">
+    <value>Geocache counter</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
 </root>

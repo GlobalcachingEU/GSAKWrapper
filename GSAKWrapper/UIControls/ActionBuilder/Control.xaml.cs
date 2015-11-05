@@ -48,6 +48,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         && t != typeof(ActionImplementationYesNo)
                         && t != typeof(ActionImplementationNumericValue)
                         && t != typeof(ActionImplementationDate)
+                        && t != typeof(ActionExport)
                         && (t.BaseType == typeof(ActionImplementationCondition) 
                             || t.BaseType == typeof(ActionImplementationText)
                             || t.BaseType == typeof(ActionImplementationYesNo)
@@ -55,6 +56,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                             || t.BaseType == typeof(ActionImplementationDate)
                             || t.BaseType == typeof(ActionImplementationExecuteOnce)
                             || t.BaseType == typeof(ActionImplementationAction)
+                            || t.BaseType == typeof(ActionExport)
                             )
                         )
                     {

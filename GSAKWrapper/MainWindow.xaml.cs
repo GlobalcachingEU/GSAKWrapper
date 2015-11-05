@@ -97,6 +97,8 @@ namespace GSAKWrapper
 
             if (Settings.Settings.ApplicationRunning)
             {
+                Dialogs.ProgessWindow prog = Dialogs.ProgessWindow.Instance; 
+                
                 string p = System.IO.Path.Combine(new string[] { System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper" });
                 if (!Directory.Exists(p))
                 {
@@ -588,6 +590,11 @@ namespace GSAKWrapper
             catch
             {
             }
+        }
+
+        private void Window_Closing(object sender, CancelEventArgs e)
+        {
+            Dialogs.ProgessWindow.Instance.Close();
         }
     }
 }
