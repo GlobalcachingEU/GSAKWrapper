@@ -481,7 +481,7 @@ namespace GSAKWrapper.Utils
                         lel.Attributes.Append(attr);
 
                         el = doc.CreateElement("groundspeak_date");
-                        txt = doc.CreateTextNode(string.Format("{0}Z",l.Logs.lDate.Date.ToString("s")));
+                        txt = doc.CreateTextNode(string.Format("{0}Z",(l.Logs.lDate ?? DateTime.Now).Date.ToString("s")));
                         el.AppendChild(txt);
                         lel.AppendChild(el);
 
@@ -500,20 +500,20 @@ namespace GSAKWrapper.Utils
                         }
 
                         el = doc.CreateElement("groundspeak_finder");
-                        txt = doc.CreateTextNode(l.Logs.lBy);
+                        txt = doc.CreateTextNode(l.Logs.lBy ?? "");
                         el.AppendChild(txt);
                         lel.AppendChild(el);
                         attr = doc.CreateAttribute("id");
-                        txt = doc.CreateTextNode(l.Logs.lownerid.ToString());
+                        txt = doc.CreateTextNode((l.Logs.lownerid ?? 1).ToString());
                         attr.AppendChild(txt);
                         el.Attributes.Append(attr);
 
                         el = doc.CreateElement("groundspeak_text");
-                        txt = doc.CreateTextNode(l.LogMemo == null ? "" : l.LogMemo.lText);
+                        txt = doc.CreateTextNode(l.LogMemo == null ? "" : l.LogMemo.lText ?? "");
                         el.AppendChild(txt);
                         lel.AppendChild(el);
                         attr = doc.CreateAttribute("encoded");
-                        txt = doc.CreateTextNode(l.Logs.lEncoded.ToString().ToLower());
+                        txt = doc.CreateTextNode((l.Logs.lEncoded ?? 0).ToString().ToLower());
                         attr.AppendChild(txt);
                         el.Attributes.Append(attr);
                     }

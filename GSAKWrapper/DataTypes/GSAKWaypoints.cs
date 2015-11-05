@@ -15,9 +15,9 @@ namespace GSAKWrapper.DataTypes
         public string cType { get; set; }
         public string cLat { get; set; }
         public string cLon { get; set; }
-        public bool cByuser { get; set; }
+        public int cByuser { get; set; }
         public DateTime cDate { get; set; }
-        public bool cFlag { get; set; }
-        public bool sB1 { get; set; }
+        public int cFlag { get; set; }
+        public int sB1 { get; set; }
     }
 }

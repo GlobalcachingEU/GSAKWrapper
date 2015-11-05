@@ -12,12 +12,12 @@ namespace GSAKWrapper.DataTypes
         public int lLogId { get; set; }
         public string lType { get; set; }
         public string lBy { get; set; }
-        public DateTime lDate { get; set; }
+        public DateTime? lDate { get; set; }
         public string lLat { get; set; }
         public string lLon { get; set; }
-        public bool lEncoded { get; set; }
-        public int lownerid { get; set; }
-        public bool lHasHtml { get; set; }
+        public int? lEncoded { get; set; }
+        public int? lownerid { get; set; }
+        public int? lHasHtml { get; set; }
         public string lTime { get; set; }
     }
 }

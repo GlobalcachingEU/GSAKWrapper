@@ -97,7 +97,8 @@ namespace GSAKWrapper
 
             if (Settings.Settings.ApplicationRunning)
             {
-                Dialogs.ProgessWindow prog = Dialogs.ProgessWindow.Instance; 
+                Dialogs.ProgessWindow prog = Dialogs.ProgessWindow.Instance;
+                ApplicationData.Instance.MainWindow = this;
                 
                 string p = System.IO.Path.Combine(new string[] { System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper" });
                 if (!Directory.Exists(p))

@@ -572,4 +572,13 @@ Leave empty to use the active database.</value>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="CreatingFile" xml:space="preserve">
+    <value>Creating file...</value>
+  </data>
+  <data name="ExportGPX" xml:space="preserve">
+    <value>Export GPX</value>
+  </data>
+  <data name="ExportingGPX" xml:space="preserve">
+    <value>Exporting GPX...</value>
+  </data>
 </root>
