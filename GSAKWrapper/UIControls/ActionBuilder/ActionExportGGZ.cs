@@ -237,10 +237,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                                             gpxBatchList.Add(gcList[geocacheIndex]);
                                             string gpxText = gpxGenerator.Next();
 
-                                            GeocacheEntryInfo gei = new GeocacheEntryInfo();
-                                            gei.Code = gcList[geocacheIndex].Code;
-                                            gei.FileLen = System.Text.UTF8Encoding.UTF8.GetBytes(gpxText).Length + 2;
-                                            geiList.Add(gei);
+                                            gcList[geocacheIndex].FileLen = System.Text.UTF8Encoding.UTF8.GetBytes(gpxText).Length + 2;
+                                            geiList.Add(gcList[geocacheIndex]);
 
                                             sb.AppendLine(gpxText);
 
