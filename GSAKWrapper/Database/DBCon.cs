@@ -56,6 +56,11 @@ namespace GSAKWrapper.Database
             }
         }
 
+        public DbDataReader CurrentDataReader
+        {
+            get { return _rdr; }
+        }
+
         public DbDataReader ExecuteReader(string command)
         {
             if (_rdr != null && !_rdr.IsClosed)

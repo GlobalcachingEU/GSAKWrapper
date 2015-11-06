@@ -3,6 +3,9 @@ V0.2.0.0
 - added geocache counter filter (to limit selected geocaches)
 - added History file (this file)
 - changed macro destination folder for flow and sequence macro (not program folder anymore)
+- added export to GPX action
+- added custom date field filter
+- added export to GGZ action
 
 V0.1.0.0
 - initial release

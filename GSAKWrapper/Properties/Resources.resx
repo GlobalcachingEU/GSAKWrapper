@@ -581,4 +581,25 @@ Leave empty to use the active database.</value>
   <data name="ExportingGPX" xml:space="preserve">
     <value>Exporting GPX...</value>
   </data>
+  <data name="AddChildWaypoints" xml:space="preserve">
+    <value>Add child waypoints</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="GPXSettings" xml:space="preserve">
+    <value>GPX settings</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="FileName" xml:space="preserve">
+    <value>File name</value>
+  </data>
+  <data name="CustomDate" xml:space="preserve">
+    <value>Custom date field</value>
+  </data>
+  <data name="ExportGGZ" xml:space="preserve">
+    <value>Export GGZ</value>
+  </data>
 </root>

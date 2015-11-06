@@ -66,6 +66,7 @@
                       <File Id="sql1" Name="System.Data.SQLite.dll" Source="../GSAKWrapper/bin/Release/System.Data.SQLite.dll" />
                       <File Id="sql2" Name="SQLite.Interop.dll" Source="../GSAKWrapper/bin/Release/$(var.Platform)/SQLite.Interop.dll" />
                       <File Id="npc" Name="NPoco.dll" Source="../GSAKWrapper/bin/Release/NPoco.dll" />
+                      <File Id="zpl" Name="ICSharpCode.SharpZipLib.dll" Source="../GSAKWrapper/bin/Release/ICSharpCode.SharpZipLib.dll" />
                       <File Id="Hist" Name="History.txt" Source="../History.txt" />
                     </Component>
                 </Directory>

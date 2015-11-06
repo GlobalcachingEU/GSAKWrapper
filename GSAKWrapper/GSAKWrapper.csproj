@@ -59,6 +59,9 @@
     <ApplicationIcon>Resources\GSAKWrapper.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="NPoco">
       <HintPath>..\packages\NPoco.2.10.11\lib\net45\NPoco.dll</HintPath>
     </Reference>
@@ -70,6 +73,7 @@
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.98.1\lib\net451\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -124,6 +128,12 @@
     <Compile Include="Dialogs\BrowseFolder\InputDialog.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\TreeModel.cs" />
     <Compile Include="Dialogs\ProgessWindow.xaml.cs" />
+    <Compile Include="Dialogs\WindowExportGGZSettings.xaml.cs">
+      <DependentUpon>WindowExportGGZSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WindowExportGPXSettings.xaml.cs">
+      <DependentUpon>WindowExportGPXSettings.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\WindowFlowSequenceEditor.xaml.cs">
       <DependentUpon>WindowFlowSequenceEditor.xaml</DependentUpon>
     </Compile>
@@ -152,6 +162,8 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionCustomDate.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionExportGGZ.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionExportGPX.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionExport.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionGeocacheCountLimit.cs" />
@@ -289,6 +301,14 @@
     <Page Include="Dialogs\ProgessWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\WindowExportGGZSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Dialogs\WindowExportGPXSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\WindowFlowSequenceEditor.xaml">
       <SubType>Designer</SubType>

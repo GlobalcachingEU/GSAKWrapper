@@ -33,7 +33,6 @@ namespace GSAKWrapper.Utils
         private GeocachePoco _activeGcg = null;
         private Version _gpxVersion;
         private int _index;
-        private bool _overwriteWayointTags = true;
         private NPoco.Database _db = null;
 
         public static Version V100 = new Version(1, 0, 0);
@@ -63,6 +62,17 @@ namespace GSAKWrapper.Utils
             {
                 return _gcList == null ? 0 : _gcList.Count;
             }
+        }
+
+        public void SetGeocacheList(List<string> gcList, double minLat, double maxLat, double minLon, double maxLon)
+        {
+            _gcList = gcList;
+            _index = 0;
+            _activeGcg = null;
+            _minLat = minLat;
+            _maxLat = maxLat;
+            _minLon = minLon;
+            _maxLon = maxLon;
         }
 
         public string Start()
