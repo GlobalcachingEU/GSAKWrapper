@@ -22,6 +22,8 @@ namespace GSAKWrapper
         public List<DataTypes.WaypointType> WaypointTypes;
         public List<DataTypes.LogType> LogTypes;
 
+        public List<DataTypes.GSAKCustomGlobal> GSAKCustomGlobals { get; set; }
+
         private int _activityCounter = 0;
         public void BeginActiviy()
         {
@@ -85,6 +87,7 @@ namespace GSAKWrapper
             GeocacheContainers = new List<DataTypes.GeocacheContainer>();
             WaypointTypes = new List<DataTypes.WaypointType>();
             LogTypes = new List<DataTypes.LogType>();
+            GSAKCustomGlobals = new List<DataTypes.GSAKCustomGlobal>();
 
             //addCacheType(0, "Not present");
             addCacheType(2, "Traditional Cache", 'T');

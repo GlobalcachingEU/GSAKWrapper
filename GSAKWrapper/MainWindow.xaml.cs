@@ -164,6 +164,11 @@ namespace GSAKWrapper
 
                 AvailableDatabases = new ObservableCollection<string>();
 
+                if (string.IsNullOrEmpty(Settings.Settings.Default.GSAKSettingsPath))
+                {
+                    Settings.Settings.Default.GSAKSettingsPath = Utils.GSAK.SettingsFolderPath;
+                }
+
                 if (string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath))
                 {
                     Settings.Settings.Default.DatabaseFolderPath = Utils.GSAK.DatabaseFolderPath;
@@ -587,6 +592,7 @@ namespace GSAKWrapper
             try
             {
                 checkSelectedDatabaseExists();
+                ApplicationData.Instance.GSAKCustomGlobals = Utils.GSAK.GlobalCustomFields;
             }
             catch
             {

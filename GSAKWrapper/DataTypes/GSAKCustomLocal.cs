@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GSAKWrapper.DataTypes
 {
-    public class CustomLocal
+    public class GSAKCustomLocal
     {
         public string fname { get; set; }
         public string ftype { get; set; }

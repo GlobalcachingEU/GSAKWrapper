@@ -97,7 +97,8 @@
     <Compile Include="Commands\CommandReference.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="DataTypes\CustomLocal.cs" />
+    <Compile Include="DataTypes\GSAKCustomGlobal.cs" />
+    <Compile Include="DataTypes\GSAKCustomLocal.cs" />
     <Compile Include="DataTypes\GeocacheAttribute.cs" />
     <Compile Include="DataTypes\GeocacheContainer.cs" />
     <Compile Include="DataTypes\GeocacheType.cs" />
@@ -162,6 +163,7 @@
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionClearMacroFlag.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomDate.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionExportGGZ.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionExportGPX.cs" />
@@ -169,6 +171,7 @@
     <Compile Include="UIControls\ActionBuilder\ActionGeocacheCountLimit.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomText.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomNumber.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionSetMacroFlag.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataContains.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserFlagInOtherDatabase.cs" />

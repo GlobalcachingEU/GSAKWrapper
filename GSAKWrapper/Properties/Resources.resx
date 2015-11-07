@@ -602,4 +602,10 @@ Leave empty to use the active database.</value>
   <data name="ExportGGZ" xml:space="preserve">
     <value>Export GGZ</value>
   </data>
+  <data name="SetMacroFlag" xml:space="preserve">
+    <value>Set macro flag</value>
+  </data>
+  <data name="ClearMacroFlag" xml:space="preserve">
+    <value>Clear macro flag</value>
+  </data>
 </root>

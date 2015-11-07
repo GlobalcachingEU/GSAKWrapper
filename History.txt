@@ -1,3 +1,9 @@
+V0.3.0.0
+- added set macro flag action
+- added clear macro flag execute once action
+- updates default GSAKWrapper macro
+- fix for Cutom fields (now also addes global fields to the list)
+
 V0.2.0.0
 - macro's saved as ANSI instead of UTF8
 - added geocache counter filter (to limit selected geocaches)

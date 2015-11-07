@@ -8,6 +8,12 @@ namespace GSAKWrapper.Settings
 {
     public partial class Settings
     {
+        public string GSAKSettingsPath
+        {
+            get { return GetProperty(null); }
+            set { SetProperty(value); }
+        }
+
         public string DatabaseFolderPath
         {
             get { return GetProperty(null); }

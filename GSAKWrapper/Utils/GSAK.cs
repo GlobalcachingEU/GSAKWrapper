@@ -9,7 +9,7 @@ namespace GSAKWrapper.Utils
 {
     public class GSAK
     {
-        public static string DatabaseFolderPath
+        public static string SettingsFolderPath
         {
             get
             {
@@ -23,15 +23,31 @@ namespace GSAKWrapper.Utils
                         if (exePath != null)
                         {
                             var fexePath = System.IO.Path.GetFullPath(exePath);
-                            var dbPath = gsak.GetValue(fexePath) as string;
-                            if (!string.IsNullOrEmpty(dbPath) && System.IO.Directory.Exists(System.IO.Path.Combine(dbPath, "data")))
-                            {
-                                result = System.IO.Path.Combine(dbPath, "data");
-                            }
+                            result = gsak.GetValue(fexePath) as string;
                         }
                         gsak.Dispose();
                     }
 
+                }
+                catch
+                {
+                }
+                return result;
+            }
+        }
+
+        public static string DatabaseFolderPath
+        {
+            get
+            {
+                string result = null;
+                try
+                {
+                    var sp = SettingsFolderPath;
+                    if (!string.IsNullOrEmpty(sp) && System.IO.Directory.Exists(System.IO.Path.Combine(sp, "data")))
+                    {
+                        result = System.IO.Path.Combine(sp, "data");
+                    }
                 }
                 catch
                 {
@@ -62,6 +78,35 @@ namespace GSAKWrapper.Utils
                     catch
                     {
                     }
+                }
+                return result;
+            }
+        }
+
+        public static List<DataTypes.GSAKCustomGlobal> GlobalCustomFields
+        {
+            get
+            {
+                var result = new List<DataTypes.GSAKCustomGlobal>();
+                try
+                {
+                    if (!string.IsNullOrEmpty(Settings.Settings.Default.GSAKSettingsPath))
+                    {
+                        string fn = System.IO.Path.Combine(Settings.Settings.Default.GSAKSettingsPath, "gsak.db3");
+                        using (var temp = new Database.DBConSqlite(fn))
+                        {
+                            if (System.IO.File.Exists(fn))
+                            {
+                                using (var db = new NPoco.Database(temp.Connection, NPoco.DatabaseType.SQLite))
+                                {
+                                    result = db.Fetch<DataTypes.GSAKCustomGlobal>("select * from CustomGlobal");
+                                }
+                            }
+                        }
+                    }
+                }
+                catch
+                {
                 }
                 return result;
             }
