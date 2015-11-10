@@ -1,0 +1,25 @@
+﻿<Window x:Class="GSAKWrapper.Dialogs.WindowFormulaSolver"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="clr-namespace:GSAKWrapper.UIControls.FormulaSolver"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        xmlns:l="clr-namespace:GSAKWrapper.Localization"
+        Title="{l:Translate FormulaSolver}"
+        Height="{Binding FormulaSolverWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding FormulaSolverWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding FormulaSolverWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding FormulaSolverWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Background="#FFFFF29D">
+            <TextBlock Margin="5" Text="{l:Translate Geocache}" />
+            <TextBlock Margin="5" Text=": " />
+            <TextBlock Margin="5" Text="{Binding ActiveGeocacheCode, Mode=OneWay, Source={x:Static s:Settings.Default}}" />
+        </StackPanel>
+        <ui:Control Grid.Row="1" />
+    </Grid>
+</Window>

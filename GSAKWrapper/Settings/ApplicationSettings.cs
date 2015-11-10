@@ -44,5 +44,17 @@ namespace GSAKWrapper.Settings
             set { SetProperty(value.ToString()); }
         }
 
+        public string ActiveGeocacheCode
+        {
+            get { return GetProperty(""); }
+            set { SetProperty(value); }
+        }
+
+        public string SettingsFolder
+        {
+            get { return GetProperty(""); }
+            set { SetProperty(value); }
+        }
+
     }
 }

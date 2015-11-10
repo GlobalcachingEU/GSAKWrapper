@@ -608,4 +608,16 @@ Leave empty to use the active database.</value>
   <data name="ClearMacroFlag" xml:space="preserve">
     <value>Clear macro flag</value>
   </data>
+  <data name="FormulaSolver" xml:space="preserve">
+    <value>Formula solver</value>
+  </data>
+  <data name="Functions" xml:space="preserve">
+    <value>Functions</value>
+  </data>
+  <data name="InstallMacroForFormulaSolver" xml:space="preserve">
+    <value>Install macro for formula solver</value>
+  </data>
+  <data name="Geocache" xml:space="preserve">
+    <value>Geocache</value>
+  </data>
 </root>

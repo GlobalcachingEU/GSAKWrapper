@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="GSAKWrapper.UIControls.FormulaSolver.Control"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:l="clr-namespace:GSAKWrapper.Localization"
+             xmlns:s="clr-namespace:GSAKWrapper.Settings"
+             xmlns:ui="clr-namespace:GSAKWrapper.UIControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="200" d:DesignWidth="600">
+    <Grid MouseLeave="Grid_MouseLeave">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding FormulaSolverWindowLeftPanelWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>    
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".33*" />
+                <ColumnDefinition Width=".33*" />
+                <ColumnDefinition Width=".33*" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="{l:Translate InsertFormula}" Click="Button_Click_1" />
+            <Button Grid.Column="1" Content="{l:Translate InsertWaypoint}" Click="Button_Click_2" />
+            <Button Grid.Column="2" Content="{l:Translate Solve}" Click="Button_Click" />
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width=".5*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="{l:Translate AsWaypoint}" Click="Button_Click_3" Visibility="Collapsed" />
+            <Button Grid.Column="2" Width="24" Height="24" Click="Button_Click_5">
+                <Image Height="16" Width="16" Source="../../Resources/General/help.png" />
+            </Button>
+        </Grid>
+        <TextBox Grid.Row="1" Grid.Column="0"
+                 AcceptsReturn="True"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 x:Name="tbFormula"
+                 Margin="4"
+                 />
+        <GridSplitter Background="#FF293955" Grid.Row="1" Grid.Column="1" Width="5" ResizeBehavior="PreviousAndNext" ResizeDirection="Columns"/>
+        <TextBox Grid.Row="1" Grid.Column="2" 
+                 AcceptsReturn="True"
+                 ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 x:Name="tbSolutions" 
+                 Margin="4"
+                 />
+    </Grid>
+</UserControl>

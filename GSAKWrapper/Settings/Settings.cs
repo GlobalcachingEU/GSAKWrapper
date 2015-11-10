@@ -49,6 +49,7 @@ namespace GSAKWrapper.Settings
             SqliteSettingsStorage.ApplicationRunning = Settings.ApplicationRunning;
             _settingsStorage = new SqliteSettingsStorage();
             _settings = _settingsStorage.LoadSettings();
+            SettingsFolder = (_settingsStorage as SqliteSettingsStorage).RootSettingsFolder;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -100,6 +101,7 @@ namespace GSAKWrapper.Settings
             }
             _settingsStorage = new SqliteSettingsStorage();
             _settings = _settingsStorage.LoadSettings();
+            SettingsFolder = (_settingsStorage as SqliteSettingsStorage).RootSettingsFolder;
         }
 
         private string getPropertyValue(string name)

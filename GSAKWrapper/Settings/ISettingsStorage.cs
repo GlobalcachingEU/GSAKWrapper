@@ -14,5 +14,9 @@ namespace GSAKWrapper.Settings
 
         //integrity of settings
         bool IsStorageOK { get; }
+
+        //formula solver
+        string GetFormula(string gcCode);
+        void SetFormula(string gcCode, string formula);
     }
 }

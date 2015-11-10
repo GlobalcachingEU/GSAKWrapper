@@ -52,6 +52,11 @@
                     <MenuItem Header="{l:Translate InstallDefaultGSAKWrapperMacro}" Click="menua47_Click" />
                     <MenuItem Header="{l:Translate InstallMacroForThisFlow}" Click="menux48_Click" IsEnabled="{Binding ElementName=flowBuilder, Path=IsFlowActive}" />
                     <MenuItem Header="{l:Translate InstallMacroForThisSequence}" Click="menux49_Click" IsEnabled="{Binding IsFlowSequenceActive}" />
+                    <Separator />
+                    <MenuItem Header="{l:Translate InstallMacroForFormulaSolver}" Click="MenuItem_Click_1" />
+                </MenuItem>
+                <MenuItem Header="{l:Translate Functions}">
+                    <MenuItem Header="{l:Translate FormulaSolver}" Click="MenuItem_Click" />
                 </MenuItem>
                 <MenuItem Header="{l:Translate Help}">
                     <MenuItem Header="{l:Translate Wiki}" Click="menua37_Click" />

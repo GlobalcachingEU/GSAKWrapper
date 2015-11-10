@@ -46,6 +46,8 @@ namespace GSAKWrapper
             public string Database { get; set; }
             public string Flow { get; set; }
             public string Sequence { get; set; }
+            public string GeocacheCode { get; set; }
+            public string Function { get; set; }
         }
 
         private FlowSequence _activeFlowSequence = null;
@@ -161,6 +163,7 @@ namespace GSAKWrapper
 #endif
                 Settings.Settings.Default.ApplicationVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 Settings.Settings.Default.ApplicationPath = Assembly.GetExecutingAssembly().Location;
+                Settings.Settings.Default.ActiveGeocacheCode = null;
 
                 AvailableDatabases = new ObservableCollection<string>();
 
@@ -220,6 +223,8 @@ namespace GSAKWrapper
                 }
             }
 
+            Settings.Settings.Default.ActiveGeocacheCode = pa.GeocacheCode;
+
             if (!string.IsNullOrEmpty(pa.Flow))
             {
                 var fl = (from a in UIControls.ActionBuilder.Manager.Instance.ActionFlows where string.Compare(a.Name, pa.Flow, true) == 0 select a).FirstOrDefault();
@@ -249,6 +254,19 @@ namespace GSAKWrapper
                     System.Windows.MessageBox.Show(string.Format("Sequence '{0}' not found", pa.Database), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     Close();
                 }
+            }
+            else if (!string.IsNullOrEmpty(pa.Function))
+            {
+                switch (pa.Function)
+                {
+                    case "FormulaSolver":
+                        {
+                            var dlg = new Dialogs.WindowFormulaSolver();
+                            dlg.ShowDialog();
+                        }
+                        break;
+                }
+                Close();
             }
             else
             {
@@ -285,6 +303,14 @@ namespace GSAKWrapper
                     else if (parts[0] == "-s")
                     {
                         result.Sequence = parts[1];
+                    }
+                    else if (parts[0] == "-g")
+                    {
+                        result.GeocacheCode = parts[1];
+                    }
+                    else if (parts[0] == "-q")
+                    {
+                        result.Function = parts[1];
                     }
                 }
             }
@@ -602,6 +628,31 @@ namespace GSAKWrapper
         private void Window_Closing(object sender, CancelEventArgs e)
         {
             Dialogs.ProgessWindow.Instance.Close();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.WindowFormulaSolver();
+            dlg.ShowDialog();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            var txt = GetTemplateGSKFile();
+            try
+            {
+                var fn = System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper", "GSAKWrapper - function.gsk");
+                if (!string.IsNullOrEmpty(txt))
+                {
+                    txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", "FormulaSolver"));
+                    txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam=\"-d=\" + Quote($_CurrentDatabase) + \" -g=%code -q=\" + Quote(\"{0}\")", "FormulaSolver"));
+                }
+                System.IO.File.WriteAllText(fn, txt);
+                System.Diagnostics.Process.Start(fn);
+            }
+            catch
+            {
+            }
         }
     }
 }
