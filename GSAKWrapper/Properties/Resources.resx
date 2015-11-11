@@ -620,4 +620,234 @@ Leave empty to use the active database.</value>
   <data name="Geocache" xml:space="preserve">
     <value>Geocache</value>
   </data>
+  <data name="AsWaypoint" xml:space="preserve">
+    <value>As Waypoint</value>
+  </data>
+  <data name="BadParameterValue" xml:space="preserve">
+    <value>{0}: Bad parameter value</value>
+  </data>
+  <data name="ContextGroup" xml:space="preserve">
+    <value>Execution context functions</value>
+  </data>
+  <data name="CoordinateFunctions" xml:space="preserve">
+    <value>Coordinate Functions</value>
+  </data>
+  <data name="DescrACos" xml:space="preserve">
+    <value>Trigonometric function Inverse Cosine</value>
+  </data>
+  <data name="DescrAlphaPos" xml:space="preserve">
+    <value>Position of the first character in the alphabet</value>
+  </data>
+  <data name="DescrAlphaSum" xml:space="preserve">
+    <value>Sum of the positions of all characters in the alphabet</value>
+  </data>
+  <data name="DescrASin" xml:space="preserve">
+    <value>Trigonometric function Inverse Sine</value>
+  </data>
+  <data name="DescrATan" xml:space="preserve">
+    <value>Trigonometric function Inverse Tangent</value>
+  </data>
+  <data name="DescrBearing" xml:space="preserve">
+    <value>Gives the bearing from coord1 to coord2
+Bearing(coord1; coord2)</value>
+  </data>
+  <data name="DescrContext" xml:space="preserve">
+    <value>Set options of execution context.
+SetContext("Rad")</value>
+  </data>
+  <data name="DescrCos" xml:space="preserve">
+    <value>Trigonometric function Cosine</value>
+  </data>
+  <data name="DescrCosH" xml:space="preserve">
+    <value>Trigonometric function Hyperbolic Cosine</value>
+  </data>
+  <data name="DescrCrossBearing" xml:space="preserve">
+    <value>Crossbearing between 2 points and 2 directions
+Crossbearing(coord1; angle1; coord2; angle2)</value>
+  </data>
+  <data name="DescrCrossProduct" xml:space="preserve">
+    <value>Product of all single numbers in the number.
+Example: CP(1234) = 24</value>
+  </data>
+  <data name="DescrCrossTotal" xml:space="preserve">
+    <value>Sum of all single numbers in the parameter.
+Example: CT(654321) = 21</value>
+  </data>
+  <data name="DescrDistance" xml:space="preserve">
+    <value>Gives the distance between coord1 and coord2 in meters
+Distance(coord1; coord2)</value>
+  </data>
+  <data name="DescrFactorial" xml:space="preserve">
+    <value>Compute the factorial of an integer.
+Fact(10) = 3628800</value>
+  </data>
+  <data name="DescrICrossProduct" xml:space="preserve">
+    <value>Iterated Crossproduct until result has only 1 digit.
+Example: ICP(1234) = 8</value>
+  </data>
+  <data name="DescrICrossTotal" xml:space="preserve">
+    <value>Iterated Crosstotal until result has only 1 digit.
+Example: ICT(123456) = 3</value>
+  </data>
+  <data name="DescrInt" xml:space="preserve">
+    <value>Gives the number before the decimal point
+Int(-5.8) = -5</value>
+  </data>
+  <data name="DescrIntersection" xml:space="preserve">
+    <value>Intersection of 2 Lines (coord1-coord2) with (coord3-coord4).
+Intersection(coord1; coord2; coord3; coord4)</value>
+  </data>
+  <data name="DescrLatitude" xml:space="preserve">
+    <value>Gets the latitude from a coordinate as decimal number.
+Latitude("N 51° 12.081 E 6° 50.328") = 51.20135</value>
+  </data>
+  <data name="DescrLen" xml:space="preserve">
+    <value>Numbers of characters in the string</value>
+  </data>
+  <data name="DescrLongitude" xml:space="preserve">
+    <value>Gets the latitude from a coordinate as decimal number.
+Longitude("N 51° 12.081 E 6° 50.328") = 6.8388</value>
+  </data>
+  <data name="DescrMid" xml:space="preserve">
+    <value>Return a substring of a string. Parameter 3: Default=1
+Mid(\"String\";StartPosition;[CharacterCount])</value>
+  </data>
+  <data name="DescrNoCacheSelected" xml:space="preserve">
+    <value>No cache selected. (Quicknotes)</value>
+  </data>
+  <data name="DescrPhoneCode" xml:space="preserve">
+    <value>Position of the first character on the phone keyboard</value>
+  </data>
+  <data name="DescrPhoneSum" xml:space="preserve">
+    <value>Sum of the positions of all characters on the phone keyboard</value>
+  </data>
+  <data name="DescrPi" xml:space="preserve">
+    <value>Gives the number Pi with n digits after decimal point
+Pi(4) = 3.1415</value>
+  </data>
+  <data name="DescrPow" xml:space="preserve">
+    <value>Compute the power of the first to the second parameter
+Pow(2;10) = 1024</value>
+  </data>
+  <data name="DescrPrimeIndex" xml:space="preserve">
+    <value>PrimeIndex(y) Gives the index of the prime number y.
+Example: PrimeIndex(11) = 5</value>
+  </data>
+  <data name="DescrPrimeNumber" xml:space="preserve">
+    <value>Primenumber(x) Gives the x-th prime number.
+Example: Primenumber(5) = 11</value>
+  </data>
+  <data name="DescrProjection" xml:space="preserve">
+    <value>Projection of Coordinate.
+Projection(coord; length; angle)</value>
+  </data>
+  <data name="DescrReverse" xml:space="preserve">
+    <value>Reverses the string
+Reverse("ABC") = CBA</value>
+  </data>
+  <data name="DescrRom2Dec" xml:space="preserve">
+    <value>Roman numerals to decimal</value>
+  </data>
+  <data name="DescrRot13" xml:space="preserve">
+    <value>Gives the Rot13 encryption
+Rot13("ABC") = NOP</value>
+  </data>
+  <data name="DescrRound" xml:space="preserve">
+    <value>Rounds the number to x digits
+Round(1.8672; 2) = 1.87</value>
+  </data>
+  <data name="DescrSin" xml:space="preserve">
+    <value>Trigonometric function Sine</value>
+  </data>
+  <data name="DescrSinH" xml:space="preserve">
+    <value>Trigonometric function Hyperbolic Sine</value>
+  </data>
+  <data name="DescrTan" xml:space="preserve">
+    <value>Trigonometric function Tangent</value>
+  </data>
+  <data name="DescrTanH" xml:space="preserve">
+    <value>Trigonometric function Hyperbolic Tangent</value>
+  </data>
+  <data name="DescrWaypoint" xml:space="preserve">
+    <value>Get coordinates of a geocache waypoint by its name.
+Waypoint("FN2Y73E") = "N 51° 12.345 E 006° 43.210"
+No param gives cache coordinates.</value>
+  </data>
+  <data name="DivByZero" xml:space="preserve">
+    <value>Division by zero</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="Insert" xml:space="preserve">
+    <value>Insert</value>
+  </data>
+  <data name="InsertFormula" xml:space="preserve">
+    <value>Insert formula</value>
+  </data>
+  <data name="InsertWaypoint" xml:space="preserve">
+    <value>Insert waypoint</value>
+  </data>
+  <data name="MissingArgument" xml:space="preserve">
+    <value>{0}: Argument missing. (Min. {1})</value>
+  </data>
+  <data name="MissingVariables" xml:space="preserve">
+    <value>Insert declarations for the missing variables:
+{0}</value>
+  </data>
+  <data name="NoCrossing" xml:space="preserve">
+    <value>No crossing</value>
+  </data>
+  <data name="NoProperCoordSelected" xml:space="preserve">
+    <value>No proper coordinate string selected.
+Please select a complete coordinate string and try again.</value>
+  </data>
+  <data name="NumberFunctions" xml:space="preserve">
+    <value>Number Functions</value>
+  </data>
+  <data name="OtherNames" xml:space="preserve">
+    <value>Other Names</value>
+  </data>
+  <data name="PiMaxDigits" xml:space="preserve">
+    <value>Pi: Maximum digits: 1000</value>
+  </data>
+  <data name="PiMinDigits" xml:space="preserve">
+    <value>Pi: Argument out of range: (0 - 1000)</value>
+  </data>
+  <data name="SelectWaypoint" xml:space="preserve">
+    <value>Select Waypoint</value>
+  </data>
+  <data name="Solve" xml:space="preserve">
+    <value>Solve</value>
+  </data>
+  <data name="TextFunctions" xml:space="preserve">
+    <value>Text Functions</value>
+  </data>
+  <data name="TooManyArguments" xml:space="preserve">
+    <value>{0}: To much arguments. (Max. {1})</value>
+  </data>
+  <data name="TrigGroup" xml:space="preserve">
+    <value>Trigonometric functions</value>
+  </data>
+  <data name="UnknownFunction" xml:space="preserve">
+    <value>Unknown function:</value>
+  </data>
+  <data name="UnknownFunctionGroup" xml:space="preserve">
+    <value>Unknown Function Group</value>
+  </data>
+  <data name="ValueOutOfRange" xml:space="preserve">
+    <value>{0}: Value out of range. ({1} - {2})</value>
+  </data>
+  <data name="Waypoints" xml:space="preserve">
+    <value>Waypoints</value>
+  </data>
+  <data name="FormulaSolverHelp" xml:space="preserve">
+    <value>Formula Solver Help</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Waypoint" xml:space="preserve">
+    <value>Waypoint</value>
+  </data>
 </root>

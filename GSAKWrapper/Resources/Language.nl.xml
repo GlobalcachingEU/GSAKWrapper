@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="{0}: argument missing. (min. {1})" value="" />
+  <string name="{0}: bad parameter value" value="" />
+  <string name="{0}: to much arguments. (max. {1})" value="" />
+  <string name="{0}: value out of range. ({1} - {2})" value="" />
   <string name="about" value="Over" />
   <string name="actions" value="Acties" />
+  <string name="add child waypoints" value="" />
   <string name="add flow" value="Voeg schema toe" />
   <string name="add to ignore list" value="Toevoegen aan negeerlijst" />
   <string name="archived" value="Gearchiveerd" />
+  <string name="as waypoint" value="" />
   <string name="attributes" value="Attributen" />
+  <string name="browse" value="" />
   <string name="cancel" value="Annuleren" />
   <string name="changed date" value="Datum aangepast" />
   <string name="check" value="Check" />
@@ -23,15 +30,22 @@
   <string name="child waypoints" value="Waypoints" />
   <string name="childload" value="ChildLoad" />
   <string name="children" value="Waypoints" />
+  <string name="clear macro flag" value="" />
   <string name="clear user flag" value="Wis gebruikers vlag" />
   <string name="compare to" value="Vergelijken met" />
   <string name="compare two dates" value="Vergelijk twee data" />
+  <string name="compute the factorial of an integer.&#xD;&#xA;fact(10) = 3628800" value="" />
+  <string name="compute the power of the first to the second parameter&#xD;&#xA;pow(2;10) = 1024" value="" />
   <string name="conditions" value="Voorwaarden" />
+  <string name="coordinate functions" value="" />
   <string name="copy to database" value="Kopieer naar database" />
   <string name="country" value="Land" />
   <string name="county" value="Regio" />
   <string name="created date" value="Aanmaakdatum" />
+  <string name="creating file..." value="" />
+  <string name="crossbearing between 2 points and 2 directions&#xD;&#xA;crossbearing(coord1; angle1; coord2; angle2)" value="" />
   <string name="custom" value="Aangepast" />
+  <string name="custom date field" value="" />
   <string name="custom numeric field" value="Aangepast numeriek veld" />
   <string name="custom text field" value="Aangepast tekst veld" />
   <string name="database" value="Database" />
@@ -41,10 +55,12 @@
   <string name="delete all geocaches" value="Verwijder alle geocaches" />
   <string name="delete flow {0}?" value="Verwijder schema {0}?" />
   <string name="delete from database" value="Verwijder van database" />
+  <string name="description" value="" />
   <string name="deutsch" value="" />
   <string name="difficulty" value="Moeilijkheid" />
   <string name="distance from center (km)" value="Afstand tot middelpunt (km)" />
   <string name="distance from location (km)" value="Afstand tot locatie (km)" />
+  <string name="division by zero" value="" />
   <string name="dnf (did not find)" value="DNF (Niet gevonden log)" />
   <string name="dnf date" value="DNF datum" />
   <string name="edit flow sequences" value="Bewerk schema lijsten" />
@@ -53,10 +69,15 @@
   <string name="error" value="Fout" />
   <string name="execute" value="Uitvoeren" />
   <string name="execute once" value="Eenmalig uitvoeren" />
+  <string name="execution context functions" value="" />
   <string name="export active flow" value="Exporteer actieve schema" />
   <string name="export all flows" value="Exporteer alle schema's" />
+  <string name="export ggz" value="" />
+  <string name="export gpx" value="" />
+  <string name="exporting gpx..." value="" />
   <string name="extra" value="" />
   <string name="favorite points" value="Aantal Favorite punten" />
+  <string name="file name" value="" />
   <string name="finished flow" value="Schema uitgevoerd" />
   <string name="finishing action" value="Actie afronden" />
   <string name="flow {0} finished in {1} seconds" value="Schema {0} uitgevoerd in {1} seconden" />
@@ -64,17 +85,32 @@
   <string name="flow sequence {0} finished in {1} seconds" value="Schema lijst {0} uitgevoerd in {1} seconden" />
   <string name="flow sequences" value="Schema lijsten" />
   <string name="flows" value="Schema's" />
+  <string name="formula solver" value="" />
+  <string name="formula solver help" value="" />
   <string name="found" value="Gevonden" />
   <string name="found by me date" value="Gevonden door mij datum" />
   <string name="found count" value="Aantal keer gevonden" />
   <string name="français" value="" />
   <string name="ftf (first to find)" value="FTF (First To Find)" />
+  <string name="functions" value="" />
   <string name="gc note" value="GC notitie" />
   <string name="general" value="Algemeen" />
+  <string name="geocache" value="" />
   <string name="geocache code" value="Geocache code" />
   <string name="geocache container" value="Geocache container" />
+  <string name="geocache counter" value="" />
   <string name="geocache name" value="Geocache naam" />
   <string name="geocache type" value="Geocache type" />
+  <string name="get coordinates of a geocache waypoint by its name.&#xD;&#xA;waypoint(&quot;fn2y73e&quot;) = &quot;n 51° 12.345 e 006° 43.210&quot;&#xD;&#xA;no param gives cache coordinates." value="" />
+  <string name="gets the latitude from a coordinate as decimal number.&#xD;&#xA;latitude(&quot;n 51° 12.081 e 6° 50.328&quot;) = 51.20135" value="" />
+  <string name="gets the latitude from a coordinate as decimal number.&#xD;&#xA;longitude(&quot;n 51° 12.081 e 6° 50.328&quot;) = 6.8388" value="" />
+  <string name="gives the bearing from coord1 to coord2&#xD;&#xA;bearing(coord1; coord2)" value="" />
+  <string name="gives the distance between coord1 and coord2 in meters&#xD;&#xA;distance(coord1; coord2)" value="" />
+  <string name="gives the number before the decimal point&#xD;&#xA;int(-5.8) = -5" value="" />
+  <string name="gives the number pi with n digits after decimal point&#xD;&#xA;pi(4) = 3.1415" value="" />
+  <string name="gives the rot13 encryption&#xD;&#xA;rot13(&quot;abc&quot;) = nop" value="" />
+  <string name="gpx settings" value="" />
+  <string name="group" value="" />
   <string name="gsak wrapper" value="GSAK Wrapper" />
   <string name="has corrected" value="Bevat corrected coordinaten" />
   <string name="has travel bug (tb/coin)" value="Bevat travel bug (TB/Coin)" />
@@ -83,11 +119,19 @@
   <string name="import flows" value="Importeer schema's" />
   <string name="in" value="" />
   <string name="in ignore list of other database" value="In negeerlijst van andere database" />
+  <string name="insert" value="" />
+  <string name="insert declarations for the missing variables:&#xD;&#xA;{0}" value="" />
+  <string name="insert formula" value="" />
+  <string name="insert waypoint" value="" />
   <string name="install default gsak wrapper macro" value="Installeer standaard GSAK Wrapper macro" />
   <string name="install gsak macro for this flow" value="Installeer GSAK Wrapper macro voor deze schema" />
   <string name="install gsak macro for this sequence" value="Installeer GSAK Wrapper macro voor deze schema lijst" />
+  <string name="install macro for formula solver" value="" />
+  <string name="intersection of 2 lines (coord1-coord2) with (coord3-coord4).&#xD;&#xA;intersection(coord1; coord2; coord3; coord4)" value="" />
   <string name="is owner" value="Is eigenaar" />
   <string name="ispremium (pmo)" value="is Premium (PMO)" />
+  <string name="iterated crossproduct until result has only 1 digit.&#xD;&#xA;example: icp(1234) = 8" value="" />
+  <string name="iterated crosstotal until result has only 1 digit.&#xD;&#xA;example: ict(123456) = 3" value="" />
   <string name="language" value="Taal" />
   <string name="last found date" value="Meest recente gevonden datum" />
   <string name="last gpx date" value="Meest recente GPX datum" />
@@ -113,40 +157,82 @@
   <string name="new flow sequence" value="Nieuwe schema lijst" />
   <string name="new folder" value="Nieuwe folder" />
   <string name="new version available" value="Nieuwe versie beschikbaar" />
+  <string name="no cache selected. (quicknotes)" value="" />
+  <string name="no crossing" value="" />
+  <string name="no proper coordinate string selected.&#xD;&#xA;please select a complete coordinate string and try again." value="" />
+  <string name="number functions" value="" />
   <string name="number of logs" value="Aantal logs" />
+  <string name="numbers of characters in the string" value="" />
   <string name="ok" value="OK" />
   <string name="original text" value="Onvertaald" />
   <string name="other" value="Andere" />
+  <string name="other names" value="" />
   <string name="overwrite existing data" value="" />
   <string name="overwrite flow {0}?" value="Schema {0} overschrijven?" />
   <string name="owner name" value="Naam eigenaar" />
+  <string name="pi: argument out of range: (0 - 1000)" value="" />
+  <string name="pi: maximum digits: 1000" value="" />
   <string name="placed by" value="Geplaatst door" />
   <string name="placed date" value="Geplaatst op datum" />
+  <string name="position of the first character in the alphabet" value="" />
+  <string name="position of the first character on the phone keyboard" value="" />
   <string name="preparing action" value="Actie aan het voorbereiden" />
   <string name="present in other database" value="Aanwezig in andere database" />
+  <string name="primeindex(y) gives the index of the prime number y.&#xD;&#xA;example: primeindex(11) = 5" value="" />
+  <string name="primenumber(x) gives the x-th prime number.&#xD;&#xA;example: primenumber(5) = 11" value="" />
+  <string name="product of all single numbers in the number.&#xD;&#xA;example: cp(1234) = 24" value="" />
+  <string name="projection of coordinate.&#xD;&#xA;projection(coord; length; angle)" value="" />
   <string name="refresh" value="Ververs" />
   <string name="rename" value="Hernoem" />
+  <string name="return a substring of a string. parameter 3: default=1&#xD;&#xA;mid(\&quot;string\&quot;;startposition;[charactercount])" value="" />
+  <string name="reverses the string&#xD;&#xA;reverse(&quot;abc&quot;) = cba" value="" />
+  <string name="roman numerals to decimal" value="" />
+  <string name="rounds the number to x digits&#xD;&#xA;round(1.8672; 2) = 1.87" value="" />
   <string name="running action" value="Bezig met actie uitvoeren" />
   <string name="select folder" value="Selecteer folder" />
   <string name="select root data folder" value="Selecteer GSAK database folder" />
+  <string name="select waypoint" value="" />
+  <string name="set macro flag" value="" />
+  <string name="set options of execution context.&#xD;&#xA;setcontext(&quot;rad&quot;)" value="" />
   <string name="set user flag" value="Zet gebruikersvlag" />
+  <string name="settings" value="" />
   <string name="short htm" value="Kort Htm" />
   <string name="smart name" value="Slimme naam" />
   <string name="smart override" value="Slimme naam overschrijven" />
+  <string name="solve" value="" />
   <string name="source" value="Bron" />
   <string name="start" value="Start" />
   <string name="starting flow" value="" />
   <string name="state" value="Provincie/Staat" />
+  <string name="sum of all single numbers in the parameter.&#xD;&#xA;example: ct(654321) = 21" value="" />
+  <string name="sum of the positions of all characters in the alphabet" value="" />
+  <string name="sum of the positions of all characters on the phone keyboard" value="" />
   <string name="symbol" value="Symbool" />
   <string name="temporarily disabled" value="Tijdelijk uitgeschakeld" />
   <string name="terrain" value="Terrein" />
+  <string name="text functions" value="" />
   <string name="the database to execute the flow on.&#xD;&#xA;leave empty to use the default database of the sequence." value="" />
+  <string name="trigonometric function cosine" value="" />
+  <string name="trigonometric function hyperbolic cosine" value="" />
+  <string name="trigonometric function hyperbolic sine" value="" />
+  <string name="trigonometric function hyperbolic tangent" value="" />
+  <string name="trigonometric function inverse cosine" value="" />
+  <string name="trigonometric function inverse sine" value="" />
+  <string name="trigonometric function inverse tangent" value="" />
+  <string name="trigonometric function sine" value="" />
+  <string name="trigonometric function tangent" value="" />
+  <string name="trigonometric functions" value="" />
+  <string name="unknown function group" value="" />
+  <string name="unknown function:" value="" />
   <string name="user data numeric" value="Gebruikers data numeriek" />
   <string name="user data text" value="Gebruikers data tekst" />
   <string name="user flag" value="Gebruikersvlag" />
   <string name="user flag set in other database" value="UserFlag gezet in andere database" />
   <string name="user note date" value="Gebruikers notitiedatum" />
+  <string name="version" value="" />
   <string name="watch" value="Volgt" />
+  <string name="waypoint" value="" />
+  <string name="waypoints" value="" />
   <string name="where" value="Waar" />
   <string name="wiki" value="" />
 </resources>

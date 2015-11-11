@@ -49,13 +49,30 @@ namespace GSAKWrapper.UIControls.FormulaSolver
             InitializeComponent();
 
             Waypoints = new ObservableCollection<string>();
-            if (!string.IsNullOrEmpty(Settings.Settings.Default.ActiveGeocacheCode))
+            if (!string.IsNullOrEmpty(Settings.Settings.Default.ActiveGeocacheCode)
+                && !string.IsNullOrEmpty(Settings.Settings.Default.DatabaseFolderPath)
+                && !string.IsNullOrEmpty(Settings.Settings.Default.SelectedDatabase)
+                )
             {
-                //todo
-                //List<Core.Data.Waypoint> wpts = Utils.DataAccess.GetWaypointsFromGeocache(Core.ApplicationData.Instance.ActiveGeocache.Database, Core.ApplicationData.Instance.ActiveGeocache.Code);
-                //foreach (var w in wpts)
+                Waypoints.Add(Settings.Settings.Default.ActiveGeocacheCode);
+                try
                 {
-                    //Waypoints.Add(w);
+                    var fn = System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, Settings.Settings.Default.SelectedDatabase, "sqlite.db3");
+                    if (System.IO.File.Exists(fn))
+                    {
+                        using (var temp = new Database.DBConSqlite(fn))
+                        using (var db = new NPoco.Database(temp.Connection, NPoco.DatabaseType.SQLite))
+                        {
+                            var lst = db.Fetch<string>("select cCode from Waypoints where cParent=@0", Settings.Settings.Default.ActiveGeocacheCode);
+                            foreach (var s in lst)
+                            {
+                                Waypoints.Add(s);
+                            }
+                        }
+                    }
+                }
+                catch
+                {
                 }
             }
             DataContext = this;

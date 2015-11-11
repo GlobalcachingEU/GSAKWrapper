@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+  <string name="{0}: argument missing. (min. {1})" value="" />
+  <string name="{0}: bad parameter value" value="" />
+  <string name="{0}: to much arguments. (max. {1})" value="" />
+  <string name="{0}: value out of range. ({1} - {2})" value="" />
   <string name="about" value="Au sujet de" />
   <string name="actions" value="Acions" />
+  <string name="add child waypoints" value="" />
   <string name="add flow" value="" />
   <string name="add to ignore list" value="" />
   <string name="archived" value="Archiver" />
+  <string name="as waypoint" value="" />
   <string name="attributes" value="Attibuts" />
+  <string name="browse" value="" />
   <string name="cancel" value="Annuler" />
   <string name="changed date" value="date change" />
   <string name="check" value="check" />
@@ -23,15 +30,22 @@
   <string name="child waypoints" value="" />
   <string name="childload" value="" />
   <string name="children" value="" />
+  <string name="clear macro flag" value="" />
   <string name="clear user flag" value="" />
   <string name="compare to" value="" />
   <string name="compare two dates" value="" />
+  <string name="compute the factorial of an integer.&#xD;&#xA;fact(10) = 3628800" value="" />
+  <string name="compute the power of the first to the second parameter&#xD;&#xA;pow(2;10) = 1024" value="" />
   <string name="conditions" value="conditions" />
+  <string name="coordinate functions" value="" />
   <string name="copy to database" value="Copier vers la Base" />
   <string name="country" value="pays" />
   <string name="county" value="region" />
   <string name="created date" value="" />
+  <string name="creating file..." value="" />
+  <string name="crossbearing between 2 points and 2 directions&#xD;&#xA;crossbearing(coord1; angle1; coord2; angle2)" value="" />
   <string name="custom" value="" />
+  <string name="custom date field" value="" />
   <string name="custom numeric field" value="" />
   <string name="custom text field" value="" />
   <string name="database" value="" />
@@ -41,10 +55,12 @@
   <string name="delete all geocaches" value="effacer toutes les caches" />
   <string name="delete flow {0}?" value="" />
   <string name="delete from database" value="" />
+  <string name="description" value="" />
   <string name="deutsch" value="" />
   <string name="difficulty" value="difficulte" />
   <string name="distance from center (km)" value="" />
   <string name="distance from location (km)" value="" />
+  <string name="division by zero" value="" />
   <string name="dnf (did not find)" value="" />
   <string name="dnf date" value="" />
   <string name="edit flow sequences" value="" />
@@ -53,10 +69,15 @@
   <string name="error" value="erreur" />
   <string name="execute" value="" />
   <string name="execute once" value="" />
+  <string name="execution context functions" value="" />
   <string name="export active flow" value="" />
   <string name="export all flows" value="" />
+  <string name="export ggz" value="" />
+  <string name="export gpx" value="" />
+  <string name="exporting gpx..." value="" />
   <string name="extra" value="" />
   <string name="favorite points" value="points favorits" />
+  <string name="file name" value="" />
   <string name="finished flow" value="" />
   <string name="finishing action" value="" />
   <string name="flow {0} finished in {1} seconds" value="" />
@@ -64,17 +85,32 @@
   <string name="flow sequence {0} finished in {1} seconds" value="" />
   <string name="flow sequences" value="" />
   <string name="flows" value="" />
+  <string name="formula solver" value="" />
+  <string name="formula solver help" value="" />
   <string name="found" value="trouve" />
   <string name="found by me date" value="" />
   <string name="found count" value="" />
   <string name="français" value="" />
   <string name="ftf (first to find)" value="PAT (premier a trouver)" />
+  <string name="functions" value="" />
   <string name="gc note" value="" />
   <string name="general" value="general" />
+  <string name="geocache" value="" />
   <string name="geocache code" value="" />
   <string name="geocache container" value="" />
+  <string name="geocache counter" value="" />
   <string name="geocache name" value="" />
   <string name="geocache type" value="" />
+  <string name="get coordinates of a geocache waypoint by its name.&#xD;&#xA;waypoint(&quot;fn2y73e&quot;) = &quot;n 51° 12.345 e 006° 43.210&quot;&#xD;&#xA;no param gives cache coordinates." value="" />
+  <string name="gets the latitude from a coordinate as decimal number.&#xD;&#xA;latitude(&quot;n 51° 12.081 e 6° 50.328&quot;) = 51.20135" value="" />
+  <string name="gets the latitude from a coordinate as decimal number.&#xD;&#xA;longitude(&quot;n 51° 12.081 e 6° 50.328&quot;) = 6.8388" value="" />
+  <string name="gives the bearing from coord1 to coord2&#xD;&#xA;bearing(coord1; coord2)" value="" />
+  <string name="gives the distance between coord1 and coord2 in meters&#xD;&#xA;distance(coord1; coord2)" value="" />
+  <string name="gives the number before the decimal point&#xD;&#xA;int(-5.8) = -5" value="" />
+  <string name="gives the number pi with n digits after decimal point&#xD;&#xA;pi(4) = 3.1415" value="" />
+  <string name="gives the rot13 encryption&#xD;&#xA;rot13(&quot;abc&quot;) = nop" value="" />
+  <string name="gpx settings" value="" />
+  <string name="group" value="" />
   <string name="gsak wrapper" value="GSAK Wrapper" />
   <string name="has corrected" value="" />
   <string name="has travel bug (tb/coin)" value="" />
@@ -83,11 +119,19 @@
   <string name="import flows" value="" />
   <string name="in" value="" />
   <string name="in ignore list of other database" value="" />
+  <string name="insert" value="" />
+  <string name="insert declarations for the missing variables:&#xD;&#xA;{0}" value="" />
+  <string name="insert formula" value="" />
+  <string name="insert waypoint" value="" />
   <string name="install default gsak wrapper macro" value="" />
   <string name="install gsak macro for this flow" value="" />
   <string name="install gsak macro for this sequence" value="" />
+  <string name="install macro for formula solver" value="" />
+  <string name="intersection of 2 lines (coord1-coord2) with (coord3-coord4).&#xD;&#xA;intersection(coord1; coord2; coord3; coord4)" value="" />
   <string name="is owner" value="" />
   <string name="ispremium (pmo)" value="" />
+  <string name="iterated crossproduct until result has only 1 digit.&#xD;&#xA;example: icp(1234) = 8" value="" />
+  <string name="iterated crosstotal until result has only 1 digit.&#xD;&#xA;example: ict(123456) = 3" value="" />
   <string name="language" value="" />
   <string name="last found date" value="" />
   <string name="last gpx date" value="" />
@@ -113,40 +157,82 @@
   <string name="new flow sequence" value="" />
   <string name="new folder" value="nouveau repertoire" />
   <string name="new version available" value="" />
+  <string name="no cache selected. (quicknotes)" value="" />
+  <string name="no crossing" value="" />
+  <string name="no proper coordinate string selected.&#xD;&#xA;please select a complete coordinate string and try again." value="" />
+  <string name="number functions" value="" />
   <string name="number of logs" value="" />
+  <string name="numbers of characters in the string" value="" />
   <string name="ok" value="ok" />
   <string name="original text" value="" />
   <string name="other" value="" />
+  <string name="other names" value="" />
   <string name="overwrite existing data" value="" />
   <string name="overwrite flow {0}?" value="" />
   <string name="owner name" value="" />
+  <string name="pi: argument out of range: (0 - 1000)" value="" />
+  <string name="pi: maximum digits: 1000" value="" />
   <string name="placed by" value="" />
   <string name="placed date" value="" />
+  <string name="position of the first character in the alphabet" value="" />
+  <string name="position of the first character on the phone keyboard" value="" />
   <string name="preparing action" value="" />
   <string name="present in other database" value="" />
+  <string name="primeindex(y) gives the index of the prime number y.&#xD;&#xA;example: primeindex(11) = 5" value="" />
+  <string name="primenumber(x) gives the x-th prime number.&#xD;&#xA;example: primenumber(5) = 11" value="" />
+  <string name="product of all single numbers in the number.&#xD;&#xA;example: cp(1234) = 24" value="" />
+  <string name="projection of coordinate.&#xD;&#xA;projection(coord; length; angle)" value="" />
   <string name="refresh" value="" />
   <string name="rename" value="renonmer" />
+  <string name="return a substring of a string. parameter 3: default=1&#xD;&#xA;mid(\&quot;string\&quot;;startposition;[charactercount])" value="" />
+  <string name="reverses the string&#xD;&#xA;reverse(&quot;abc&quot;) = cba" value="" />
+  <string name="roman numerals to decimal" value="" />
+  <string name="rounds the number to x digits&#xD;&#xA;round(1.8672; 2) = 1.87" value="" />
   <string name="running action" value="" />
   <string name="select folder" value="" />
   <string name="select root data folder" value="" />
+  <string name="select waypoint" value="" />
+  <string name="set macro flag" value="" />
+  <string name="set options of execution context.&#xD;&#xA;setcontext(&quot;rad&quot;)" value="" />
   <string name="set user flag" value="" />
+  <string name="settings" value="" />
   <string name="short htm" value="" />
   <string name="smart name" value="" />
   <string name="smart override" value="" />
+  <string name="solve" value="" />
   <string name="source" value="source" />
   <string name="start" value="lancer" />
   <string name="starting flow" value="" />
   <string name="state" value="etat" />
+  <string name="sum of all single numbers in the parameter.&#xD;&#xA;example: ct(654321) = 21" value="" />
+  <string name="sum of the positions of all characters in the alphabet" value="" />
+  <string name="sum of the positions of all characters on the phone keyboard" value="" />
   <string name="symbol" value="" />
   <string name="temporarily disabled" value="" />
   <string name="terrain" value="terrain" />
+  <string name="text functions" value="" />
   <string name="the database to execute the flow on.&#xD;&#xA;leave empty to use the default database of the sequence." value="" />
+  <string name="trigonometric function cosine" value="" />
+  <string name="trigonometric function hyperbolic cosine" value="" />
+  <string name="trigonometric function hyperbolic sine" value="" />
+  <string name="trigonometric function hyperbolic tangent" value="" />
+  <string name="trigonometric function inverse cosine" value="" />
+  <string name="trigonometric function inverse sine" value="" />
+  <string name="trigonometric function inverse tangent" value="" />
+  <string name="trigonometric function sine" value="" />
+  <string name="trigonometric function tangent" value="" />
+  <string name="trigonometric functions" value="" />
+  <string name="unknown function group" value="" />
+  <string name="unknown function:" value="" />
   <string name="user data numeric" value="" />
   <string name="user data text" value="" />
   <string name="user flag" value="" />
   <string name="user flag set in other database" value="" />
   <string name="user note date" value="" />
+  <string name="version" value="" />
   <string name="watch" value="" />
+  <string name="waypoint" value="" />
+  <string name="waypoints" value="" />
   <string name="where" value="ou" />
   <string name="wiki" value="wiki" />
 </resources>

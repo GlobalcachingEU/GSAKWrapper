@@ -93,9 +93,9 @@ namespace GSAKWrapper.Utils
                     if (!string.IsNullOrEmpty(Settings.Settings.Default.GSAKSettingsPath))
                     {
                         string fn = System.IO.Path.Combine(Settings.Settings.Default.GSAKSettingsPath, "gsak.db3");
-                        using (var temp = new Database.DBConSqlite(fn))
+                        if (System.IO.File.Exists(fn))
                         {
-                            if (System.IO.File.Exists(fn))
+                            using (var temp = new Database.DBConSqlite(fn))
                             {
                                 using (var db = new NPoco.Database(temp.Connection, NPoco.DatabaseType.SQLite))
                                 {

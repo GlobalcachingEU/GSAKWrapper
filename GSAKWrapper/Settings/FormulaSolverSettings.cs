@@ -48,5 +48,53 @@ namespace GSAKWrapper.Settings
         {
             _settingsStorage.SetFormula(gcCode, formula);
         }
+
+        public int InsertFormulaSolverWindowHeight
+        {
+            get { return int.Parse(GetProperty("600")); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int InsertFormulaSolverWindowWidth
+        {
+            get { return int.Parse(GetProperty("600")); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int InsertFormulaSolverWindowTop
+        {
+            get { return int.Parse(GetProperty("100")); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int InsertFormulaSolverWindowLeft
+        {
+            get { return int.Parse(GetProperty("100")); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int WpSelectorFormulaSolverWindowHeight
+        {
+            get { return int.Parse(GetProperty("600")); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int WpSelectorFormulaSolverWindowWidth
+        {
+            get { return int.Parse(GetProperty("600")); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int WpSelectorFormulaSolverWindowTop
+        {
+            get { return int.Parse(GetProperty("100")); }
+            set { SetProperty(value.ToString()); }
+        }
+
+        public int WpSelectorFormulaSolverWindowLeft
+        {
+            get { return int.Parse(GetProperty("100")); }
+            set { SetProperty(value.ToString()); }
+        }
     }
 }

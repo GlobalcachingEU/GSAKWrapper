@@ -1,3 +1,6 @@
+V0.4.0.0
+- added Formula Solver function and macro
+
 V0.3.0.0
 - added set macro flag action
 - added clear macro flag execute once action

@@ -2,8 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:l="clr-namespace:GSAKWrapper.Localization"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
         xmlns:ui="clr-namespace:GSAKWrapper.UIControls"
-        Title="{l:Translate InsertFormula}" Height="300" Width="300">
+        Title="{l:Translate InsertFormula}"
+        Height="{Binding InsertFormulaSolverWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding InsertFormulaSolverWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding InsertFormulaSolverWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding InsertFormulaSolverWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

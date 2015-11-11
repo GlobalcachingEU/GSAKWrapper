@@ -115,11 +115,29 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to As Waypoint.
+        /// </summary>
+        internal static string AsWaypoint {
+            get {
+                return ResourceManager.GetString("AsWaypoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attributes.
         /// </summary>
         internal static string Attributes {
             get {
                 return ResourceManager.GetString("Attributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: Bad parameter value.
+        /// </summary>
+        internal static string BadParameterValue {
+            get {
+                return ResourceManager.GetString("BadParameterValue", resourceCulture);
             }
         }
         
@@ -331,6 +349,24 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Execution context functions.
+        /// </summary>
+        internal static string ContextGroup {
+            get {
+                return ResourceManager.GetString("ContextGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coordinate Functions.
+        /// </summary>
+        internal static string CoordinateFunctions {
+            get {
+                return ResourceManager.GetString("CoordinateFunctions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy to database.
         /// </summary>
         internal static string CopyToDatabase {
@@ -457,6 +493,390 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Inverse Cosine.
+        /// </summary>
+        internal static string DescrACos {
+            get {
+                return ResourceManager.GetString("DescrACos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position of the first character in the alphabet.
+        /// </summary>
+        internal static string DescrAlphaPos {
+            get {
+                return ResourceManager.GetString("DescrAlphaPos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sum of the positions of all characters in the alphabet.
+        /// </summary>
+        internal static string DescrAlphaSum {
+            get {
+                return ResourceManager.GetString("DescrAlphaSum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Inverse Sine.
+        /// </summary>
+        internal static string DescrASin {
+            get {
+                return ResourceManager.GetString("DescrASin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Inverse Tangent.
+        /// </summary>
+        internal static string DescrATan {
+            get {
+                return ResourceManager.GetString("DescrATan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gives the bearing from coord1 to coord2
+        ///Bearing(coord1; coord2).
+        /// </summary>
+        internal static string DescrBearing {
+            get {
+                return ResourceManager.GetString("DescrBearing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set options of execution context.
+        ///SetContext(&quot;Rad&quot;).
+        /// </summary>
+        internal static string DescrContext {
+            get {
+                return ResourceManager.GetString("DescrContext", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Cosine.
+        /// </summary>
+        internal static string DescrCos {
+            get {
+                return ResourceManager.GetString("DescrCos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Hyperbolic Cosine.
+        /// </summary>
+        internal static string DescrCosH {
+            get {
+                return ResourceManager.GetString("DescrCosH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Crossbearing between 2 points and 2 directions
+        ///Crossbearing(coord1; angle1; coord2; angle2).
+        /// </summary>
+        internal static string DescrCrossBearing {
+            get {
+                return ResourceManager.GetString("DescrCrossBearing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product of all single numbers in the number.
+        ///Example: CP(1234) = 24.
+        /// </summary>
+        internal static string DescrCrossProduct {
+            get {
+                return ResourceManager.GetString("DescrCrossProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sum of all single numbers in the parameter.
+        ///Example: CT(654321) = 21.
+        /// </summary>
+        internal static string DescrCrossTotal {
+            get {
+                return ResourceManager.GetString("DescrCrossTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gives the distance between coord1 and coord2 in meters
+        ///Distance(coord1; coord2).
+        /// </summary>
+        internal static string DescrDistance {
+            get {
+                return ResourceManager.GetString("DescrDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compute the factorial of an integer.
+        ///Fact(10) = 3628800.
+        /// </summary>
+        internal static string DescrFactorial {
+            get {
+                return ResourceManager.GetString("DescrFactorial", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iterated Crossproduct until result has only 1 digit.
+        ///Example: ICP(1234) = 8.
+        /// </summary>
+        internal static string DescrICrossProduct {
+            get {
+                return ResourceManager.GetString("DescrICrossProduct", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Iterated Crosstotal until result has only 1 digit.
+        ///Example: ICT(123456) = 3.
+        /// </summary>
+        internal static string DescrICrossTotal {
+            get {
+                return ResourceManager.GetString("DescrICrossTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gives the number before the decimal point
+        ///Int(-5.8) = -5.
+        /// </summary>
+        internal static string DescrInt {
+            get {
+                return ResourceManager.GetString("DescrInt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intersection of 2 Lines (coord1-coord2) with (coord3-coord4).
+        ///Intersection(coord1; coord2; coord3; coord4).
+        /// </summary>
+        internal static string DescrIntersection {
+            get {
+                return ResourceManager.GetString("DescrIntersection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the latitude from a coordinate as decimal number.
+        ///Latitude(&quot;N 51° 12.081 E 6° 50.328&quot;) = 51.20135.
+        /// </summary>
+        internal static string DescrLatitude {
+            get {
+                return ResourceManager.GetString("DescrLatitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Numbers of characters in the string.
+        /// </summary>
+        internal static string DescrLen {
+            get {
+                return ResourceManager.GetString("DescrLen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the latitude from a coordinate as decimal number.
+        ///Longitude(&quot;N 51° 12.081 E 6° 50.328&quot;) = 6.8388.
+        /// </summary>
+        internal static string DescrLongitude {
+            get {
+                return ResourceManager.GetString("DescrLongitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return a substring of a string. Parameter 3: Default=1
+        ///Mid(\&quot;String\&quot;;StartPosition;[CharacterCount]).
+        /// </summary>
+        internal static string DescrMid {
+            get {
+                return ResourceManager.GetString("DescrMid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No cache selected. (Quicknotes).
+        /// </summary>
+        internal static string DescrNoCacheSelected {
+            get {
+                return ResourceManager.GetString("DescrNoCacheSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Position of the first character on the phone keyboard.
+        /// </summary>
+        internal static string DescrPhoneCode {
+            get {
+                return ResourceManager.GetString("DescrPhoneCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sum of the positions of all characters on the phone keyboard.
+        /// </summary>
+        internal static string DescrPhoneSum {
+            get {
+                return ResourceManager.GetString("DescrPhoneSum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gives the number Pi with n digits after decimal point
+        ///Pi(4) = 3.1415.
+        /// </summary>
+        internal static string DescrPi {
+            get {
+                return ResourceManager.GetString("DescrPi", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compute the power of the first to the second parameter
+        ///Pow(2;10) = 1024.
+        /// </summary>
+        internal static string DescrPow {
+            get {
+                return ResourceManager.GetString("DescrPow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PrimeIndex(y) Gives the index of the prime number y.
+        ///Example: PrimeIndex(11) = 5.
+        /// </summary>
+        internal static string DescrPrimeIndex {
+            get {
+                return ResourceManager.GetString("DescrPrimeIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primenumber(x) Gives the x-th prime number.
+        ///Example: Primenumber(5) = 11.
+        /// </summary>
+        internal static string DescrPrimeNumber {
+            get {
+                return ResourceManager.GetString("DescrPrimeNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Projection of Coordinate.
+        ///Projection(coord; length; angle).
+        /// </summary>
+        internal static string DescrProjection {
+            get {
+                return ResourceManager.GetString("DescrProjection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reverses the string
+        ///Reverse(&quot;ABC&quot;) = CBA.
+        /// </summary>
+        internal static string DescrReverse {
+            get {
+                return ResourceManager.GetString("DescrReverse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roman numerals to decimal.
+        /// </summary>
+        internal static string DescrRom2Dec {
+            get {
+                return ResourceManager.GetString("DescrRom2Dec", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gives the Rot13 encryption
+        ///Rot13(&quot;ABC&quot;) = NOP.
+        /// </summary>
+        internal static string DescrRot13 {
+            get {
+                return ResourceManager.GetString("DescrRot13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rounds the number to x digits
+        ///Round(1.8672; 2) = 1.87.
+        /// </summary>
+        internal static string DescrRound {
+            get {
+                return ResourceManager.GetString("DescrRound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Sine.
+        /// </summary>
+        internal static string DescrSin {
+            get {
+                return ResourceManager.GetString("DescrSin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Hyperbolic Sine.
+        /// </summary>
+        internal static string DescrSinH {
+            get {
+                return ResourceManager.GetString("DescrSinH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Tangent.
+        /// </summary>
+        internal static string DescrTan {
+            get {
+                return ResourceManager.GetString("DescrTan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric function Hyperbolic Tangent.
+        /// </summary>
+        internal static string DescrTanH {
+            get {
+                return ResourceManager.GetString("DescrTanH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get coordinates of a geocache waypoint by its name.
+        ///Waypoint(&quot;FN2Y73E&quot;) = &quot;N 51° 12.345 E 006° 43.210&quot;
+        ///No param gives cache coordinates..
+        /// </summary>
+        internal static string DescrWaypoint {
+            get {
+                return ResourceManager.GetString("DescrWaypoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DNF (Did Not Find).
         /// </summary>
         internal static string DidNotFind {
@@ -498,6 +918,15 @@ namespace GSAKWrapper.Properties {
         internal static string DistanceFromLocationKm {
             get {
                 return ResourceManager.GetString("DistanceFromLocationKm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Division by zero.
+        /// </summary>
+        internal static string DivByZero {
+            get {
+                return ResourceManager.GetString("DivByZero", resourceCulture);
             }
         }
         
@@ -728,6 +1157,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Formula Solver Help.
+        /// </summary>
+        internal static string FormulaSolverHelp {
+            get {
+                return ResourceManager.GetString("FormulaSolverHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Found.
         /// </summary>
         internal static string Found {
@@ -863,6 +1301,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Group.
+        /// </summary>
+        internal static string Group {
+            get {
+                return ResourceManager.GetString("Group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Has corrected.
         /// </summary>
         internal static string HasCorrected {
@@ -922,6 +1369,33 @@ namespace GSAKWrapper.Properties {
         internal static string InIgnoreListOfDatabase {
             get {
                 return ResourceManager.GetString("InIgnoreListOfDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert.
+        /// </summary>
+        internal static string Insert {
+            get {
+                return ResourceManager.GetString("Insert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert formula.
+        /// </summary>
+        internal static string InsertFormula {
+            get {
+                return ResourceManager.GetString("InsertFormula", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert waypoint.
+        /// </summary>
+        internal static string InsertWaypoint {
+            get {
+                return ResourceManager.GetString("InsertWaypoint", resourceCulture);
             }
         }
         
@@ -1170,6 +1644,25 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}: Argument missing. (Min. {1}).
+        /// </summary>
+        internal static string MissingArgument {
+            get {
+                return ResourceManager.GetString("MissingArgument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert declarations for the missing variables:
+        ///{0}.
+        /// </summary>
+        internal static string MissingVariables {
+            get {
+                return ResourceManager.GetString("MissingVariables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         internal static string Name {
@@ -1224,6 +1717,34 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No crossing.
+        /// </summary>
+        internal static string NoCrossing {
+            get {
+                return ResourceManager.GetString("NoCrossing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No proper coordinate string selected.
+        ///Please select a complete coordinate string and try again..
+        /// </summary>
+        internal static string NoProperCoordSelected {
+            get {
+                return ResourceManager.GetString("NoProperCoordSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Functions.
+        /// </summary>
+        internal static string NumberFunctions {
+            get {
+                return ResourceManager.GetString("NumberFunctions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of logs.
         /// </summary>
         internal static string NumberOfLogs {
@@ -1260,6 +1781,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Other Names.
+        /// </summary>
+        internal static string OtherNames {
+            get {
+                return ResourceManager.GetString("OtherNames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Overwrite flow {0}?.
         /// </summary>
         internal static string Overwrite_flow_ {
@@ -1283,6 +1813,24 @@ namespace GSAKWrapper.Properties {
         internal static string OwnerName {
             get {
                 return ResourceManager.GetString("OwnerName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pi: Maximum digits: 1000.
+        /// </summary>
+        internal static string PiMaxDigits {
+            get {
+                return ResourceManager.GetString("PiMaxDigits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pi: Argument out of range: (0 - 1000).
+        /// </summary>
+        internal static string PiMinDigits {
+            get {
+                return ResourceManager.GetString("PiMinDigits", resourceCulture);
             }
         }
         
@@ -1368,6 +1916,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select Waypoint.
+        /// </summary>
+        internal static string SelectWaypoint {
+            get {
+                return ResourceManager.GetString("SelectWaypoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set macro flag.
         /// </summary>
         internal static string SetMacroFlag {
@@ -1418,6 +1975,15 @@ namespace GSAKWrapper.Properties {
         internal static string SmartOverride {
             get {
                 return ResourceManager.GetString("SmartOverride", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Solve.
+        /// </summary>
+        internal static string Solve {
+            get {
+                return ResourceManager.GetString("Solve", resourceCulture);
             }
         }
         
@@ -1485,6 +2051,51 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Text Functions.
+        /// </summary>
+        internal static string TextFunctions {
+            get {
+                return ResourceManager.GetString("TextFunctions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: To much arguments. (Max. {1}).
+        /// </summary>
+        internal static string TooManyArguments {
+            get {
+                return ResourceManager.GetString("TooManyArguments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigonometric functions.
+        /// </summary>
+        internal static string TrigGroup {
+            get {
+                return ResourceManager.GetString("TrigGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown function:.
+        /// </summary>
+        internal static string UnknownFunction {
+            get {
+                return ResourceManager.GetString("UnknownFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown Function Group.
+        /// </summary>
+        internal static string UnknownFunctionGroup {
+            get {
+                return ResourceManager.GetString("UnknownFunctionGroup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User data numeric.
         /// </summary>
         internal static string UserDataNumber {
@@ -1530,6 +2141,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0}: Value out of range. ({1} - {2}).
+        /// </summary>
+        internal static string ValueOutOfRange {
+            get {
+                return ResourceManager.GetString("ValueOutOfRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Version.
         /// </summary>
         internal static string Version {
@@ -1544,6 +2164,24 @@ namespace GSAKWrapper.Properties {
         internal static string Watch {
             get {
                 return ResourceManager.GetString("Watch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waypoint.
+        /// </summary>
+        internal static string Waypoint {
+            get {
+                return ResourceManager.GetString("Waypoint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Waypoints.
+        /// </summary>
+        internal static string Waypoints {
+            get {
+                return ResourceManager.GetString("Waypoints", resourceCulture);
             }
         }
         

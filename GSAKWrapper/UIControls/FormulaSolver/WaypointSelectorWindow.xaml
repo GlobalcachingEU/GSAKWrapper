@@ -3,7 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:l="clr-namespace:GSAKWrapper.Localization"
         xmlns:ui="clr-namespace:GSAKWrapper.UIControls"
-        Title="{l:Translate SelectWaypoint}" Height="300" Width="300">
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        Title="{l:Translate SelectWaypoint}" 
+        Height="{Binding WpSelectorFormulaSolverWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding WpSelectorFormulaSolverWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding WpSelectorFormulaSolverWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding WpSelectorFormulaSolverWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        >
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
