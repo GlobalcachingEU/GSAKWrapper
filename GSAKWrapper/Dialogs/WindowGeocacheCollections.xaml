@@ -1,0 +1,17 @@
+﻿<Window x:Class="GSAKWrapper.Dialogs.WindowGeocacheCollections"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:GSAKWrapper.Localization"
+        xmlns:ui="clr-namespace:GSAKWrapper.UIControls.GeocacheCollections"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        Title="{l:Translate GeocacheCollections}" 
+        Height="{Binding GeocacheCollectionWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding GeocacheCollectionWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding GeocacheCollectionWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding GeocacheCollectionWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Icon="/Resources/GSAKWrapper.ico"
+        >
+    <Grid>
+        <ui:Control />
+    </Grid>
+</Window>

@@ -153,10 +153,13 @@
     <Compile Include="bsn.GoldParser\Xml\GrammarXmlProcessor.cs" />
     <Compile Include="bsn.GoldParser\Xml\ProcessResult.cs" />
     <Compile Include="bsn.GoldParser\Xml\TokenXmlReader.cs" />
+    <Compile Include="Collections\Manager.cs" />
     <Compile Include="Commands\AsyncDelegateCommand.cs" />
     <Compile Include="Commands\CommandReference.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
+    <Compile Include="Collections\GeocacheCollection.cs" />
+    <Compile Include="Collections\GeocacheCollectionItem.cs" />
     <Compile Include="DataTypes\GSAKCustomGlobal.cs" />
     <Compile Include="DataTypes\GSAKCustomLocal.cs" />
     <Compile Include="DataTypes\GeocacheAttribute.cs" />
@@ -189,6 +192,9 @@
     <Compile Include="Dialogs\BrowseFolder\InputDialog.xaml.cs" />
     <Compile Include="Dialogs\BrowseFolder\TreeModel.cs" />
     <Compile Include="Dialogs\ProgessWindow.xaml.cs" />
+    <Compile Include="Dialogs\WindowAddToGeocacheCollection.xaml.cs">
+      <DependentUpon>WindowAddToGeocacheCollection.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\WindowExportGGZSettings.xaml.cs">
       <DependentUpon>WindowExportGGZSettings.xaml</DependentUpon>
     </Compile>
@@ -200,6 +206,9 @@
     </Compile>
     <Compile Include="Dialogs\WindowFormulaSolver.xaml.cs">
       <DependentUpon>WindowFormulaSolver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WindowGeocacheCollections.xaml.cs">
+      <DependentUpon>WindowGeocacheCollections.xaml</DependentUpon>
     </Compile>
     <Compile Include="FlowSequences\FlowSequenceItem.cs" />
     <Compile Include="Gavaghan.Geodesy\Angle.cs" />
@@ -218,6 +227,7 @@
     <Compile Include="Settings\ActionBuilderSettings.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\FlowSequenceEditorSettings.cs" />
+    <Compile Include="Settings\GeocacheCollectionSettings.cs" />
     <Compile Include="Settings\GSAKSettings.cs" />
     <Compile Include="Settings\LocalizationSettings.cs" />
     <Compile Include="Settings\BackupSettings.cs" />
@@ -235,6 +245,8 @@
     <Compile Include="UIControls\ActionBuilder\ActionGeocacheCountLimit.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomText.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomNumber.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionCollection.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionPresentInCollection.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionSetMacroFlag.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataContains.cs" />
@@ -417,6 +429,9 @@
     <Compile Include="UIControls\FormulaSolver\TypeChecker.cs" />
     <Compile Include="UIControls\FormulaSolver\UserHelpWindow.xaml.cs" />
     <Compile Include="UIControls\FormulaSolver\WaypointSelectorWindow.xaml.cs" />
+    <Compile Include="UIControls\GeocacheCollections\Control.xaml.cs">
+      <DependentUpon>Control.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIControls\InputDialog.xaml.cs" />
     <Compile Include="Utils\Calculus.cs" />
     <Compile Include="Utils\Conversion.cs" />
@@ -450,6 +465,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Dialogs\WindowAddToGeocacheCollection.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Dialogs\WindowExportGGZSettings.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -463,6 +482,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\WindowFormulaSolver.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\WindowGeocacheCollections.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -507,6 +530,10 @@
     <Page Include="UIControls\FormulaSolver\WaypointSelectorWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UIControls\GeocacheCollections\Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UIControls\InputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>

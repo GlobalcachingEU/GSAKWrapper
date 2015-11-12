@@ -850,4 +850,16 @@ Please select a complete coordinate string and try again.</value>
   <data name="Waypoint" xml:space="preserve">
     <value>Waypoint</value>
   </data>
+  <data name="PresentInCollection" xml:space="preserve">
+    <value>Present in collection</value>
+  </data>
+  <data name="Collection" xml:space="preserve">
+    <value>Collection</value>
+  </data>
+  <data name="GeocacheCollections" xml:space="preserve">
+    <value>Geocache collections</value>
+  </data>
+  <data name="InstallMacroForAddToCollection" xml:space="preserve">
+    <value>Install macro for add to collection</value>
+  </data>
 </root>

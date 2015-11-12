@@ -54,9 +54,11 @@
                     <MenuItem Header="{l:Translate InstallMacroForThisSequence}" Click="menux49_Click" IsEnabled="{Binding IsFlowSequenceActive}" />
                     <Separator />
                     <MenuItem Header="{l:Translate InstallMacroForFormulaSolver}" Click="MenuItem_Click_1" />
+                    <MenuItem Header="{l:Translate InstallMacroForAddToCollection}" Click="MenuItem_Click_5" />
                 </MenuItem>
                 <MenuItem Header="{l:Translate Functions}">
                     <MenuItem Header="{l:Translate FormulaSolver}" Click="MenuItem_Click" />
+                    <MenuItem Header="{l:Translate GeocacheCollections}" Click="MenuItem_Click_4" />
                 </MenuItem>
                 <MenuItem Header="{l:Translate Help}">
                     <MenuItem Header="{l:Translate Wiki}" Click="menua37_Click" />

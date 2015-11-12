@@ -56,5 +56,10 @@ namespace GSAKWrapper.Settings
             set { SetProperty(value); }
         }
 
+        public bool ExecutedWithParameters
+        {
+            get { return bool.Parse(GetProperty(false.ToString())); }
+            set { SetProperty(value.ToString()); }
+        }
     }
 }

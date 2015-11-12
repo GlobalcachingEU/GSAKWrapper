@@ -1,3 +1,7 @@
+V0.5.0.0
+- added collection filter
+- added collection action (add and delete)
+
 V0.4.0.0
 - added Formula Solver function and macro
 

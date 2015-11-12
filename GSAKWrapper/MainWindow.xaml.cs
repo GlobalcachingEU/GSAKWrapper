@@ -164,8 +164,14 @@ namespace GSAKWrapper
                 Settings.Settings.Default.ApplicationVersion = Assembly.GetExecutingAssembly().GetName().Version;
                 Settings.Settings.Default.ApplicationPath = Assembly.GetExecutingAssembly().Location;
                 Settings.Settings.Default.ActiveGeocacheCode = null;
+                Settings.Settings.Default.ExecutedWithParameters = false;
 
                 AvailableDatabases = new ObservableCollection<string>();
+
+                if (string.IsNullOrEmpty(Settings.Settings.Default.GSAKExecutablePath))
+                {
+                    Settings.Settings.Default.GSAKExecutablePath = Utils.GSAK.ExecutablePath;
+                }
 
                 if (string.IsNullOrEmpty(Settings.Settings.Default.GSAKSettingsPath))
                 {
@@ -265,6 +271,12 @@ namespace GSAKWrapper
                             dlg.ShowDialog();
                         }
                         break;
+                    case "AddToCollection":
+                        {
+                            var dlg = new Dialogs.WindowAddToGeocacheCollection();
+                            dlg.ShowDialog();
+                        }
+                        break;
                 }
                 Close();
             }
@@ -295,22 +307,27 @@ namespace GSAKWrapper
                     if (parts[0] == "-d")
                     {
                         result.Database = parts[1];
+                        Settings.Settings.Default.ExecutedWithParameters = true;
                     }
                     else if (parts[0] == "-f")
                     {
                         result.Flow = parts[1];
+                        Settings.Settings.Default.ExecutedWithParameters = true;
                     }
                     else if (parts[0] == "-s")
                     {
                         result.Sequence = parts[1];
+                        Settings.Settings.Default.ExecutedWithParameters = true;
                     }
                     else if (parts[0] == "-g")
                     {
                         result.GeocacheCode = parts[1];
+                        Settings.Settings.Default.ExecutedWithParameters = true;
                     }
                     else if (parts[0] == "-q")
                     {
                         result.Function = parts[1];
+                        Settings.Settings.Default.ExecutedWithParameters = true;
                     }
                 }
             }
@@ -636,7 +653,7 @@ namespace GSAKWrapper
             dlg.ShowDialog();
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void InstallMacroForGeocacheFunction(string funcName)
         {
             var txt = GetTemplateGSKFile();
             try
@@ -644,8 +661,8 @@ namespace GSAKWrapper
                 var fn = System.IO.Path.Combine(System.Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "GSAKWrapper", "GSAKWrapper - function.gsk");
                 if (!string.IsNullOrEmpty(txt))
                 {
-                    txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", "FormulaSolver"));
-                    txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam=\"-d=\" + Quote($_CurrentDatabase) + \" -g=%code -q=\" + Quote(\"{0}\")", "FormulaSolver"));
+                    txt = txt.Replace("# MacFileName = GSAKWrapper.gsk", string.Format("# MacFileName = GSAKWrapper - {0}.gsk", funcName));
+                    txt = txt.Replace("$execParam=\"-d=\" + Quote($_CurrentDatabase)", string.Format("$execParam=\"-d=\" + Quote($_CurrentDatabase) + \" -g=%code -q=\" + Quote(\"{0}\")", funcName));
                 }
                 System.IO.File.WriteAllText(fn, txt);
                 System.Diagnostics.Process.Start(fn);
@@ -653,6 +670,22 @@ namespace GSAKWrapper
             catch
             {
             }
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            InstallMacroForGeocacheFunction("FormulaSolver");
+        }
+
+        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.WindowGeocacheCollections();
+            dlg.ShowDialog();
+        }
+
+        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
+        {
+            InstallMacroForGeocacheFunction("AddToCollection");
         }
     }
 }

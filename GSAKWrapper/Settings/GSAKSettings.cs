@@ -14,6 +14,12 @@ namespace GSAKWrapper.Settings
             set { SetProperty(value); }
         }
 
+        public string GSAKExecutablePath
+        {
+            get { return GetProperty(null); }
+            set { SetProperty(value); }
+        }
+
         public string DatabaseFolderPath
         {
             get { return GetProperty(null); }

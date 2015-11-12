@@ -9,6 +9,32 @@ namespace GSAKWrapper.Utils
 {
     public class GSAK
     {
+        public static string ExecutablePath
+        {
+            get
+            {
+                string result = null;
+                try
+                {
+                    var gsak = Registry.CurrentUser.OpenSubKey(@"Software\GSAK");
+                    if (gsak != null)
+                    {
+                        result = gsak.GetValue("ExePath") as string;
+                        if (!string.IsNullOrEmpty(result))
+                        {
+                            result = System.IO.Path.GetFullPath(result);
+                        }
+                        gsak.Dispose();
+                    }
+
+                }
+                catch
+                {
+                }
+                return result;
+            }
+        }
+
         public static string SettingsFolderPath
         {
             get
@@ -115,6 +141,23 @@ namespace GSAKWrapper.Utils
         public static string GetFullDatabasePath(string database)
         {
             return System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, database, "sqlite.db3");
+        }
+
+        public static bool IsGSAKRunning
+        {
+            get
+            {
+                bool result = false;
+                try
+                {
+                    var procs = System.Diagnostics.Process.GetProcessesByName("gsak");
+                    result = procs != null && procs.Length > 0;
+                }
+                catch
+                {
+                }
+                return result;
+            }
         }
     }
 }

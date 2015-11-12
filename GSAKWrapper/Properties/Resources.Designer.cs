@@ -322,6 +322,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Collection.
+        /// </summary>
+        internal static string Collection {
+            get {
+                return ResourceManager.GetString("Collection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Compare to.
         /// </summary>
         internal static string CompareTo {
@@ -1256,6 +1265,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Geocache collections.
+        /// </summary>
+        internal static string GeocacheCollections {
+            get {
+                return ResourceManager.GetString("GeocacheCollections", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Geocache container.
         /// </summary>
         internal static string GeocacheContainer {
@@ -1405,6 +1423,15 @@ namespace GSAKWrapper.Properties {
         internal static string InstallDefaultGSAKWrapperMacro {
             get {
                 return ResourceManager.GetString("InstallDefaultGSAKWrapperMacro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install macro for add to collection.
+        /// </summary>
+        internal static string InstallMacroForAddToCollection {
+            get {
+                return ResourceManager.GetString("InstallMacroForAddToCollection", resourceCulture);
             }
         }
         
@@ -1858,6 +1885,15 @@ namespace GSAKWrapper.Properties {
         internal static string PreparingAction {
             get {
                 return ResourceManager.GetString("PreparingAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Present in collection.
+        /// </summary>
+        internal static string PresentInCollection {
+            get {
+                return ResourceManager.GetString("PresentInCollection", resourceCulture);
             }
         }
         
