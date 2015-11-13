@@ -877,4 +877,103 @@ Please select a complete coordinate string and try again.</value>
   <data name="GeocacheName" xml:space="preserve">
     <value>Geocache name</value>
   </data>
+  <data name="Fields" xml:space="preserve">
+    <value>Fields</value>
+  </data>
+  <data name="File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Sheets" xml:space="preserve">
+    <value>Sheets</value>
+  </data>
+  <data name="Bearing" xml:space="preserve">
+    <value>Bearing</value>
+  </data>
+  <data name="GeocacheId" xml:space="preserve">
+    <value>Geocache Id</value>
+  </data>
+  <data name="Degrees" xml:space="preserve">
+    <value>Degrees</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="DNF" xml:space="preserve">
+    <value>DNF</value>
+  </data>
+  <data name="Container" xml:space="preserve">
+    <value>Container</value>
+  </data>
+  <data name="DNFDate" xml:space="preserve">
+    <value>DNF date</value>
+  </data>
+  <data name="OwnerId" xml:space="preserve">
+    <value>Owner id</value>
+  </data>
+  <data name="LastLog" xml:space="preserve">
+    <value>Last log</value>
+  </data>
+  <data name="UserData" xml:space="preserve">
+    <value>User data</value>
+  </data>
+  <data name="UserData2" xml:space="preserve">
+    <value>User data 2</value>
+  </data>
+  <data name="UserData3" xml:space="preserve">
+    <value>User data 3</value>
+  </data>
+  <data name="UserData4" xml:space="preserve">
+    <value>User data 4</value>
+  </data>
+  <data name="SmartName" xml:space="preserve">
+    <value>Smart name</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="LatOriginal" xml:space="preserve">
+    <value>Original latitude</value>
+  </data>
+  <data name="LinkedTo" xml:space="preserve">
+    <value>Linked to</value>
+  </data>
+  <data name="LonOriginal" xml:space="preserve">
+    <value>Original longitude</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="Resolution" xml:space="preserve">
+    <value>Resolution</value>
+  </data>
+  <data name="Guid" xml:space="preserve">
+    <value>Guid</value>
+  </data>
+  <data name="Hints" xml:space="preserve">
+    <value>Hints</value>
+  </data>
+  <data name="LongDescription" xml:space="preserve">
+    <value>Long description</value>
+  </data>
+  <data name="ShortDescription" xml:space="preserve">
+    <value>Short description</value>
+  </data>
+  <data name="TravelBugs" xml:space="preserve">
+    <value>Travel bugs</value>
+  </data>
+  <data name="Url" xml:space="preserve">
+    <value>Url</value>
+  </data>
+  <data name="UserNote" xml:space="preserve">
+    <value>User note</value>
+  </data>
+  <data name="Coordinates" xml:space="preserve">
+    <value>Coordinates</value>
+  </data>
+  <data name="CorrectedCoordinates" xml:space="preserve">
+    <value>Corrected coordinates</value>
+  </data>
 </root>

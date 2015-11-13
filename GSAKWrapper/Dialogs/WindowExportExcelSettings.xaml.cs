@@ -120,7 +120,7 @@ namespace GSAKWrapper.Dialogs
                 Sheets.Add(ns);
             }
 
-            foreach (var fi in PropertyItem.PropertyItems)
+            foreach (var fi in PropertyItem.PropertyItems.OrderBy(x => x.ToString()))
             {
                 CheckedListItem<PropertyItem> cli = new CheckedListItem<PropertyItem>(fi, false);
                 Fields.Add(cli);

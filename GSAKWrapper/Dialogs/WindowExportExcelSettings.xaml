@@ -4,6 +4,7 @@
         xmlns:l="clr-namespace:GSAKWrapper.Localization"
         xmlns:ui="clr-namespace:GSAKWrapper.UIControls"
         Title="{l:Translate ExportExcel}"
+        Icon="/Resources/GSAKWrapper.ico"        
         Height="600" Width="600">
     <Grid>
         <Grid.ColumnDefinitions>

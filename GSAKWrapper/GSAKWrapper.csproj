@@ -224,8 +224,77 @@
     <Compile Include="Dialogs\WindowGeocacheCollections.xaml.cs">
       <DependentUpon>WindowGeocacheCollections.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Excel\Extensions.cs" />
     <Compile Include="Excel\GeocacheData.cs" />
     <Compile Include="Excel\PropertyItem.cs" />
+    <Compile Include="Excel\PropertyItemCorrectedCoordinates.cs" />
+    <Compile Include="Excel\PropertyItemCoordinates.cs" />
+    <Compile Include="Excel\PropertyItemTravelBugs.cs" />
+    <Compile Include="Excel\PropertyItemUserNote.cs" />
+    <Compile Include="Excel\PropertyItemHints.cs" />
+    <Compile Include="Excel\PropertyItemUrl.cs" />
+    <Compile Include="Excel\PropertyItemShortDescription.cs" />
+    <Compile Include="Excel\PropertyItemLongDescription.cs" />
+    <Compile Include="Excel\PropertyItemFavPoints.cs" />
+    <Compile Include="Excel\PropertyItemGuid.cs" />
+    <Compile Include="Excel\PropertyItemIsPremium.cs" />
+    <Compile Include="Excel\PropertyItemChildLoad.cs" />
+    <Compile Include="Excel\PropertyItemGcNote.cs" />
+    <Compile Include="Excel\PropertyItemResolution.cs" />
+    <Compile Include="Excel\PropertyItemElevation.cs" />
+    <Compile Include="Excel\PropertyItemLinkedTo.cs" />
+    <Compile Include="Excel\PropertyItemColor.cs" />
+    <Compile Include="Excel\PropertyItemStatus.cs" />
+    <Compile Include="Excel\PropertyItemCreated.cs" />
+    <Compile Include="Excel\PropertyItemIsOwner.cs" />
+    <Compile Include="Excel\PropertyItemLonOriginal.cs" />
+    <Compile Include="Excel\PropertyItemLatOriginal.cs" />
+    <Compile Include="Excel\PropertyItemWatch.cs" />
+    <Compile Include="Excel\PropertyItemUserNoteDate.cs" />
+    <Compile Include="Excel\PropertyItemUserData4.cs" />
+    <Compile Include="Excel\PropertyItemUserData3.cs" />
+    <Compile Include="Excel\PropertyItemUserData2.cs" />
+    <Compile Include="Excel\PropertyItemUserData.cs" />
+    <Compile Include="Excel\PropertyItemTerrain.cs" />
+    <Compile Include="Excel\PropertyItemTempDisabled.cs" />
+    <Compile Include="Excel\PropertyItemSymbol.cs" />
+    <Compile Include="Excel\PropertyItemState.cs" />
+    <Compile Include="Excel\PropertyItemSource.cs" />
+    <Compile Include="Excel\PropertyItemSmartOverride.cs" />
+    <Compile Include="Excel\PropertyItemSmartName.cs" />
+    <Compile Include="Excel\PropertyItemShortHtm.cs" />
+    <Compile Include="Excel\PropertyItemNumberOfLogs.cs" />
+    <Compile Include="Excel\PropertyItemLongitude.cs" />
+    <Compile Include="Excel\PropertyItemLongHtm.cs" />
+    <Compile Include="Excel\PropertyItemLocked.cs" />
+    <Compile Include="Excel\PropertyItemLatitude.cs" />
+    <Compile Include="Excel\PropertyItemLastUserDate.cs" />
+    <Compile Include="Excel\PropertyItemLastLog.cs" />
+    <Compile Include="Excel\PropertyItemLastGPXDate.cs" />
+    <Compile Include="Excel\PropertyItemLastFoundDate.cs" />
+    <Compile Include="Excel\PropertyItemHasUserNote.cs" />
+    <Compile Include="Excel\PropertyItemHasTravelBug.cs" />
+    <Compile Include="Excel\PropertyItemHasCorrected.cs" />
+    <Compile Include="Excel\PropertyItemFTF.cs" />
+    <Compile Include="Excel\PropertyItemFoundByMeDate.cs" />
+    <Compile Include="Excel\PropertyItemFoundCount.cs" />
+    <Compile Include="Excel\PropertyItemFound.cs" />
+    <Compile Include="Excel\PropertyItemDNFDate.cs" />
+    <Compile Include="Excel\PropertyItemDNF.cs" />
+    <Compile Include="Excel\PropertyItemArchived.cs" />
+    <Compile Include="Excel\PropertyItemBearing.cs" />
+    <Compile Include="Excel\PropertyItemCountry.cs" />
+    <Compile Include="Excel\PropertyItemCounty.cs" />
+    <Compile Include="Excel\PropertyItemContainer.cs" />
+    <Compile Include="Excel\PropertyItemDegrees.cs" />
+    <Compile Include="Excel\PropertyItemDifficulty.cs" />
+    <Compile Include="Excel\PropertyItemGeocacheType.cs" />
+    <Compile Include="Excel\PropertyItemGeocacheId.cs" />
+    <Compile Include="Excel\PropertyItemOwnerName.cs" />
+    <Compile Include="Excel\PropertyItemOwnerId.cs" />
+    <Compile Include="Excel\PropertyItemPlacedDate.cs" />
+    <Compile Include="Excel\PropertyItemPlacedBy.cs" />
+    <Compile Include="Excel\PropertyItemDistance.cs" />
     <Compile Include="Excel\PropertyItemCode.cs" />
     <Compile Include="Excel\PropertyItemGeocacheName.cs" />
     <Compile Include="Excel\Sheet.cs" />
@@ -589,7 +658,7 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Resource Include="bsn.GoldParser\Semantic\GoldRuleDeclaration.egt" />
     <EmbeddedResource Include="bsn.GoldParser\Semantic\GoldRuleDeclaration.grm" />
