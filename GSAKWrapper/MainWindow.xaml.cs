@@ -200,6 +200,9 @@ namespace GSAKWrapper
 
                 checkSelectedDatabaseExists();
 
+                ApplicationData.Instance.GSAKCustomGlobals = Utils.GSAK.GlobalCustomFields;
+                ApplicationData.Instance.GSAKLocations = Utils.GSAK.Locations;
+
                 InitializeComponent();
                 DataContext = this;
 
@@ -636,6 +639,7 @@ namespace GSAKWrapper
             {
                 checkSelectedDatabaseExists();
                 ApplicationData.Instance.GSAKCustomGlobals = Utils.GSAK.GlobalCustomFields;
+                ApplicationData.Instance.GSAKLocations = Utils.GSAK.Locations;
             }
             catch
             {

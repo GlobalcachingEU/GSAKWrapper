@@ -138,6 +138,47 @@ namespace GSAKWrapper.Utils
             }
         }
 
+        public static List<string> Locations
+        {
+            get
+            {
+                var result = new List<string>();
+                try
+                {
+                    if (!string.IsNullOrEmpty(Settings.Settings.Default.GSAKSettingsPath))
+                    {
+                        string fn = System.IO.Path.Combine(Settings.Settings.Default.GSAKSettingsPath, "gsak.db3");
+                        if (System.IO.File.Exists(fn))
+                        {
+                            using (var temp = new Database.DBConSqlite(fn))
+                            {
+                                using (var db = new NPoco.Database(temp.Connection, NPoco.DatabaseType.SQLite))
+                                {
+                                    var record = db.FirstOrDefault<string>("select Data from Settings where Type='LO' and Description='Locations'");
+                                    if (!string.IsNullOrEmpty(record))
+                                    {
+                                        var lines = record.Split(new char[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                                        foreach(var l in lines)
+                                        {
+                                            if (!l.Trim().StartsWith("#"))
+                                            {
+                                                result.Add(l.Trim());
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                }
+                return result;
+            }
+        }
+
+
         public static string GetFullDatabasePath(string database)
         {
             return System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, database, "sqlite.db3");

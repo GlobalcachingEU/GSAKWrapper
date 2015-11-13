@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,7 +99,7 @@ namespace GSAKWrapper.Utils
                 );
         }
 
-        public static Location StringToLocation(string s)
+        public static Location StringToLocation(string s, bool includeAddressCheck = true)
         {
             Location result = null;
             try
@@ -133,6 +134,18 @@ namespace GSAKWrapper.Utils
             }
             catch
             {
+            }
+            if (result == null)
+            {
+                if( ApplicationData.Instance.GSAKLocations.Any( x => x.Equals(s, StringComparison.OrdinalIgnoreCase) ) )
+                {
+                    //get location from GSAK location
+                    var parts = s.Split(new char[] { ',' }, 2, StringSplitOptions.RemoveEmptyEntries);
+                    if (parts.Length == 2)
+                    {
+                        result = StringToLocation(parts[1], includeAddressCheck: false);
+                    }
+                }
             }
             if (result == null)
             {
