@@ -871,4 +871,10 @@ Please select a complete coordinate string and try again.</value>
   <data name="AddUserFlaggedGeocaches" xml:space="preserve">
     <value>Add User Flagged geocaches</value>
   </data>
+  <data name="ExportExcel" xml:space="preserve">
+    <value>Export Excel</value>
+  </data>
+  <data name="GeocacheName" xml:space="preserve">
+    <value>Geocache name</value>
+  </data>
 </root>

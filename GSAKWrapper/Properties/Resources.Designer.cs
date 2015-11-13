@@ -1057,6 +1057,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export Excel.
+        /// </summary>
+        internal static string ExportExcel {
+            get {
+                return ResourceManager.GetString("ExportExcel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Export GGZ.
         /// </summary>
         internal static string ExportGGZ {
@@ -1315,6 +1324,15 @@ namespace GSAKWrapper.Properties {
         internal static string GeocacheCountLimit {
             get {
                 return ResourceManager.GetString("GeocacheCountLimit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geocache name.
+        /// </summary>
+        internal static string GeocacheName {
+            get {
+                return ResourceManager.GetString("GeocacheName", resourceCulture);
             }
         }
         

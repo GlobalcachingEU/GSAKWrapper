@@ -68,6 +68,10 @@
                       <File Id="npc" Name="NPoco.dll" Source="../GSAKWrapper/bin/Release/NPoco.dll" />
                       <File Id="zpl" Name="ICSharpCode.SharpZipLib.dll" Source="../GSAKWrapper/bin/Release/ICSharpCode.SharpZipLib.dll" />
                       <File Id="Hist" Name="History.txt" Source="../History.txt" />
+                      <File Id="npi1" Name="NPOI.dll" Source="../GSAKWrapper/bin/Release/NPOI.dll" />
+                      <File Id="npi2" Name="NPOI.OpenXml4Net.dll" Source="../GSAKWrapper/bin/Release/NPOI.OpenXml4Net.dll" />
+                      <File Id="npi3" Name="NPOI.OpenXmlFormats.dll" Source="../GSAKWrapper/bin/Release/NPOI.OpenXmlFormats.dll" />
+                      <File Id="npi4" Name="NPOI.OOXML.dll" Source="../GSAKWrapper/bin/Release/NPOI.OOXML.dll" />
                     </Component>
                 </Directory>
             </Directory>
