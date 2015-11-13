@@ -10,6 +10,7 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Windows;
 using System.Data;
+using GSAKWrapper.DataTypes;
 
 namespace GSAKWrapper.Settings
 {
@@ -56,6 +57,20 @@ namespace GSAKWrapper.Settings
                     {
                         _dbcon.ExecuteNonQuery("create table 'formulasolv' (gccode text, formula text)");
                         _dbcon.ExecuteNonQuery("create index idx_form on formulasolv (gccode)");
+                    }
+
+                    if (!_dbcon.TableExists("GeocacheCollection"))
+                    {
+                        _dbcon.ExecuteNonQuery("create table 'GeocacheCollection' (CollectionID integer not null, Name text not null)");
+                        _dbcon.ExecuteNonQuery("create index idx_gckey on GeocacheCollection (CollectionID)");
+                        _dbcon.ExecuteNonQuery("create index idx_gcname on GeocacheCollection (Name)");
+                    }
+                    if (!_dbcon.TableExists("GeocacheCollectionItem"))
+                    {
+                        _dbcon.ExecuteNonQuery("create table 'GeocacheCollectionItem' (CollectionID integer not null, GeocacheCode text not null, Name text not null)");
+                        _dbcon.ExecuteNonQuery("create unique index idx_gcikey on GeocacheCollectionItem (CollectionID, GeocacheCode)");
+
+                        _dbcon.ExecuteNonQuery("CREATE TRIGGER Delete_GeocacheCollection Delete ON GeocacheCollection BEGIN delete from GeocacheCollectionItem where CollectionID = old.CollectionID; END");
                     }
 
                     object o = _dbcon.ExecuteScalar("PRAGMA integrity_check");
@@ -155,6 +170,79 @@ namespace GSAKWrapper.Settings
                     {
                         _dbcon.ExecuteNonQuery(string.Format("insert into formulasolv (gccode, formula) values ('{0}', '{1}')", gcCode, formula.Replace("'", "''")));
                     }
+                }
+            }
+        }
+
+        public List<GeocacheCollection> GetGeocacheCollections()
+        {
+            List<GeocacheCollection> result = null;
+            lock (this)
+            {
+                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                {
+                    result = db.Fetch<GeocacheCollection>();
+                }
+            }
+            return result;
+        }
+
+        public GeocacheCollection GetCollection(string name, bool createIfNotExists = false)
+        {
+            GeocacheCollection result = null;
+            if (!string.IsNullOrEmpty(name))
+            {
+                lock (this)
+                {
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        result = db.FirstOrDefault<GeocacheCollection>("where Name like @0", name);
+                        if (result == null && createIfNotExists)
+                        {
+                            //just the lazy way
+                            var record = db.FirstOrDefault<GeocacheCollection>("order by CollectionID desc limit 1");
+                            result = new GeocacheCollection();
+                            result.Name = name;
+                            result.CollectionID = record == null ? 1 : record.CollectionID + 1;
+                            db.Insert(result);
+                        }
+                    }
+                }
+            }
+            return result;
+        }
+
+        public List<GeocacheCollectionItem> GetCollectionItems(int id)
+        {
+            List<GeocacheCollectionItem> result = null;
+            lock (this)
+            {
+                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                {
+                    result = db.Fetch<GeocacheCollectionItem>("where CollectionID = @0", id);
+                }
+            }
+            return result;
+        }
+
+        public void DeleteGeocacheCollection(int id)
+        {
+            lock (this)
+            {
+                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                {
+                    db.Execute("delete from GeocacheCollection where CollectionID = @0", id);
+                }
+            }
+        }
+
+        public void DeleteGeocacheCollectionItem(int colid, string code)
+        {
+            lock (this)
+            {
+                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                {
+                    db.Execute("delete from GeocacheCollectionItem where CollectionID = @0 and GeocacheCode = @1", colid, code);
                 }
             }
         }

@@ -25,17 +25,17 @@ namespace GSAKWrapper.UIControls.GeocacheCollections
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public ObservableCollection<Collections.GeocacheCollection> AvailableCollections { get; set; }
+        public ObservableCollection<DataTypes.GeocacheCollection> AvailableCollections { get; set; }
 
-        private List<Collections.GeocacheCollectionItem> _availableCollectionItems;
-        public List<Collections.GeocacheCollectionItem> AvailableCollectionItems
+        private List<DataTypes.GeocacheCollectionItem> _availableCollectionItems;
+        public List<DataTypes.GeocacheCollectionItem> AvailableCollectionItems
         {
             get { return _availableCollectionItems; }
             set { SetProperty(ref _availableCollectionItems, value); }
         }
 
-        private Collections.GeocacheCollection _selectedCollection = null;
-        public Collections.GeocacheCollection SelectedCollection
+        private DataTypes.GeocacheCollection _selectedCollection = null;
+        public DataTypes.GeocacheCollection SelectedCollection
         {
             get { return _selectedCollection; }
             set 
@@ -45,7 +45,7 @@ namespace GSAKWrapper.UIControls.GeocacheCollections
                     IsCollectionSelected = SelectedCollection != null;
                     if (_selectedCollection != null)
                     {
-                        AvailableCollectionItems = Collections.Manager.Instance.GetCollectionItems(_selectedCollection.CollectionID);
+                        AvailableCollectionItems = Settings.Settings.Default.GetCollectionItems(_selectedCollection.CollectionID);
                     }
                     else
                     {
@@ -55,8 +55,8 @@ namespace GSAKWrapper.UIControls.GeocacheCollections
             }
         }
 
-        private Collections.GeocacheCollectionItem _selectedCollectionItem = null;
-        public Collections.GeocacheCollectionItem SelectedCollectionItem
+        private DataTypes.GeocacheCollectionItem _selectedCollectionItem = null;
+        public DataTypes.GeocacheCollectionItem SelectedCollectionItem
         {
             get { return _selectedCollectionItem; }
             set
@@ -112,10 +112,10 @@ namespace GSAKWrapper.UIControls.GeocacheCollections
         {
             InitializeComponent();
 
-            AvailableCollections = new ObservableCollection<Collections.GeocacheCollection>();
+            AvailableCollections = new ObservableCollection<DataTypes.GeocacheCollection>();
             if (Settings.Settings.ApplicationRunning)
             {
-                var cl = Collections.Manager.Instance.GetGeocacheCollections();
+                var cl = Settings.Settings.Default.GetGeocacheCollections();
                 foreach (var c in cl)
                 {
                     AvailableCollections.Add(c);
@@ -145,7 +145,7 @@ namespace GSAKWrapper.UIControls.GeocacheCollections
         {
             if (SelectedCollection != null)
             {
-                Collections.Manager.Instance.DeleteGeocacheCollection(SelectedCollection.CollectionID);
+                Settings.Settings.Default.DeleteGeocacheCollection(SelectedCollection.CollectionID);
                 AvailableCollections.Remove(SelectedCollection);
             }
         }
@@ -154,8 +154,39 @@ namespace GSAKWrapper.UIControls.GeocacheCollections
         {
             if (SelectedCollection != null && SelectedCollectionItem!=null)
             {
-                Collections.Manager.Instance.DeleteGeocacheCollectionItem(SelectedCollectionItem.CollectionID, SelectedCollectionItem.GeocacheCode);
-                AvailableCollectionItems = Collections.Manager.Instance.GetCollectionItems(SelectedCollection.CollectionID);
+                Settings.Settings.Default.DeleteGeocacheCollectionItem(SelectedCollectionItem.CollectionID, SelectedCollectionItem.GeocacheCode);
+                AvailableCollectionItems = Settings.Settings.Default.GetCollectionItems(SelectedCollection.CollectionID);
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            inputDialog.Show(Localization.TranslationManager.Instance.Translate("Name").ToString());
+            inputDialog.DialogClosed += newDialog_DialogClosed;
+        }
+
+        private void newDialog_DialogClosed(object sender, EventArgs e)
+        {
+            inputDialog.DialogClosed -= newDialog_DialogClosed;
+            if (inputDialog.DialogResult)
+            {
+                if (!string.IsNullOrEmpty(inputDialog.InputText))
+                {
+                    string s = inputDialog.InputText.Trim();
+                    if (s.Length > 0)
+                    {
+                        var c = Settings.Settings.Default.GetCollection(s);
+                        if (c == null)
+                        {
+                            c = Settings.Settings.Default.GetCollection(s, createIfNotExists: true);
+                            if (c != null)
+                            {
+                                AvailableCollections.Add(c);
+                                SelectedCollection = c;
+                            }
+                        }
+                    }
+                }
             }
         }
 

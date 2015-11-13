@@ -79,6 +79,15 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add active geocache.
+        /// </summary>
+        internal static string AddActiveGeocache {
+            get {
+                return ResourceManager.GetString("AddActiveGeocache", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add child waypoints.
         /// </summary>
         internal static string AddChildWaypoints {
@@ -97,11 +106,29 @@ namespace GSAKWrapper.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add to geocache collection.
+        /// </summary>
+        internal static string AddToGeocacheCollection {
+            get {
+                return ResourceManager.GetString("AddToGeocacheCollection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add to ignore list.
         /// </summary>
         internal static string AddToIgnoreList {
             get {
                 return ResourceManager.GetString("AddToIgnoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add User Flagged geocaches.
+        /// </summary>
+        internal static string AddUserFlaggedGeocaches {
+            get {
+                return ResourceManager.GetString("AddUserFlaggedGeocaches", resourceCulture);
             }
         }
         

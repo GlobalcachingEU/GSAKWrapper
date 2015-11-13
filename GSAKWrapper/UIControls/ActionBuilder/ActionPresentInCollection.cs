@@ -42,7 +42,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             ComboBox cb = CreateComboBox(opts.ToArray(), Values[0]);
             cb.IsEditable = false;
             sp.Children.Add(cb);
-            var opts2 = (from a in Collections.Manager.Instance.GetGeocacheCollections() select a.Name).ToArray();
+            var opts2 = (from a in Settings.Settings.Default.GetGeocacheCollections() select a.Name).ToArray();
             //cb = CreateComboBox(opts2, (from a in opts2 where string.Compare(a, Values[1], true)==0 select a).FirstOrDefault() ?? "");
             cb = CreateComboBox(opts2, Values[1]);
             cb.DropDownOpened += cb_DropDownOpened;
@@ -65,7 +65,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             {
                 cb.Items.Remove(item);
             }
-            var cf = Collections.Manager.Instance.GetGeocacheCollections();
+            var cf = Settings.Settings.Default.GetGeocacheCollections();
             foreach (var c in cf)
             {
                 if (string.Compare(cb.Text, c.Name, true) != 0)
@@ -105,7 +105,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             }
             if (!string.IsNullOrEmpty(_collection))
             {
-                var opts = (from a in Collections.Manager.Instance.GetGeocacheCollections() select a.Name).ToArray();
+                var opts = (from a in Settings.Settings.Default.GetGeocacheCollections() select a.Name).ToArray();
                 _collection = (from a in opts where string.Compare(a, _collection, true) == 0 select a).FirstOrDefault() ?? "";
             }
             return base.PrepareRun(db, tableName);
@@ -115,11 +115,11 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (!string.IsNullOrEmpty(_collection))
             {
-                var col = Collections.Manager.Instance.GetCollection(_collection);
+                var col = Settings.Settings.Default.GetCollection(_collection);
                 if (col != null)
                 {
                     string target = "target";
-                    DatabaseConnection.ExecuteNonQuery(string.Format("ATTACH DATABASE '{0}' as {1}", Collections.Manager.Instance.DatabaseFilePath, target));
+                    DatabaseConnection.ExecuteNonQuery(string.Format("ATTACH DATABASE '{0}' as {1}", System.IO.Path.Combine(Settings.Settings.Default.SettingsFolder, "settings.db3"), target));
                     switch (_option)
                     {
                         case Option.Yes:

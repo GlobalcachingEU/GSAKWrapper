@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GSAKWrapper.Collections
+namespace GSAKWrapper.DataTypes
 {
-    [NPoco.TableName("GeocacheCollectionItem")]
-    public class GeocacheCollectionItem
+    [NPoco.TableName("GeocacheCollection")]
+    public class GeocacheCollection
     {
         public int CollectionID { get; set; }
-        public string GeocacheCode { get; set; }
         public string Name { get; set; }
     }
 }

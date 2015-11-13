@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GSAKWrapper.DataTypes;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,13 @@ namespace GSAKWrapper.Settings
         //formula solver
         string GetFormula(string gcCode);
         void SetFormula(string gcCode, string formula);
+
+        //collections
+        List<GeocacheCollection> GetGeocacheCollections();
+        GeocacheCollection GetCollection(string name, bool createIfNotExists = false);
+        List<GeocacheCollectionItem> GetCollectionItems(int id);
+        void DeleteGeocacheCollection(int id);
+        void DeleteGeocacheCollectionItem(int colid, string code);
+
     }
 }

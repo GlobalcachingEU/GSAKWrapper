@@ -862,4 +862,13 @@ Please select a complete coordinate string and try again.</value>
   <data name="InstallMacroForAddToCollection" xml:space="preserve">
     <value>Install macro for add to collection</value>
   </data>
+  <data name="AddToGeocacheCollection" xml:space="preserve">
+    <value>Add to geocache collection</value>
+  </data>
+  <data name="AddActiveGeocache" xml:space="preserve">
+    <value>Add active geocache</value>
+  </data>
+  <data name="AddUserFlaggedGeocaches" xml:space="preserve">
+    <value>Add User Flagged geocaches</value>
+  </data>
 </root>

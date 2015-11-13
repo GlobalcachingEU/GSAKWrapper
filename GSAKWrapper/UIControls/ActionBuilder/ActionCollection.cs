@@ -40,7 +40,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             ComboBox cb = CreateComboBox(opts.ToArray(), Values[0]);
             cb.IsEditable = false;
             sp.Children.Add(cb);
-            var opts2 = (from a in Collections.Manager.Instance.GetGeocacheCollections() select a.Name).ToArray();
+            var opts2 = (from a in Settings.Settings.Default.GetGeocacheCollections() select a.Name).ToArray();
             //cb = CreateComboBox(opts2, (from a in opts2 where string.Compare(a, Values[1], true)==0 select a).FirstOrDefault() ?? "");
             cb = CreateComboBox(opts2, Values[1]);
             sp.Children.Add(cb);
@@ -74,11 +74,11 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             TotalProcessTime.Start();
             if (!string.IsNullOrEmpty(_collection))
             {
-                var col = Collections.Manager.Instance.GetCollection(_collection, createIfNotExists: _option == Option.Add);
+                var col = Settings.Settings.Default.GetCollection(_collection, createIfNotExists: _option == Option.Add);
                 if (col != null)
                 {
                     string target = "target";
-                    DatabaseConnection.ExecuteNonQuery(string.Format("ATTACH DATABASE '{0}' as {1}", Collections.Manager.Instance.DatabaseFilePath, target));
+                    DatabaseConnection.ExecuteNonQuery(string.Format("ATTACH DATABASE '{0}' as {1}", System.IO.Path.Combine(Settings.Settings.Default.SettingsFolder, "settings.db3"), target));
                     switch (_option)
                     {
                         case Option.Add:

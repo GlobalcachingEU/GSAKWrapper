@@ -153,13 +153,12 @@
     <Compile Include="bsn.GoldParser\Xml\GrammarXmlProcessor.cs" />
     <Compile Include="bsn.GoldParser\Xml\ProcessResult.cs" />
     <Compile Include="bsn.GoldParser\Xml\TokenXmlReader.cs" />
-    <Compile Include="Collections\Manager.cs" />
     <Compile Include="Commands\AsyncDelegateCommand.cs" />
     <Compile Include="Commands\CommandReference.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Collections\GeocacheCollection.cs" />
-    <Compile Include="Collections\GeocacheCollectionItem.cs" />
+    <Compile Include="DataTypes\GeocacheCollection.cs" />
+    <Compile Include="DataTypes\GeocacheCollectionItem.cs" />
     <Compile Include="DataTypes\GSAKCustomGlobal.cs" />
     <Compile Include="DataTypes\GSAKCustomLocal.cs" />
     <Compile Include="DataTypes\GeocacheAttribute.cs" />
@@ -224,6 +223,7 @@
     <Compile Include="Localization\TranslateExtension.cs" />
     <Compile Include="Localization\TranslationData.cs" />
     <Compile Include="Localization\TranslationManager.cs" />
+    <Compile Include="Settings\CollectionsSettings.cs" />
     <Compile Include="Settings\ActionBuilderSettings.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Settings\FlowSequenceEditorSettings.cs" />
@@ -433,6 +433,9 @@
       <DependentUpon>Control.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIControls\InputDialog.xaml.cs" />
+    <Compile Include="UIControls\WindowFlowSequenceEditor\Control.xaml.cs">
+      <DependentUpon>Control.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Utils\Calculus.cs" />
     <Compile Include="Utils\Conversion.cs" />
     <Compile Include="Utils\Geocoder.cs" />
@@ -538,6 +541,10 @@
     <Page Include="UIControls\InputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UIControls\WindowFlowSequenceEditor\Control.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
