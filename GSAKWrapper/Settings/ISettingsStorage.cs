@@ -27,5 +27,8 @@ namespace GSAKWrapper.Settings
         void DeleteGeocacheCollection(int id);
         void DeleteGeocacheCollectionItem(int colid, string code);
 
+        //Shapefiles
+        List<ShapefileItem> GetShapeFileItems();
+        void StoreShapeFileItems(List<ShapefileItem> items);
     }
 }

@@ -194,6 +194,7 @@
     <Compile Include="DataTypes\GSAKWaypoints.cs" />
     <Compile Include="DataTypes\LogType.cs" />
     <Compile Include="DataTypes\GSAKMatching.cs" />
+    <Compile Include="DataTypes\ShapefileItem.cs" />
     <Compile Include="DataTypes\WaypointType.cs" />
     <Compile Include="Dialogs\About\AboutAssemblyDataProvider.cs" />
     <Compile Include="Dialogs\About\AboutWindow.xaml.cs" />
@@ -224,6 +225,16 @@
     <Compile Include="Dialogs\WindowGeocacheCollections.xaml.cs">
       <DependentUpon>WindowGeocacheCollections.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DotNetDBF\DBFBase.cs" />
+    <Compile Include="DotNetDBF\DBFException.cs" />
+    <Compile Include="DotNetDBF\DBFField.cs" />
+    <Compile Include="DotNetDBF\DBFFieldType.cs" />
+    <Compile Include="DotNetDBF\DBFHeader.cs" />
+    <Compile Include="DotNetDBF\DBFReader.cs" />
+    <Compile Include="DotNetDBF\DBFWriter.cs" />
+    <Compile Include="DotNetDBF\DBTHeader.cs" />
+    <Compile Include="DotNetDBF\MemoValue.cs" />
+    <Compile Include="DotNetDBF\Utils.cs" />
     <Compile Include="Excel\Extensions.cs" />
     <Compile Include="Excel\GeocacheData.cs" />
     <Compile Include="Excel\PropertyItem.cs" />
@@ -312,6 +323,7 @@
     <Compile Include="Localization\TranslateExtension.cs" />
     <Compile Include="Localization\TranslationData.cs" />
     <Compile Include="Localization\TranslationManager.cs" />
+    <Compile Include="Settings\ShapefileSettings.cs" />
     <Compile Include="Settings\CollectionsSettings.cs" />
     <Compile Include="Settings\ActionBuilderSettings.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
@@ -325,6 +337,11 @@
     <Compile Include="Settings\MainWindowSettings.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SqliteSettingsStorage.cs" />
+    <Compile Include="Shapefiles\AreaInfo.cs" />
+    <Compile Include="Shapefiles\AreaType.cs" />
+    <Compile Include="Shapefiles\Manager.cs" />
+    <Compile Include="Shapefiles\ShapeFile.cs" />
+    <Compile Include="Shapefiles\ShapeFileInfo.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionClearMacroFlag.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomDate.cs" />

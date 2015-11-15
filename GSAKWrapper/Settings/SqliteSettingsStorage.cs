@@ -72,6 +72,10 @@ namespace GSAKWrapper.Settings
 
                         _dbcon.ExecuteNonQuery("CREATE TRIGGER Delete_GeocacheCollection Delete ON GeocacheCollection BEGIN delete from GeocacheCollectionItem where CollectionID = old.CollectionID; END");
                     }
+                    if (!_dbcon.TableExists("ShapeFileItem"))
+                    {
+                        _dbcon.ExecuteNonQuery("create table 'ShapeFileItem' (FileName text, GeocacheCode text not null, TableName text not null, CoordType text not null, AreaType text not null, NamePrefix text, Encoding text not null, Enabled integer not null)");
+                    }
 
                     object o = _dbcon.ExecuteScalar("PRAGMA integrity_check");
                     if (o as string == "ok")
@@ -179,9 +183,12 @@ namespace GSAKWrapper.Settings
             List<GeocacheCollection> result = null;
             lock (this)
             {
-                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                if (_dbcon != null)
                 {
-                    result = db.Fetch<GeocacheCollection>();
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        result = db.Fetch<GeocacheCollection>();
+                    }
                 }
             }
             return result;
@@ -194,17 +201,20 @@ namespace GSAKWrapper.Settings
             {
                 lock (this)
                 {
-                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    if (_dbcon != null)
                     {
-                        result = db.FirstOrDefault<GeocacheCollection>("where Name like @0", name);
-                        if (result == null && createIfNotExists)
+                        using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
                         {
-                            //just the lazy way
-                            var record = db.FirstOrDefault<GeocacheCollection>("order by CollectionID desc limit 1");
-                            result = new GeocacheCollection();
-                            result.Name = name;
-                            result.CollectionID = record == null ? 1 : record.CollectionID + 1;
-                            db.Insert(result);
+                            result = db.FirstOrDefault<GeocacheCollection>("where Name like @0", name);
+                            if (result == null && createIfNotExists)
+                            {
+                                //just the lazy way
+                                var record = db.FirstOrDefault<GeocacheCollection>("order by CollectionID desc limit 1");
+                                result = new GeocacheCollection();
+                                result.Name = name;
+                                result.CollectionID = record == null ? 1 : record.CollectionID + 1;
+                                db.Insert(result);
+                            }
                         }
                     }
                 }
@@ -217,9 +227,12 @@ namespace GSAKWrapper.Settings
             List<GeocacheCollectionItem> result = null;
             lock (this)
             {
-                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                if (_dbcon != null)
                 {
-                    result = db.Fetch<GeocacheCollectionItem>("where CollectionID = @0", id);
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        result = db.Fetch<GeocacheCollectionItem>("where CollectionID = @0", id);
+                    }
                 }
             }
             return result;
@@ -229,9 +242,12 @@ namespace GSAKWrapper.Settings
         {
             lock (this)
             {
-                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                if (_dbcon != null)
                 {
-                    db.Execute("delete from GeocacheCollection where CollectionID = @0", id);
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        db.Execute("delete from GeocacheCollection where CollectionID = @0", id);
+                    }
                 }
             }
         }
@@ -240,13 +256,58 @@ namespace GSAKWrapper.Settings
         {
             lock (this)
             {
-                using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                if (_dbcon != null)
                 {
-                    db.Execute("delete from GeocacheCollectionItem where CollectionID = @0 and GeocacheCode = @1", colid, code);
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        db.Execute("delete from GeocacheCollectionItem where CollectionID = @0 and GeocacheCode = @1", colid, code);
+                    }
                 }
             }
         }
 
+        public List<ShapefileItem> GetShapeFileItems()
+        {
+            List<ShapefileItem> result = null;
+            lock (this)
+            {
+                if (_dbcon != null)
+                {
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        result = db.Fetch<ShapefileItem>("select * from ShapefileItem");
+                    }
+                }
+            }
+            return result;
+        }
+
+        public void StoreShapeFileItems(List<ShapefileItem> items)
+        {
+            lock (this)
+            {
+                if (_dbcon != null)
+                {
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        db.BeginTransaction();
+                        try
+                        {
+                            db.Execute("delete from ShapefileItem");
+                            foreach (var s in items)
+                            {
+                                db.Insert(s);
+                            }
+                            db.CompleteTransaction();
+                        }
+                        catch
+                        {
+                            db.AbortTransaction();
+                        }
+                    }
+                }
+            }
+        }
 
     }
 }
