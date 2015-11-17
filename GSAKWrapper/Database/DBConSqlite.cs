@@ -17,6 +17,8 @@ namespace GSAKWrapper.Database
             Connection.Open();
             BindFunction(Connection as SQLiteConnection, new RegExSQLiteFunction());
             BindFunction(Connection as SQLiteConnection, new DistSQLiteFunction());
+            BindFunction(Connection as SQLiteConnection, new InAreaSQLiteFunction());
+            BindFunction(Connection as SQLiteConnection, new AreaNameSQLiteFunction());
             BindFunction(Connection as SQLiteConnection, new GSAKNoCaseCollation());
         }
 
@@ -65,6 +67,68 @@ namespace GSAKWrapper.Database
             return result;
         }
 
+        [SQLiteFunction(Name = "AREANAME", Arguments = 3, FuncType = FunctionType.Scalar)]
+        public class AreaNameSQLiteFunction : SQLiteFunction
+        {
+            public override object Invoke(object[] args)
+            {
+                var slat = args[0] as string;
+                var slon = args[1] as string;
+                var slevel = args[2] as string;
+                if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
+                {
+                    var dlat = Utils.Conversion.StringToDouble(slat);
+                    var dlon = Utils.Conversion.StringToDouble(slon);
+                    var area = Shapefiles.Manager.Instance.GetAreaNameOfLocation(dlat, dlon, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel));
+                    if (!string.IsNullOrEmpty(area))
+                    {
+                        return area;
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+                return "";
+            }
+        }
+
+        [SQLiteFunction(Name = "INAREA", Arguments = 4, FuncType = FunctionType.Scalar)]
+        public class InAreaSQLiteFunction : SQLiteFunction
+        {
+            public override object Invoke(object[] args)
+            {
+                var slat = args[0] as string;
+                var slon = args[1] as string;
+                var slevel = args[2] as string;
+                var sname = args[3] as string;
+                if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
+                {
+                    var dlat = Utils.Conversion.StringToDouble(slat);
+                    var dlon = Utils.Conversion.StringToDouble(slon);
+                    var areas = Shapefiles.Manager.Instance.GetAreasByName(sname, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel));
+                    foreach (var a in areas)
+                    {
+                        if (dlat >= a.MinLat && dlon >= a.MinLon && dlat <= a.MaxLat && dlon <= a.MaxLon)
+                        {
+                            Shapefiles.Manager.Instance.GetPolygonOfArea(a);
+                            foreach (var p in a.Polygons)
+                            {
+                                if (dlat >= p.MinLat && dlon >= p.MinLon && dlat <= p.MaxLat && dlon <= p.MaxLon)
+                                {
+                                    if (Utils.Calculus.PointInPolygon(p, dlat, dlon))
+                                    {
+                                        return 1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return 0;
+            }
+        }
+
         [SQLiteFunction(Name = "REGEXP", Arguments = 2, FuncType = FunctionType.Scalar)]
         public class RegExSQLiteFunction : SQLiteFunction
         {
@@ -83,13 +147,13 @@ namespace GSAKWrapper.Database
                 var slon = args[1] as string;
                 if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
                 {
-                    return Utils.Calculus.CalculateDistance(Utils.Conversion.StringToDouble(slat), Utils.Conversion.StringToDouble(slon), Convert.ToDouble(args[2]), Convert.ToDouble(args[3])).EllipsoidalDistance / 1000.0; ;
+                    return Utils.Calculus.CalculateDistance(Utils.Conversion.StringToDouble(slat), Utils.Conversion.StringToDouble(slon), Convert.ToDouble(args[2]), Convert.ToDouble(args[3])).EllipsoidalDistance / 1000.0;
                 }
                 return false;
             }
         }
 
-        [SQLiteFunction(Name = "gsaknocase", Arguments = 4, FuncType = FunctionType.Collation)]
+        [SQLiteFunction(Name = "gsaknocase", Arguments = 2, FuncType = FunctionType.Collation)]
         public class GSAKNoCaseCollation : SQLiteFunction
         {
             public override int Compare(string x, string y)

@@ -1,0 +1,40 @@
+﻿<Window x:Class="GSAKWrapper.Dialogs.WindowShapeFileTest"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GSAKWrapper.Dialogs"
+        xmlns:l="clr-namespace:GSAKWrapper.Localization"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        mc:Ignorable="d"
+        Title="{l:Translate ShapefileTest}"
+        Height="{Binding ShapefileTestWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding ShapefileTestWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding ShapefileTestWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding ShapefileTestWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Icon="/Resources/GSAKWrapper.ico"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding ShapefileTestWindowLeftPanelWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}" />
+            <ColumnDefinition Width="5" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="{l:Translate Areas}" HorizontalAlignment="Center" />
+            <ListBox Grid.Row="1" ScrollViewer.VerticalScrollBarVisibility="Visible" ItemsSource="{Binding Areas}" SelectedItem="{Binding SelectedArea}" />
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" Text="{l:Translate Map}" HorizontalAlignment="Center" />
+            <WebBrowser x:Name="webBrowser" Grid.Row="1" />
+        </Grid>
+    </Grid>
+</Window>

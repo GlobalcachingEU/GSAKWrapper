@@ -38,7 +38,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" Text="{l:Translate Collections}" HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBlock Grid.Row="0" Text="{l:Translate Geocaches}" HorizontalAlignment="Center" FontWeight="Bold" />
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <Button Margin="4" Grid.Column="5" Height="20" Width="20" ToolTip="{l:Translate Delete}" Click="Button_Click_2" IsEnabled="{Binding IsCollectionItemSelected}">
                     <Image Width="16" Height="16" Source="/Resources/General/delete.png" />

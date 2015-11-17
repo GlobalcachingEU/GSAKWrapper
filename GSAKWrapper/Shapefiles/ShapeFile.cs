@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.IO;
+using System.Collections;
 
 namespace GSAKWrapper.Shapefiles
 {
@@ -71,6 +72,7 @@ namespace GSAKWrapper.Shapefiles
 
         private IndexRecord[] _indexRecords = null;
         private List<AreaInfo> _areaInfos = new List<AreaInfo>();
+        private Hashtable _indexRecordsByName = new Hashtable();
 
         public ShapeFile(string shpFileName)
         {
@@ -177,7 +179,15 @@ namespace GSAKWrapper.Shapefiles
                                 {
                                     if (!_indexRecords[index].Ignore)
                                     {
-                                        _indexRecords[index].Name = string.Format("{0}{1}",namePrefix,rec[0]);
+                                        var n = string.Format("{0}{1}", namePrefix, rec[0]);
+                                        _indexRecords[index].Name = n;
+                                        var g = _indexRecordsByName[n] as List<IndexRecord>;
+                                        if (g == null)
+                                        {
+                                            g = new List<IndexRecord>();
+                                            _indexRecordsByName.Add(n, g);
+                                        }
+                                        g.Add(_indexRecords[index]);
                                     }
                                     else
                                     {
@@ -215,10 +225,10 @@ namespace GSAKWrapper.Shapefiles
                                 }
                             }
 
-                            var areaNames = (from a in _indexRecords select a.Name).Distinct();
-                            foreach (var name in areaNames)
+                            var areaNames = _indexRecordsByName.Keys;
+                            foreach (string name in areaNames)
                             {
-                                var records = from r in _indexRecords where r.Name == name select r;
+                                var records = _indexRecordsByName[name] as List<IndexRecord>;
                                 AreaInfo ai = new AreaInfo();
                                 ai.ID = ai;
                                 ai.Level = areaType;
@@ -258,6 +268,28 @@ namespace GSAKWrapper.Shapefiles
                             result = new List<AreaInfo>();
                         }
                         result.Add(ai);
+                    }
+                }
+
+            }
+            return result;
+        }
+
+        public string GetAreaNameOfLocation(double lat, double lon, AreaType areaType)
+        {
+            string result = null;
+            if (lat >= _shpYMin && lat <= _shpYMax && lon >= _shpXMin && lon <= _shpXMax)
+            {
+                //all areas with point in envelope
+                var ais = from r in _areaInfos
+                          where r.Level==areaType && lat >= r.MinLat && lat <= r.MaxLat && lon >= r.MinLon && lon <= r.MaxLon
+                          select r;
+                foreach (var ai in ais)
+                {
+                    if (IsLocationInArea(lat, lon, ai))
+                    {                        
+                        result = ai.Name;
+                        break;
                     }
                 }
 
@@ -342,9 +374,14 @@ namespace GSAKWrapper.Shapefiles
 
         private bool IsLocationInArea(Utils.Location loc, AreaInfo area)
         {
+            return IsLocationInArea( loc.Lat, loc.Lon, area);
+        }
+
+        private bool IsLocationInArea(double lat, double lon, AreaInfo area)
+        {
             bool result = false;
             //point in envelope of area
-            if (loc.Lat >= area.MinLat && loc.Lat <= area.MaxLat && loc.Lon >= area.MinLon && loc.Lon <= area.MaxLon)
+            if (lat >= area.MinLat && lat <= area.MaxLat && lon >= area.MinLon && lon <= area.MaxLon)
             {
                 GetPolygonOfArea(area);
                 if (area.Polygons != null)
@@ -352,9 +389,9 @@ namespace GSAKWrapper.Shapefiles
                     foreach (var r in area.Polygons)
                     {
                         //point in envelope of polygon
-                        if (loc.Lat >= r.MinLat && loc.Lat <= r.MaxLat && loc.Lon >= r.MinLon && loc.Lon <= r.MaxLon)
+                        if (lat >= r.MinLat && lat <= r.MaxLat && lon >= r.MinLon && lon <= r.MaxLon)
                         {
-                            if (Utils.Calculus.PointInPolygon(r, loc))
+                            if (Utils.Calculus.PointInPolygon(r, lat, lon))
                             {
                                 result = true;
                                 break;
@@ -400,10 +437,13 @@ namespace GSAKWrapper.Shapefiles
                     area.Polygons = new List<Utils.Polygon>();
                     try
                     {
-                        var recs = from r in _indexRecords where r.Name == area.Name select r;
-                        foreach (var rec in recs)
+                        var recs = _indexRecordsByName[area.Name] as List<IndexRecord>;
+                        if (recs != null)
                         {
-                            GetPolygonOfArea(area.Polygons, rec);
+                            foreach (var rec in recs)
+                            {
+                                GetPolygonOfArea(area.Polygons, rec);
+                            }
                         }
                     }
                     catch

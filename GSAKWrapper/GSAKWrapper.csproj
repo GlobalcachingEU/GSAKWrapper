@@ -225,6 +225,12 @@
     <Compile Include="Dialogs\WindowGeocacheCollections.xaml.cs">
       <DependentUpon>WindowGeocacheCollections.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\WindowShapefiles.xaml.cs">
+      <DependentUpon>WindowShapefiles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WindowShapeFileTest.xaml.cs">
+      <DependentUpon>WindowShapeFileTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DotNetDBF\DBFBase.cs" />
     <Compile Include="DotNetDBF\DBFException.cs" />
     <Compile Include="DotNetDBF\DBFField.cs" />
@@ -353,6 +359,7 @@
     <Compile Include="UIControls\ActionBuilder\ActionCustomText.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCollection.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionLocatedInArea.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionPresentInCollection.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionSetMacroFlag.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
@@ -601,6 +608,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\WindowGeocacheCollections.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\WindowShapefiles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\WindowShapeFileTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -962,6 +977,9 @@
   <ItemGroup>
     <Resource Include="Resources\General\arrow-down.png" />
     <Resource Include="Resources\General\arrow-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\WindowShapeFileTest.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets')" />

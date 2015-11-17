@@ -18,5 +18,6 @@ namespace GSAKWrapper.Shapefiles
         public List<string> TAreas { get; set; }
         public string Prefix { get; set; }
         public string Encoding { get; set; }
+        public List<string> TEncodings { get; set; }
     }
 }

@@ -976,4 +976,46 @@ Please select a complete coordinate string and try again.</value>
   <data name="CorrectedCoordinates" xml:space="preserve">
     <value>Corrected coordinates</value>
   </data>
+  <data name="Geocaches" xml:space="preserve">
+    <value>Geocaches</value>
+  </data>
+  <data name="AddShapeFile" xml:space="preserve">
+    <value>Add shapefile...</value>
+  </data>
+  <data name="ShapeFiles" xml:space="preserve">
+    <value>Shapefiles</value>
+  </data>
+  <data name="Areas" xml:space="preserve">
+    <value>Areas</value>
+  </data>
+  <data name="AreaType" xml:space="preserve">
+    <value>Area type</value>
+  </data>
+  <data name="CoordType" xml:space="preserve">
+    <value>Coord. type</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Enabled</value>
+  </data>
+  <data name="Encoding" xml:space="preserve">
+    <value>Encoding</value>
+  </data>
+  <data name="Map" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>Prefix</value>
+  </data>
+  <data name="ShapefileTest" xml:space="preserve">
+    <value>Shapefile Test</value>
+  </data>
+  <data name="TableName" xml:space="preserve">
+    <value>Table name</value>
+  </data>
+  <data name="TestShapeFile" xml:space="preserve">
+    <value>Test shapefile...</value>
+  </data>
+  <data name="LocatedInArea" xml:space="preserve">
+    <value>Located in area</value>
+  </data>
 </root>

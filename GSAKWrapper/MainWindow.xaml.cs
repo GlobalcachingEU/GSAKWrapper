@@ -691,5 +691,11 @@ namespace GSAKWrapper
         {
             InstallMacroForGeocacheFunction("AddToCollection");
         }
+
+        private void MenuItem_Click_7(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.WindowShapefiles();
+            dlg.ShowDialog();
+        }
     }
 }

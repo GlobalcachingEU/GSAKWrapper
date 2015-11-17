@@ -6,14 +6,14 @@ using System.Text;
 
 namespace GSAKWrapper.Shapefiles
 {
-    public class ShapeFilesManager: INotifyPropertyChanged
+    public class Manager: INotifyPropertyChanged
     {
-        private static ShapeFilesManager _uniqueInstance = null;
+        private static Manager _uniqueInstance = null;
         private static object _lockObject = new object();
 
         private List<ShapeFile> _shapeFiles = new List<ShapeFile>();
 
-        public ShapeFilesManager()
+        public Manager()
         {
 #if DEBUG
             if (_uniqueInstance != null)
@@ -25,7 +25,7 @@ namespace GSAKWrapper.Shapefiles
             Initialize();
         }
 
-        public static ShapeFilesManager Instance
+        public static Manager Instance
         {
             get
             {
@@ -35,7 +35,7 @@ namespace GSAKWrapper.Shapefiles
                     {
                         if (_uniqueInstance == null)
                         {
-                            _uniqueInstance = new ShapeFilesManager();
+                            _uniqueInstance = new Manager();
                         }
                     }
                 }
@@ -88,6 +88,20 @@ namespace GSAKWrapper.Shapefiles
                 sf.Dispose();
             }
             _shapeFiles.Clear();
+        }
+
+        public string GetAreaNameOfLocation(double lat, double lon, AreaType areaType)
+        {
+            string result = null;
+            foreach (var sf in _shapeFiles)
+            {
+                result = sf.GetAreaNameOfLocation(lat, lon, areaType);
+                if (!string.IsNullOrEmpty(result))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         public List<AreaInfo> GetAreasOfLocation(Utils.Location loc)

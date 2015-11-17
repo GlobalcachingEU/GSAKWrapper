@@ -72,9 +72,9 @@ namespace GSAKWrapper.Settings
 
                         _dbcon.ExecuteNonQuery("CREATE TRIGGER Delete_GeocacheCollection Delete ON GeocacheCollection BEGIN delete from GeocacheCollectionItem where CollectionID = old.CollectionID; END");
                     }
-                    if (!_dbcon.TableExists("ShapeFileItem"))
+                    if (!_dbcon.TableExists("ShapeFileItemV2"))
                     {
-                        _dbcon.ExecuteNonQuery("create table 'ShapeFileItem' (FileName text, GeocacheCode text not null, TableName text not null, CoordType text not null, AreaType text not null, NamePrefix text, Encoding text not null, Enabled integer not null)");
+                        _dbcon.ExecuteNonQuery("create table 'ShapeFileItemV2' (FileName text, TableName text not null, CoordType text not null, AreaType text not null, NamePrefix text, Encoding text not null, Enabled integer not null)");
                     }
 
                     object o = _dbcon.ExecuteScalar("PRAGMA integrity_check");
@@ -275,7 +275,7 @@ namespace GSAKWrapper.Settings
                 {
                     using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
                     {
-                        result = db.Fetch<ShapefileItem>("select * from ShapefileItem");
+                        result = db.Fetch<ShapefileItem>("select * from ShapeFileItemV2");
                     }
                 }
             }
@@ -293,10 +293,10 @@ namespace GSAKWrapper.Settings
                         db.BeginTransaction();
                         try
                         {
-                            db.Execute("delete from ShapefileItem");
+                            db.Execute("delete from ShapeFileItemV2");
                             foreach (var s in items)
                             {
-                                db.Insert(s);
+                                db.Insert("ShapeFileItemV2", null, s);
                             }
                             db.CompleteTransaction();
                         }
