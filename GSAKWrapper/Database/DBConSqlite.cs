@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Data.SQLite;
@@ -67,7 +68,7 @@ namespace GSAKWrapper.Database
             return result;
         }
 
-        [SQLiteFunction(Name = "AREANAME", Arguments = 3, FuncType = FunctionType.Scalar)]
+        [SQLiteFunction(Name = "AREANAME", Arguments = 4, FuncType = FunctionType.Scalar)]
         public class AreaNameSQLiteFunction : SQLiteFunction
         {
             public override object Invoke(object[] args)
@@ -75,11 +76,12 @@ namespace GSAKWrapper.Database
                 var slat = args[0] as string;
                 var slon = args[1] as string;
                 var slevel = args[2] as string;
+                var sprefix = args[3] as string;
                 if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
                 {
                     var dlat = Utils.Conversion.StringToDouble(slat);
                     var dlon = Utils.Conversion.StringToDouble(slon);
-                    var area = Shapefiles.Manager.Instance.GetAreaNameOfLocation(dlat, dlon, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel));
+                    var area = Shapefiles.Manager.Instance.GetAreaNameOfLocation(dlat, dlon, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel), sprefix);
                     if (!string.IsNullOrEmpty(area))
                     {
                         return area;
@@ -96,6 +98,7 @@ namespace GSAKWrapper.Database
         [SQLiteFunction(Name = "INAREA", Arguments = 4, FuncType = FunctionType.Scalar)]
         public class InAreaSQLiteFunction : SQLiteFunction
         {
+            private Hashtable _bufferedGetAreasByName = null;
             public override object Invoke(object[] args)
             {
                 var slat = args[0] as string;
@@ -106,7 +109,12 @@ namespace GSAKWrapper.Database
                 {
                     var dlat = Utils.Conversion.StringToDouble(slat);
                     var dlon = Utils.Conversion.StringToDouble(slon);
-                    var areas = Shapefiles.Manager.Instance.GetAreasByName(sname, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel));
+                    if (_bufferedGetAreasByName == null)
+                    {
+                        _bufferedGetAreasByName = new Hashtable();
+                        _bufferedGetAreasByName.Add(sname, Shapefiles.Manager.Instance.GetAreasByName(sname, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel)));
+                    }
+                    var areas = (List<Shapefiles.AreaInfo>)_bufferedGetAreasByName[sname];
                     foreach (var a in areas)
                     {
                         if (dlat >= a.MinLat && dlon >= a.MinLon && dlat <= a.MaxLat && dlon <= a.MaxLon)

@@ -59,6 +59,7 @@ namespace GSAKWrapper.Shapefiles
         private CoordType _coordType;
         private AreaType _areaType;
         private string _dbfEncoding;
+        private string _namePrefix;
 
         //shp header
         private int _shpFileSize = -1;   //The value for file length is the total length of the file in 16-bit words (including the fifty
@@ -115,6 +116,7 @@ namespace GSAKWrapper.Shapefiles
                 _shpFileStream = File.OpenRead(_shpFilename);
                 _areaType = areaType;
                 _dbfEncoding = dbfEncoding;
+                _namePrefix = namePrefix ?? "";
                 int FileCode = GetInt32(_shpFileStream, false);
                 if (FileCode==9994)
                 {
@@ -275,19 +277,19 @@ namespace GSAKWrapper.Shapefiles
             return result;
         }
 
-        public string GetAreaNameOfLocation(double lat, double lon, AreaType areaType)
+        public string GetAreaNameOfLocation(double lat, double lon, AreaType areaType, string prefix)
         {
             string result = null;
-            if (lat >= _shpYMin && lat <= _shpYMax && lon >= _shpXMin && lon <= _shpXMax)
+            if (string.Compare(_namePrefix, prefix ?? "", true) == 0 && lat >= _shpYMin && lat <= _shpYMax && lon >= _shpXMin && lon <= _shpXMax)
             {
                 //all areas with point in envelope
                 var ais = from r in _areaInfos
-                          where r.Level==areaType && lat >= r.MinLat && lat <= r.MaxLat && lon >= r.MinLon && lon <= r.MaxLon
+                          where r.Level == areaType && lat >= r.MinLat && lat <= r.MaxLat && lon >= r.MinLon && lon <= r.MaxLon
                           select r;
                 foreach (var ai in ais)
                 {
                     if (IsLocationInArea(lat, lon, ai))
-                    {                        
+                    {
                         result = ai.Name;
                         break;
                     }

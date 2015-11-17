@@ -90,12 +90,12 @@ namespace GSAKWrapper.Shapefiles
             _shapeFiles.Clear();
         }
 
-        public string GetAreaNameOfLocation(double lat, double lon, AreaType areaType)
+        public string GetAreaNameOfLocation(double lat, double lon, AreaType areaType, string prefix)
         {
             string result = null;
             foreach (var sf in _shapeFiles)
             {
-                result = sf.GetAreaNameOfLocation(lat, lon, areaType);
+                result = sf.GetAreaNameOfLocation(lat, lon, areaType, prefix);
                 if (!string.IsNullOrEmpty(result))
                 {
                     break;
@@ -165,7 +165,7 @@ namespace GSAKWrapper.Shapefiles
             List<AreaInfo> result = new List<AreaInfo>();
             foreach (var sf in _shapeFiles)
             {
-                result.AddRange((from a in sf.AreaInfos where a.Name == name select a).ToList());
+                result.AddRange((from a in sf.AreaInfos where string.Compare(a.Name, name, true) == 0 select a).ToList());
             }
             return result;
         }
@@ -175,7 +175,7 @@ namespace GSAKWrapper.Shapefiles
             List<AreaInfo> result = new List<AreaInfo>();
             foreach (var sf in _shapeFiles)
             {
-                result.AddRange((from a in sf.AreaInfos where a.Name == name && a.Level==level select a).ToList());
+                result.AddRange((from a in sf.AreaInfos where string.Compare(a.Name, name, true) == 0 && a.Level == level select a).ToList());
             }
             return result;
         }
