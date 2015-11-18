@@ -362,6 +362,7 @@
     <Compile Include="UIControls\ActionBuilder\ActionLocatedInArea.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionPresentInCollection.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionSetMacroFlag.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionSetAreaName.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserDataContains.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionUserFlagInOtherDatabase.cs" />

@@ -1,6 +1,7 @@
 V0.6.0.0
 - added shapefile support (management and test)
 - added shapefile area filter
+- added assign area name to field action
 
 V0.5.0.0
 - added collection filter

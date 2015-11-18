@@ -98,7 +98,7 @@ namespace GSAKWrapper.Database
         [SQLiteFunction(Name = "INAREA", Arguments = 4, FuncType = FunctionType.Scalar)]
         public class InAreaSQLiteFunction : SQLiteFunction
         {
-            private Hashtable _bufferedGetAreasByName = null;
+            private Hashtable _bufferedGetAreasByName = new Hashtable();
             public override object Invoke(object[] args)
             {
                 var slat = args[0] as string;
@@ -109,12 +109,12 @@ namespace GSAKWrapper.Database
                 {
                     var dlat = Utils.Conversion.StringToDouble(slat);
                     var dlon = Utils.Conversion.StringToDouble(slon);
-                    if (_bufferedGetAreasByName == null)
+                    List<Shapefiles.AreaInfo> areas = _bufferedGetAreasByName[sname] as List<Shapefiles.AreaInfo>;
+                    if (areas == null)
                     {
-                        _bufferedGetAreasByName = new Hashtable();
-                        _bufferedGetAreasByName.Add(sname, Shapefiles.Manager.Instance.GetAreasByName(sname, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel)));
+                        areas = Shapefiles.Manager.Instance.GetAreasByName(sname, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel));
+                        _bufferedGetAreasByName.Add(sname, areas);
                     }
-                    var areas = (List<Shapefiles.AreaInfo>)_bufferedGetAreasByName[sname];
                     foreach (var a in areas)
                     {
                         if (dlat >= a.MinLat && dlon >= a.MinLon && dlat <= a.MaxLat && dlon <= a.MaxLon)

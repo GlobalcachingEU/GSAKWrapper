@@ -90,6 +90,14 @@ namespace GSAKWrapper.Shapefiles
             _shapeFiles.Clear();
         }
 
+        public List<string> AvailablePrefixes
+        {
+            get
+            {
+                return (from a in _shapeFiles select a.NamePrefix).Distinct().ToList();
+            }
+        }
+
         public string GetAreaNameOfLocation(double lat, double lon, AreaType areaType, string prefix)
         {
             string result = null;

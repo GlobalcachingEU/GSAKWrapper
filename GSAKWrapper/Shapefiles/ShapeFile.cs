@@ -85,6 +85,11 @@ namespace GSAKWrapper.Shapefiles
             return _shpFilename;
         }
 
+        public string NamePrefix
+        {
+            get { return _namePrefix; }
+        }
+
         public List<AreaInfo> AreaInfos
         {
             get { return _areaInfos; }

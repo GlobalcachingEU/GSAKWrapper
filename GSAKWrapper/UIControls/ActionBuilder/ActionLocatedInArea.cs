@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace GSAKWrapper.UIControls.ActionBuilder
 {
     public class ActionLocatedInArea : ActionImplementationCondition
     {
         public const string STR_NAME = "LocatedInArea";
+
+        public ObservableCollection<string> AvailableAreas { get; set; }
 
         private Shapefiles.AreaType _option = Shapefiles.AreaType.State;
         private string _areaname = "";
@@ -31,6 +35,10 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             {
                 Values.Add("");
             }
+            if (AvailableAreas == null)
+            {
+                AvailableAreas = new ObservableCollection<string>();
+            }
             StackPanel sp = new StackPanel();
             var opts = Enum.GetNames(typeof(Shapefiles.AreaType)).ToList();
             ComboBox cb = CreateComboBox(opts.ToArray(), Values[0]);
@@ -40,34 +48,22 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             cb = CreateComboBox(opts2, Values[1]);
             cb.DropDownOpened += cb_DropDownOpened;
             sp.Children.Add(cb);
+
+            Binding binding = new Binding();
+            binding.Source = AvailableAreas;  // view model?
+            BindingOperations.SetBinding(cb, ComboBox.ItemsSourceProperty, binding);
+
             return sp;
         }
 
         void cb_DropDownOpened(object sender, EventArgs e)
         {
-            var cb = sender as ComboBox;
-            var items = new List<ComboBoxItem>();
-            foreach (ComboBoxItem item in cb.Items)
-            {
-                if (item.Content as string != cb.Text)
-                {
-                    items.Add(item);
-                }
-            }
-            foreach (var item in items)
-            {
-                cb.Items.Remove(item);
-            }
+            AvailableAreas.Clear();
             var opt = (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), ((UIActionControl.ActionContent.Children[0] as StackPanel).Children[0] as ComboBox).Text);
-            var cf = Shapefiles.Manager.Instance.GetAreasByLevel(opt).OrderBy(x => x.Name).Take(500).ToList();
+            var cf = Shapefiles.Manager.Instance.GetAreasByLevel(opt).OrderBy(x => x.Name).ToList();
             foreach (var c in cf)
             {
-                if (string.Compare(cb.Text, c.Name, true) != 0)
-                {
-                    ComboBoxItem cboxitem = new ComboBoxItem();
-                    cboxitem.Content = c.Name;
-                    cb.Items.Add(cboxitem);
-                }
+                AvailableAreas.Add(c.Name);
             }
         }
         public override ActionImplementation.Operator AllowOperators

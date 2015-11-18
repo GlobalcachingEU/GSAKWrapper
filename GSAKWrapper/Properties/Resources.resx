@@ -1018,4 +1018,7 @@ Please select a complete coordinate string and try again.</value>
   <data name="LocatedInArea" xml:space="preserve">
     <value>Located in area</value>
   </data>
+  <data name="SetAreaName" xml:space="preserve">
+    <value>Set area name</value>
+  </data>
 </root>
