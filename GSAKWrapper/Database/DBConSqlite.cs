@@ -73,14 +73,12 @@ namespace GSAKWrapper.Database
         {
             public override object Invoke(object[] args)
             {
-                var slat = args[0] as string;
-                var slon = args[1] as string;
                 var slevel = args[2] as string;
                 var sprefix = args[3] as string;
-                if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
+                if (args[0] != null && args[1] != null)
                 {
-                    var dlat = Utils.Conversion.StringToDouble(slat);
-                    var dlon = Utils.Conversion.StringToDouble(slon);
+                    var dlat = Convert.ToDouble(args[0], CultureInfo.InvariantCulture);
+                    var dlon = Convert.ToDouble(args[1], CultureInfo.InvariantCulture);
                     var area = Shapefiles.Manager.Instance.GetAreaNameOfLocation(dlat, dlon, (Shapefiles.AreaType)Enum.Parse(typeof(Shapefiles.AreaType), slevel), sprefix);
                     if (!string.IsNullOrEmpty(area))
                     {
@@ -101,14 +99,12 @@ namespace GSAKWrapper.Database
             private Hashtable _bufferedGetAreasByName = new Hashtable();
             public override object Invoke(object[] args)
             {
-                var slat = args[0] as string;
-                var slon = args[1] as string;
                 var slevel = args[2] as string;
                 var sname = args[3] as string;
-                if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
+                if (args[0] != null && args[1]!=null)
                 {
-                    var dlat = Utils.Conversion.StringToDouble(slat);
-                    var dlon = Utils.Conversion.StringToDouble(slon);
+                    var dlat = Convert.ToDouble(args[0], CultureInfo.InvariantCulture);
+                    var dlon = Convert.ToDouble(args[1], CultureInfo.InvariantCulture);
                     List<Shapefiles.AreaInfo> areas = _bufferedGetAreasByName[sname] as List<Shapefiles.AreaInfo>;
                     if (areas == null)
                     {
@@ -149,15 +145,25 @@ namespace GSAKWrapper.Database
         [SQLiteFunction(Name = "DIST", Arguments = 4, FuncType = FunctionType.Scalar)]
         public class DistSQLiteFunction : SQLiteFunction
         {
+            private static double?[] d = new double?[] { null, null, null, null };
             public override object Invoke(object[] args)
             {
-                var slat = args[0] as string;
-                var slon = args[1] as string;
-                if (!string.IsNullOrEmpty(slat) && !string.IsNullOrEmpty(slon))
+                for (int i = 0; i < 4; i++)
                 {
-                    return Utils.Calculus.CalculateDistance(Utils.Conversion.StringToDouble(slat), Utils.Conversion.StringToDouble(slon), Convert.ToDouble(args[2]), Convert.ToDouble(args[3])).EllipsoidalDistance / 1000.0;
+                    if (args[i] != null)
+                    {
+                        d[i] = Convert.ToDouble(args[i], CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        d[i] = null;
+                    }
                 }
-                return false;
+                if (d[0] != null && d[1] != null && d[2] != null && d[3] != null)
+                {
+                    return Utils.Calculus.CalculateDistance((double)d[0], (double)d[1], (double)d[2], (double)d[3]).EllipsoidalDistance / 1000.0;
+                }
+                return null;
             }
         }
 

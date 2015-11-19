@@ -84,14 +84,14 @@ namespace GSAKWrapper.Script
         public IFilterScript LoadFilterScript(string code)
         {
             return CSScript.LoadCode(code)
-                             .CreateInstance("FilterScript")
+                             .CreateInstance("GSAKWrapper.FilterScript")
                              .AlignToInterface<IFilterScript>();
         }
 
         public IActionScript LoadActionScript(string code)
         {
             return CSScript.LoadCode(code)
-                             .CreateInstance("ActionScript")
+                             .CreateInstance("GSAKWrapper.ActionScript")
                              .AlignToInterface<IActionScript>();
         }
     }

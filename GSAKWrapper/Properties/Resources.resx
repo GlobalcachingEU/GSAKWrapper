@@ -1042,4 +1042,10 @@ Please select a complete coordinate string and try again.</value>
   <data name="ScriptFilter" xml:space="preserve">
     <value>Script filter</value>
   </data>
+  <data name="ScriptEditor" xml:space="preserve">
+    <value>Script editor</value>
+  </data>
+  <data name="ScriptAction" xml:space="preserve">
+    <value>Run script</value>
+  </data>
 </root>

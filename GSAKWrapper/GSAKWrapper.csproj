@@ -399,6 +399,7 @@
     <Compile Include="UIControls\ActionBuilder\ActionCustomText.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomNumber.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCollection.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionScriptAction.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionScriptFilter.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionLocatedInArea.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionPresentInCollection.cs" />

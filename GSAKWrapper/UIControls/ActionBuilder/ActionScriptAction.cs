@@ -10,18 +10,19 @@ using System.Windows.Data;
 
 namespace GSAKWrapper.UIControls.ActionBuilder
 {
-    public class ActionScriptFilter : ActionImplementationCondition
+    public class ActionScriptAction : ActionImplementationAction
     {
-        public const string STR_NAME = "ScriptFilter";
+        public const string STR_NAME = "ScriptAction";
 
         private string _script = "";
-        private Script.IFilterScript _scriptObject = null;
-        public ActionScriptFilter()
+        private Script.IActionScript _scriptObject = null;
+        public ActionScriptAction()
             : base(STR_NAME)
         {
         }
 
-        public override SearchType SearchTypeTarget { get { return SearchType.Extra; } }
+        public override SearchType SearchTypeTarget { get { return SearchType.Action; } }
+
         public ObservableCollection<string> AvailableScripts { get; set; }
 
         public override UIElement GetUIElement()
@@ -65,7 +66,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         void cb_DropDownOpened(object sender, EventArgs e)
         {
             AvailableScripts.Clear();
-            var opt = (from a in Settings.Settings.Default.GetScriptItems() where a.ScriptType==Script.Manager.ScriptTypeFilter orderby a.Name select a.Name).ToArray();
+            var opt = (from a in Settings.Settings.Default.GetScriptItems() where a.ScriptType==Script.Manager.ScriptTypeAction orderby a.Name select a.Name).ToArray();
             foreach (var c in opt)
             {
                 AvailableScripts.Add(c);
@@ -84,19 +85,11 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                 var scr = Settings.Settings.Default.GetScriptItem(_script);
                 if (scr != null)
                 {
-                    _scriptObject = Script.Manager.Instance.LoadFilterScript(scr.Code);
+                    _scriptObject = Script.Manager.Instance.LoadActionScript(scr.Code);
                     _scriptObject.PrepareRun(this, db, tableName);
                 }
             }
             return base.PrepareRun(db, tableName);
-        }
-
-        public override void Process(Operator op, string inputTableName, string targetTableName)
-        {
-            if (_scriptObject != null)
-            {
-                _scriptObject.Process(this, op, inputTableName, targetTableName);
-            }
         }
 
         public override void FinalizeRun()

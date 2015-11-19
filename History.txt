@@ -1,3 +1,8 @@
+V0.7.0.0
+- added script editor
+- added script filter
+- added script action
+
 V0.6.0.0
 - added shapefile support (management and test)
 - added shapefile area filter
