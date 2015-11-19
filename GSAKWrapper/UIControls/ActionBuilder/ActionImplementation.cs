@@ -44,8 +44,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         //connections
         private List<OutputConnectionInfo> _outputConnectionInfo = null;
 
-        protected Database.DBCon DatabaseConnection { get; private set; }
-        protected string AssignedTableName { get; private set; }
+        public Database.DBCon DatabaseConnection { get; private set; }
+        public string AssignedTableName { get; private set; }
         private List<string> _createdTables;
 
         public ActionImplementation(string name)
@@ -57,7 +57,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             TotalProcessTime = new System.Diagnostics.Stopwatch();
         }
 
-        protected void CreateTableInDatabase(string tableName, bool dropIfExists = false, bool emptyIfExists = true)
+        public void CreateTableInDatabase(string tableName, bool dropIfExists = false, bool emptyIfExists = true)
         {
             if (!_createdTables.Contains(tableName))
             {

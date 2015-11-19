@@ -76,6 +76,11 @@ namespace GSAKWrapper.Settings
                     {
                         _dbcon.ExecuteNonQuery("create table 'ShapeFileItemV2' (FileName text, TableName text not null, CoordType text not null, AreaType text not null, NamePrefix text, Encoding text not null, Enabled integer not null)");
                     }
+                    if (!_dbcon.TableExists("Scripts"))
+                    {
+                        _dbcon.ExecuteNonQuery("create table 'Scripts' (Name text not null, ScriptType integer not null, Code text not null)");
+                        _dbcon.ExecuteNonQuery("create unique index idx_scname on Scripts (Name)");
+                    }
 
                     object o = _dbcon.ExecuteScalar("PRAGMA integrity_check");
                     if (o as string == "ok")
@@ -304,6 +309,73 @@ namespace GSAKWrapper.Settings
                         {
                             db.AbortTransaction();
                         }
+                    }
+                }
+            }
+        }
+
+        public List<ScriptItem> GetScriptItems()
+        {
+            List<ScriptItem> result = null;
+            lock (this)
+            {
+                if (_dbcon != null)
+                {
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        result = db.Fetch<ScriptItem>("select * from Scripts");
+                    }
+                }
+            }
+            return result;
+        }
+
+        public ScriptItem GetScriptItem(string name)
+        {
+            ScriptItem result = null;
+            lock (this)
+            {
+                if (_dbcon != null)
+                {
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        result = db.FirstOrDefault<ScriptItem>("select * from Scripts where Name=@0", name);
+                    }
+                }
+            }
+            return result;
+        }
+
+        public void StoreScriptItem(ScriptItem item)
+        {
+            lock (this)
+            {
+                if (_dbcon != null)
+                {
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        if (db.FirstOrDefault<ScriptItem>("select * from Scripts where Name=@0", item.Name) == null)
+                        {
+                            db.Insert("Scripts", null, item);
+                        }
+                        else
+                        {
+                            db.Update("Scripts", "Name", item);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void DeleteScriptItem(string name)
+        {
+            lock (this)
+            {
+                if (_dbcon != null)
+                {
+                    using (var db = new NPoco.Database(_dbcon.Connection, NPoco.DatabaseType.SQLite))
+                    {
+                        db.Execute("delete from Scripts where Name=@0", name);
                     }
                 }
             }

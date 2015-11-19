@@ -60,6 +60,7 @@
                     <MenuItem Header="{l:Translate FormulaSolver}" Click="MenuItem_Click" />
                     <MenuItem Header="{l:Translate GeocacheCollections}" Click="MenuItem_Click_4" />
                     <MenuItem Header="{l:Translate ShapeFiles}" Click="MenuItem_Click_7" />
+                    <MenuItem Header="{l:Translate Scripts}" Click="MenuItem_Click_8" />
                 </MenuItem>
                 <MenuItem Header="{l:Translate Help}">
                     <MenuItem Header="{l:Translate Wiki}" Click="menua37_Click" />

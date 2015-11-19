@@ -697,5 +697,11 @@ namespace GSAKWrapper
             var dlg = new Dialogs.WindowShapefiles();
             dlg.ShowDialog();
         }
+
+        private void MenuItem_Click_8(object sender, RoutedEventArgs e)
+        {
+            var dlg = new Dialogs.WindowScriptEditor();
+            dlg.ShowDialog();        
+        }
     }
 }

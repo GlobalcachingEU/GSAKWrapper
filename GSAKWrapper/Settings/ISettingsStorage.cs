@@ -30,5 +30,11 @@ namespace GSAKWrapper.Settings
         //Shapefiles
         List<ShapefileItem> GetShapeFileItems();
         void StoreShapeFileItems(List<ShapefileItem> items);
+
+        //Scripts
+        List<ScriptItem> GetScriptItems();
+        ScriptItem GetScriptItem(string name);
+        void StoreScriptItem(ScriptItem item);
+        void DeleteScriptItem(string name);
     }
 }

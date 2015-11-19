@@ -1021,4 +1021,25 @@ Please select a complete coordinate string and try again.</value>
   <data name="SetAreaName" xml:space="preserve">
     <value>Set area name</value>
   </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>Scripts</value>
+  </data>
+  <data name="ScriptsEditor" xml:space="preserve">
+    <value>Scripts editor</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
+  </data>
+  <data name="Compile" xml:space="preserve">
+    <value>Compile</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="Filter" xml:space="preserve">
+    <value>Filter</value>
+  </data>
+  <data name="ScriptFilter" xml:space="preserve">
+    <value>Script filter</value>
+  </data>
 </root>
