@@ -1048,4 +1048,7 @@ Please select a complete coordinate string and try again.</value>
   <data name="ScriptAction" xml:space="preserve">
     <value>Run script</value>
   </data>
+  <data name="LoadSettings" xml:space="preserve">
+    <value>Load default settings</value>
+  </data>
 </root>

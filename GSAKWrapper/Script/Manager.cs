@@ -81,18 +81,82 @@ namespace GSAKWrapper.Script
             return result;
         }
 
-        public IFilterScript LoadFilterScript(string code)
+        public object LoadFilterScript(string code)
         {
-            return CSScript.LoadCode(code)
-                             .CreateInstance("GSAKWrapper.FilterScript")
-                             .AlignToInterface<IFilterScript>();
+            return CSScript.LoadCode(code).CreateInstance("GSAKWrapper.FilterScript");
         }
 
-        public IActionScript LoadActionScript(string code)
+        public object LoadActionScript(string code)
         {
-            return CSScript.LoadCode(code)
-                             .CreateInstance("GSAKWrapper.ActionScript")
-                             .AlignToInterface<IActionScript>();
+            return CSScript.LoadCode(code).CreateInstance("GSAKWrapper.ActionScript");
+        }
+
+        public List<ScriptProperty> GetScriptProperties(object obj)
+        {
+            var result = new List<ScriptProperty>();
+            try
+            {
+                var props = obj.GetType().GetProperties();
+                foreach(var prop in props)
+                {
+                    var sp = new ScriptProperty();
+                    sp.Name = prop.Name;
+                    sp.Type = prop.PropertyType;
+                    sp.Value = prop.GetValue(obj);
+                    result.Add(sp);
+                }
+            }
+            catch
+            {
+            }
+            return result;
+        }
+
+        public List<ScriptProperty> GetScriptProperties(string name)
+        {
+            List<ScriptProperty> result;
+            var scr = Settings.Settings.Default.GetScriptItem(name);
+            if (scr != null)
+            {
+                try
+                {
+                    if (scr.ScriptType == ScriptTypeFilter)
+                    {
+                        result = GetScriptProperties(LoadFilterScript(scr.Code));
+                    }
+                    else if (scr.ScriptType == ScriptTypeAction)
+                    {
+                        result = GetScriptProperties(LoadActionScript(scr.Code));
+                    }
+                    else
+                    {
+                        result = new List<ScriptProperty>();
+                    }
+                }
+                catch
+                {
+                    result = new List<ScriptProperty>();
+                }
+            }
+            else
+            {
+                result = new List<ScriptProperty>();
+            }
+            return result;
+        }
+
+        public void SetProprtyValues(object scriptObject, List<PropValue> values)
+        {
+            var props = GetScriptProperties(scriptObject);
+            foreach (var prop in props)
+            {
+                var v = (from a in values where a.Name == prop.Name select a.Value).FirstOrDefault();
+                if (v != null)
+                {
+                    var t = Convert.ChangeType(v, prop.Type);
+                    scriptObject.GetType().GetProperty(prop.Name).SetValue(scriptObject, t);
+                }
+            }
         }
     }
 }

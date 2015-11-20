@@ -368,6 +368,8 @@
     <Compile Include="Script\IActionScript.cs" />
     <Compile Include="Script\IFilterScript.cs" />
     <Compile Include="Script\Manager.cs" />
+    <Compile Include="Script\PropValue.cs" />
+    <Compile Include="Script\ScriptProperty.cs" />
     <Compile Include="Settings\ScriptsSettings.cs" />
     <Compile Include="Settings\ShapefileSettings.cs" />
     <Compile Include="Settings\CollectionsSettings.cs" />
