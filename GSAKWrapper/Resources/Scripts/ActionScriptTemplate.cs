@@ -9,6 +9,12 @@ namespace GSAKWrapper
 {
     public class ActionScript
     {
+        //check https://github.com/GlobalcachingEU/GSAKWrapper/wiki for help
+
+        public ActionScript()
+        {
+        }
+
         public bool PrepareRun(ActionImplementation owner, Database.DBCon db, string tableName)
         {
             return true;

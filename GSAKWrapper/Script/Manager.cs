@@ -153,8 +153,23 @@ namespace GSAKWrapper.Script
                 var v = (from a in values where a.Name == prop.Name select a.Value).FirstOrDefault();
                 if (v != null)
                 {
-                    var t = Convert.ChangeType(v, prop.Type);
-                    scriptObject.GetType().GetProperty(prop.Name).SetValue(scriptObject, t);
+                    if (prop.Type == typeof(double))
+                    {
+                        scriptObject.GetType().GetProperty(prop.Name).SetValue(scriptObject, Utils.Conversion.StringToDouble(v));
+                    }
+                    else if (prop.Type == typeof(float))
+                    {
+                        scriptObject.GetType().GetProperty(prop.Name).SetValue(scriptObject, (float)Utils.Conversion.StringToDouble(v));
+                    }
+                    else if (prop.Type == typeof(decimal))
+                    {
+                        scriptObject.GetType().GetProperty(prop.Name).SetValue(scriptObject, (decimal)Utils.Conversion.StringToDouble(v));
+                    }
+                    else
+                    {
+                        var t = Convert.ChangeType(v, prop.Type);
+                        scriptObject.GetType().GetProperty(prop.Name).SetValue(scriptObject, t);
+                    }
                 }
             }
         }

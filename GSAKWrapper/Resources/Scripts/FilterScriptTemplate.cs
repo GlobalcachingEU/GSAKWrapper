@@ -9,6 +9,12 @@ namespace GSAKWrapper
 {
     public class FilterScript
     {
+        //check https://github.com/GlobalcachingEU/GSAKWrapper/wiki for help
+
+        public FilterScript()
+        {
+        }
+
         public bool PrepareRun(ActionImplementation owner, Database.DBCon db, string tableName)
         {
             return true;

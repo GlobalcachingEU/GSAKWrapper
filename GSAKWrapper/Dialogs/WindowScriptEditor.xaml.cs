@@ -119,6 +119,7 @@ namespace GSAKWrapper.Dialogs
                 editor.Completion = _completion;
                 editor.OpenFile(fn);
                 editor.SyntaxHighlighting = HighlightingManager.Instance.GetDefinition("C#");
+                editor.TextArea.IndentationStrategy = new ICSharpCode.AvalonEdit.Indentation.CSharp.CSharpIndentationStrategy();
 
                 var tabItem = new ClosableTab();
                 tabItem.Content = editor;
