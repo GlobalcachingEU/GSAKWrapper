@@ -55,7 +55,7 @@ namespace GSAKWrapper.Script
             string result = "Success";
             try
             {
-                CSScript.CompileCode(script);
+                CSScript.CompileCode(script, new string[] { "ICSharpCode.SharpZipLib.dll", "NPoco.dll", "NPOI.dll", "NPOI.OOXML.dll", "NPOI.OpenXml4Net.dll", "NPOI.OpenXmlFormats.dll" });
             }
             catch (CompilerException ce)
             {

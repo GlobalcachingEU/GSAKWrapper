@@ -10,5 +10,6 @@ namespace GSAKWrapper.Script
     {
         public string Name { get; set; }
         public string Value { get; set; }
+        public string Control { get; set; }
     }
 }

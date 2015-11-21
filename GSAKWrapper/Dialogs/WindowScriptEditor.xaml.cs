@@ -37,7 +37,31 @@ namespace GSAKWrapper.Dialogs
             {
                 if (SetProperty(ref _selectedTreeViewItem, value))
                 {
-                    //IsTreeViewItemSelected = _selectedTreeViewItem != null;
+                    IsTreeViewItemSelected = _selectedTreeViewItem != null;
+                }
+            }
+        }
+
+        public bool IsTreeViewItemSelected
+        {
+            get { return SelectedTreeViewItem != null; }
+            set
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsTreeViewItemSelected"));
+                }
+            }
+        }
+
+        public bool IsTabItemSelected
+        {
+            get { return tabs.SelectedItem != null; }
+            set
+            {
+                if (PropertyChanged != null)
+                {
+                    PropertyChanged(this, new PropertyChangedEventArgs("IsTabItemSelected"));
                 }
             }
         }
@@ -57,16 +81,29 @@ namespace GSAKWrapper.Dialogs
         public WindowScriptEditor()
         {           
             InitializeComponent();
+            tabs.SelectionChanged += tabs_SelectionChanged;
             StatusText = "Ready";
             DataContext = this;
+        }
+
+        void tabs_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            IsTabItemSelected = tabs.SelectedItem != null;
         }
 
         protected override void OnInitialized(EventArgs e)
         {
             base.OnInitialized(e);
 
+            string bp = System.IO.Path.GetDirectoryName(Assembly.GetAssembly(typeof(MainWindow)).Location);
             _completion = new ICSharpCode.CodeCompletion.CSharpCompletion();
             _completion.AddAssembly(Assembly.GetAssembly(typeof(MainWindow)).Location);
+            _completion.AddAssembly(System.IO.Path.Combine(bp, "NPoco.dll"));
+            _completion.AddAssembly(System.IO.Path.Combine(bp, "NPOI.dll"));
+            _completion.AddAssembly(System.IO.Path.Combine(bp, "NPOI.OOXML.dll"));
+            _completion.AddAssembly(System.IO.Path.Combine(bp, "NPOI.OpenXml4Net.dll"));
+            _completion.AddAssembly(System.IO.Path.Combine(bp, "NPOI.OpenXmlFormats.dll"));
+            _completion.AddAssembly(System.IO.Path.Combine(bp, "ICSharpCode.SharpZipLib.dll"));           
 
             var allscripts = Settings.Settings.Default.GetScriptItems();
             foreach (var scr in allscripts)

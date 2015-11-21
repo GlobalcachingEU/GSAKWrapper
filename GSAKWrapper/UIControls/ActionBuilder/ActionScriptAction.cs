@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +44,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                         var pv = new PropValue();
                         pv.Name = n.Attributes["name"].Value;
                         pv.Value = n.Attributes["value"].Value;
+                        pv.Control = n.Attributes["control"].Value;
                         result.Add(pv);
                     }
                 }
@@ -116,11 +118,31 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     Grid.SetRow(tbk, grid.RowDefinitions.Count - 1);
                     Grid.SetColumn(tbk, 0);
 
-                    var tbe = new TextBox();
-                    tbe.Text = prop.Value;
-                    grid.Children.Add(tbe);
-                    Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
-                    Grid.SetColumn(tbe, 1);
+                    if (prop.Control == "CheckBox")
+                    {
+                        var tbe = new CheckBox();
+                        tbe.IsChecked = bool.Parse(prop.Value);
+                        grid.Children.Add(tbe);
+                        Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
+                        Grid.SetColumn(tbe, 1);
+                    }
+                    else if (prop.Control == "TextBox")
+                    {
+                        var tbe = new TextBox();
+                        tbe.Text = prop.Value;
+                        grid.Children.Add(tbe);
+                        Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
+                        Grid.SetColumn(tbe, 1);
+                    }
+                    else if (prop.Control == "DatePicker")
+                    {
+                        var tbe = new DatePicker();
+                        tbe.HorizontalAlignment = HorizontalAlignment.Center;
+                        tbe.SelectedDate = DateTime.ParseExact(prop.Value, "yyyy-MM-dd", CultureInfo.InvariantCulture).Date;
+                        grid.Children.Add(tbe);
+                        Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
+                        Grid.SetColumn(tbe, 1);
+                    }
                 }
 
                 g.Children.Add(grid);
@@ -158,8 +180,41 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     {
                         txt = doc.CreateTextNode((ui as TextBox).Text);
                     }
+                    else if (ui is CheckBox)
+                    {
+                        txt = doc.CreateTextNode((ui as CheckBox).IsChecked.ToString());
+                    }
+                    else if (ui is DatePicker)
+                    {
+                        if ((ui as DatePicker).SelectedDate == null)
+                        {
+                            txt = doc.CreateTextNode(DateTime.Now.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+                        }
+                        else
+                        {
+                            txt = doc.CreateTextNode(((DateTime)((ui as DatePicker).SelectedDate)).ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
+                        }
+                    }
                     attr.AppendChild(txt);
                     q.Attributes.Append(attr);
+
+                    attr = doc.CreateAttribute("control");
+                    ui = grid.Children[i + 1];
+                    if (ui is TextBox)
+                    {
+                        txt = doc.CreateTextNode("TextBox");
+                    }
+                    else if (ui is CheckBox)
+                    {
+                        txt = doc.CreateTextNode("CheckBox");
+                    }
+                    else if (ui is DatePicker)
+                    {
+                        txt = doc.CreateTextNode("DatePicker");
+                    }
+                    attr.AppendChild(txt);
+                    q.Attributes.Append(attr);
+
                     root.AppendChild(q);
                 }
             }
@@ -221,12 +276,31 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     Grid.SetRow(tbk, grid.RowDefinitions.Count - 1);
                     Grid.SetColumn(tbk, 0);
 
-                    //todo: different per property type!
-                    var tbe = new TextBox();
-                    tbe.Text = prop.Value == null ? "" : prop.Value.ToString();
-                    grid.Children.Add(tbe);
-                    Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
-                    Grid.SetColumn(tbe, 1);
+                    if (prop.Type == typeof(bool))
+                    {
+                        var tbe = new CheckBox();
+                        tbe.IsChecked = (bool)prop.Value;
+                        grid.Children.Add(tbe);
+                        Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
+                        Grid.SetColumn(tbe, 1);
+                    }
+                    else if (prop.Type == typeof(DateTime))
+                    {
+                        var tbe = new DatePicker();
+                        tbe.HorizontalAlignment = HorizontalAlignment.Center;
+                        tbe.SelectedDate = (DateTime)prop.Value;
+                        grid.Children.Add(tbe);
+                        Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
+                        Grid.SetColumn(tbe, 1);
+                    }
+                    else
+                    {
+                        var tbe = new TextBox();
+                        tbe.Text = prop.Value == null ? "" : prop.Value.ToString();
+                        grid.Children.Add(tbe);
+                        Grid.SetRow(tbe, grid.RowDefinitions.Count - 1);
+                        Grid.SetColumn(tbe, 1);
+                    }
                 }
 
                 g.Children.Add(grid);

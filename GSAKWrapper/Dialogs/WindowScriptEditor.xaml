@@ -22,9 +22,8 @@
                 <MenuItem Header="{l:Translate Filter}" Click="MenuItem_Click" />
                 <MenuItem Header="{l:Translate Action}" Click="MenuItem_Click_3" />
             </MenuItem>
-            <MenuItem Header="{l:Translate Rename}" />
-            <MenuItem Header="{l:Translate Compile}" Click="MenuItem_Click_2" />
-            <MenuItem Header="{l:Translate Delete}" Click="MenuItem_Click_1" />
+            <MenuItem Header="{l:Translate Compile}" Click="MenuItem_Click_2" IsEnabled="{Binding IsTabItemSelected}" />
+            <MenuItem Header="{l:Translate Delete}" Click="MenuItem_Click_1" IsEnabled="{Binding IsTreeViewItemSelected}" />
         </Menu>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
