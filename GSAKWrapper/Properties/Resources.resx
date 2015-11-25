@@ -1051,4 +1051,7 @@ Please select a complete coordinate string and try again.</value>
   <data name="LoadSettings" xml:space="preserve">
     <value>Load default settings</value>
   </data>
+  <data name="WebBrowser" xml:space="preserve">
+    <value>Web browser</value>
+  </data>
 </root>

@@ -1,0 +1,16 @@
+﻿<Window x:Class="GSAKWrapper.Dialogs.WindowWebBrowser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:GSAKWrapper.Localization"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        Icon="/Resources/GSAKWrapper.ico"
+        Title="{l:Translate WebBrowser}"
+        Height="{Binding WebBrowserWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding WebBrowserWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding WebBrowserWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding WebBrowserWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        >
+    <Grid>
+        <Grid x:Name="browser" />
+    </Grid>
+</Window>

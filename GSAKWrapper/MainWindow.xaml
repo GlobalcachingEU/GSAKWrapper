@@ -16,6 +16,7 @@
          Initialized="Window_Initialized"
         Activated="Window_Activated"
         Closing="Window_Closing"
+        Closed="Window_Closed"
         >
     <Grid>
         <Grid.RowDefinitions>

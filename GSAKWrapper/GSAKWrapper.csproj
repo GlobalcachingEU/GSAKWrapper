@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\CefSharp.Wpf.45.0.0\build\CefSharp.Wpf.props" Condition="Exists('..\packages\CefSharp.Wpf.45.0.0\build\CefSharp.Wpf.props')" />
+  <Import Project="..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.props" Condition="Exists('..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -13,7 +15,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <NuGetPackageImportStamp>00494e67</NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>c51be749</NuGetPackageImportStamp>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -195,6 +197,8 @@
     <Compile Include="bsn.GoldParser\Xml\GrammarXmlProcessor.cs" />
     <Compile Include="bsn.GoldParser\Xml\ProcessResult.cs" />
     <Compile Include="bsn.GoldParser\Xml\TokenXmlReader.cs" />
+    <Compile Include="CefSupport\CefSharpSchemeHandler.cs" />
+    <Compile Include="CefSupport\CefSharpSchemeHandlerFactory.cs" />
     <Compile Include="Commands\AsyncDelegateCommand.cs" />
     <Compile Include="Commands\CommandReference.cs" />
     <Compile Include="Commands\DelegateCommand.cs" />
@@ -264,6 +268,9 @@
     </Compile>
     <Compile Include="Dialogs\WindowShapeFileTest.xaml.cs">
       <DependentUpon>WindowShapeFileTest.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\WindowWebBrowser.xaml.cs">
+      <DependentUpon>WindowWebBrowser.xaml</DependentUpon>
     </Compile>
     <Compile Include="DotNetDBF\DBFBase.cs" />
     <Compile Include="DotNetDBF\DBFException.cs" />
@@ -370,6 +377,7 @@
     <Compile Include="Script\Manager.cs" />
     <Compile Include="Script\PropValue.cs" />
     <Compile Include="Script\ScriptProperty.cs" />
+    <Compile Include="Settings\WebBrowserWindowSettings.cs" />
     <Compile Include="Settings\ScriptsSettings.cs" />
     <Compile Include="Settings\ShapefileSettings.cs" />
     <Compile Include="Settings\CollectionsSettings.cs" />
@@ -390,6 +398,7 @@
     <Compile Include="Shapefiles\Manager.cs" />
     <Compile Include="Shapefiles\ShapeFile.cs" />
     <Compile Include="Shapefiles\ShapeFileInfo.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionShowOnlineMap.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionClearMacroFlag.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionCustomDate.cs" />
@@ -595,6 +604,9 @@
       <DependentUpon>Control.xaml</DependentUpon>
     </Compile>
     <Compile Include="UIControls\InputDialog.xaml.cs" />
+    <Compile Include="UIControls\WebBrowserControl.xaml.cs">
+      <DependentUpon>WebBrowserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UIControls\WindowFlowSequenceEditor\Control.xaml.cs">
       <DependentUpon>Control.xaml</DependentUpon>
     </Compile>
@@ -670,6 +682,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Dialogs\WindowWebBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -723,6 +739,10 @@
     <Page Include="UIControls\InputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UIControls\WebBrowserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UIControls\WindowFlowSequenceEditor\Control.xaml">
       <SubType>Designer</SubType>
@@ -1046,6 +1066,28 @@
       <Name>ICSharpCode.CodeCompletion</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ActionShowOnlineMap.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Map\11.png" />
+    <Resource Include="Resources\Map\12.png" />
+    <Resource Include="Resources\Map\137.png" />
+    <Resource Include="Resources\Map\2.png" />
+    <Resource Include="Resources\Map\3.png" />
+    <Resource Include="Resources\Map\5.png" />
+    <Resource Include="Resources\Map\6.png" />
+    <Resource Include="Resources\Map\8.png" />
+    <Resource Include="Resources\Map\c11.png" />
+    <Resource Include="Resources\Map\c12.png" />
+    <Resource Include="Resources\Map\c137.png" />
+    <Resource Include="Resources\Map\c2.png" />
+    <Resource Include="Resources\Map\c3.png" />
+    <Resource Include="Resources\Map\c5.png" />
+    <Resource Include="Resources\Map\c6.png" />
+    <Resource Include="Resources\Map\c8.png" />
+    <Resource Include="Resources\Map\found.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets')" />
   <Target Name="PostBuildMacros">
@@ -1061,6 +1103,11 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x86.3.2454.1344\build\cef.redist.x86.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x86.3.2454.1344\build\cef.redist.x86.targets'))" />
+    <Error Condition="!Exists('..\packages\cef.redist.x64.3.2454.1344\build\cef.redist.x64.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\cef.redist.x64.3.2454.1344\build\cef.redist.x64.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.props'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.targets'))" />
+    <Error Condition="!Exists('..\packages\CefSharp.Wpf.45.0.0\build\CefSharp.Wpf.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\CefSharp.Wpf.45.0.0\build\CefSharp.Wpf.props'))" />
   </Target>
   <PropertyGroup>
     <PostBuildEventDependsOn>
@@ -1073,6 +1120,9 @@ echo "C:\Program Files (x86)\WiX Toolset v3.9\bin\candle.exe" "$(SolutionDir)Set
 "C:\Program Files (x86)\WiX Toolset v3.9\bin\light.exe" "$(SolutionDir)Setup\Setup.wixobj" -out "$(SolutionDir)Setup\GSAKWrapper$(PlatformName)V@(VersionNumber).msi" -b "$(SolutionDir)Setup" -dWixUILicenseRtf=license.rtf -spdb -ext WixUIExtension -ext WixUtilExtension -ext WixNetFxExtension -sw
 )</PostBuildEvent>
   </PropertyGroup>
+  <Import Project="..\packages\cef.redist.x86.3.2454.1344\build\cef.redist.x86.targets" Condition="Exists('..\packages\cef.redist.x86.3.2454.1344\build\cef.redist.x86.targets')" />
+  <Import Project="..\packages\cef.redist.x64.3.2454.1344\build\cef.redist.x64.targets" Condition="Exists('..\packages\cef.redist.x64.3.2454.1344\build\cef.redist.x64.targets')" />
+  <Import Project="..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.targets" Condition="Exists('..\packages\CefSharp.Common.45.0.0\build\CefSharp.Common.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

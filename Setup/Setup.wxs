@@ -22,8 +22,12 @@
         <!-- Installation directory and files are defined in Files.wxs -->
         <Directory Id="TARGETDIR" Name="SourceDir">
         </Directory>
+        <Feature Id="VCRedist" Title="Visual C++ 13 Runtime" AllowAdvertise="no" Display="hidden" Level="1">
+          <MergeRef Id="VCRedist"/>
+        </Feature>      
         <Feature Id="Complete" Title="GSAKWrapper" Description="GSAKWrapper" Level="1">
             <ComponentRef Id="Main" />
+          <ComponentRef Id="locales" />
           <ComponentRef Id="ApplicationShortcut" />
           <ComponentRef Id="ApplicationShortcutDesktop" />
         </Feature>
@@ -48,6 +52,11 @@
     </Product>
     <Fragment>
         <DirectoryRef Id="TARGETDIR">
+<?if $(var.Platform) = "x64"  ?>
+<Merge Id="VCRedist" SourceFile="..\Lib\Microsoft_VC120_CRT_x64.msm" DiskId="1" Language="0"/>
+<?else ?>
+<Merge Id="VCRedist" SourceFile="..\Lib\Microsoft_VC120_CRT_x86.msm" DiskId="1" Language="0"/>
+<?endif ?>
             <Directory Id="DesktopFolder" Name="Desktop">
                 <Component Id="ApplicationShortcutDesktop" Guid="B972DDFA-457A-4FDC-A204-8BEE6F80DAF8">
                     <Shortcut Id="ApplicationDesktopShortcut" Name="GSAKWrapper" Description="GSAKWrapper" Target="[INSTALLDIR]GSAKWrapper.exe" WorkingDirectory="INSTALLDIR" />
@@ -86,7 +95,85 @@
                       <File Id="ave12" Name="CSScriptLibrary.dll" Source="../GSAKWrapper/bin/Release/CSScriptLibrary.dll" />
                       <File Id="ave13" Name="ICSharpCode.NRefactory.IKVM.dll" Source="../Lib/ICSharpCode.NRefactory.IKVM.dll" />
                       <File Id="ave14" Name="IKVM.Reflection.dll" Source="../Lib/IKVM.Reflection.dll" />
+                      <File Id="Exec10" Name="cef.pak" Source="../GSAKWrapper/bin/Release/cef.pak" />
+                      <File Id="Exec11" Name="cef_100_percent.pak" Source="../GSAKWrapper/bin/Release/cef_100_percent.pak" />
+                      <File Id="Exec12" Name="cef_200_percent.pak" Source="../GSAKWrapper/bin/Release/cef_200_percent.pak" />
+                      <File Id="Exec13" Name="CefSharp.dll" Source="../GSAKWrapper/bin/Release/CefSharp.dll" />
+                      <File Id="Exec14" Name="CefSharp.xml" Source="../GSAKWrapper/bin/Release/CefSharp.xml" />
+                      <File Id="Exec15" Name="CefSharp.BrowserSubprocess.exe" Source="../GSAKWrapper/bin/Release/CefSharp.BrowserSubprocess.exe" />
+                      <File Id="Exec16" Name="CefSharp.BrowserSubprocess.Core.dll" Source="../GSAKWrapper/bin/Release/CefSharp.BrowserSubprocess.Core.dll" />
+                      <File Id="Exec17" Name="CefSharp.Core.dll" Source="../GSAKWrapper/bin/Release/CefSharp.Core.dll" />
+                      <File Id="Exec18" Name="CefSharp.Core.xml" Source="../GSAKWrapper/bin/Release/CefSharp.Core.xml" />
+                      <File Id="Exec19" Name="CefSharp.Wpf.dll" Source="../GSAKWrapper/bin/Release/CefSharp.Wpf.dll" />
+                      <File Id="Exec20" Name="CefSharp.Wpf.xml" Source="../GSAKWrapper/bin/Release/CefSharp.Wpf.xml" />
+                      <File Id="Exec21" Name="d3dcompiler_43.dll" Source="../GSAKWrapper/bin/Release/d3dcompiler_43.dll" />
+                      <File Id="Exec22" Name="d3dcompiler_47.dll" Source="../GSAKWrapper/bin/Release/d3dcompiler_47.dll" />
+                      <File Id="Exec23" Name="devtools_resources.pak" Source="../GSAKWrapper/bin/Release/devtools_resources.pak" />
+                      <File Id="Exec25" Name="icudtl.dat" Source="../GSAKWrapper/bin/Release/icudtl.dat" />
+                      <File Id="Exec26" Name="libcef.dll" Source="../GSAKWrapper/bin/Release/libcef.dll" />
+                      <File Id="Exec27" Name="libEGL.dll" Source="../GSAKWrapper/bin/Release/libEGL.dll" />
+                      <File Id="Exec28" Name="libGLESv2.dll" Source="../GSAKWrapper/bin/Release/libGLESv2.dll" />
+                      <File Id="Exec29" Name="natives_blob.bin" Source="../GSAKWrapper/bin/Release/natives_blob.bin" />
+                      <File Id="Exec30" Name="snapshot_blob.bin" Source="../GSAKWrapper/bin/Release/snapshot_blob.bin" />
+                      <File Id="Exec31" Name="cef_extensions.pak" Source="../GSAKWrapper/bin/Release/cef_extensions.pak" />
                     </Component>
+                  <Directory Id="LOCALESDIR" Name="locales">
+                    <Component Id="locales" Guid="17FAFFCE-6AAD-4601-96A5-CBE252F933D2" DiskId="1">
+                      <File Id="loc1" Name="am.pak" Source="../GSAKWrapper/bin/Release/locales/am.pak" />
+                      <File Id="loc2" Name="ar.pak" Source="../GSAKWrapper/bin/Release/locales/ar.pak" />
+                      <File Id="loc3" Name="bg.pak" Source="../GSAKWrapper/bin/Release/locales/bg.pak" />
+                      <File Id="loc4" Name="bn.pak" Source="../GSAKWrapper/bin/Release/locales/bn.pak" />
+                      <File Id="loc5" Name="ca.pak" Source="../GSAKWrapper/bin/Release/locales/ca.pak" />
+                      <File Id="loc6" Name="cs.pak" Source="../GSAKWrapper/bin/Release/locales/cs.pak" />
+                      <File Id="loc7" Name="da.pak" Source="../GSAKWrapper/bin/Release/locales/da.pak" />
+                      <File Id="loc8" Name="de.pak" Source="../GSAKWrapper/bin/Release/locales/de.pak" />
+                      <File Id="loc9" Name="el.pak" Source="../GSAKWrapper/bin/Release/locales/el.pak" />
+                      <File Id="loc10" Name="en-GB.pak" Source="../GSAKWrapper/bin/Release/locales/en-GB.pak" />
+                      <File Id="loc11" Name="en-US.pak" Source="../GSAKWrapper/bin/Release/locales/en-US.pak" />
+                      <File Id="loc12" Name="es.pak" Source="../GSAKWrapper/bin/Release/locales/es.pak" />
+                      <File Id="loc13" Name="es-419.pak" Source="../GSAKWrapper/bin/Release/locales/es-419.pak" />
+                      <File Id="loc14" Name="et.pak" Source="../GSAKWrapper/bin/Release/locales/et.pak" />
+                      <File Id="loc15" Name="fa.pak" Source="../GSAKWrapper/bin/Release/locales/fa.pak" />
+                      <File Id="loc16" Name="fi.pak" Source="../GSAKWrapper/bin/Release/locales/fi.pak" />
+                      <File Id="loc17" Name="fil.pak" Source="../GSAKWrapper/bin/Release/locales/fil.pak" />
+                      <File Id="loc18" Name="fr.pak" Source="../GSAKWrapper/bin/Release/locales/fr.pak" />
+                      <File Id="loc19" Name="gu.pak" Source="../GSAKWrapper/bin/Release/locales/gu.pak" />
+                      <File Id="loc20" Name="he.pak" Source="../GSAKWrapper/bin/Release/locales/he.pak" />
+                      <File Id="loc21" Name="hi.pak" Source="../GSAKWrapper/bin/Release/locales/hi.pak" />
+                      <File Id="loc22" Name="hr.pak" Source="../GSAKWrapper/bin/Release/locales/hr.pak" />
+                      <File Id="loc23" Name="hu.pak" Source="../GSAKWrapper/bin/Release/locales/hu.pak" />
+                      <File Id="loc24" Name="id.pak" Source="../GSAKWrapper/bin/Release/locales/id.pak" />
+                      <File Id="loc25" Name="it.pak" Source="../GSAKWrapper/bin/Release/locales/it.pak" />
+                      <File Id="loc26" Name="ja.pak" Source="../GSAKWrapper/bin/Release/locales/ja.pak" />
+                      <File Id="loc27" Name="kn.pak" Source="../GSAKWrapper/bin/Release/locales/kn.pak" />
+                      <File Id="loc28" Name="ko.pak" Source="../GSAKWrapper/bin/Release/locales/ko.pak" />
+                      <File Id="loc29" Name="lt.pak" Source="../GSAKWrapper/bin/Release/locales/lt.pak" />
+                      <File Id="loc30" Name="lv.pak" Source="../GSAKWrapper/bin/Release/locales/lv.pak" />
+                      <File Id="loc31" Name="ml.pak" Source="../GSAKWrapper/bin/Release/locales/ml.pak" />
+                      <File Id="loc32" Name="mr.pak" Source="../GSAKWrapper/bin/Release/locales/mr.pak" />
+                      <File Id="loc33" Name="ms.pak" Source="../GSAKWrapper/bin/Release/locales/ms.pak" />
+                      <File Id="loc34" Name="nb.pak" Source="../GSAKWrapper/bin/Release/locales/nb.pak" />
+                      <File Id="loc35" Name="nl.pak" Source="../GSAKWrapper/bin/Release/locales/nl.pak" />
+                      <File Id="loc36" Name="pl.pak" Source="../GSAKWrapper/bin/Release/locales/pl.pak" />
+                      <File Id="loc37" Name="pt-BR.pak" Source="../GSAKWrapper/bin/Release/locales/pt-BR.pak" />
+                      <File Id="loc38" Name="pt-PT.pak" Source="../GSAKWrapper/bin/Release/locales/pt-PT.pak" />
+                      <File Id="loc39" Name="ro.pak" Source="../GSAKWrapper/bin/Release/locales/ro.pak" />
+                      <File Id="loc40" Name="ru.pak" Source="../GSAKWrapper/bin/Release/locales/ru.pak" />
+                      <File Id="loc41" Name="sk.pak" Source="../GSAKWrapper/bin/Release/locales/sk.pak" />
+                      <File Id="loc42" Name="sl.pak" Source="../GSAKWrapper/bin/Release/locales/sl.pak" />
+                      <File Id="loc43" Name="sr.pak" Source="../GSAKWrapper/bin/Release/locales/sr.pak" />
+                      <File Id="loc44" Name="sv.pak" Source="../GSAKWrapper/bin/Release/locales/sv.pak" />
+                      <File Id="loc45" Name="sw.pak" Source="../GSAKWrapper/bin/Release/locales/sw.pak" />
+                      <File Id="loc46" Name="ta.pak" Source="../GSAKWrapper/bin/Release/locales/ta.pak" />
+                      <File Id="loc47" Name="te.pak" Source="../GSAKWrapper/bin/Release/locales/te.pak" />
+                      <File Id="loc48" Name="th.pak" Source="../GSAKWrapper/bin/Release/locales/th.pak" />
+                      <File Id="loc49" Name="tr.pak" Source="../GSAKWrapper/bin/Release/locales/tr.pak" />
+                      <File Id="loc50" Name="uk.pak" Source="../GSAKWrapper/bin/Release/locales/uk.pak" />
+                      <File Id="loc51" Name="vi.pak" Source="../GSAKWrapper/bin/Release/locales/vi.pak" />
+                      <File Id="loc52" Name="zh-CN.pak" Source="../GSAKWrapper/bin/Release/locales/zh-CN.pak" />
+                      <File Id="loc53" Name="zh-TW.pak" Source="../GSAKWrapper/bin/Release/locales/zh-TW.pak" />
+                    </Component>
+                  </Directory>
                 </Directory>
             </Directory>
             <Directory Id="ProgramMenuFolder" Name="MFiles">

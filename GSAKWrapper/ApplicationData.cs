@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace GSAKWrapper
@@ -15,15 +16,26 @@ namespace GSAKWrapper
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        public MainWindow MainWindow { get; set; }
+        private MainWindow _mainWindow;
+        public MainWindow MainWindow { get { return _mainWindow; } set { _mainWindow = value; _mainWindow.Closed += _mainWindow_Closed; } }
         public List<DataTypes.GeocacheAttribute> GeocacheAttributes;
         public List<DataTypes.GeocacheType> GeocacheTypes;
         public List<DataTypes.GeocacheContainer> GeocacheContainers;
         public List<DataTypes.WaypointType> WaypointTypes;
         public List<DataTypes.LogType> LogTypes;
+        public List<Window> OpenWindows;
 
         public List<DataTypes.GSAKCustomGlobal> GSAKCustomGlobals { get; set; }
         public List<string> GSAKLocations { get; set; }
+
+        void _mainWindow_Closed(object sender, EventArgs e)
+        {
+            var lst = OpenWindows.ToList();
+            foreach (var l in lst)
+            {
+                l.Close();
+            }
+        }
 
         private int _activityCounter = 0;
         public void BeginActiviy()
@@ -90,6 +102,7 @@ namespace GSAKWrapper
             LogTypes = new List<DataTypes.LogType>();
             GSAKCustomGlobals = new List<DataTypes.GSAKCustomGlobal>();
             GSAKLocations = new List<string>();
+            OpenWindows = new List<Window>();
 
             //addCacheType(0, "Not present");
             addCacheType(2, "Traditional Cache", 'T');

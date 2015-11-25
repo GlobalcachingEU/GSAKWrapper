@@ -1,4 +1,5 @@
-﻿using GSAKWrapper.Commands;
+﻿using CefSharp;
+using GSAKWrapper.Commands;
 using GSAKWrapper.FlowSequences;
 using Microsoft.Win32;
 using System;
@@ -99,6 +100,18 @@ namespace GSAKWrapper
 
             if (Settings.Settings.ApplicationRunning)
             {
+                var settings = new CefSettings();
+                settings.LogSeverity = LogSeverity.Disable;
+                settings.RegisterScheme(new CefCustomScheme
+                {
+                    SchemeName = CefSupport.CefSharpSchemeHandlerFactory.SchemeName,
+                    SchemeHandlerFactory = new CefSupport.CefSharpSchemeHandlerFactory()
+                });
+                if (!Cef.Initialize(settings))
+                {
+                    throw new Exception("Unable to Initialize Cef");
+                } 
+
                 Dialogs.ProgessWindow prog = Dialogs.ProgessWindow.Instance;
                 ApplicationData.Instance.MainWindow = this;
                 
@@ -702,6 +715,17 @@ namespace GSAKWrapper
         {
             var dlg = new Dialogs.WindowScriptEditor();
             dlg.ShowDialog();        
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                Cef.Shutdown();
+            }
+            catch
+            {
+            }
         }
     }
 }

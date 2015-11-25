@@ -1,0 +1,127 @@
+﻿<html>
+	<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js"></script>
+    <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/keydragzoom/src/keydragzoom_packed.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+var map;
+var markers = [];
+var markerClusterer = null;
+var activeInfoWindow = null;
+var clusterOptions = { gridSize: 40, maxZoom: 13 };
+var enableClusterMarkerAboveCount = 1000;
+
+//enableClusterMarkerAboveCount
+//clusterOptions.maxZoom
+//clusterOptions.gridSize
+
+//icons
+
+
+function init() {
+	/*
+    Build list of map types.
+    You can also use var mapTypeIds = ["roadmap", "satellite", "hybrid", "terrain", "OSM"]
+    but static lists sucks when google updates the default list of map types.
+    */
+    var mapTypeIds = [];
+    for(var type in google.maps.MapTypeId) {
+        mapTypeIds.push(google.maps.MapTypeId[type]);
+    }
+    mapTypeIds.push("OSM");
+
+    var myOptions = {
+        zoom: 13,
+        center: new google.maps.LatLng(51.5, 5.5),
+		scaleControl: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+		mapTypeControlOptions: { mapTypeIds: mapTypeIds }
+    };
+    map = new google.maps.Map(document.getElementById("map"), myOptions);
+
+	//Define OSM map type pointing at the OpenStreetMap tile server
+    map.mapTypes.set("OSM", new google.maps.ImageMapType({
+        getTileUrl: function(coord, zoom) {
+            return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+        },
+        tileSize: new google.maps.Size(256, 256),
+        name: "OpenStreetMap",
+        maxZoom: 18
+    }));
+
+	activeInfoWindow = new google.maps.InfoWindow();
+
+    map.enableKeyDragZoom({
+        visualEnabled: false,
+        visualPosition: google.maps.ControlPosition.LEFT,
+        visualPositionOffset: new google.maps.Size(35, 0),
+        visualPositionIndex: null,
+        visualSprite: "http://maps.gstatic.com/mapfiles/ftr/controls/dragzoom_btn.png",
+        visualSize: new google.maps.Size(20, 20),
+        visualTips: {
+            off: "Turn on",
+            on: "Turn off"
+        }
+    });
+}
+
+function updateGeocaches(gcList) {
+    if (markerClusterer != null) {
+        markerClusterer.clearMarkers();
+    }
+	var wps = gcList;
+	markers.length = 0;
+	for (var i = 0; i < wps.length; i++) {
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(wps[i].b, wps[i].c),
+			icon: eval(wps[i].d),
+			title: wps[i].a
+		});
+		addClickListener(marker);
+		markers.push(marker);
+	}
+	if (markers.length>=enableClusterMarkerAboveCount)
+	{
+		markerClusterer = new MarkerClusterer(map, markers, clusterOptions);
+	}
+	else
+	{
+		for (var i=0; i<markers.length; i++)
+		{
+			markers[i].setMap(map);
+		}
+	}
+}
+
+function addClickListener(marker) {
+	var gccode = marker.getTitle();
+	google.maps.event.addListener(marker, 'click', function () {
+		//bound.geocacheClicked(gccode);
+	});
+}
+
+function onResize() {
+  $('#map').width($(document).width()-40);
+  $('#map').height($(document).height()-40);
+}
+
+$(window).resize(function() {
+	onResize();
+});
+
+$(document).ready(function() {
+	onResize();
+    init();
+});
+    </script>
+
+	</head>
+    <body>
+       <div id="map" style="border: 2px solid black;"></div>
+    </body>
+</html>

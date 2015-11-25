@@ -34,7 +34,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" Text="{l:Translate Map}" HorizontalAlignment="Center" />
-            <WebBrowser x:Name="webBrowser" Grid.Row="1" />
+            <Grid x:Name="webBrowser" Grid.Row="1" />
         </Grid>
     </Grid>
 </Window>

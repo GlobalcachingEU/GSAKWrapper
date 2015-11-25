@@ -20,6 +20,7 @@ namespace GSAKWrapper.Dialogs
     /// </summary>
     public partial class WindowShapeFileTest : Window
     {
+        private UIControls.WebBrowserControl _browser = null;
         private ShapeFile _sf;
 
         public List<string> Areas { get; set; }
@@ -74,7 +75,7 @@ namespace GSAKWrapper.Dialogs
                                 }
                                 sb.Append("]);");
                                 html = html.Replace("//addpolygon", sb.ToString());
-                                webBrowser.NavigateToString(html);
+                                _browser.DocumentText = html;
                             }
                         }
                     }
@@ -110,7 +111,20 @@ namespace GSAKWrapper.Dialogs
             {
             }
             InitializeComponent();
+            _browser = new UIControls.WebBrowserControl();
+            this.webBrowser.Children.Add(_browser);
             DataContext = this;
+
+            this.Closed += WindowShapeFileTest_Closed;
+        }
+
+        void WindowShapeFileTest_Closed(object sender, EventArgs e)
+        {
+            if (_sf != null)
+            {
+                _sf.Dispose();
+                _sf = null;
+            }
         }
     }
 }

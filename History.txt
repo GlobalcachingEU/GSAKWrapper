@@ -1,3 +1,7 @@
+V0.8.0.0
+- added Cef browser
+- changed shapefile tester from IE to Cef
+
 V0.7.0.0
 - added script editor
 - added script filter
