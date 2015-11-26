@@ -1,0 +1,16 @@
+﻿<Window x:Class="GSAKWrapper.Dialogs.WindowOSMOfflineMap"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:l="clr-namespace:GSAKWrapper.Localization"
+        xmlns:s="clr-namespace:GSAKWrapper.Settings"
+        Icon="/Resources/GSAKWrapper.ico"
+        Title="{l:Translate OSMOfflineMap}"
+        Height="{Binding OSMOfflineMapWindowHeight, Mode=TwoWay, Source={x:Static s:Settings.Default}}"  
+        Width="{Binding OSMOfflineMapWindowWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Left="{Binding OSMOfflineMapWindowLeft, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        Top="{Binding OSMOfflineMapWindowTop, Mode=TwoWay, Source={x:Static s:Settings.Default}}"
+        >
+    <Grid>
+        <Grid x:Name="mapContainer" />
+    </Grid>
+</Window>

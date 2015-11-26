@@ -3,6 +3,7 @@ V0.8.0.0
 - changed shapefile tester from IE to Cef
 - updated macro (that is now on GSAK forum)
 - added show on online map action
+- added show on offline map action
 
 V0.7.0.0
 - added script editor

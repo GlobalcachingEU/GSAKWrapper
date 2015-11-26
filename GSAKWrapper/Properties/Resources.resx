@@ -1057,4 +1057,28 @@ Please select a complete coordinate string and try again.</value>
   <data name="ShowOnlineMap" xml:space="preserve">
     <value>Show online map</value>
   </data>
+  <data name="OSMOfflineMap" xml:space="preserve">
+    <value>OSM offline map</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="ClearCache" xml:space="preserve">
+    <value>Clear cache</value>
+  </data>
+  <data name="Maps" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ShowOfflineMap" xml:space="preserve">
+    <value>Show offline map</value>
+  </data>
+  <data name="ShowMap" xml:space="preserve">
+    <value>Show map</value>
+  </data>
 </root>
