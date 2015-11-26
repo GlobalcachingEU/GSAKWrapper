@@ -24,37 +24,33 @@
             <Expander.Content>
                 <Grid>
                     <Grid Background="{x:Static SystemColors.ControlBrush}">
-                        <Grid.Resources>
-                            <ui:EnumBooleanConverter x:Key="enumBooleanConverter" />
-                        </Grid.Resources>
                         <StackPanel >
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0">
-                                    <Button Margin="4" Content="{l:Translate ClearCache}" Click="Button_Click" />
-                                </StackPanel>
-                                <GroupBox Grid.Column="1" Header="{l:Translate Maps}" Height="100" Visibility="{Binding Path=MapFactory.OSMBinFilesVisibility}">
-                                    <GroupBox.Content>
-                                        <Grid>
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*" />
-                                                <RowDefinition Height="Auto" />
-                                            </Grid.RowDefinitions>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                            </Grid.ColumnDefinitions>
-                                            <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" ItemsSource="{Binding Path=MapFactory.OSMBinFiles}" SelectedItem="{Binding SelectedMap, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-                                            <Button Margin="4" Grid.Row="1" Grid.Column="0" Content="{l:Translate Remove}" Command="{Binding RemoveSelectedMapCommand}" />
-                                            <Button Margin="4" Grid.Row="1" Grid.Column="1" Content="{l:Translate Add}" Command="{Binding AddMapCommand}" />
-                                        </Grid>
-                                    </GroupBox.Content>
-                                </GroupBox>
-                            </Grid>
+                            <GroupBox Header="{l:Translate Maps}" Height="100" Visibility="{Binding Path=MapFactory.OSMBinFilesVisibility}">
+                                <GroupBox.Content>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <ListBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" ItemsSource="{Binding Path=MapFactory.OSMBinFiles}" SelectedItem="{Binding SelectedMap, Mode=TwoWay}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                        <Button Margin="4" Grid.Row="1" Grid.Column="0" Content="{l:Translate Remove}" Command="{Binding RemoveSelectedMapCommand}" />
+                                        <Button Margin="4" Grid.Row="1" Grid.Column="1" Content="{l:Translate Add}" Command="{Binding AddMapCommand}" />
+                                        <Button Margin="4"  Grid.Row="1" Grid.Column="3" Content="{l:Translate ClearCache}" Click="Button_Click" />
+                                        <TextBlock  Margin="4" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">           
+                                            <Hyperlink NavigateUri="http://download.mapsforge.org/maps/" RequestNavigate="Hyperlink_Navigate">
+                                                <TextBlock Text="{l:Translate DownloadMapsUri}" />
+                                            </Hyperlink>
+                                        </TextBlock>
+                                    </Grid>
+                                </GroupBox.Content>
+                            </GroupBox>
                             <local:SearchControl x:Name="searchBar" Grid.Row="0" Margin="10,10,10,0" VerticalAlignment="Top"
                          Navigate="OnSearchControlNavigate" SearchArea="{Binding ElementName=tileCanvas, Path=Viewport}" />
                         </StackPanel>
