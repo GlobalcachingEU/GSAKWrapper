@@ -1054,4 +1054,7 @@ Please select a complete coordinate string and try again.</value>
   <data name="WebBrowser" xml:space="preserve">
     <value>Web browser</value>
   </data>
+  <data name="ShowOnlineMap" xml:space="preserve">
+    <value>Show online map</value>
+  </data>
 </root>

@@ -1067,7 +1067,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\ActionShowOnlineMap.html" />
+    <Resource Include="Resources\ActionShowOnlineMap.html">
+      <SubType>Designer</SubType>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Map\11.png" />
@@ -1087,6 +1089,10 @@
     <Resource Include="Resources\Map\c6.png" />
     <Resource Include="Resources\Map\c8.png" />
     <Resource Include="Resources\Map\found.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Map\0.png" />
+    <Resource Include="Resources\Map\myown.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.98.1\build\net451\System.Data.SQLite.Core.targets')" />
@@ -1115,6 +1121,12 @@
       PostBuildMacros;
     </PostBuildEventDependsOn>
     <PostBuildEvent>if $(ConfigurationName) == Release (
+if not exist "$(TargetDir)locales" mkdir "$(TargetDir)locales"
+copy "$(ProjectDir)..\packages\cef.redist.$(PlatformName).3.2454.1344\CEF\*.*" "$(TargetDir)"
+copy "$(ProjectDir)..\packages\cef.redist.$(PlatformName).3.2454.1344\CEF\locales\*.*" "$(TargetDir)locales"
+copy "$(ProjectDir)..\packages\cef.redist.$(PlatformName).3.2454.1344\CEF\$(PlatformName)\*.*" "$(TargetDir)"
+copy "$(ProjectDir)..\packages\CefSharp.Common.45.0.0\CefSharp\$(PlatformName)\*.*" "$(TargetDir)"
+copy "$(ProjectDir)..\packages\CefSharp.Wpf.45.0.0\CefSharp\$(PlatformName)\*.*" "$(TargetDir)"
 echo "C:\Program Files (x86)\WiX Toolset v3.9\bin\candle.exe" "$(SolutionDir)Setup\Setup.wxs" -out "$(SolutionDir)Setup\Setup.wixobj" -dPlatform=$(PlatformName) -dVersion=@(VersionNumber) -ext WixUIExtension -ext WixUtilExtension  -ext WixNetFxExtension 
 "C:\Program Files (x86)\WiX Toolset v3.9\bin\candle.exe" "$(SolutionDir)Setup\Setup.wxs" -out "$(SolutionDir)Setup\Setup.wixobj" -dPlatform=$(PlatformName) -dVersion=@(VersionNumber) -ext WixUIExtension -ext WixUtilExtension  -ext WixNetFxExtension
 "C:\Program Files (x86)\WiX Toolset v3.9\bin\light.exe" "$(SolutionDir)Setup\Setup.wixobj" -out "$(SolutionDir)Setup\GSAKWrapper$(PlatformName)V@(VersionNumber).msi" -b "$(SolutionDir)Setup" -dWixUILicenseRtf=license.rtf -spdb -ext WixUIExtension -ext WixUtilExtension -ext WixNetFxExtension -sw

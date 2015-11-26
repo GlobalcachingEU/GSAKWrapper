@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GSAKWrapper.UIControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,9 +37,22 @@ namespace GSAKWrapper.Dialogs
             ApplicationData.Instance.OpenWindows.Remove(this);
         }
 
-        public WindowWebBrowser(string htmlContent) : this()
+        public WindowWebBrowser(string htmlContent)
+            : this(htmlContent, null)
         {
-            _browser.DocumentText = htmlContent;
+        }
+
+        public WindowWebBrowser(string htmlContent, WebBrowserControl.JSCallback jsCallback)
+            : this()
+        {
+            if (jsCallback != null)
+            {
+                _browser.RegisterJSCallback(jsCallback);
+            }
+            if (htmlContent != null)
+            {
+                _browser.DocumentText = htmlContent;
+            }
         }
     }
 }

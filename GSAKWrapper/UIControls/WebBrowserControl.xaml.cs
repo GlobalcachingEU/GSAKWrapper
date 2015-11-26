@@ -26,10 +26,18 @@ namespace GSAKWrapper.UIControls
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public class JSCallback
+        {
+            public string Name { get; set; }
+            public object Instance { get; set; }
+        }
+
         private string _requestedDocumentText = null;
+        private List<JSCallback> _registerCallbacks;
 
         public WebBrowserControl()
         {
+            _registerCallbacks = new List<JSCallback>();
             DataContext = this;
             InitializeComponent();
             browser.IsBrowserInitializedChanged += browser_IsBrowserInitializedChanged;
@@ -38,9 +46,21 @@ namespace GSAKWrapper.UIControls
 
         void browser_IsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (WPFWebBrowser != null && WPFWebBrowser.IsBrowserInitialized && !string.IsNullOrEmpty(_requestedDocumentText))
+            if (WPFWebBrowser != null && !WPFWebBrowser.IsBrowserInitialized)
             {
-                DocumentText = _requestedDocumentText;
+                foreach (var cb in _registerCallbacks)
+                {
+                    RegisterJSCallback(cb);
+                }
+                _registerCallbacks.Clear();
+            }
+            if (WPFWebBrowser != null && WPFWebBrowser.IsBrowserInitialized)
+            {
+                if (!string.IsNullOrEmpty(_requestedDocumentText))
+                {
+                    DocumentText = _requestedDocumentText;
+                    _requestedDocumentText = null;
+                }
             }            
         }
 
@@ -70,11 +90,20 @@ namespace GSAKWrapper.UIControls
                 SetProperty(ref _webBrowser, value);
                 if (_webBrowser != null)
                 {
+                    if (!_webBrowser.IsBrowserInitialized)
+                    {
+                        foreach (var cb in _registerCallbacks)
+                        {
+                            RegisterJSCallback(cb);
+                        }
+                        _registerCallbacks.Clear();
+                    }
                     if (_webBrowser.IsBrowserInitialized)
                     {
                         if (!string.IsNullOrEmpty(_requestedDocumentText))
                         {
                             DocumentText = _requestedDocumentText;
+                            _requestedDocumentText = null;
                         }
                     }
                 }
@@ -112,5 +141,17 @@ namespace GSAKWrapper.UIControls
             }
         }
 
+
+        public void RegisterJSCallback(JSCallback cb)
+        {
+            if (WPFWebBrowser != null && !WPFWebBrowser.IsBrowserInitialized)
+            {
+                WPFWebBrowser.RegisterJsObject(cb.Name, cb.Instance);
+            }
+            else
+            {
+                _registerCallbacks.Add(cb);
+            }
+        }
     }
 }

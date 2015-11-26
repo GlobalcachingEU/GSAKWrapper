@@ -8,15 +8,29 @@
     <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerclusterer/src/markerclusterer_compiled.js"></script>
     <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/keydragzoom/src/keydragzoom_packed.js"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" src="http://gsak.net/stats/maps/markerwithlabel.js"></script>
+    <style type="text/css">
+      .labels {
+      color: black;
+      background-color: white;
+      font-family: "Lucida Grande", "Arial", sans-serif;
+      font-size: 10px;
+      font-weight: bold;
+      text-align: center;
+      width: auto;
+      padding-left: 2px;
+      padding-right: 2px;
+      border: 1px solid black;
+      white-space: nowrap;
+      }
+    </style>
+      <script type="text/javascript">
 var map;
 var markers = [];
 var markerClusterer = null;
 var activeInfoWindow = null;
 var clusterOptions = { gridSize: 40, maxZoom: 13 };
-var enableClusterMarkerAboveCount = 1000;
 
-//enableClusterMarkerAboveCount
 //clusterOptions.maxZoom
 //clusterOptions.gridSize
 
@@ -68,41 +82,16 @@ function init() {
             on: "Turn off"
         }
     });
-}
-
-function updateGeocaches(gcList) {
-    if (markerClusterer != null) {
-        markerClusterer.clearMarkers();
-    }
-	var wps = gcList;
-	markers.length = 0;
-	for (var i = 0; i < wps.length; i++) {
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(wps[i].b, wps[i].c),
-			icon: eval(wps[i].d),
-			title: wps[i].a
-		});
-		addClickListener(marker);
-		markers.push(marker);
-	}
-	if (markers.length>=enableClusterMarkerAboveCount)
-	{
-		markerClusterer = new MarkerClusterer(map, markers, clusterOptions);
-	}
-	else
-	{
-		for (var i=0; i<markers.length; i++)
-		{
-			markers[i].setMap(map);
-		}
-	}
+    
+    //geocachelist
 }
 
 function addClickListener(marker) {
 	var gccode = marker.getTitle();
 	google.maps.event.addListener(marker, 'click', function () {
-		//bound.geocacheClicked(gccode);
+		bound.geocacheClicked(gccode);
 	});
+  return marker;
 }
 
 function onResize() {
