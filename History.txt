@@ -1,3 +1,6 @@
+V0.8.2.0
+- fix offline map loading patterns and symbols
+
 V0.8.1.0
 - added Cef browser
 - changed shapefile tester from IE to Cef
