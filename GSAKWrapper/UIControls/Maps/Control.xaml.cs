@@ -316,27 +316,31 @@ namespace GSAKWrapper.UIControls.Maps
 
                     if (m.ImagePath.Length > 0)
                     {
+                        Image imgElement;
+                        BitmapImage bi3;
                         try
                         {
-                            Image imgElement = new Image();
-                            BitmapImage bi3 = new BitmapImage();
+                            imgElement = new Image();
+                            bi3 = new BitmapImage();
                             bi3.BeginInit();
                             bi3.UriSource = Utils.ResourceHelper.GetResourceUri(m.ImagePath);
                             bi3.EndInit();
-                            imgElement.Stretch = Stretch.None;
-                            imgElement.Source = bi3;
-                            rootElement.Children.Add(imgElement);
                         }
                         catch
                         {
-                            Image imgElement = new Image();
-                            BitmapImage bi3 = new BitmapImage();
+                            imgElement = new Image();
+                            bi3 = new BitmapImage();
                             bi3.BeginInit();
                             bi3.UriSource = Utils.ResourceHelper.GetResourceUri("/Resources/Map/0.png");
                             bi3.EndInit();
-                            imgElement.Stretch = Stretch.None;
-                            imgElement.Source = bi3;
-                            rootElement.Children.Add(imgElement);
+                        }
+                        imgElement.Stretch = Stretch.None;
+                        imgElement.Source = bi3;
+                        rootElement.Children.Add(imgElement);
+                        var gc = m.Tag as GeocachePoco;
+                        if (gc != null)
+                        {
+                            imgElement.ToolTip = string.Format("{0}-{1}", gc.Code, gc.Name);
                         }
                     }
                     else

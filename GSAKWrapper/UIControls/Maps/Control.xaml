@@ -25,7 +25,7 @@
                 <Grid>
                     <Grid Background="{x:Static SystemColors.ControlBrush}">
                         <StackPanel >
-                            <GroupBox Header="{l:Translate Maps}" Height="100" Visibility="{Binding Path=MapFactory.OSMBinFilesVisibility}">
+                            <GroupBox Header="{l:Translate Maps}" Height="160" Visibility="{Binding Path=MapFactory.OSMBinFilesVisibility}">
                                 <GroupBox.Content>
                                     <Grid>
                                         <Grid.RowDefinitions>
