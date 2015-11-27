@@ -1,9 +1,11 @@
-V0.8.0.0
+V0.8.1.0
 - added Cef browser
 - changed shapefile tester from IE to Cef
 - updated macro (that is now on GSAK forum)
 - added show on online map action
 - added show on offline map action
+- execute flow button made larger
+- added macro for display active geocache on offline map
 
 V0.7.0.0
 - added script editor

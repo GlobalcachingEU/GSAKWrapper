@@ -23,14 +23,16 @@ namespace GSAKWrapper.Dialogs
         private List<GSAKWrapper.MapProviders.GeocachePoco> _gcList = null;
         private double? _cLat = null;
         private double? _cLon = null;
+        private int _initialZoomLevel = 13;
 
         public WindowOSMOfflineMap()
-            : this(null, null, null)
+            : this(null, null, null, 13)
         {
         }
 
-        public WindowOSMOfflineMap(List<GSAKWrapper.MapProviders.GeocachePoco> gcList, double? cLat, double? cLon)
+        public WindowOSMOfflineMap(List<GSAKWrapper.MapProviders.GeocachePoco> gcList, double? cLat, double? cLon, int zoomLevel)
         {
+            _initialZoomLevel = zoomLevel;
             _gcList = gcList;
             _cLat = cLat;
             _cLon = cLon;
@@ -45,7 +47,7 @@ namespace GSAKWrapper.Dialogs
 
         void _control_Loaded(object sender, RoutedEventArgs e)
         {
-            _control.UpdateView(_gcList, _cLat, _cLon);
+            _control.UpdateView(_gcList, _cLat, _cLon, Math.Max(_initialZoomLevel, _control.tileCanvas.MapControlFactory.TileGenerator.MaxZoom));
         }
 
         void WindowOSMOfflineMap_Closed(object sender, EventArgs e)

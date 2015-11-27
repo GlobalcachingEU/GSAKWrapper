@@ -293,6 +293,43 @@ namespace GSAKWrapper
                             dlg.ShowDialog();
                         }
                         break;
+                    case "OfflineOSMMapActive":
+                        {
+                            List<GSAKWrapper.MapProviders.GeocachePoco> gcl = null;
+                            double? cLat = null;
+                            double? cLon = null;
+                            var fn = System.IO.Path.Combine(Settings.Settings.Default.DatabaseFolderPath, Settings.Settings.Default.SelectedDatabase, "sqlite.db3");
+                            if (System.IO.File.Exists(fn))
+                            {
+                                using (var tempdb = new Database.DBConSqlite(fn))
+                                {
+                                    using (var db = new NPoco.Database(tempdb.Connection, NPoco.DatabaseType.SQLite))
+                                    {
+                                        gcl = db.Fetch<GSAKWrapper.MapProviders.GeocachePoco>("select Code, Name, CacheType, Found, IsOwner, Latitude, Longitude, kAfterLat, kAfterLon from Caches left join Corrected on Caches.Code=Corrected.kCode where Caches.Code=@0", pa.GeocacheCode);
+                                    }
+                                    if (gcl.Count > 0)
+                                    {
+                                        if (!string.IsNullOrEmpty(gcl[0].kAfterLat) && !string.IsNullOrEmpty(gcl[0].kAfterLon))
+                                        {
+                                            cLat = double.Parse(gcl[0].kAfterLat, CultureInfo.InvariantCulture);
+                                            cLon = double.Parse(gcl[0].kAfterLon, CultureInfo.InvariantCulture);
+                                        }
+                                        else
+                                        {
+                                            cLat = double.Parse(gcl[0].Latitude, CultureInfo.InvariantCulture);
+                                            cLon = double.Parse(gcl[0].Longitude, CultureInfo.InvariantCulture);
+                                        }
+                                        var wnd = new Dialogs.WindowOSMOfflineMap(gcl, cLat, cLon, 18);
+                                        wnd.ShowDialog();
+                                    }
+                                    else
+                                    {
+                                        System.Windows.MessageBox.Show(string.Format("Geocache '{0}' not found", pa.GeocacheCode), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                                    }
+                                }
+                            }
+                        }
+                        break;
                 }
                 Close();
             }
@@ -367,7 +404,7 @@ namespace GSAKWrapper
                     Thread.Sleep(2000);
                     var s = @"<?xml version=""1.0"" encoding=""utf-8""?>
 <items>
-  <item name=""version"" value=""0.1.1.0"" />
+  <item name=""version"" value=""10.1.1.0"" />
   <item name=""url"" value=""https://github.com/GlobalcachingEU/GSAKWrapper/releases"" />
 </items>
 ";
@@ -726,6 +763,11 @@ namespace GSAKWrapper
             catch
             {
             }
+        }
+
+        private void MenuItem_Click_9(object sender, RoutedEventArgs e)
+        {
+            InstallMacroForGeocacheFunction("OfflineOSMMapActive");
         }
     }
 }

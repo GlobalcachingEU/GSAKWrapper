@@ -116,14 +116,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     sb.AppendFormat("markers.push(addClickListener(new MarkerWithLabel({{position: new google.maps.LatLng({1},{2}),icon:{3},title:'{0}',labelContent:'{0}',labelAnchor: new google.maps.Point(10, 0),labelClass:'labels'}})));", string.Format("{0}-{1}", gc.Code, gc.Name.Replace("'", "").Replace("\\", "")), gc.kAfterLat == null ? gc.Latitude : gc.kAfterLat, gc.kAfterLon == null ? gc.Longitude : gc.kAfterLon, gcicon);
                 }
                 sb.AppendLine();
-                if (gcl.Count > 1000)
-                {
-                    sb.AppendLine("markerClusterer = new MarkerClusterer(map, markers, clusterOptions);");
-                }
-                else
-                {
-                    sb.AppendLine("for (var i=0; i<markers.length; i++) {markers[i].setMap(map); }");
-                }
+                sb.AppendLine("markerClusterer = new MarkerClusterer(map, markers, clusterOptions);");
                 if (gcl.Count > 0)
                 {
                     var dr = DatabaseConnection.ExecuteReader(string.Format("select AVG(Latitude), AVG(Longitude) from Caches inner join {0} on Caches.Code={0}.gccode left join Corrected on Caches.Code=Corrected.kCode", ActionInputTableName));

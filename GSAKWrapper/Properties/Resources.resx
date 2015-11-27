@@ -1084,4 +1084,7 @@ Please select a complete coordinate string and try again.</value>
   <data name="DownloadMapsUri" xml:space="preserve">
     <value>Download maps from mapsforge</value>
   </data>
+  <data name="InstallMacroForOfflineMapActive" xml:space="preserve">
+    <value>Install macro for offline map for active geocache</value>
+  </data>
 </root>

@@ -32,8 +32,8 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
-            <TextBlock Margin="4" Grid.Column="0" Text="{l:Translate Name}" />
-            <ComboBox Margin="4" Grid.Column="1" 
+            <TextBlock Margin="4" Grid.Column="0" Text="{l:Translate Name}" VerticalAlignment="Center" />
+            <ComboBox Margin="4" Grid.Column="1" VerticalAlignment="Center"
                       ItemsSource="{Binding ActionFlows, Source={x:Static b:Manager.Instance}}" 
                       SelectedItem="{Binding ActiveActionFlow, Mode=TwoWay}"
                       DisplayMemberPath="Name"
@@ -45,7 +45,7 @@
             <Button Margin="4" Grid.Column="5" Height="20" Width="20" ToolTip="{l:Translate Delete}" Click="Button_Click_1" IsEnabled="{Binding IsFlowActive}">
                 <Image Width="16" Height="16" Source="/Resources/General/delete.png" />
             </Button>
-            <Button Margin="4" Grid.Column="2" Height="20" Width="20" ToolTip="{l:Translate Execute}" Command="{Binding ExecuteCommand}">
+            <Button Margin="4" Grid.Column="2" Height="30" Width="40" ToolTip="{l:Translate Execute}" Command="{Binding ExecuteCommand}">
                 <Image Width="16" Height="16" Source="/Resources/General/execute.gif" />
             </Button>
             <Button Margin="4" Grid.Column="4" Height="20" Width="20" ToolTip="{l:Translate Rename}" IsEnabled="{Binding IsFlowActive}" Click="Button_Click_2">

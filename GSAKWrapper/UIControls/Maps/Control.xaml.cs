@@ -37,6 +37,7 @@ namespace GSAKWrapper.UIControls.Maps
         private List<GeocachePoco> _gcList = null;
         private List<UIElement> _waypointMarkers = new List<UIElement>();
         private List<UIElement> _geocacheMarkers = new List<UIElement>();
+        private int _initialZoomLevel = 13;
 
         private string _selectedMap;
         public string SelectedMap
@@ -77,7 +78,7 @@ namespace GSAKWrapper.UIControls.Maps
                 {
                     Dispatcher.BeginInvoke((Action)(() =>
                     {
-                        this.tileCanvas.Zoom = 13;
+                        this.tileCanvas.Zoom = _initialZoomLevel;
                     }));
                 });
             }
@@ -207,15 +208,16 @@ namespace GSAKWrapper.UIControls.Maps
             this.SetGeocacheMarkers(mlist);
         }
 
-        public void UpdateView(List<GeocachePoco> gcList, double? cLat, double? cLon)
+        public void UpdateView(List<GeocachePoco> gcList, double? cLat, double? cLon, int zoomLevel)
         {
+            _initialZoomLevel = zoomLevel;
             _gcList = gcList;
             clusterGeocaches(true);
             this.tileCanvas.CheckMassMarkers();
             this.tileCanvas.RepositionChildren();
             if (cLat != null && cLon != null)
             {
-                this.tileCanvas.Center((double)cLat, (double)cLon, this.tileCanvas.MapControlFactory.TileGenerator.MaxZoom - 3);
+                this.tileCanvas.Center((double)cLat, (double)cLon, zoomLevel);
             }
         }
 
@@ -265,7 +267,7 @@ namespace GSAKWrapper.UIControls.Maps
                     {
                         _maxDownload = _mapControlFactory.TileGenerator.DownloadCount;
                     }
-                    this.progress.Value = 100 - (_mapControlFactory.TileGenerator.DownloadCount * 100.0 / _maxDownload);
+                    this.progress.Value = 100 - (_maxDownload == 0 ? 0 : (_mapControlFactory.TileGenerator.DownloadCount * 100.0 / _maxDownload));
                     this.progress.Visibility = Visibility.Visible;
                     this.label.Text = string.Format(
                         CultureInfo.CurrentUICulture,
@@ -314,14 +316,28 @@ namespace GSAKWrapper.UIControls.Maps
 
                     if (m.ImagePath.Length > 0)
                     {
-                        Image imgElement = new Image();
-                        BitmapImage bi3 = new BitmapImage();
-                        bi3.BeginInit();
-                        bi3.UriSource = Utils.ResourceHelper.GetResourceUri(m.ImagePath);
-                        bi3.EndInit();
-                        imgElement.Stretch = Stretch.None;
-                        imgElement.Source = bi3;
-                        rootElement.Children.Add(imgElement);
+                        try
+                        {
+                            Image imgElement = new Image();
+                            BitmapImage bi3 = new BitmapImage();
+                            bi3.BeginInit();
+                            bi3.UriSource = Utils.ResourceHelper.GetResourceUri(m.ImagePath);
+                            bi3.EndInit();
+                            imgElement.Stretch = Stretch.None;
+                            imgElement.Source = bi3;
+                            rootElement.Children.Add(imgElement);
+                        }
+                        catch
+                        {
+                            Image imgElement = new Image();
+                            BitmapImage bi3 = new BitmapImage();
+                            bi3.BeginInit();
+                            bi3.UriSource = Utils.ResourceHelper.GetResourceUri("/Resources/Map/0.png");
+                            bi3.EndInit();
+                            imgElement.Stretch = Stretch.None;
+                            imgElement.Source = bi3;
+                            rootElement.Children.Add(imgElement);
+                        }
                     }
                     else
                     {

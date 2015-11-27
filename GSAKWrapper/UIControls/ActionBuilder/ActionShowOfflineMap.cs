@@ -36,7 +36,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         void b_Click(object sender, RoutedEventArgs e)
         {
-            var wnd = new Dialogs.WindowOSMOfflineMap(null, null, null);
+            var wnd = new Dialogs.WindowOSMOfflineMap(null, null, null, 13);
             wnd.Show();
         }
 
@@ -63,7 +63,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
             _context.Send(new SendOrPostCallback(delegate(object state)
             {
-                var wnd = new Dialogs.WindowOSMOfflineMap(gcl, cLat, cLon);
+                var wnd = new Dialogs.WindowOSMOfflineMap(gcl, cLat, cLon, 16);
                 wnd.Show();
             }), null);
 
