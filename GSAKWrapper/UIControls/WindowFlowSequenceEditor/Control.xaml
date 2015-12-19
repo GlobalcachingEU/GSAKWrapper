@@ -38,7 +38,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableDatabases, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding Database, Mode=TwoWay}" />
+                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableDatabases, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedItem="{Binding Database, Mode=TwoWay}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
@@ -58,7 +58,7 @@
                         <Image Width="16" Height="16" Source="/Resources/General/delete.png" />
                     </Button>
                 </StackPanel>
-                <DataGrid  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=SelectedFlowSequence.FlowSequenceItems, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding SelectedFlowSequenceItem, Mode=TwoWay}">
+                <DataGrid  CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" ItemsSource="{Binding Path=SelectedFlowSequence.FlowSequenceItems}" SelectedItem="{Binding SelectedFlowSequenceItem, Mode=TwoWay}">
                     <DataGrid.Columns>
                         <DataGridTemplateColumn Header="{l:Translate FlowName}" Width="{Binding FlowSequenceEditorFlowNameWidth, Mode=TwoWay, Source={x:Static s:Settings.Default}}">
                             <DataGridTemplateColumn.CellTemplate>
@@ -68,7 +68,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableActionFlows, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding FlowName, Mode=TwoWay}" />
+                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableActionFlows, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedItem="{Binding FlowName, Mode=TwoWay}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>
@@ -80,7 +80,7 @@
                             </DataGridTemplateColumn.CellTemplate>
                             <DataGridTemplateColumn.CellEditingTemplate>
                                 <DataTemplate>
-                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableDatabases, RelativeSource={RelativeSource AncestorType={x:Type Window}}}" SelectedItem="{Binding Database, Mode=TwoWay}" />
+                                    <ComboBox IsEditable="True" ItemsSource="{Binding Path=AvailableDatabases, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectedItem="{Binding Database, Mode=TwoWay}" />
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellEditingTemplate>
                         </DataGridTemplateColumn>

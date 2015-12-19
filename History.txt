@@ -1,3 +1,6 @@
+V0.8.3.0
+- fix sequence editor
+
 V0.8.2.0
 - fix offline map loading patterns and symbols
 

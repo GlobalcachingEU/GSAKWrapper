@@ -21,7 +21,7 @@ namespace GSAKWrapper.UIControls.WindowFlowSequenceEditor
     /// <summary>
     /// Interaction logic for Control.xaml
     /// </summary>
-    public partial class Control : UserControl
+    public partial class Control : UserControl, INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
