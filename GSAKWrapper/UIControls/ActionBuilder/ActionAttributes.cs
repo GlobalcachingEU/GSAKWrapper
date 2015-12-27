@@ -94,6 +94,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (sender is ScrollViewer)
             {
+                ActionBuilderEditor.EnableMouseWheelZoom = true;
                 (sender as ScrollViewer).VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
                 (sender as ScrollViewer).HorizontalScrollBarVisibility = ScrollBarVisibility.Hidden;
                 (sender as ScrollViewer).Width = 200;
@@ -105,6 +106,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             if (sender is ScrollViewer)
             {
+                ActionBuilderEditor.EnableMouseWheelZoom = false;
                 (sender as ScrollViewer).VerticalScrollBarVisibility = ScrollBarVisibility.Auto;
                 (sender as ScrollViewer).HorizontalScrollBarVisibility = ScrollBarVisibility.Auto;
                 (sender as ScrollViewer).Width = 400;

@@ -21,7 +21,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         public enum FieldOption
         {
             DistanceFromCenter,
-            GeocacheName
+            GeocacheName,
+            FoundByMeDate
         }
 
         private int _value = 2000;
@@ -110,6 +111,9 @@ namespace GSAKWrapper.UIControls.ActionBuilder
             {
                 case FieldOption.GeocacheName:
                     fieldName = "main.Caches.Name";
+                    break;
+                case FieldOption.FoundByMeDate:
+                    fieldName = "main.Caches.FoundByMeDate";
                     break;
                 default:
                 case FieldOption.DistanceFromCenter:

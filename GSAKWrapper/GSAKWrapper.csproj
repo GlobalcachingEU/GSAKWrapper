@@ -433,6 +433,9 @@
     <Compile Include="Shapefiles\Manager.cs" />
     <Compile Include="Shapefiles\ShapeFile.cs" />
     <Compile Include="Shapefiles\ShapeFileInfo.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionImplementationGeocacheContainerMultiple.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionImplementationGeocacheTypeMultiple.cs" />
+    <Compile Include="UIControls\ActionBuilder\ActionPassThrough.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionShowOfflineMap.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionShowOnlineMap.cs" />
     <Compile Include="UIControls\ActionBuilder\ActionAddToIgnoreList.cs" />

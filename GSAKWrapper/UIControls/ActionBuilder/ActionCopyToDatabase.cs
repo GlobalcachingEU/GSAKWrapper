@@ -87,6 +87,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                     CopyTable(target, "LogMemo", "lParent", _overwrite);
                     CopyTable(target, "Waypoints", "cParent", _overwrite);
                     CopyTable(target, "WayMemo", "cParent", _overwrite);
+                    CopyTable(target, "CacheImages", "Code", _overwrite);
                     DatabaseConnection.ExecuteNonQuery(string.Format("DETACH DATABASE {0}", target));
                 }
                 TotalProcessTime.Stop();

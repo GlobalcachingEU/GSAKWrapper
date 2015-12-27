@@ -104,5 +104,15 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         {
             DragCanvas.SetCanBeDragged(this, false);
         }
+
+        private void UserControl_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ActionBuilderEditor.EnableMouseWheelZoom = false;
+        }
+
+        private void UserControl_MouseLeave(object sender, MouseEventArgs e)
+        {
+            ActionBuilderEditor.EnableMouseWheelZoom = true;
+        }
     }
 }

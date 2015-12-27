@@ -30,6 +30,8 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         private bool _doPan = false;
         private bool _showConnectionLabels = true;
 
+        public static bool EnableMouseWheelZoom { get; set; }
+
         public class ConnectionInfo
         {
             public Line ConnectionLine { get; set; }
@@ -43,6 +45,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
         
         public ActionBuilderEditor()
         {
+            EnableMouseWheelZoom = true;
             InitializeComponent();
 
             dragCanvas.ContextMenu = null;
@@ -685,13 +688,16 @@ namespace GSAKWrapper.UIControls.ActionBuilder
 
         private void dragCanvas_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            if (e.Delta > 0)
+            if (EnableMouseWheelZoom)
             {
-                scaleUp();
-            }
-            else
-            {
-                scaleDown();
+                if (e.Delta > 0)
+                {
+                    scaleUp();
+                }
+                else
+                {
+                    scaleDown();
+                }
             }
         }
 

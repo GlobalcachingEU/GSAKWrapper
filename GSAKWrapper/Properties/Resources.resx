@@ -1087,4 +1087,13 @@ Please select a complete coordinate string and try again.</value>
   <data name="InstallMacroForOfflineMapActive" xml:space="preserve">
     <value>Install macro for offline map for active geocache</value>
   </data>
+  <data name="PassThrough" xml:space="preserve">
+    <value>Pass through</value>
+  </data>
+  <data name="GeocacheTypeMultiple" xml:space="preserve">
+    <value>Geocache types</value>
+  </data>
+  <data name="GeocacheContainerMultiple" xml:space="preserve">
+    <value>Geocache containers</value>
+  </data>
 </root>
