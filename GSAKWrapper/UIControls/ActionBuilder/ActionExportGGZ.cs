@@ -317,7 +317,7 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                                             chgEl.AppendChild(el);
 
                                             el = doc.CreateElement("lon");
-                                            txt = doc.CreateTextNode(gei.kAfterLon ?? gei.Latitude);
+                                            txt = doc.CreateTextNode(gei.kAfterLon ?? gei.Longitude);
                                             el.AppendChild(txt);
                                             chgEl.AppendChild(el);
 

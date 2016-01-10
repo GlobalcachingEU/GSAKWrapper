@@ -395,7 +395,16 @@ namespace GSAKWrapper.UIControls.Maps
             Marker m = (sender as Grid).DataContext as Marker;
             if (m.Tag is GeocachePoco)
             {
-                //todo
+                if (Utils.GSAK.IsGSAKRunning && !Settings.Settings.Default.ExecutedWithParameters)
+                {
+                    try
+                    {
+                        System.Diagnostics.Process.Start(System.IO.Path.Combine(Settings.Settings.Default.GSAKExecutablePath, "gsak.exe"), string.Format("gsak://%FF/Search/{0}", (m.Tag as GeocachePoco).Code));
+                    }
+                    catch
+                    {
+                    }
+                }
             }
             else
             {
