@@ -1,3 +1,6 @@
+V1.0.1.0
+- fix online maps
+
 V1.0.0.0
 - fix GGZ file
 - fix Offline map, clicking on the geocache now also makes the geocache active in GSAK

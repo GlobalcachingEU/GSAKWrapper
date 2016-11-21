@@ -35,6 +35,11 @@ namespace GSAKWrapper.Dialogs
         void WindowWebBrowser_Closed(object sender, EventArgs e)
         {
             ApplicationData.Instance.OpenWindows.Remove(this);
+            if (_browser != null)
+            {
+                _browser.Dispose();
+                _browser = null;
+            }
         }
 
         public WindowWebBrowser(string htmlContent)

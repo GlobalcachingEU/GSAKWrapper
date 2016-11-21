@@ -46,7 +46,7 @@ namespace GSAKWrapper.UIControls
 
         void browser_IsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (WPFWebBrowser != null && !WPFWebBrowser.IsBrowserInitialized)
+            if (browser != null && !browser.IsBrowserInitialized)
             {
                 foreach (var cb in _registerCallbacks)
                 {
@@ -54,7 +54,7 @@ namespace GSAKWrapper.UIControls
                 }
                 _registerCallbacks.Clear();
             }
-            if (WPFWebBrowser != null && WPFWebBrowser.IsBrowserInitialized)
+            if (browser != null && browser.IsBrowserInitialized)
             {
                 if (!string.IsNullOrEmpty(_requestedDocumentText))
                 {
@@ -90,7 +90,7 @@ namespace GSAKWrapper.UIControls
                 SetProperty(ref _webBrowser, value);
                 if (_webBrowser != null)
                 {
-                    if (!_webBrowser.IsBrowserInitialized)
+                    if (!browser.IsBrowserInitialized)
                     {
                         foreach (var cb in _registerCallbacks)
                         {
@@ -98,7 +98,7 @@ namespace GSAKWrapper.UIControls
                         }
                         _registerCallbacks.Clear();
                     }
-                    if (_webBrowser.IsBrowserInitialized)
+                    if (browser.IsBrowserInitialized)
                     {
                         if (!string.IsNullOrEmpty(_requestedDocumentText))
                         {
@@ -129,10 +129,10 @@ namespace GSAKWrapper.UIControls
             get { return null; }
             set
             {
-                if (WPFWebBrowser != null && WPFWebBrowser.IsBrowserInitialized)
+                if (browser != null && browser.IsBrowserInitialized)
                 {
                     //ChromiumBrowser.LoadHtml(value, @"c:\temp.html");
-                    WPFWebBrowser.LoadHtml(value, @"http://www.google.com/");
+                    browser.LoadHtml(value, @"http://www.google.com/");
                 }
                 else
                 {
@@ -144,9 +144,9 @@ namespace GSAKWrapper.UIControls
 
         public void RegisterJSCallback(JSCallback cb)
         {
-            if (WPFWebBrowser != null && !WPFWebBrowser.IsBrowserInitialized)
+            if (browser != null && !browser.IsBrowserInitialized)
             {
-                WPFWebBrowser.RegisterJsObject(cb.Name, cb.Instance);
+                browser.RegisterJsObject(cb.Name, cb.Instance);
             }
             else
             {
