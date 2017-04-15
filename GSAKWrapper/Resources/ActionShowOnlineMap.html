@@ -25,52 +25,52 @@
       }
     </style>
       <script type="text/javascript">
-var map;
-var markers = [];
-var markerClusterer = null;
-var activeInfoWindow = null;
-var clusterOptions = { gridSize: 40, maxZoom: 13 };
+        var map;
+        var markers = [];
+        var markerClusterer = null;
+        var activeInfoWindow = null;
+        var clusterOptions = { gridSize: 40, maxZoom: 13, imagePath: 'http://www.globalcaching.eu/modules/Globalcaching/media/m' };
 
-//clusterOptions.maxZoom
-//clusterOptions.gridSize
+        //clusterOptions.maxZoom
+        //clusterOptions.gridSize
 
-//icons
+        //icons
 
 
-function init() {
-	/*
-    Build list of map types.
-    You can also use var mapTypeIds = ["roadmap", "satellite", "hybrid", "terrain", "OSM"]
-    but static lists sucks when google updates the default list of map types.
-    */
-    var mapTypeIds = [];
-    for(var type in google.maps.MapTypeId) {
+        function init() {
+        /*
+        Build list of map types.
+        You can also use var mapTypeIds = ["roadmap", "satellite", "hybrid", "terrain", "OSM"]
+        but static lists sucks when google updates the default list of map types.
+        */
+        var mapTypeIds = [];
+        for(var type in google.maps.MapTypeId) {
         mapTypeIds.push(google.maps.MapTypeId[type]);
-    }
-    mapTypeIds.push("OSM");
+        }
+        mapTypeIds.push("OSM");
 
-    var myOptions = {
+        var myOptions = {
         zoom: 13,
         center: new google.maps.LatLng(51.5, 5.5),
-		scaleControl: true,
+        scaleControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
-		mapTypeControlOptions: { mapTypeIds: mapTypeIds }
-    };
-    map = new google.maps.Map(document.getElementById("map"), myOptions);
+        mapTypeControlOptions: { mapTypeIds: mapTypeIds }
+        };
+        map = new google.maps.Map(document.getElementById("map"), myOptions);
 
-	//Define OSM map type pointing at the OpenStreetMap tile server
-    map.mapTypes.set("OSM", new google.maps.ImageMapType({
+        //Define OSM map type pointing at the OpenStreetMap tile server
+        map.mapTypes.set("OSM", new google.maps.ImageMapType({
         getTileUrl: function(coord, zoom) {
-            return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+        return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
         },
         tileSize: new google.maps.Size(256, 256),
         name: "OpenStreetMap",
         maxZoom: 18
-    }));
+        }));
 
-	activeInfoWindow = new google.maps.InfoWindow();
+        activeInfoWindow = new google.maps.InfoWindow();
 
-    map.enableKeyDragZoom({
+        map.enableKeyDragZoom({
         visualEnabled: false,
         visualPosition: google.maps.ControlPosition.LEFT,
         visualPositionOffset: new google.maps.Size(35, 0),
@@ -78,36 +78,36 @@ function init() {
         visualSprite: "http://maps.gstatic.com/mapfiles/ftr/controls/dragzoom_btn.png",
         visualSize: new google.maps.Size(20, 20),
         visualTips: {
-            off: "Turn on",
-            on: "Turn off"
+        off: "Turn on",
+        on: "Turn off"
         }
-    });
-    
-    //geocachelist
-}
+        });
 
-function addClickListener(marker) {
-	var gccode = marker.getTitle();
-	google.maps.event.addListener(marker, 'click', function () {
-		bound.geocacheClicked(gccode);
-	});
-  return marker;
-}
+        //geocachelist
+        }
 
-function onResize() {
-  $('#map').width($(document).width()-40);
-  $('#map').height($(document).height()-40);
-}
+        function addClickListener(marker) {
+        var gccode = marker.getTitle();
+        google.maps.event.addListener(marker, 'click', function () {
+        bound.geocacheClicked(gccode);
+        });
+        return marker;
+        }
 
-$(window).resize(function() {
-	onResize();
-});
+        function onResize() {
+        $('#map').width($(document).width()-40);
+        $('#map').height($(document).height()-40);
+        }
 
-$(document).ready(function() {
-	onResize();
-    init();
-});
-    </script>
+        $(window).resize(function() {
+        onResize();
+        });
+
+        $(document).ready(function() {
+        onResize();
+        init();
+        });
+      </script>
 
 	</head>
     <body>

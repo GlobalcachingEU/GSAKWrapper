@@ -1,5 +1,6 @@
 V1.0.2.0
 - fix filter on attributes for the <> operator
+- fix online map cluster icons
 
 V1.0.1.0
 - fix online maps
