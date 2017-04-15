@@ -152,17 +152,24 @@ namespace GSAKWrapper.UIControls.ActionBuilder
                 var negList = (from a in _ids where a < 0 select a).ToArray();
                 if (posList.Length > 0)
                 {
-                    sb.AppendFormat("(Attributes.aId in ({0}) and aInc=1) ", string.Join(",", posList));
+                    sb.AppendFormat("(Attributes.aId in ({0}) and Attributes.aInc=1) ", string.Join(",", posList));
                 }
                 if (negList.Length > 0)
                 {
                     if (sb.Length > 0)
                     {
-                        sb.Append(" or ");
+                       sb.Append(" or ");
                     }
-                    sb.AppendFormat("(Attributes.aId in ({0}) and aInc=0) ", string.Join(",", negList));
+                    sb.AppendFormat("(Attributes.aId in ({0}) and Attributes.aInc=0) ", string.Join(",", negList));
                 }
-                DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select distinct Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode inner join Attributes on Caches.Code = Attributes.aCode and ({2})", targetTableName, inputTableName, sb.ToString()));
+                if (op == Operator.Equal)
+                {
+                    DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select distinct Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode inner join Attributes on Caches.Code = Attributes.aCode and ({2})", targetTableName, inputTableName, sb.ToString()));
+                }
+                else if (op == Operator.NotEqual)
+                {
+                    DatabaseConnection.ExecuteNonQuery(string.Format("insert or ignore into {0} select distinct Code as gccode from Caches inner join {1} on Caches.Code = {1}.gccode left join Attributes on Caches.Code = Attributes.aCode and ({2}) where Attributes.aCode is null", targetTableName, inputTableName, sb.ToString()));
+                }
             }
         }
     }
